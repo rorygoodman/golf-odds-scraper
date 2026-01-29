@@ -1,7 +1,9 @@
 package com.golf.odds
 
 import org.openqa.selenium.By
+import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.WebDriver
+import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 import org.openqa.selenium.support.ui.WebDriverWait
@@ -10,7 +12,8 @@ import java.time.Duration
 
 data class PlayerLayPrice(
     val playerName: String,
-    val layPrice: Double
+    val price: Double,
+    val isBackPrice: Boolean = false
 )
 
 data class BetfairEventOdds(
@@ -30,7 +33,7 @@ class BetfairScraper(private val url: String) {
             waitForPageLoad()
 
             val eventName = extractEventName()
-            val players = extractPlayerLayPrices()
+            val players = scrollAndExtractPlayers()
 
             return BetfairEventOdds(
                 eventName = eventName,
@@ -56,20 +59,14 @@ class BetfairScraper(private val url: String) {
 
     private fun waitForPageLoad() {
         val wait = WebDriverWait(driver!!, Duration.ofSeconds(20))
-        // Wait for the runner list container
         wait.until(ExpectedConditions.presenceOfElementLocated(By.className("mv-runner-list")))
         println("mv-runner-list found, waiting for content to load...")
 
-        // Wait for initial content to populate
         Thread.sleep(3000)
 
-        // Try to click "Show All" or similar button
         clickShowAll()
 
-        // Scroll down the page to load more players (lazy loading)
-        scrollToLoadAllPlayers()
-
-        println("Finished waiting for page load")
+        println("Page loaded, ready to scroll and extract")
     }
 
     private fun clickShowAll() {
@@ -101,76 +98,200 @@ class BetfairScraper(private val url: String) {
         }
     }
 
-    private fun scrollToLoadAllPlayers() {
-        println("Scrolling internal container to load all players...")
-        var previousCount = 0
-        var currentCount = 0
-        var noChangeCount = 0
-        val maxNoChange = 3
+    /**
+     * Scrolls through the runner list and extracts player data at each scroll position.
+     * This handles Betfair's virtual scrolling where only visible runners are in the DOM.
+     */
+    private fun scrollAndExtractPlayers(): List<PlayerLayPrice> {
+        val js = driver as JavascriptExecutor
+        // Map of player name -> Pair(price, isBackPrice)
+        val playersMap = linkedMapOf<String, Pair<Double, Boolean>>()
 
-        try {
-            // Try to find the scrollable container
-            val scrollableContainer = try {
-                val headerWrapper = driver!!.findElement(By.cssSelector("div.marketview-header-wrapper-bottom-container"))
-                println("Found marketview-header-wrapper-bottom-container")
-                headerWrapper
-            } catch (e: Exception) {
-                println("marketview-header-wrapper-bottom-container not found, trying marketview-list-runners-component")
-                try {
-                    driver!!.findElement(By.cssSelector("div.marketview-list-runners-component.bf-row"))
-                } catch (e2: Exception) {
-                    driver!!.findElement(By.cssSelector("div.marketview-list-runners-component"))
-                }
+        val scrollContainer = findScrollableContainer(js)
+        if (scrollContainer == null) {
+            println("WARNING: Could not find scrollable container, extracting visible players only")
+            collectVisiblePlayers(js, playersMap)
+            return playersMap.map { (name, d) -> PlayerLayPrice(name, d.first, d.second) }
+        }
+
+        val clientHeight = (js.executeScript("return arguments[0].clientHeight;", scrollContainer) as Long)
+        val scrollHeight = (js.executeScript("return arguments[0].scrollHeight;", scrollContainer) as Long)
+        println("Scrollable container found - clientHeight: $clientHeight, scrollHeight: $scrollHeight")
+
+        // Reset to top
+        js.executeScript("arguments[0].scrollTop = 0;", scrollContainer)
+        Thread.sleep(500)
+
+        // Scroll incrementally, collecting players at each position
+        var noNewPlayersCount = 0
+        val maxStaleScrolls = 8
+        var scrollIteration = 0
+
+        while (noNewPlayersCount < maxStaleScrolls) {
+            scrollIteration++
+            val previousSize = playersMap.size
+            collectVisiblePlayers(js, playersMap)
+
+            val newCount = playersMap.size - previousSize
+            if (newCount > 0) {
+                println("  Scroll #$scrollIteration: found $newCount new players (total: ${playersMap.size})")
+                noNewPlayersCount = 0
+            } else {
+                noNewPlayersCount++
             }
 
-            val scrollHeight = (driver as org.openqa.selenium.JavascriptExecutor).executeScript(
-                "return arguments[0].scrollHeight;", scrollableContainer
-            ) as Long
-            val clientHeight = (driver as org.openqa.selenium.JavascriptExecutor).executeScript(
-                "return arguments[0].clientHeight;", scrollableContainer
-            ) as Long
-            println("Scrollable container - scrollHeight: $scrollHeight, clientHeight: $clientHeight")
+            // Scroll down by ~60% of viewport for more overlap
+            js.executeScript(
+                "arguments[0].scrollTop += arguments[1];",
+                scrollContainer,
+                (clientHeight * 0.6).toLong()
+            )
+            Thread.sleep(700)
 
-            // Scroll the internal container multiple times
-            for (i in 1..20) {
-                // Get current count of runner names
-                currentCount = driver!!.findElements(By.cssSelector("h3.runner-name")).size
+            // Check if we've reached the bottom
+            val atBottom = js.executeScript(
+                "var el = arguments[0]; return el.scrollTop + el.clientHeight >= el.scrollHeight - 5;",
+                scrollContainer
+            ) as Boolean
 
-                // If count hasn't changed for 3 consecutive attempts, we've loaded everything
-                if (currentCount == previousCount && previousCount > 0) {
-                    noChangeCount++
-                    if (noChangeCount >= maxNoChange) {
-                        println("Loaded $currentCount players from Betfair")
-                        break
+            if (atBottom) {
+                collectVisiblePlayers(js, playersMap)
+                println("  Reached bottom of scroll container")
+                break
+            }
+        }
+
+        println("Extracted ${playersMap.size} total players from Betfair")
+        return playersMap.map { (name, data) -> PlayerLayPrice(name, data.first, data.second) }
+    }
+
+    /**
+     * Finds the scrollable container that holds the runner list.
+     * Uses multiple strategies: walking up from a runner element, known class names, and brute-force search.
+     */
+    private fun findScrollableContainer(js: JavascriptExecutor): WebElement? {
+        return try {
+            js.executeScript("""
+                // Strategy 1: Find a runner element and walk up to its scrollable ancestor
+                var runner = document.querySelector('h3.runner-name');
+                if (runner) {
+                    var el = runner.parentElement;
+                    while (el && el !== document.body && el !== document.documentElement) {
+                        var style = window.getComputedStyle(el);
+                        if ((style.overflowY === 'auto' || style.overflowY === 'scroll') &&
+                            el.scrollHeight > el.clientHeight + 20) {
+                            return el;
+                        }
+                        el = el.parentElement;
                     }
-                } else {
-                    noChangeCount = 0
                 }
 
-                previousCount = currentCount
-
-                // Try to scroll the container
-                (driver as org.openqa.selenium.JavascriptExecutor).executeScript(
-                    "arguments[0].scrollTop = arguments[0].scrollTop + 500;", scrollableContainer
-                )
-
-                // Send Page Down key
-                try {
-                    scrollableContainer.sendKeys(org.openqa.selenium.Keys.PAGE_DOWN)
-                } catch (e: Exception) {
-                    // Ignore
+                // Strategy 2: Known Betfair container classes
+                var selectors = [
+                    '.marketview-header-wrapper-bottom-container',
+                    '.marketview-list-runners-component',
+                    '.mv-runner-list'
+                ];
+                for (var i = 0; i < selectors.length; i++) {
+                    var container = document.querySelector(selectors[i]);
+                    if (container && container.scrollHeight > container.clientHeight + 20) {
+                        return container;
+                    }
                 }
 
-                Thread.sleep(1000)
+                // Strategy 3: Find any scrollable div that contains runners
+                var divs = document.querySelectorAll('div');
+                for (var j = 0; j < divs.length; j++) {
+                    var div = divs[j];
+                    var st = window.getComputedStyle(div);
+                    if ((st.overflowY === 'auto' || st.overflowY === 'scroll') &&
+                        div.scrollHeight > div.clientHeight + 100 &&
+                        div.querySelector('h3.runner-name')) {
+                        return div;
+                    }
+                }
+
+                return null;
+            """) as? WebElement
+        } catch (e: Exception) {
+            println("Error finding scrollable container: ${e.message}")
+            null
+        }
+    }
+
+    /**
+     * Extracts player names and lay prices from the currently visible runners in the DOM.
+     * Results are merged into the provided map, deduplicating by player name.
+     */
+    private fun collectVisiblePlayers(js: JavascriptExecutor, playersMap: MutableMap<String, Pair<Double, Boolean>>) {
+        try {
+            @Suppress("UNCHECKED_CAST")
+            val results = js.executeScript("""
+                var results = [];
+                var rows = document.querySelectorAll('tr.runner-line');
+                for (var i = 0; i < rows.length; i++) {
+                    var row = rows[i];
+
+                    // Get player name
+                    var nameEl = row.querySelector('h3.runner-name');
+                    if (!nameEl) continue;
+                    var name = nameEl.textContent.trim();
+                    if (!name) continue;
+
+                    var price = '';
+                    var isBack = 'false';
+
+                    // Best lay price: td.first-lay-cell
+                    var layCell = row.querySelector('td.first-lay-cell');
+                    if (layCell) {
+                        var layLabel = layCell.querySelector('label.Zs3u5');
+                        if (layLabel) {
+                            var t = layLabel.textContent.trim();
+                            var n = parseFloat(t);
+                            if (!isNaN(n) && n > 1) {
+                                price = t;
+                            }
+                        }
+                    }
+
+                    // Fallback: best back price: td.last-back-cell
+                    if (!price) {
+                        var backCell = row.querySelector('td.last-back-cell');
+                        if (backCell) {
+                            var backLabel = backCell.querySelector('label.Zs3u5');
+                            if (backLabel) {
+                                var t2 = backLabel.textContent.trim();
+                                var n2 = parseFloat(t2);
+                                if (!isNaN(n2) && n2 > 1) {
+                                    price = t2;
+                                    isBack = 'true';
+                                }
+                            }
+                        }
+                    }
+
+                    results.push(name + '|||' + price + '|||' + isBack);
+                }
+                return results;
+            """) as? List<String> ?: return
+
+            for (item in results) {
+                val parts = item.split("|||")
+                if (parts.size == 3) {
+                    val name = parts[0]
+                    val price = parts[1].toDoubleOrNull()
+                    val isBack = parts[2] == "true"
+                    if (name.isNotBlank() && price != null) {
+                        // Prefer lay price over back price if we already have one
+                        val existing = playersMap[name]
+                        if (existing == null || (existing.second && !isBack)) {
+                            playersMap[name] = Pair(price, isBack)
+                        }
+                    }
+                }
             }
         } catch (e: Exception) {
-            println("Error scrolling container: ${e.message}")
-            println("Falling back to window scrolling...")
-            // Fallback to window scrolling
-            for (i in 1..10) {
-                (driver as org.openqa.selenium.JavascriptExecutor).executeScript("window.scrollBy(0, 500);")
-                Thread.sleep(1000)
-            }
+            println("Error collecting visible players: ${e.message}")
         }
     }
 
@@ -182,50 +303,6 @@ class BetfairScraper(private val url: String) {
             "Golf Betting"
         }
     }
-
-    private fun extractPlayerLayPrices(): List<PlayerLayPrice> {
-        val players = mutableListOf<PlayerLayPrice>()
-
-        try {
-            // Search for all runner names on the page (not limited to mv-runner-list)
-            val runnerNames = driver!!.findElements(By.cssSelector("h3.runner-name"))
-            println("Found ${runnerNames.size} runner names (h3.runner-name) on the page")
-
-            // Search for all lay price labels on the page
-            val layPriceElements = driver!!.findElements(By.cssSelector("label.Zs3u5.AUP11.Qe-26"))
-            println("Found ${layPriceElements.size} lay price elements (label.Zs3u5.AUP11.Qe-26)")
-
-            // Match up names with lay prices
-            // Assuming the order is consistent (first name matches first lay price, etc.)
-            val minSize = minOf(runnerNames.size, layPriceElements.size)
-
-            for (i in 0 until minSize) {
-                try {
-                    val playerName = runnerNames[i].text.trim()
-                    val layPriceText = layPriceElements[i].text.trim()
-                    val layPrice = layPriceText.toDoubleOrNull()
-
-                    if (playerName.isNotBlank() && layPrice != null) {
-                        players.add(
-                            PlayerLayPrice(
-                                playerName = playerName,
-                                layPrice = layPrice
-                            )
-                        )
-                    }
-                } catch (e: Exception) {
-                    println("Error extracting player at index $i: ${e.message}")
-                }
-            }
-
-            println("Successfully extracted ${players.size} players with lay prices")
-        } catch (e: Exception) {
-            println("Error extracting player lay prices: ${e.message}")
-            e.printStackTrace()
-        }
-
-        return players
-    }
 }
 
 fun printBetfairEventOdds(eventOdds: BetfairEventOdds) {
@@ -233,16 +310,21 @@ fun printBetfairEventOdds(eventOdds: BetfairEventOdds) {
     println("URL: ${eventOdds.url}")
     println("Scraped at: ${eventOdds.scrapedAt}")
 
-    println("\nPlayer Lay Prices (${eventOdds.players.size} players):")
+    val backCount = eventOdds.players.count { it.isBackPrice }
+    println("\nPlayer Prices (${eventOdds.players.size} players):")
+    if (backCount > 0) {
+        println("  * = best back price (lay price unavailable)")
+    }
     println("-".repeat(80))
 
     eventOdds.players
-        .sortedBy { it.layPrice }
+        .sortedBy { it.price }
         .forEach { player ->
-            println("${player.playerName.padEnd(30)} Lay: ${player.layPrice}")
+            val marker = if (player.isBackPrice) "*" else " "
+            println("${player.playerName.padEnd(30)} ${player.price}$marker")
         }
 
     if (eventOdds.players.isEmpty()) {
-        println("\n⚠️  No players found! The page structure might be different than expected.")
+        println("\nNo players found. The page structure might be different than expected.")
     }
 }
