@@ -25,6 +25,7 @@ fun aggregateOdds(events: List<EventOdds>): List<PlayerComparison> {
         val bookmaker = when {
             event.url.contains("ladbrokes.com") -> Bookmaker.LADBROKES
             event.url.contains("10bet.co.uk") -> Bookmaker.TEN_BET
+            event.url.contains("paddypower.com") -> Bookmaker.PADDY_POWER
             else -> return@forEach
         }
 

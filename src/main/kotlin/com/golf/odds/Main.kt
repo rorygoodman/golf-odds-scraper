@@ -87,5 +87,9 @@ fun scrapeEvent(page: Page): EventOdds? {
             // Betfair is handled separately via event.betfairLink
             null
         }
+        Bookmaker.PADDY_POWER -> {
+            val scraper = PaddyPowerScraper(page.url)
+            scraper.scrape()
+        }
     }
 }
