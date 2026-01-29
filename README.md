@@ -1,229 +1,89 @@
-
 # Golf Odds Scraper
 
-A Kotlin-based scraper for analyzing golf betting odds across different bookmakers to identify value bets and hedge opportunities.
+A Kotlin-based scraper for comparing golf betting odds across bookmakers and the Betfair exchange.
 
-## Overview
+## What it does
 
-This project scrapes golf tournament odds from various bookmakers to:
-- Create summaries of odds for golf outright bets
-- Calculate each-way place odds for top finishes
-- Highlight potential profitable bets
-- Identify hedge opportunities
-
-## Features
-
-- **Configuration-based scraping**: Define events and bookmakers in a simple JSON config file
-- **Each-way betting support**: Automatically calculates place odds based on bookmaker terms
-- **Multiple bookmaker support**: Extensible architecture to support multiple bookmakers
-- **Headless browser automation**: Uses Selenium to scrape JavaScript-rendered pages
-- **Fractional and decimal odds**: Displays both formats for easy comparison
+- Scrapes outright winner odds from multiple bookmakers (Ladbrokes, Paddy Power)
+- Scrapes Betfair exchange lay prices with virtual scroll support
+- Calculates each-way place odds from bookmaker terms
+- Compares odds across bookmakers to highlight the best available prices
 
 ## Prerequisites
 
-The following tools are required to run the scraper:
-
-### Installation via Homebrew (macOS)
+- Java 19+
+- Google Chrome
+- ChromeDriver
 
 ```bash
-# Install Java (OpenJDK)
-brew install openjdk@11
-
-# Install Gradle
-brew install gradle
-
-# Install ChromeDriver
+# macOS
+brew install openjdk@19
 brew install chromedriver
-```
-
-### Verify Installation
-
-```bash
-# Check Java version (should be 11 or higher)
-java -version
-
-# Check Gradle version
-gradle --version
-
-# Check ChromeDriver location
-which chromedriver
-```
-
-## Configuration
-
-The scraper uses a `config.json` file to define which events and pages to scrape.
-
-### Config Structure
-
-```json
-{
-  "events": [
-    {
-      "name": "Event Name",
-      "pages": [
-        {
-          "url": "https://bookmaker.com/event-url",
-          "bookmaker": "LADBROKES"
-        }
-      ]
-    }
-  ]
-}
-```
-
-### Config Fields
-
-- **events**: Array of golf events to scrape
-  - **name**: Display name for the event (e.g., "2026 US Masters")
-  - **pages**: Array of bookmaker pages to scrape for this event
-    - **url**: Full URL to the betting page
-    - **bookmaker**: Enum value identifying the bookmaker (currently: `LADBROKES`)
-
-### Example Configuration
-
-```json
-{
-  "events": [
-    {
-      "name": "2026 US Masters",
-      "pages": [
-        {
-          "url": "https://www.ladbrokes.com/en/sports/event/golf/golf/us-masters/2026-us-masters/250076402/main-markets",
-          "bookmaker": "LADBROKES"
-        }
-      ]
-    },
-    {
-      "name": "2026 The Open",
-      "pages": [
-        {
-          "url": "https://www.ladbrokes.com/en/sports/event/golf/golf/the-open/2026-the-open/123456789/main-markets",
-          "bookmaker": "LADBROKES"
-        }
-      ]
-    }
-  ]
-}
 ```
 
 ## Usage
 
-### Run the scraper
+```bash
+./run.sh
+```
+
+Or with a custom config:
 
 ```bash
-gradle run
+./run.sh --args="path/to/config.json"
 ```
 
-### Run with a custom config file
+## Configuration
 
-```bash
-gradle run --args="path/to/config.json"
+Edit `config.json` to set up events, bookmaker pages, and Betfair links:
+
+```json
+{
+  "events": [
+    {
+      "name": "2026 Farmers",
+      "betfairLink": "https://www.betfair.com/exchange/plus/en/golf-betting-3",
+      "pages": [
+        {
+          "url": "https://www.ladbrokes.com/en/sports/event/golf/...",
+          "bookmaker": "LADBROKES"
+        },
+        {
+          "url": "https://www.paddypower.com/golf/...",
+          "bookmaker": "PADDY_POWER"
+        }
+      ]
+    }
+  ]
+}
 ```
 
-## Output
+### Supported bookmakers
 
-The scraper displays:
+| Bookmaker | Enum value | Notes |
+|-----------|-----------|-------|
+| Ladbrokes | `LADBROKES` | Fractional odds, each-way terms |
+| Paddy Power | `PADDY_POWER` | Fractional odds, each-way terms |
+| 10Bet | `TEN_BET` | Fractional odds, each-way terms |
+| Betfair Exchange | via `betfairLink` | Lay prices, virtual scroll |
 
-1. **Event information**: Name, URL, and scrape timestamp
-2. **Each-way terms**: Place odds fraction and number of paying places
-3. **Player odds**: For each player:
-   - Player name
-   - Win odds (fractional and decimal)
-   - Place odds (fractional and decimal)
+## Adding a new bookmaker
 
-### Sample Output
+1. Add a value to the `Bookmaker` enum in `Bookmaker.kt`
+2. Create a scraper class that returns `EventOdds` (see `LadbrokesScraper.kt` or `PaddyPowerScraper.kt`)
+3. Wire it up in `scrapeEvent()` in `Main.kt`
+4. Add the URL detection in `OddsComparison.kt`
 
-```
-Event: 2026 US Masters
-URL: https://www.ladbrokes.com/...
-Scraped at: 2025-12-25T18:20:55.344618
-
-Each-Way Terms:
-  Place Odds: 1/4 of win odds
-  Paying Places: 5
-
-Player Odds (91 players):
---------------------------------------------------------------------------------
-Scottie Scheffler                   7/2 (4.50) | Place:    7/8 (1.88)
-Rory McIlroy                       13/2 (7.50) | Place:   13/8 (2.63)
-Ludvig Aberg                       12/1 (13.00) | Place:    3/1 (4.00)
-...
-```
-
-## Project Structure
+## Project structure
 
 ```
-golf-odds-scraper/
-├── config.json                         # Configuration file
-├── build.gradle.kts                    # Gradle build configuration
-├── settings.gradle.kts                 # Project settings
-└── src/main/kotlin/com/golf/odds/
-    ├── Main.kt                         # Main orchestration and config loading
-    ├── Bookmaker.kt                    # Bookmaker enum
-    ├── Config.kt                       # Configuration data classes
-    ├── LadbrokesScraper.kt            # Ladbrokes-specific scraper
-    └── [Future scrapers...]
+src/main/kotlin/com/golf/odds/
+  Main.kt                 # Entry point, config loading, orchestration
+  Config.kt               # Config data classes
+  Bookmaker.kt            # Bookmaker enum
+  LadbrokesScraper.kt     # Ladbrokes scraper + shared data classes (EventOdds, PlayerOdds)
+  PaddyPowerScraper.kt    # Paddy Power scraper
+  TenBetScraper.kt        # 10Bet scraper
+  BetfairScraper.kt       # Betfair exchange scraper (scroll + extract)
+  OddsComparison.kt       # Cross-bookmaker comparison
 ```
-
-## Adding New Bookmakers
-
-To add support for a new bookmaker:
-
-1. **Add enum value** in `Bookmaker.kt`:
-   ```kotlin
-   enum class Bookmaker {
-       LADBROKES,
-       BETFAIR  // New bookmaker
-   }
-   ```
-
-2. **Create scraper class** (e.g., `BetfairScraper.kt`):
-   ```kotlin
-   class BetfairScraper(private val url: String) {
-       fun scrape(): EventOdds {
-           // Implement scraping logic
-       }
-   }
-   ```
-
-3. **Add case to routing** in `Main.kt`:
-   ```kotlin
-   fun scrapeEvent(page: Page): EventOdds? {
-       return when (page.bookmaker) {
-           Bookmaker.LADBROKES -> LadbrokesScraper(page.url).scrape()
-           Bookmaker.BETFAIR -> BetfairScraper(page.url).scrape()
-       }
-   }
-   ```
-
-4. **Update config.json** with new bookmaker pages
-
-## How It Works
-
-1. **Configuration Loading**: Reads `config.json` to get events and pages
-2. **Page Routing**: For each page, routes to the appropriate scraper based on bookmaker enum
-3. **Web Scraping**: Uses Selenium with headless Chrome to:
-   - Load the betting page
-   - Click "Show All" to expand all players
-   - Extract player names from `data-crlat="oddsNames"` elements
-   - Extract odds from `data-crlat="betButton"` elements
-   - Extract each-way terms from `data-crlat="eachWayContainer"`
-4. **Odds Calculation**: Calculates place odds using each-way terms
-5. **Display**: Formats and prints all data
-
-## Current Limitations
-
-- Only supports Ladbrokes bookmaker
-- Requires ChromeDriver to be installed
-- Assumes fractional odds format
-- UK-specific betting terms
-
-## Future Enhancements
-
-- Support for additional bookmakers (Bet365, William Hill, etc.)
-- Odds comparison across bookmakers
-- Arbitrage opportunity detection
-- Historical odds tracking
-- Value bet identification based on statistical models
-- Export to CSV/JSON for further analysis
-- API mode for programmatic access
