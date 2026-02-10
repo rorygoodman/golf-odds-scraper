@@ -26,7 +26,6 @@ fun createChromeDriver(): WebDriver {
         addArguments("--disable-extensions")
         addArguments("--disable-infobars")
         addArguments("--remote-allow-origins=*")
-        addArguments("--user-data-dir=/tmp/chrome-profile")
         addArguments("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
         setExperimentalOption("excludeSwitches", listOf("enable-automation"))
         setExperimentalOption("useAutomationExtension", false)

@@ -2,6 +2,8 @@ package com.golf.odds
 
 import com.google.gson.Gson
 import java.io.File
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 
 /**
  * Entry point for the Golf Odds Scraper.
@@ -63,6 +65,12 @@ fun main(args: Array<String>) {
             val calculator = LayableEWCalculator(winnerMarketOdds, top10MarketOdds)
             val opportunities = calculator.findArbitrageOpportunities(allEventOdds)
             printArbitrageOpportunities(opportunities)
+
+            // Write JSON for web frontend
+            val timestamp = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z"))
+            val json = opportunitiesToJson(opportunities, timestamp)
+            File("data.json").writeText(json)
+            println("\nJSON written to data.json")
         } else if (winnerMarketOdds == null || top10MarketOdds == null) {
             println("\nCannot calculate: need both Betfair Winner and Top 10 markets")
         }

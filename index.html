@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="600">
+  <title>Golf E/W Arbitrage</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #1a1a2e;
+      color: #eee;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    h1 { color: #00d4ff; margin-bottom: 8px; font-size: 1.8em; }
+    .timestamp { color: #888; margin-bottom: 20px; font-size: 0.9em; }
+    .controls {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    select {
+      background: #16213e;
+      color: #fff;
+      border: 1px solid #00d4ff;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      min-width: 180px;
+    }
+    select:focus { outline: none; border-color: #00ff88; }
+    .stats {
+      background: #16213e;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-size: 0.9em;
+      color: #888;
+    }
+    .stats span { color: #00d4ff; font-weight: bold; }
+    .profitable-count { color: #00ff88 !important; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #16213e;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 12px 10px;
+      text-align: right;
+      border-bottom: 1px solid #2a2a4a;
+    }
+    th {
+      background: #0f0f23;
+      color: #00d4ff;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+    }
+    th:first-child, td:first-child { text-align: left; }
+    tr:hover { background: #1f1f3a; }
+    tr:last-child td { border-bottom: none; }
+    .positive { color: #00ff88; font-weight: bold; }
+    .negative { color: #ff6b6b; }
+    .player-name {
+      font-weight: 500;
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #888;
+    }
+    .no-data {
+      text-align: center;
+      padding: 40px;
+      color: #888;
+      background: #16213e;
+      border-radius: 8px;
+    }
+    @media (max-width: 768px) {
+      th, td { padding: 8px 6px; font-size: 0.85em; }
+      .player-name { max-width: 120px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Golf E/W Arbitrage</h1>
+    <div class="timestamp" id="timestamp">Loading...</div>
+
+    <div class="controls">
+      <select id="bookmaker-select">
+        <option value="ALL">All Bookmakers</option>
+      </select>
+      <div class="stats">
+        Showing <span id="showing-count">0</span> players |
+        <span class="profitable-count" id="profitable-count">0</span> profitable
+      </div>
+    </div>
+
+    <div id="table-container">
+      <div class="loading">Loading data...</div>
+    </div>
+  </div>
+
+  <script>
+    let allData = [];
+    let bookmakers = [];
+
+    async function loadData() {
+      try {
+        const response = await fetch('data.json');
+        const data = await response.json();
+
+        allData = data.opportunities;
+        bookmakers = data.bookmakers;
+
+        document.getElementById('timestamp').textContent = 'Last updated: ' + data.timestamp;
+
+        // Populate bookmaker dropdown
+        const select = document.getElementById('bookmaker-select');
+        bookmakers.forEach(bm => {
+          const option = document.createElement('option');
+          option.value = bm;
+          option.textContent = bm.replace('_', ' ');
+          select.appendChild(option);
+        });
+
+        renderTable('ALL');
+      } catch (error) {
+        document.getElementById('table-container').innerHTML =
+          '<div class="no-data">Failed to load data. Please try again later.</div>';
+        console.error('Error loading data:', error);
+      }
+    }
+
+    function renderTable(selectedBookmaker) {
+      let filtered = allData;
+
+      if (selectedBookmaker !== 'ALL') {
+        filtered = allData.filter(row => row.bookmaker === selectedBookmaker);
+      }
+
+      // Sort by edge descending
+      filtered.sort((a, b) => b.edge - a.edge);
+
+      const profitable = filtered.filter(row => row.edge > 0).length;
+      document.getElementById('showing-count').textContent = filtered.length;
+      document.getElementById('profitable-count').textContent = profitable;
+
+      if (filtered.length === 0) {
+        document.getElementById('table-container').innerHTML =
+          '<div class="no-data">No data available for this selection.</div>';
+        return;
+      }
+
+      let html = `
+        <table>
+          <thead>
+            <tr>
+              <th>Player</th>
+              ${selectedBookmaker === 'ALL' ? '<th>Book</th>' : ''}
+              <th>BM Win</th>
+              <th>BF Win</th>
+              <th>Win %</th>
+              <th>BM Plc</th>
+              <th>BF Plc</th>
+              <th>Plc %</th>
+              <th>Edge %</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      filtered.forEach(row => {
+        const edgeClass = row.edge > 0 ? 'positive' : 'negative';
+        const winClass = row.winEdge > 0 ? 'positive' : 'negative';
+        const placeClass = row.placeEdge > 0 ? 'positive' : 'negative';
+
+        html += `
+          <tr>
+            <td class="player-name">${row.player}</td>
+            ${selectedBookmaker === 'ALL' ? `<td>${row.bookmaker.replace('_', ' ')}</td>` : ''}
+            <td>${row.bmWin.toFixed(2)}</td>
+            <td>${row.bfWin.toFixed(2)}</td>
+            <td class="${winClass}">${row.winEdge > 0 ? '+' : ''}${row.winEdge.toFixed(1)}%</td>
+            <td>${row.bmPlace.toFixed(2)}</td>
+            <td>${row.bfPlace.toFixed(2)}</td>
+            <td class="${placeClass}">${row.placeEdge > 0 ? '+' : ''}${row.placeEdge.toFixed(1)}%</td>
+            <td class="${edgeClass}">${row.edge > 0 ? '+' : ''}${row.edge.toFixed(2)}%</td>
+          </tr>
+        `;
+      });
+
+      html += '</tbody></table>';
+      document.getElementById('table-container').innerHTML = html;
+    }
+
+    document.getElementById('bookmaker-select').addEventListener('change', (e) => {
+      renderTable(e.target.value);
+    });
+
+    loadData();
+  </script>
+</body>
+</html>

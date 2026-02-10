@@ -214,3 +214,37 @@ fun printArbitrageOpportunities(opportunities: List<EWArbitrageOpportunity>) {
     }
     println("=".repeat(115))
 }
+
+/**
+ * Converts arbitrage opportunities to JSON format for the web frontend.
+ *
+ * @param opportunities List of arbitrage opportunities
+ * @param timestamp When the data was scraped
+ * @return JSON string
+ */
+fun opportunitiesToJson(opportunities: List<EWArbitrageOpportunity>, timestamp: String): String {
+    val bookmakers = opportunities.map { it.bookmaker.name }.distinct().sorted()
+
+    val rows = opportunities.map { opp ->
+        """    {
+      "player": "${opp.playerName.replace("\"", "\\\"")}",
+      "bookmaker": "${opp.bookmaker.name}",
+      "bmWinOdds": "${opp.bookmakerWinOdds}",
+      "bmWin": ${String.format("%.2f", opp.bookmakerWinDecimal)},
+      "bmPlace": ${String.format("%.2f", opp.bookmakerPlaceDecimal)},
+      "bfWin": ${String.format("%.2f", opp.betfairWinLay)},
+      "bfPlace": ${String.format("%.2f", opp.betfairPlaceLay)},
+      "winEdge": ${String.format("%.2f", opp.winEdge)},
+      "placeEdge": ${String.format("%.2f", opp.placeEdge)},
+      "edge": ${String.format("%.2f", opp.edgePercent)}
+    }"""
+    }
+
+    return """{
+  "timestamp": "$timestamp",
+  "bookmakers": [${bookmakers.joinToString(", ") { "\"$it\"" }}],
+  "opportunities": [
+${rows.joinToString(",\n")}
+  ]
+}"""
+}
