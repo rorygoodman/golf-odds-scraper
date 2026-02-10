@@ -30,10 +30,6 @@ fun createChromeDriver(): WebDriver {
         addArguments("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
         setExperimentalOption("excludeSwitches", listOf("enable-automation"))
         setExperimentalOption("useAutomationExtension", false)
-        // Use Chrome for Testing on Linux
-        if (System.getProperty("os.name").lowercase().contains("linux")) {
-            setBinary("/opt/chrome-linux64/chrome")
-        }
     }
     return ChromeDriver(options)
 }
