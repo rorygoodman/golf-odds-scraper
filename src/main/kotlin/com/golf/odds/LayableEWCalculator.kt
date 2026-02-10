@@ -106,6 +106,7 @@ class LayableEWCalculator(
                 event.url.contains("10bet.co.uk") -> Bookmaker.TEN_BET
                 event.url.contains("paddypower.com") -> Bookmaker.PADDY_POWER
                 event.url.contains("boylesports.com") -> Bookmaker.BOYLESPORTS
+                event.url.contains("skybet.com") -> Bookmaker.SKYBET
                 else -> return@eventLoop
             }
 

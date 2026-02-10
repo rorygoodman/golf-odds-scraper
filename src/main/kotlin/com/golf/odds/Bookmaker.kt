@@ -8,5 +8,6 @@ enum class Bookmaker {
     TEN_BET,
     BETFAIR,
     PADDY_POWER,
-    BOYLESPORTS
+    BOYLESPORTS,
+    SKYBET
 }

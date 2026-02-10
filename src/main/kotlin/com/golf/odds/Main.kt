@@ -113,6 +113,7 @@ fun scrapeEvent(page: Page): EventOdds? {
             Bookmaker.BETFAIR -> null  // Betfair handled separately via betfairLink
             Bookmaker.PADDY_POWER -> PaddyPowerScraper(page.url).scrape()
             Bookmaker.BOYLESPORTS -> BoylesportsScraper(page.url).scrape()
+            Bookmaker.SKYBET -> SkybetScraper(page.url).scrape()
         }
     } catch (e: Exception) {
         System.err.println("Error: ${e.message}")
