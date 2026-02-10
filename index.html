@@ -8,14 +8,15 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: #1a1a2e;
+      background: #2a2a2a;
       color: #eee;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       padding: 20px;
       min-height: 100vh;
+      transition: background 0.3s ease;
     }
     .container { max-width: 1200px; margin: 0 auto; }
-    h1 { color: #00d4ff; margin-bottom: 8px; font-size: 1.8em; }
+    h1 { color: #888888; margin-bottom: 8px; font-size: 1.8em; transition: color 0.3s ease; }
     .timestamp { color: #888; margin-bottom: 20px; font-size: 0.9em; }
     .controls {
       display: flex;
@@ -27,14 +28,15 @@
     select {
       background: #16213e;
       color: #fff;
-      border: 1px solid #00d4ff;
+      border: 2px solid #888888;
       padding: 10px 15px;
       border-radius: 6px;
       font-size: 1em;
       cursor: pointer;
       min-width: 180px;
+      transition: border-color 0.3s ease;
     }
-    select:focus { outline: none; border-color: #00ff88; }
+    select:focus { outline: none; }
     .stats {
       background: #16213e;
       padding: 10px 15px;
@@ -58,10 +60,11 @@
     }
     th {
       background: #0f0f23;
-      color: #00d4ff;
+      color: #888888;
       font-weight: 600;
       position: sticky;
       top: 0;
+      transition: color 0.3s ease;
     }
     th:first-child, td:first-child { text-align: left; }
     tr:hover { background: #1f1f3a; }
@@ -116,6 +119,21 @@
   <script>
     let allData = [];
     let bookmakers = [];
+
+    const brandColors = {
+      'ALL': { bg: '#2a2a2a', accent: '#888888' },
+      'LADBROKES': { bg: '#c8102e', accent: '#ff1744' },
+      'PADDY_POWER': { bg: '#004d33', accent: '#00a651' },
+      'BOYLESPORTS': { bg: '#002266', accent: '#0044cc' }
+    };
+
+    function updateTheme(bookmaker) {
+      const colors = brandColors[bookmaker] || brandColors['ALL'];
+      document.body.style.background = colors.bg;
+      document.querySelector('h1').style.color = colors.accent;
+      document.querySelectorAll('th').forEach(th => th.style.color = colors.accent);
+      document.querySelector('select').style.borderColor = colors.accent;
+    }
 
     async function loadData() {
       try {
@@ -208,9 +226,11 @@
 
     document.getElementById('bookmaker-select').addEventListener('change', (e) => {
       renderTable(e.target.value);
+      updateTheme(e.target.value);
     });
 
     loadData();
+    updateTheme('ALL');
   </script>
 </body>
 </html>
