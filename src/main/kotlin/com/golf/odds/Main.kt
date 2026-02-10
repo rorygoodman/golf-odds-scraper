@@ -92,15 +92,22 @@ fun loadConfig(configPath: String): ScraperConfig {
 /**
  * Scrapes odds from a bookmaker page using the appropriate scraper.
  *
+ * Catches exceptions to allow scraping to continue if one bookmaker fails.
+ *
  * @param page The page configuration containing URL and bookmaker type
  * @return EventOdds if successful, null otherwise
  */
 fun scrapeEvent(page: Page): EventOdds? {
-    return when (page.bookmaker) {
-        Bookmaker.LADBROKES -> LadbrokesScraper(page.url).scrape()
-        Bookmaker.TEN_BET -> TenBetScraper(page.url).scrape()
-        Bookmaker.BETFAIR -> null  // Betfair handled separately via betfairLink
-        Bookmaker.PADDY_POWER -> PaddyPowerScraper(page.url).scrape()
-        Bookmaker.BOYLESPORTS -> BoylesportsScraper(page.url).scrape()
+    return try {
+        when (page.bookmaker) {
+            Bookmaker.LADBROKES -> LadbrokesScraper(page.url).scrape()
+            Bookmaker.TEN_BET -> TenBetScraper(page.url).scrape()
+            Bookmaker.BETFAIR -> null  // Betfair handled separately via betfairLink
+            Bookmaker.PADDY_POWER -> PaddyPowerScraper(page.url).scrape()
+            Bookmaker.BOYLESPORTS -> BoylesportsScraper(page.url).scrape()
+        }
+    } catch (e: Exception) {
+        System.err.println("Error: ${e.message}")
+        null
     }
 }

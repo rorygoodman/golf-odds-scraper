@@ -11,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeOptions
 /**
  * Creates a headless Chrome WebDriver with standard options for scraping.
  *
+ * Includes options to work in CI environments and reduce bot detection.
+ *
  * @return Configured ChromeDriver instance
  */
 fun createChromeDriver(): WebDriver {
@@ -20,7 +22,13 @@ fun createChromeDriver(): WebDriver {
         addArguments("--disable-dev-shm-usage")
         addArguments("--disable-gpu")
         addArguments("--window-size=1920,1080")
-        addArguments("--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+        addArguments("--disable-blink-features=AutomationControlled")
+        addArguments("--disable-extensions")
+        addArguments("--disable-infobars")
+        addArguments("--remote-allow-origins=*")
+        addArguments("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+        setExperimentalOption("excludeSwitches", listOf("enable-automation"))
+        setExperimentalOption("useAutomationExtension", false)
     }
     return ChromeDriver(options)
 }
