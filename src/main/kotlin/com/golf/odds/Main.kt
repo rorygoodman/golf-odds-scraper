@@ -3,63 +3,79 @@ package com.golf.odds
 import com.google.gson.Gson
 import java.io.File
 
+/**
+ * Entry point for the Golf Odds Scraper.
+ *
+ * Loads configuration, scrapes odds from bookmakers and Betfair,
+ * and calculates E/W arbitrage opportunities.
+ *
+ * @param args Optional path to config file (defaults to "config.json")
+ */
 fun main(args: Array<String>) {
     val configPath = args.getOrNull(0) ?: "config.json"
 
     println("Golf Odds Scraper")
     println("=".repeat(80))
-    println("Loading configuration from: $configPath\n")
 
-    // Load configuration
     val config = loadConfig(configPath)
-
-    println("Found ${config.events.size} event(s) to scrape\n")
-
-    // Collect all odds for comparison
     val allEventOdds = mutableListOf<EventOdds>()
 
-    // Process each event
     config.events.forEach { event ->
-        println("\n" + "=".repeat(80))
-        println("Event: ${event.name}")
-        println("=".repeat(80))
+        println("\nEvent: ${event.name}")
+        println("-".repeat(40))
 
         event.pages.forEach { page ->
-            println("\nScraping from ${page.bookmaker}...")
-            println("URL: ${page.url}")
-
+            print("Scraping ${page.bookmaker}... ")
             val eventOdds = scrapeEvent(page)
-
             if (eventOdds != null) {
-                printEventOdds(eventOdds)
+                println("${eventOdds.players.size} players")
                 allEventOdds.add(eventOdds)
             } else {
-                println("⚠️  Failed to scrape odds from ${page.bookmaker}")
+                println("FAILED")
             }
         }
 
-        // Scrape Betfair lay prices if available
+        var winnerMarketOdds: BetfairEventOdds? = null
         if (!event.betfairLink.isNullOrBlank()) {
-            println("\nScraping Betfair lay prices...")
-            println("URL: ${event.betfairLink}")
-
+            print("Scraping Betfair Winner... ")
             try {
                 val scraper = BetfairScraper(event.betfairLink)
-                val betfairOdds = scraper.scrape()
-                printBetfairEventOdds(betfairOdds)
+                winnerMarketOdds = scraper.scrape()
+                println("${winnerMarketOdds.players.size} players")
             } catch (e: Exception) {
-                println("⚠️  Failed to scrape Betfair lay prices: ${e.message}")
+                println("FAILED: ${e.message}")
             }
         }
-    }
 
-    // Print comparison across all bookmakers
-    if (allEventOdds.size > 1) {
-        val comparisons = aggregateOdds(allEventOdds)
-        printOddsComparison(comparisons)
+        var top10MarketOdds: BetfairEventOdds? = null
+        if (!event.betfairTop10Link.isNullOrBlank()) {
+            print("Scraping Betfair Top 10... ")
+            try {
+                val scraper = BetfairScraper(event.betfairTop10Link)
+                top10MarketOdds = scraper.scrape()
+                println("${top10MarketOdds.players.size} players")
+            } catch (e: Exception) {
+                println("FAILED: ${e.message}")
+            }
+        }
+
+        if (winnerMarketOdds != null && top10MarketOdds != null && allEventOdds.isNotEmpty()) {
+            val calculator = LayableEWCalculator(winnerMarketOdds, top10MarketOdds)
+            val opportunities = calculator.findArbitrageOpportunities(allEventOdds)
+            printArbitrageOpportunities(opportunities)
+        } else if (winnerMarketOdds == null || top10MarketOdds == null) {
+            println("\nCannot calculate: need both Betfair Winner and Top 10 markets")
+        }
     }
 }
 
+/**
+ * Loads the scraper configuration from a JSON file.
+ *
+ * @param configPath Path to the configuration file
+ * @return Parsed ScraperConfig
+ * @throws IllegalArgumentException if config file not found
+ */
 fun loadConfig(configPath: String): ScraperConfig {
     val configFile = File(configPath)
 
@@ -73,23 +89,18 @@ fun loadConfig(configPath: String): ScraperConfig {
     return gson.fromJson(jsonContent, ScraperConfig::class.java)
 }
 
+/**
+ * Scrapes odds from a bookmaker page using the appropriate scraper.
+ *
+ * @param page The page configuration containing URL and bookmaker type
+ * @return EventOdds if successful, null otherwise
+ */
 fun scrapeEvent(page: Page): EventOdds? {
     return when (page.bookmaker) {
-        Bookmaker.LADBROKES -> {
-            val scraper = LadbrokesScraper(page.url)
-            scraper.scrape()
-        }
-        Bookmaker.TEN_BET -> {
-            val scraper = TenBetScraper(page.url)
-            scraper.scrape()
-        }
-        Bookmaker.BETFAIR -> {
-            // Betfair is handled separately via event.betfairLink
-            null
-        }
-        Bookmaker.PADDY_POWER -> {
-            val scraper = PaddyPowerScraper(page.url)
-            scraper.scrape()
-        }
+        Bookmaker.LADBROKES -> LadbrokesScraper(page.url).scrape()
+        Bookmaker.TEN_BET -> TenBetScraper(page.url).scrape()
+        Bookmaker.BETFAIR -> null  // Betfair handled separately via betfairLink
+        Bookmaker.PADDY_POWER -> PaddyPowerScraper(page.url).scrape()
+        Bookmaker.BOYLESPORTS -> BoylesportsScraper(page.url).scrape()
     }
 }
