@@ -32,7 +32,7 @@ fun createChromeDriver(): WebDriver {
         setExperimentalOption("useAutomationExtension", false)
         // Set binary path for Linux
         if (System.getProperty("os.name").lowercase().contains("linux")) {
-            setBinary("/usr/bin/google-chrome-stable")
+            setBinary("/opt/google/chrome/google-chrome")
         }
     }
     return ChromeDriver(options)
