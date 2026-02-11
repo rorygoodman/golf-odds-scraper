@@ -9,27 +9,23 @@ import java.time.Duration
 
 /**
  * Scraper for extracting golf betting odds from Sky Bet website.
+ * Targets a direct market page URL (e.g. outright-winner-10-places).
  *
- * @property url The Sky Bet event page URL to scrape
+ * @property url The Sky Bet market page URL to scrape
  */
 class SkybetScraper(private val url: String) {
     private var driver: WebDriver? = null
 
-    /**
-     * Scrapes player odds from the Sky Bet event page.
-     *
-     * @return EventOdds containing all scraped player data
-     */
     fun scrape(): EventOdds {
         try {
             driver = createChromeDriver()
             driver!!.get(url)
             waitForPageLoad()
-            expandAllPlayers()
 
-            val eventName = extractEventName()
-            val eachWayTerms = extractEachWayTerms()
-            val players = extractPlayerOdds(eachWayTerms)
+            val js = driver as JavascriptExecutor
+            val eventName = extractEventName(js)
+            val eachWayTerms = extractEachWayTerms(js)
+            val players = extractPlayerOdds(js, eachWayTerms)
 
             return EventOdds(
                 eventName = eventName,
@@ -42,9 +38,6 @@ class SkybetScraper(private val url: String) {
         }
     }
 
-    /**
-     * Waits for the page to fully load including dynamic content.
-     */
     private fun waitForPageLoad() {
         val wait = WebDriverWait(driver!!, Duration.ofSeconds(15))
         wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")))
@@ -52,24 +45,18 @@ class SkybetScraper(private val url: String) {
 
         val js = driver as JavascriptExecutor
 
-        // Dismiss OneTrust cookie consent if present
+        // Dismiss cookie consent if present
         try {
             js.executeScript("""
-                // Try OneTrust accept button
                 var otAccept = document.getElementById('onetrust-accept-btn-handler');
                 if (otAccept) { otAccept.click(); return; }
-
-                // Try other common cookie buttons
-                var acceptButtons = document.querySelectorAll('button');
-                for (var i = 0; i < acceptButtons.length; i++) {
-                    var text = acceptButtons[i].textContent.toLowerCase();
+                var buttons = document.querySelectorAll('button');
+                for (var i = 0; i < buttons.length; i++) {
+                    var text = buttons[i].textContent.toLowerCase();
                     if (text.includes('accept all') || text.includes('accept cookies') || text.includes('agree')) {
-                        acceptButtons[i].click();
-                        return;
+                        buttons[i].click(); return;
                     }
                 }
-
-                // Remove the overlay directly if it exists
                 var overlay = document.querySelector('.onetrust-pc-dark-filter');
                 if (overlay) overlay.remove();
                 var banner = document.getElementById('onetrust-banner-sdk');
@@ -79,78 +66,13 @@ class SkybetScraper(private val url: String) {
         } catch (e: Exception) {
             // No cookie popup
         }
-
-        // Scroll incrementally to trigger lazy loading
-        for (i in 1..5) {
-            js.executeScript("window.scrollTo(0, document.body.scrollHeight * $i / 5);")
-            Thread.sleep(1000)
-        }
-        js.executeScript("window.scrollTo(0, 0);")
-        Thread.sleep(2000)
     }
 
-    /**
-     * Expands all player sections by clicking "Show More" buttons.
-     */
-    private fun expandAllPlayers() {
-        val js = driver as JavascriptExecutor
-
-
-        // Click "Show More" button once to expand the Outright section
-        try {
-            // Scroll down to make button visible
-            js.executeScript("window.scrollTo(0, document.body.scrollHeight);")
-            Thread.sleep(1500)
-
-            // Click the Show More button in the Outright section
-            val result = js.executeScript("""
-                var cards = document.querySelectorAll('[class*="card"]');
-                for (var i = 0; i < cards.length; i++) {
-                    var h3 = cards[i].querySelector('h3');
-                    if (h3 && h3.textContent.trim() === 'Outright') {
-                        var btn = cards[i].querySelector('button[class*="showMoreButton"]');
-                        if (btn) {
-                            btn.scrollIntoView({block: 'center'});
-                            btn.click();
-                            return 'expanded';
-                        }
-                        return 'no_button';
-                    }
-                }
-                return 'no_card';
-            """) as String
-            Thread.sleep(3000)  // Wait for content to load
-        } catch (e: Exception) {
-            println("  Expand failed: ${e.message}")
-        }
-
-        // Final scroll through all content
-        try {
-            js.executeScript("window.scrollTo(0, 0);")
-            Thread.sleep(1000)
-            for (i in 1..5) {
-                js.executeScript("window.scrollTo(0, document.body.scrollHeight * $i / 5);")
-                Thread.sleep(800)
-            }
-        } catch (e: Exception) {
-            // Ignore scroll errors
-        }
-
-    }
-
-    /**
-     * Extracts the event name from the page header.
-     *
-     * @return Event name or default value if not found
-     */
-    private fun extractEventName(): String {
+    private fun extractEventName(js: JavascriptExecutor): String {
         return try {
-            val js = driver as JavascriptExecutor
             js.executeScript("""
                 var h1 = document.querySelector('h1');
                 if (h1) return h1.textContent.trim();
-                var title = document.querySelector('[class*="event-title"], [class*="EventHeader"]');
-                if (title) return title.textContent.trim();
                 return 'Unknown Event';
             """) as? String ?: "Unknown Event"
         } catch (e: Exception) {
@@ -158,33 +80,24 @@ class SkybetScraper(private val url: String) {
         }
     }
 
-    /**
-     * Extracts each-way terms from the page.
-     *
-     * @return EachWayTerms if found, null otherwise
-     */
-    private fun extractEachWayTerms(): EachWayTerms? {
+    private fun extractEachWayTerms(js: JavascriptExecutor): EachWayTerms? {
         return try {
-            val js = driver as JavascriptExecutor
             val text = js.executeScript("""
-                var elements = document.querySelectorAll('*');
-                for (var i = 0; i < elements.length; i++) {
-                    var t = elements[i].textContent || '';
-                    // Match patterns like "Each Way: 1/5 odds, 8 places" or "EW 1/5 - 10 places"
-                    if (t.match(/each\s*way.*\d+\/\d+.*\d+\s*place/i) ||
-                        t.match(/\d+\/\d+.*\d+\s*place/i) ||
-                        t.match(/\d+\s*places?\s*at\s*\d+\/\d+/i)) {
-                        if (t.length < 100) return t;
+                var els = document.querySelectorAll('*');
+                for (var i = 0; i < els.length; i++) {
+                    var t = els[i].textContent || '';
+                    if ((t.match(/each\s*way.*\d+\/\d+.*\d+\s*place/i) ||
+                         t.match(/\d+\/\d+.*\d+\s*place/i) ||
+                         t.match(/\d+\s*places?\s*at\s*\d+\/\d+/i)) && t.length < 100) {
+                        return t;
                     }
                 }
                 return null;
             """) as? String ?: return null
 
-            val fractionRegex = Regex("""(\d+/\d+)""")
-            val placesRegex = Regex("""(\d+)\s*places?""", RegexOption.IGNORE_CASE)
-
-            val fraction = fractionRegex.find(text)?.value ?: return null
-            val places = placesRegex.find(text)?.groupValues?.get(1)?.toIntOrNull() ?: return null
+            val fraction = Regex("""(\d+/\d+)""").find(text)?.value ?: return null
+            val places = Regex("""(\d+)\s*places?""", RegexOption.IGNORE_CASE)
+                .find(text)?.groupValues?.get(1)?.toIntOrNull() ?: return null
 
             EachWayTerms(fraction, places)
         } catch (e: Exception) {
@@ -192,70 +105,63 @@ class SkybetScraper(private val url: String) {
         }
     }
 
-    /**
-     * Extracts all player odds from the page.
-     *
-     * @param eachWayTerms Each-way terms for calculating place odds
-     * @return List of PlayerOdds, deduplicated by player name
-     */
-    private fun extractPlayerOdds(eachWayTerms: EachWayTerms?): List<PlayerOdds> {
+    private fun extractPlayerOdds(js: JavascriptExecutor, eachWayTerms: EachWayTerms?): List<PlayerOdds> {
         val players = mutableListOf<PlayerOdds>()
 
         try {
-            val js = driver as JavascriptExecutor
-
+            // Extract directly from the preloaded catalog data
             @Suppress("UNCHECKED_CAST")
             val results = js.executeScript("""
-                var results = [];
+                var catalog = window.__TBD_PRELOADED_CATALOG__;
+                if (!catalog || !catalog.data) return [];
 
-                // Find the Outright section first
-                var cards = document.querySelectorAll('[class*="card"]');
-                var outrightCard = null;
+                var data = catalog.data;
+                var markets = data.SportsbookMarket;
+                var liveDataMap = data.SportsbookRunnerLiveData;
+                if (!markets || !liveDataMap) return [];
 
-                for (var i = 0; i < cards.length; i++) {
-                    var h3 = cards[i].querySelector('h3');
-                    if (h3 && h3.textContent.trim() === 'Outright') {
-                        outrightCard = cards[i];
+                // Find market with runners
+                var market = null;
+                var marketKeys = Object.keys(markets);
+                for (var i = 0; i < marketKeys.length; i++) {
+                    if (markets[marketKeys[i]].runners) {
+                        market = markets[marketKeys[i]];
                         break;
                     }
                 }
+                if (!market) return [];
 
-                if (!outrightCard) return results;
+                // Build selectionId -> odds lookup from live data
+                var oddsById = {};
+                var liveKeys = Object.keys(liveDataMap);
+                for (var i = 0; i < liveKeys.length; i++) {
+                    var ld = liveDataMap[liveKeys[i]];
+                    if (ld && ld.odds && ld.odds.fractional) {
+                        oddsById[ld.selectionId] = ld.odds.fractional;
+                    }
+                }
 
-                // Get runners within the Outright section - target the inner runnerLine with runnerName
-                var runnerRows = outrightCard.querySelectorAll('div[class*="runnerLine"]:not([class*="grid"])');
-
-                for (var i = 0; i < runnerRows.length; i++) {
-                    var row = runnerRows[i];
-
-                    // Player name is in p tag with class containing 'runnerName'
-                    var nameEl = row.querySelector('p[class*="runnerName"]');
-                    if (!nameEl) continue;
-
-                    var name = nameEl.textContent.trim();
+                var results = [];
+                for (var i = 0; i < market.runners.length; i++) {
+                    var runner = market.runners[i];
+                    var name = runner.name;
                     if (!name) continue;
 
-                    // Get all bet button wrappers - we want the 3rd one (10 places E/W)
-                    var betWrappers = row.querySelectorAll('[class*="betButtonWrapper"]');
-                    if (betWrappers.length < 3) continue;
+                    var frac = oddsById[runner.selectionId];
+                    if (!frac) continue;
 
-                    // Get the odds from the 3rd wrapper (index 2)
-                    var thirdWrapper = betWrappers[2];
-                    var oddsEl = thirdWrapper.querySelector('span[class*="label"]');
-                    if (!oddsEl) continue;
-
-                    var odds = oddsEl.textContent.trim();
-
-                    // Validate it looks like fractional odds
-                    if (odds && odds.match(/^\d+\/\d+$/)) {
-                        results.push(name + '|||' + odds);
-                    }
+                    results.push(name + '|||' + frac.numerator + '/' + frac.denominator);
                 }
 
                 return results;
             """) as? List<String> ?: emptyList()
 
-            for (item in results) {
+            println("  Skybet catalog results: ${results.size} runners")
+
+            // Fallback to DOM scraping if catalog extraction fails
+            val finalResults = if (results.isEmpty()) extractFromDom(js) else results
+
+            for (item in finalResults) {
                 val parts = item.split("|||")
                 if (parts.size == 2) {
                     val playerName = parts[0]
@@ -270,9 +176,64 @@ class SkybetScraper(private val url: String) {
                 }
             }
         } catch (e: Exception) {
-            // Error extracting players
+            println("  Skybet extraction error: ${e.message}")
         }
 
         return players.distinctBy { it.playerName }
+    }
+
+    private fun extractFromDom(js: JavascriptExecutor): List<String> {
+        println("  Skybet catalog empty, falling back to DOM")
+
+        // Click Show More to expand all runners
+        try {
+            js.executeScript("window.scrollTo(0, document.body.scrollHeight);")
+            Thread.sleep(1500)
+            js.executeScript("""
+                var buttons = document.querySelectorAll('button');
+                for (var i = 0; i < buttons.length; i++) {
+                    var text = buttons[i].textContent.trim().toLowerCase();
+                    if (text.includes('show more') || text.includes('show all') || text.includes('view more')) {
+                        buttons[i].scrollIntoView({block: 'center'});
+                        buttons[i].click();
+                        break;
+                    }
+                }
+            """)
+            Thread.sleep(3000)
+            for (i in 1..5) {
+                js.executeScript("window.scrollTo(0, document.body.scrollHeight * $i / 5);")
+                Thread.sleep(800)
+            }
+        } catch (e: Exception) {
+            // Ignore expand errors
+        }
+
+        @Suppress("UNCHECKED_CAST")
+        val results = js.executeScript("""
+            var results = [];
+            var rows = document.querySelectorAll('div[class*="runnerLine"]:not([class*="grid"])');
+
+            for (var i = 0; i < rows.length; i++) {
+                var nameEl = rows[i].querySelector('p[class*="runnerName"]');
+                if (!nameEl) continue;
+
+                var name = nameEl.textContent.trim();
+                if (!name) continue;
+
+                // Single market page - first bet button has the odds we want
+                var oddsEl = rows[i].querySelector('[class*="betButtonWrapper"] span[class*="label"]');
+                if (!oddsEl) continue;
+
+                var odds = oddsEl.textContent.trim();
+                if (odds && odds.match(/^\d+\/\d+$/)) {
+                    results.push(name + '|||' + odds);
+                }
+            }
+            return results;
+        """) as? List<String> ?: emptyList()
+
+        println("  Skybet DOM results: ${results.size} runners")
+        return results
     }
 }
