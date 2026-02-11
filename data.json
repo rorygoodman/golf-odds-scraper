@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-11 20:10:44 GMT",
+  "timestamp": "2026-02-11 20:24:34 GMT",
   "bookmakers": ["BOYLESPORTS", "PADDY_POWER"],
   "opportunities": [
     {
@@ -87,18 +87,6 @@
       "edge": 1.75
     },
     {
-      "player": "Cameron Young",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "28/1",
-      "bmWin": 29.00,
-      "bmPlace": 6.60,
-      "bfWin": 44.00,
-      "bfPlace": 4.80,
-      "winEdge": -34.09,
-      "placeEdge": 37.50,
-      "edge": 1.70
-    },
-    {
       "player": "Nick Taylor",
       "bookmaker": "PADDY_POWER",
       "bmWinOdds": "66/1",
@@ -147,6 +135,18 @@
       "edge": 0.68
     },
     {
+      "player": "Cameron Young",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "28/1",
+      "bmWin": 29.00,
+      "bmPlace": 6.60,
+      "bfWin": 44.00,
+      "bfPlace": 4.90,
+      "winEdge": -34.09,
+      "placeEdge": 34.69,
+      "edge": 0.30
+    },
+    {
       "player": "Xander Schauffele",
       "bookmaker": "PADDY_POWER",
       "bmWinOdds": "22/1",
@@ -169,6 +169,30 @@
       "winEdge": -40.00,
       "placeEdge": 33.33,
       "edge": -3.33
+    },
+    {
+      "player": "Kurt Kitayama",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "55/1",
+      "bmWin": 56.00,
+      "bmPlace": 12.00,
+      "bfWin": 130.00,
+      "bfPlace": 8.00,
+      "winEdge": -56.92,
+      "placeEdge": 50.00,
+      "edge": -3.46
+    },
+    {
+      "player": "Garrick Higgo",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "100/1",
+      "bmWin": 101.00,
+      "bmPlace": 21.00,
+      "bfWin": 270.00,
+      "bfPlace": 13.50,
+      "winEdge": -62.59,
+      "placeEdge": 55.56,
+      "edge": -3.52
     },
     {
       "player": "Jacob Bridgeman",
@@ -267,18 +291,6 @@
       "edge": -4.51
     },
     {
-      "player": "Garrick Higgo",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "100/1",
-      "bmWin": 101.00,
-      "bmPlace": 21.00,
-      "bfWin": 290.00,
-      "bfPlace": 13.50,
-      "winEdge": -65.17,
-      "placeEdge": 55.56,
-      "edge": -4.81
-    },
-    {
       "player": "Tony Finau",
       "bookmaker": "PADDY_POWER",
       "bmWinOdds": "175/1",
@@ -300,18 +312,6 @@
       "bfPlace": 4.80,
       "winEdge": -35.00,
       "placeEdge": 25.00,
-      "edge": -5.00
-    },
-    {
-      "player": "Kurt Kitayama",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "55/1",
-      "bmWin": 56.00,
-      "bmPlace": 12.00,
-      "bfWin": 140.00,
-      "bfPlace": 8.00,
-      "winEdge": -60.00,
-      "placeEdge": 50.00,
       "edge": -5.00
     },
     {
@@ -423,18 +423,6 @@
       "edge": -7.78
     },
     {
-      "player": "J.T. Poston",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "66/1",
-      "bmWin": 67.00,
-      "bmPlace": 14.20,
-      "bfWin": 170.00,
-      "bfPlace": 9.80,
-      "winEdge": -60.59,
-      "placeEdge": 44.90,
-      "edge": -7.85
-    },
-    {
       "player": "Aaron Rai",
       "bookmaker": "BOYLESPORTS",
       "bmWinOdds": "90/1",
@@ -529,6 +517,18 @@
       "winEdge": -54.44,
       "placeEdge": 36.36,
       "edge": -9.04
+    },
+    {
+      "player": "J.T. Poston",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "66/1",
+      "bmWin": 67.00,
+      "bmPlace": 14.20,
+      "bfWin": 170.00,
+      "bfPlace": 10.00,
+      "winEdge": -60.59,
+      "placeEdge": 42.00,
+      "edge": -9.29
     },
     {
       "player": "Min Woo Lee",
@@ -747,30 +747,6 @@
       "edge": -13.65
     },
     {
-      "player": "Harry Hall",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "55/1",
-      "bmWin": 56.00,
-      "bmPlace": 12.00,
-      "bfWin": 160.00,
-      "bfPlace": 8.80,
-      "winEdge": -65.00,
-      "placeEdge": 36.36,
-      "edge": -14.32
-    },
-    {
-      "player": "Richard Hoey",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "100/1",
-      "bmWin": 101.00,
-      "bmPlace": 21.00,
-      "bfWin": 330.00,
-      "bfPlace": 15.00,
-      "winEdge": -69.39,
-      "placeEdge": 40.00,
-      "edge": -14.70
-    },
-    {
       "player": "Justin Rose",
       "bookmaker": "BOYLESPORTS",
       "bmWinOdds": "22/1",
@@ -817,6 +793,18 @@
       "winEdge": -51.76,
       "placeEdge": 21.62,
       "edge": -15.07
+    },
+    {
+      "player": "Richard Hoey",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "100/1",
+      "bmWin": 101.00,
+      "bmPlace": 21.00,
+      "bfWin": 340.00,
+      "bfPlace": 15.00,
+      "winEdge": -70.29,
+      "placeEdge": 40.00,
+      "edge": -15.15
     },
     {
       "player": "Kevin Yu",
@@ -1059,30 +1047,6 @@
       "edge": -18.30
     },
     {
-      "player": "Marco Penge",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "110/1",
-      "bmWin": 111.00,
-      "bmPlace": 23.00,
-      "bfWin": 350.00,
-      "bfPlace": 17.50,
-      "winEdge": -68.29,
-      "placeEdge": 31.43,
-      "edge": -18.43
-    },
-    {
-      "player": "Stephan Jaeger",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "100/1",
-      "bmWin": 101.00,
-      "bmPlace": 21.00,
-      "bfWin": 370.00,
-      "bfPlace": 15.50,
-      "winEdge": -72.70,
-      "placeEdge": 35.48,
-      "edge": -18.61
-    },
-    {
       "player": "Patrick Cantlay",
       "bookmaker": "BOYLESPORTS",
       "bmWinOdds": "25/1",
@@ -1155,6 +1119,18 @@
       "edge": -19.76
     },
     {
+      "player": "Kurt Kitayama",
+      "bookmaker": "BOYLESPORTS",
+      "bmWinOdds": "45/1",
+      "bmWin": 46.00,
+      "bmPlace": 10.00,
+      "bfWin": 130.00,
+      "bfPlace": 8.00,
+      "winEdge": -64.62,
+      "placeEdge": 25.00,
+      "edge": -19.81
+    },
+    {
       "player": "Harris English",
       "bookmaker": "BOYLESPORTS",
       "bmWinOdds": "33/1",
@@ -1165,6 +1141,18 @@
       "winEdge": -62.22,
       "placeEdge": 22.58,
       "edge": -19.82
+    },
+    {
+      "player": "Marco Penge",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "110/1",
+      "bmWin": 111.00,
+      "bmPlace": 23.00,
+      "bfWin": 350.00,
+      "bfPlace": 18.00,
+      "winEdge": -68.29,
+      "placeEdge": 27.78,
+      "edge": -20.25
     },
     {
       "player": "Michael Kim",
@@ -1179,6 +1167,18 @@
       "edge": -20.63
     },
     {
+      "player": "Stephan Jaeger",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "100/1",
+      "bmWin": 101.00,
+      "bmPlace": 21.00,
+      "bfWin": 370.00,
+      "bfPlace": 16.00,
+      "winEdge": -72.70,
+      "placeEdge": 31.25,
+      "edge": -20.73
+    },
+    {
       "player": "Jason Day",
       "bookmaker": "PADDY_POWER",
       "bmWinOdds": "28/1",
@@ -1189,18 +1189,6 @@
       "winEdge": -55.38,
       "placeEdge": 13.79,
       "edge": -20.80
-    },
-    {
-      "player": "Kurt Kitayama",
-      "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "45/1",
-      "bmWin": 46.00,
-      "bmPlace": 10.00,
-      "bfWin": 140.00,
-      "bfPlace": 8.00,
-      "winEdge": -67.14,
-      "placeEdge": 25.00,
-      "edge": -21.07
     },
     {
       "player": "Nico Echavarria",
@@ -1323,18 +1311,6 @@
       "edge": -23.71
     },
     {
-      "player": "Cameron Young",
-      "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "20/1",
-      "bmWin": 21.00,
-      "bmPlace": 5.00,
-      "bfWin": 44.00,
-      "bfPlace": 4.80,
-      "winEdge": -52.27,
-      "placeEdge": 4.17,
-      "edge": -24.05
-    },
-    {
       "player": "Alex Noren",
       "bookmaker": "BOYLESPORTS",
       "bmWinOdds": "60/1",
@@ -1369,6 +1345,30 @@
       "winEdge": -77.80,
       "placeEdge": 27.78,
       "edge": -25.01
+    },
+    {
+      "player": "Cameron Young",
+      "bookmaker": "BOYLESPORTS",
+      "bmWinOdds": "20/1",
+      "bmWin": 21.00,
+      "bmPlace": 5.00,
+      "bfWin": 44.00,
+      "bfPlace": 4.90,
+      "winEdge": -52.27,
+      "placeEdge": 2.04,
+      "edge": -25.12
+    },
+    {
+      "player": "Harry Hall",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "55/1",
+      "bmWin": 56.00,
+      "bmPlace": 12.00,
+      "bfWin": 160.00,
+      "bfPlace": 10.50,
+      "winEdge": -65.00,
+      "placeEdge": 14.29,
+      "edge": -25.36
     },
     {
       "player": "Sami Valimaki",
@@ -1407,6 +1407,18 @@
       "edge": -26.43
     },
     {
+      "player": "Garrick Higgo",
+      "bookmaker": "BOYLESPORTS",
+      "bmWinOdds": "75/1",
+      "bmWin": 76.00,
+      "bmPlace": 16.00,
+      "bfWin": 270.00,
+      "bfPlace": 13.50,
+      "winEdge": -71.85,
+      "placeEdge": 18.52,
+      "edge": -26.67
+    },
+    {
       "player": "Max Greyserman",
       "bookmaker": "BOYLESPORTS",
       "bmWinOdds": "75/1",
@@ -1443,18 +1455,6 @@
       "edge": -27.54
     },
     {
-      "player": "Garrick Higgo",
-      "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "75/1",
-      "bmWin": 76.00,
-      "bmPlace": 16.00,
-      "bfWin": 290.00,
-      "bfPlace": 13.50,
-      "winEdge": -73.79,
-      "placeEdge": 18.52,
-      "edge": -27.64
-    },
-    {
       "player": "Samuel Stevens",
       "bookmaker": "BOYLESPORTS",
       "bmWinOdds": "45/1",
@@ -1472,11 +1472,11 @@
       "bmWinOdds": "80/1",
       "bmWin": 81.00,
       "bmPlace": 17.00,
-      "bfWin": 330.00,
+      "bfWin": 340.00,
       "bfPlace": 15.00,
-      "winEdge": -75.45,
+      "winEdge": -76.18,
       "placeEdge": 13.33,
-      "edge": -31.06
+      "edge": -31.42
     },
     {
       "player": "Taylor Pendrith",
@@ -1513,18 +1513,6 @@
       "winEdge": -79.32,
       "placeEdge": 14.81,
       "edge": -32.25
-    },
-    {
-      "player": "Marco Penge",
-      "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "90/1",
-      "bmWin": 91.00,
-      "bmPlace": 19.00,
-      "bfWin": 350.00,
-      "bfPlace": 17.50,
-      "winEdge": -74.00,
-      "placeEdge": 8.57,
-      "edge": -32.71
     },
     {
       "player": "Ryan Fox",
@@ -1575,15 +1563,15 @@
       "edge": -33.92
     },
     {
-      "player": "Stephan Jaeger",
+      "player": "Marco Penge",
       "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "80/1",
-      "bmWin": 81.00,
-      "bmPlace": 17.00,
-      "bfWin": 370.00,
-      "bfPlace": 15.50,
-      "winEdge": -78.11,
-      "placeEdge": 9.68,
+      "bmWinOdds": "90/1",
+      "bmWin": 91.00,
+      "bmPlace": 19.00,
+      "bfWin": 350.00,
+      "bfPlace": 18.00,
+      "winEdge": -74.00,
+      "placeEdge": 5.56,
       "edge": -34.22
     },
     {
@@ -1609,6 +1597,18 @@
       "winEdge": -64.90,
       "placeEdge": -5.33,
       "edge": -35.12
+    },
+    {
+      "player": "Stephan Jaeger",
+      "bookmaker": "BOYLESPORTS",
+      "bmWinOdds": "80/1",
+      "bmWin": 81.00,
+      "bmPlace": 17.00,
+      "bfWin": 370.00,
+      "bfPlace": 16.00,
+      "winEdge": -78.11,
+      "placeEdge": 6.25,
+      "edge": -35.93
     },
     {
       "player": "Brian Harman",
