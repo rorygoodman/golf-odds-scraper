@@ -194,6 +194,7 @@
               <th>Win %</th>
               <th>BM Plc</th>
               <th>BF Plc</th>
+              <th>Plc</th>
               <th>Plc %</th>
               <th>Edge %</th>
             </tr>
@@ -215,6 +216,7 @@
             <td class="${winClass}">${row.winEdge > 0 ? '+' : ''}${row.winEdge.toFixed(1)}%</td>
             <td>${row.bmPlace.toFixed(2)}</td>
             <td>${row.bfPlace.toFixed(2)}</td>
+            <td>${row.places || ''}</td>
             <td class="${placeClass}">${row.placeEdge > 0 ? '+' : ''}${row.placeEdge.toFixed(1)}%</td>
             <td class="${edgeClass}">${row.edge > 0 ? '+' : ''}${row.edge.toFixed(2)}%</td>
           </tr>
