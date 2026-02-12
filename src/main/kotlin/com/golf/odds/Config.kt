@@ -8,7 +8,8 @@ package com.golf.odds
  */
 data class Page(
     val url: String,
-    val bookmaker: Bookmaker
+    val bookmaker: Bookmaker,
+    val places: Int? = null
 )
 
 /**
@@ -22,7 +23,8 @@ data class Page(
 data class Event(
     val name: String,
     val betfairLink: String?,
-    val betfairTop10Link: String?,
+    val betfairTop5Link: String,
+    val betfairTop10Link: String,
     val pages: List<Page>
 )
 

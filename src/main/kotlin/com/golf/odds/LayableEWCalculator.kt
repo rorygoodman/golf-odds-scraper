@@ -39,7 +39,8 @@ data class EWArbitrageOpportunity(
     val betfairPlaceLay: Double,
     val winEdge: Double,
     val placeEdge: Double,
-    val edgePercent: Double
+    val edgePercent: Double,
+    val places: Int
 )
 
 /**
@@ -53,8 +54,11 @@ data class EWArbitrageOpportunity(
  */
 class LayableEWCalculator(
     private val winnerMarket: BetfairEventOdds,
-    private val top10Market: BetfairEventOdds
+    private val top10Market: BetfairEventOdds,
+    private val top5Market: BetfairEventOdds
 ) {
+    private val placeProjector: PlaceProjector = PlaceProjector(top5Market, top10Market)
+
     /**
      * Calculates layable E/W prices for all matched players.
      *
@@ -94,9 +98,15 @@ class LayableEWCalculator(
      * @param bookmakerOdds List of EventOdds from bookmakers
      * @return List of EWArbitrageOpportunity sorted by edge (descending)
      */
-    fun findArbitrageOpportunities(bookmakerOdds: List<EventOdds>): List<EWArbitrageOpportunity> {
+    fun findArbitrageOpportunities(
+        bookmakerOdds: List<EventOdds>,
+        pageConfigs: List<Page> = emptyList()
+    ): List<EWArbitrageOpportunity> {
         val layableEWPrices = calculateLayableEWPrices()
         val layablePriceMap = layableEWPrices.associateBy { normalizePlayerName(it.playerName) }
+
+        // Build a map from bookmaker URL to configured places
+        val placesByUrl = pageConfigs.associate { it.url to it.places }
 
         val opportunities = mutableListOf<EWArbitrageOpportunity>()
 
@@ -110,15 +120,27 @@ class LayableEWCalculator(
                 else -> return@eventLoop
             }
 
+            // Determine places: config > scraped E/W terms > default 10
+            val places = placesByUrl[event.url]
+                ?: event.eachWayTerms?.numberOfPlaces
+                ?: 10
+
             event.players.forEach playerLoop@{ player ->
                 val normalizedName = normalizePlayerName(player.playerName)
                 val layablePrice = layablePriceMap[normalizedName] ?: return@playerLoop
 
                 val bmWin = player.decimalOdds
-                val bmPlace = ((bmWin - 1) / 5) + 1
+                val bmPlace = player.placeDecimalOdds
 
                 val bfWinLay = layablePrice.winLayPrice
-                val bfPlaceLay = layablePrice.placeLayPrice
+
+                // Use projected lay price for the bookmaker's number of places
+                val bfPlaceLay = if (places in 5..15) {
+                    placeProjector.projectLayPrice(player.playerName, places)
+                        ?: layablePrice.placeLayPrice
+                } else {
+                    layablePrice.placeLayPrice
+                }
 
                 val winEdge = (bmWin / bfWinLay) - 1
                 val placeEdge = (bmPlace / bfPlaceLay) - 1
@@ -135,7 +157,8 @@ class LayableEWCalculator(
                         betfairPlaceLay = bfPlaceLay,
                         winEdge = winEdge * 100,
                         placeEdge = placeEdge * 100,
-                        edgePercent = combinedEdge
+                        edgePercent = combinedEdge,
+                        places = places
                     )
                 )
             }
@@ -153,14 +176,14 @@ class LayableEWCalculator(
  * @param opportunities List of arbitrage opportunities to print
  */
 fun printArbitrageOpportunities(opportunities: List<EWArbitrageOpportunity>) {
-    println("\n" + "=".repeat(115))
+    println("\n" + "=".repeat(120))
     println("E/W COMPARISON: Bookmaker vs Betfair Lay")
-    println("Edge = ((BM_Win/BF_Win) + (BM_Place/BF_Place)) / 2 - 1  |  BM_Place = ((BM_Win-1)/5)+1")
-    println("=".repeat(115))
+    println("Edge = ((BM_Win/BF_Win) + (BM_Place/BF_Place)) / 2 - 1")
+    println("=".repeat(120))
 
     if (opportunities.isEmpty()) {
         println("No players matched across bookmakers and Betfair.")
-        println("=".repeat(115))
+        println("=".repeat(120))
         return
     }
 
@@ -174,28 +197,28 @@ fun printArbitrageOpportunities(opportunities: List<EWArbitrageOpportunity>) {
     val playersWithProfitable = groupedByPlayer.filter { (_, opps) -> opps.any { it.edgePercent > 0 } }
     val playersWithMultipleProfitable = groupedByPlayer.filter { (_, opps) -> opps.count { it.edgePercent > 0 } > 1 }
 
-    println("%-22s | %-11s | %7s | %7s | %7s | %7s | %7s | %7s | %7s".format(
-        "Player", "Bookmaker", "BM Win", "BF Win", "Win%", "BM Plc", "BF Plc", "Plc%", "Edge%"
+    println("%-22s | %-11s | %3s | %7s | %7s | %7s | %7s | %7s | %7s | %7s".format(
+        "Player", "Bookmaker", "Plc", "BM Win", "BF Win", "Win%", "BM Plc", "BF Plc", "Plc%", "Edge%"
     ))
-    println("-".repeat(115))
+    println("-".repeat(120))
 
     groupedByPlayer.forEachIndexed { playerIndex, (_, opps) ->
         opps.forEachIndexed { index, opp ->
             val playerName = if (index == 0) opp.playerName.take(22) else ""
             val edgeStr = if (opp.edgePercent > 0) "\u001B[32m%+6.2f%%\u001B[0m" else "%+6.2f%%"
-            println("%-22s | %-11s | %7.2f | %7.2f | %+6.1f%% | %7.2f | %7.2f | %+6.1f%% | $edgeStr".format(
-                playerName, opp.bookmaker.name,
+            println("%-22s | %-11s | %3d | %7.2f | %7.2f | %+6.1f%% | %7.2f | %7.2f | %+6.1f%% | $edgeStr".format(
+                playerName, opp.bookmaker.name, opp.places,
                 opp.bookmakerWinDecimal, opp.betfairWinLay, opp.winEdge,
                 opp.bookmakerPlaceDecimal, opp.betfairPlaceLay, opp.placeEdge,
                 opp.edgePercent
             ))
         }
         if (playerIndex < groupedByPlayer.size - 1) {
-            println("-".repeat(115))
+            println("-".repeat(120))
         }
     }
 
-    println("=".repeat(115))
+    println("=".repeat(120))
     println("Total: ${groupedByPlayer.size} players | ${opportunities.size} combinations")
     println("Players with profitable bets: ${playersWithProfitable.size} | Total profitable bets: ${allProfitable.size}")
 
@@ -213,7 +236,7 @@ fun printArbitrageOpportunities(opportunities: List<EWArbitrageOpportunity>) {
         val maxEdge = allProfitable.maxOf { it.edgePercent }
         println("Profitable avg edge: %.2f%% | Max edge: %.2f%%".format(avgEdge, maxEdge))
     }
-    println("=".repeat(115))
+    println("=".repeat(120))
 }
 
 /**
@@ -237,7 +260,8 @@ fun opportunitiesToJson(opportunities: List<EWArbitrageOpportunity>, timestamp: 
       "bfPlace": ${String.format("%.2f", opp.betfairPlaceLay)},
       "winEdge": ${String.format("%.2f", opp.winEdge)},
       "placeEdge": ${String.format("%.2f", opp.placeEdge)},
-      "edge": ${String.format("%.2f", opp.edgePercent)}
+      "edge": ${String.format("%.2f", opp.edgePercent)},
+      "places": ${opp.places}
     }"""
     }
 

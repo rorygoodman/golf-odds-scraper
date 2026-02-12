@@ -1,6 +1,7 @@
 package com.golf.odds
 
 import org.openqa.selenium.By
+import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -96,25 +97,58 @@ class LadbrokesScraper(private val url: String) {
     }
 
     /**
-     * Clicks "Show All" button to expand the full player list.
+     * Clicks "Show All" / "Show More" buttons to expand the full player list.
+     * Uses JavaScript execution to find and click elements reliably in the SPA.
+     * Also scrolls to trigger any lazy-loading of content.
      */
     private fun clickShowAll() {
-        try {
-            val wait = WebDriverWait(driver!!, Duration.ofSeconds(10))
-            val possibleSelectors = listOf(
-                "//button[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'show all')]",
-                "//button[contains(@class, 'show-all')]"
-            )
+        val js = driver as JavascriptExecutor
 
-            for (selector in possibleSelectors) {
-                try {
-                    val button = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(selector)))
-                    button.click()
-                    Thread.sleep(2000)
-                    return
-                } catch (e: Exception) {
-                    continue
-                }
+        // First, scroll down the page to trigger any lazy-loading
+        try {
+            for (i in 1..5) {
+                js.executeScript("window.scrollBy(0, 1000)")
+                Thread.sleep(500)
+            }
+            js.executeScript("window.scrollTo(0, 0)")
+            Thread.sleep(1000)
+        } catch (e: Exception) {
+            // Scroll failed, continue
+        }
+
+        // Then try clicking expand/show buttons
+        try {
+            var clicked = true
+            var attempts = 0
+            while (clicked && attempts < 10) {
+                attempts++
+                clicked = js.executeScript("""
+                    var all = document.querySelectorAll('a, button, span, div');
+                    var found = false;
+                    for (var i = 0; i < all.length; i++) {
+                        var el = all[i];
+                        var text = (el.textContent || '').trim().toLowerCase();
+                        var directText = '';
+                        for (var c = 0; c < el.childNodes.length; c++) {
+                            if (el.childNodes[c].nodeType === 3) {
+                                directText += el.childNodes[c].textContent;
+                            }
+                        }
+                        directText = directText.trim().toLowerCase();
+                        var matchText = directText || text;
+                        if (matchText === 'show all' || matchText === 'show more' ||
+                            matchText === 'view all' || matchText === 'load more' ||
+                            matchText.match(/^show all \(\d+\)$/) ||
+                            matchText.match(/^show more \(\d+\)$/)) {
+                            el.scrollIntoView({block: 'center'});
+                            el.click();
+                            found = true;
+                            break;
+                        }
+                    }
+                    return found;
+                """) as Boolean
+                if (clicked) Thread.sleep(2000)
             }
         } catch (e: Exception) {
             // Content may already be expanded
