@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="refresh" content="600">
-  <title>Golf E/W Arbitrage</title>
+  <title>Gambletron 2000</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -99,6 +100,7 @@
 <body>
   <div class="container">
     <h1>Gambletron 2000</h1>
+    <div class="timestamp" id="event-name"></div>
     <div class="timestamp" id="timestamp">Loading...</div>
 
     <div class="controls">
@@ -144,6 +146,9 @@
         allData = data.opportunities;
         bookmakers = data.bookmakers;
 
+        if (data.eventName) {
+          document.getElementById('event-name').textContent = data.eventName;
+        }
         document.getElementById('timestamp').textContent = 'Last updated: ' + data.timestamp;
 
         // Populate bookmaker dropdown
