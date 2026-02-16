@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-16 22:05:38 GMT",
+  "timestamp": "2026-02-16 22:20:09 GMT",
   "eventName": "2026 Genesis",
   "bookmakers": ["BOYLESPORTS", "LADBROKES", "PADDY_POWER", "SKYBET"],
   "opportunities": [
@@ -303,19 +303,6 @@
       "places": 8
     },
     {
-      "player": "Ludvig Aberg",
-      "bookmaker": "LADBROKES",
-      "bmWinOdds": "30/1",
-      "bmWin": 31.00,
-      "bmPlace": 7.00,
-      "bfWin": 80.00,
-      "bfPlace": 5.40,
-      "winEdge": -61.25,
-      "placeEdge": 29.63,
-      "edge": -15.81,
-      "places": 8
-    },
-    {
       "player": "Ryo Hisatsune",
       "bookmaker": "LADBROKES",
       "bmWinOdds": "75/1",
@@ -326,6 +313,19 @@
       "winEdge": -55.29,
       "placeEdge": 23.08,
       "edge": -16.11,
+      "places": 8
+    },
+    {
+      "player": "Ludvig Aberg",
+      "bookmaker": "LADBROKES",
+      "bmWinOdds": "30/1",
+      "bmWin": 31.00,
+      "bmPlace": 7.00,
+      "bfWin": 70.00,
+      "bfPlace": 5.90,
+      "winEdge": -55.71,
+      "placeEdge": 18.64,
+      "edge": -18.54,
       "places": 8
     },
     {
@@ -654,6 +654,45 @@
       "places": 8
     },
     {
+      "player": "Ryan Fox",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "110/1",
+      "bmWin": 111.00,
+      "bmPlace": 23.00,
+      "bfWin": 330.00,
+      "bfPlace": 26.00,
+      "winEdge": -66.36,
+      "placeEdge": -11.54,
+      "edge": -38.95,
+      "places": 10
+    },
+    {
+      "player": "Ryan Fox",
+      "bookmaker": "SKYBET",
+      "bmWinOdds": "110/1",
+      "bmWin": 111.00,
+      "bmPlace": 23.00,
+      "bfWin": 330.00,
+      "bfPlace": 26.00,
+      "winEdge": -66.36,
+      "placeEdge": -11.54,
+      "edge": -38.95,
+      "places": 10
+    },
+    {
+      "player": "Ryan Fox",
+      "bookmaker": "LADBROKES",
+      "bmWinOdds": "110/1",
+      "bmWin": 111.00,
+      "bmPlace": 23.00,
+      "bfWin": 330.00,
+      "bfPlace": 26.00,
+      "winEdge": -66.36,
+      "placeEdge": -11.54,
+      "edge": -38.95,
+      "places": 8
+    },
+    {
       "player": "Nico Echavarria",
       "bookmaker": "BOYLESPORTS",
       "bmWinOdds": "100/1",
@@ -664,6 +703,19 @@
       "winEdge": -66.33,
       "placeEdge": -19.23,
       "edge": -42.78,
+      "places": 10
+    },
+    {
+      "player": "Ryan Fox",
+      "bookmaker": "BOYLESPORTS",
+      "bmWinOdds": "100/1",
+      "bmWin": 101.00,
+      "bmPlace": 21.00,
+      "bfWin": 330.00,
+      "bfPlace": 26.00,
+      "winEdge": -69.39,
+      "placeEdge": -19.23,
+      "edge": -44.31,
       "places": 10
     }
   ]
