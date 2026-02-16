@@ -1,8 +1,21 @@
 {
-  "timestamp": "2026-02-16 21:09:49 GMT",
+  "timestamp": "2026-02-16 21:23:50 GMT",
   "eventName": "2026 Genesis",
   "bookmakers": ["BOYLESPORTS", "LADBROKES", "PADDY_POWER", "SKYBET"],
   "opportunities": [
+    {
+      "player": "J.J. Spaun",
+      "bookmaker": "LADBROKES",
+      "bmWinOdds": "55/1",
+      "bmWin": 56.00,
+      "bmPlace": 12.00,
+      "bfWin": 90.00,
+      "bfPlace": 8.00,
+      "winEdge": -37.78,
+      "placeEdge": 50.00,
+      "edge": 6.11,
+      "places": 8
+    },
     {
       "player": "Scottie Scheffler",
       "bookmaker": "PADDY_POWER",
@@ -35,11 +48,11 @@
       "bmWinOdds": "16/1",
       "bmWin": 17.00,
       "bmPlace": 4.20,
-      "bfWin": 25.00,
+      "bfWin": 26.00,
       "bfPlace": 3.20,
-      "winEdge": -32.00,
+      "winEdge": -34.62,
       "placeEdge": 31.25,
-      "edge": -0.37,
+      "edge": -1.68,
       "places": 10
     },
     {
@@ -48,11 +61,11 @@
       "bmWinOdds": "16/1",
       "bmWin": 17.00,
       "bmPlace": 4.20,
-      "bfWin": 25.00,
+      "bfWin": 26.00,
       "bfPlace": 3.20,
-      "winEdge": -32.00,
+      "winEdge": -34.62,
       "placeEdge": 31.25,
-      "edge": -0.37,
+      "edge": -1.68,
       "places": 10
     },
     {
@@ -61,11 +74,37 @@
       "bmWinOdds": "16/1",
       "bmWin": 17.00,
       "bmPlace": 4.20,
-      "bfWin": 25.00,
+      "bfWin": 26.00,
       "bfPlace": 3.20,
-      "winEdge": -32.00,
+      "winEdge": -34.62,
       "placeEdge": 31.25,
-      "edge": -0.37,
+      "edge": -1.68,
+      "places": 10
+    },
+    {
+      "player": "J.J. Spaun",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "50/1",
+      "bmWin": 51.00,
+      "bmPlace": 11.00,
+      "bfWin": 90.00,
+      "bfPlace": 8.00,
+      "winEdge": -43.33,
+      "placeEdge": 37.50,
+      "edge": -2.92,
+      "places": 10
+    },
+    {
+      "player": "J.J. Spaun",
+      "bookmaker": "SKYBET",
+      "bmWinOdds": "50/1",
+      "bmWin": 51.00,
+      "bmPlace": 11.00,
+      "bfWin": 90.00,
+      "bfPlace": 8.00,
+      "winEdge": -43.33,
+      "placeEdge": 37.50,
+      "edge": -2.92,
       "places": 10
     },
     {
@@ -186,19 +225,6 @@
       "places": 8
     },
     {
-      "player": "Tommy Fleetwood",
-      "bookmaker": "LADBROKES",
-      "bmWinOdds": "16/1",
-      "bmWin": 17.00,
-      "bmPlace": 4.20,
-      "bfWin": 25.00,
-      "bfPlace": 3.88,
-      "winEdge": -32.00,
-      "placeEdge": 8.22,
-      "edge": -11.89,
-      "places": 8
-    },
-    {
       "player": "Rory McIlroy",
       "bookmaker": "LADBROKES",
       "bmWinOdds": "12/1",
@@ -222,6 +248,19 @@
       "winEdge": -55.71,
       "placeEdge": 29.63,
       "edge": -13.04,
+      "places": 8
+    },
+    {
+      "player": "Tommy Fleetwood",
+      "bookmaker": "LADBROKES",
+      "bmWinOdds": "16/1",
+      "bmWin": 17.00,
+      "bmPlace": 4.20,
+      "bfWin": 26.00,
+      "bfPlace": 3.88,
+      "winEdge": -34.62,
+      "placeEdge": 8.22,
+      "edge": -13.20,
       "places": 8
     },
     {
