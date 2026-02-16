@@ -76,7 +76,7 @@ fun main(args: Array<String>) {
 
             // Write JSON for web frontend
             val timestamp = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z"))
-            val json = opportunitiesToJson(opportunities, timestamp)
+            val json = opportunitiesToJson(opportunities, timestamp, event.name)
             File("data.json").writeText(json)
             println("\nJSON written to data.json")
         } else {

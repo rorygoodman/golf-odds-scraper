@@ -118,13 +118,15 @@ class PaddyPowerScraper(
                 ];
 
                 var pattern1 = /(\d+)\s*Places?\s*EW\s*(\d+\/\d+)/i;
-                var pattern2 = /Outright Winner\s*-\s*(\d+)\s*Places?/i;
+                var pattern2 = /(?:Outright\s+)?Winner\s*-\s*(\d+)\s*Places?/i;
+                var pattern3 = /(\d+)\s*Places?\s*Each\s*Way/i;
                 var matches = [];
 
                 for (var i = 0; i < headerSelectors.length; i++) {
                     var elements = document.querySelectorAll(headerSelectors[i]);
                     for (var j = 0; j < elements.length; j++) {
                         var text = elements[j].textContent || '';
+                        if (text.length > 200) continue;
 
                         var match = text.match(pattern1);
                         if (match) {
@@ -144,6 +146,18 @@ class PaddyPowerScraper(
                                 element: elements[j],
                                 places: parseInt(match[1]),
                                 fraction: fraction
+                            });
+                            continue;
+                        }
+
+                        match = text.match(pattern3);
+                        if (match) {
+                            var ewMatch2 = text.match(/(\d+\/\d+)/);
+                            var fraction2 = ewMatch2 ? ewMatch2[1] : '1/5';
+                            matches.push({
+                                element: elements[j],
+                                places: parseInt(match[1]),
+                                fraction: fraction2
                             });
                         }
                     }

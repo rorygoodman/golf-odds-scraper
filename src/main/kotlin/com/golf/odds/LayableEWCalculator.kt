@@ -246,7 +246,7 @@ fun printArbitrageOpportunities(opportunities: List<EWArbitrageOpportunity>) {
  * @param timestamp When the data was scraped
  * @return JSON string
  */
-fun opportunitiesToJson(opportunities: List<EWArbitrageOpportunity>, timestamp: String): String {
+fun opportunitiesToJson(opportunities: List<EWArbitrageOpportunity>, timestamp: String, eventName: String): String {
     val bookmakers = opportunities.map { it.bookmaker.name }.distinct().sorted()
 
     val rows = opportunities.map { opp ->
@@ -267,6 +267,7 @@ fun opportunitiesToJson(opportunities: List<EWArbitrageOpportunity>, timestamp: 
 
     return """{
   "timestamp": "$timestamp",
+  "eventName": "${eventName.replace("\"", "\\\"")}",
   "bookmakers": [${bookmakers.joinToString(", ") { "\"$it\"" }}],
   "opportunities": [
 ${rows.joinToString(",\n")}
