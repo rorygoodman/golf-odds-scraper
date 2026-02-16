@@ -6,6 +6,10 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
+# Ensure SSH agent is available for cron
+eval "$(ssh-agent -s)" > /dev/null 2>&1
+ssh-add ~/.ssh/id_ed25519 2>/dev/null
+
 # Pull latest changes from master
 echo "Pulling latest changes..."
 git pull --ff-only origin master || true
@@ -34,6 +38,6 @@ git init -q 2>/dev/null || true
 git checkout -B gh-pages
 git add -A
 git commit -m "Update $(date '+%Y-%m-%d %H:%M')" --allow-empty
-git push -f "https://github.com/rorygoodman/golf-odds-scraper.git" gh-pages
+git push -f "git@github.com:rorygoodman/golf-odds-scraper.git" gh-pages
 
 echo "Published to GitHub Pages at $(date)"
