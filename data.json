@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-19 18:34:58 GMT",
+  "timestamp": "2026-02-19 18:44:39 GMT",
   "eventName": "2026 Genesis",
   "bookmakers": ["BOYLESPORTS", "LADBROKES", "PADDY_POWER"],
   "opportunities": [
@@ -108,19 +108,6 @@
       "places": 8
     },
     {
-      "player": "Xander Schauffele",
-      "bookmaker": "LADBROKES",
-      "bmWinOdds": "25/1",
-      "bmWin": 26.00,
-      "bmPlace": 7.25,
-      "bfWin": 34.00,
-      "bfPlace": 3.80,
-      "winEdge": -23.53,
-      "placeEdge": 90.79,
-      "edge": 33.63,
-      "places": 8
-    },
-    {
       "player": "Andrew Novak",
       "bookmaker": "LADBROKES",
       "bmWinOdds": "150/1",
@@ -145,6 +132,19 @@
       "placeEdge": 78.57,
       "edge": 31.10,
       "places": 10
+    },
+    {
+      "player": "Xander Schauffele",
+      "bookmaker": "LADBROKES",
+      "bmWinOdds": "25/1",
+      "bmWin": 26.00,
+      "bmPlace": 7.25,
+      "bfWin": 38.00,
+      "bfPlace": 3.80,
+      "winEdge": -31.58,
+      "placeEdge": 90.79,
+      "edge": 29.61,
+      "places": 8
     },
     {
       "player": "Chris Gotterup",
@@ -199,19 +199,6 @@
       "places": 8
     },
     {
-      "player": "Xander Schauffele",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "22/1",
-      "bmWin": 23.00,
-      "bmPlace": 6.50,
-      "bfWin": 34.00,
-      "bfPlace": 3.80,
-      "winEdge": -32.35,
-      "placeEdge": 71.05,
-      "edge": 19.35,
-      "places": 10
-    },
-    {
       "player": "Justin Rose",
       "bookmaker": "BOYLESPORTS",
       "bmWinOdds": "45/1",
@@ -222,6 +209,19 @@
       "winEdge": -51.58,
       "placeEdge": 85.19,
       "edge": 16.80,
+      "places": 10
+    },
+    {
+      "player": "Xander Schauffele",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "22/1",
+      "bmWin": 23.00,
+      "bmPlace": 6.50,
+      "bfWin": 38.00,
+      "bfPlace": 3.80,
+      "winEdge": -39.47,
+      "placeEdge": 71.05,
+      "edge": 15.79,
       "places": 10
     },
     {
@@ -269,11 +269,11 @@
       "bmWinOdds": "100/1",
       "bmWin": 101.00,
       "bmPlace": 26.00,
-      "bfWin": 150.00,
+      "bfWin": 140.00,
       "bfPlace": 18.00,
-      "winEdge": -32.67,
+      "winEdge": -27.86,
       "placeEdge": 44.44,
-      "edge": 5.89,
+      "edge": 8.29,
       "places": 10
     },
     {
@@ -282,11 +282,11 @@
       "bmWinOdds": "100/1",
       "bmWin": 101.00,
       "bmPlace": 26.00,
-      "bfWin": 150.00,
+      "bfWin": 140.00,
       "bfPlace": 18.00,
-      "winEdge": -32.67,
+      "winEdge": -27.86,
       "placeEdge": 44.44,
-      "edge": 5.89,
+      "edge": 8.29,
       "places": 8
     },
     {
@@ -316,29 +316,42 @@
       "places": 10
     },
     {
-      "player": "Xander Schauffele",
-      "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "20/1",
-      "bmWin": 21.00,
-      "bmPlace": 5.00,
-      "bfWin": 34.00,
-      "bfPlace": 3.80,
-      "winEdge": -38.24,
-      "placeEdge": 31.58,
-      "edge": -3.33,
-      "places": 10
-    },
-    {
       "player": "Tony Finau",
       "bookmaker": "BOYLESPORTS",
       "bmWinOdds": "100/1",
       "bmWin": 101.00,
       "bmPlace": 21.00,
-      "bfWin": 150.00,
+      "bfWin": 140.00,
       "bfPlace": 18.00,
-      "winEdge": -32.67,
+      "winEdge": -27.86,
       "placeEdge": 16.67,
-      "edge": -8.00,
+      "edge": -5.60,
+      "places": 10
+    },
+    {
+      "player": "Xander Schauffele",
+      "bookmaker": "BOYLESPORTS",
+      "bmWinOdds": "20/1",
+      "bmWin": 21.00,
+      "bmPlace": 5.00,
+      "bfWin": 38.00,
+      "bfPlace": 3.80,
+      "winEdge": -44.74,
+      "placeEdge": 31.58,
+      "edge": -6.58,
+      "places": 10
+    },
+    {
+      "player": "Rory McIlroy",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "13/2",
+      "bmWin": 7.50,
+      "bmPlace": 2.63,
+      "bfWin": 8.80,
+      "bfPlace": 2.80,
+      "winEdge": -14.77,
+      "placeEdge": -6.25,
+      "edge": -10.51,
       "places": 10
     },
     {
@@ -382,28 +395,15 @@
     },
     {
       "player": "Rory McIlroy",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "13/2",
-      "bmWin": 7.50,
-      "bmPlace": 2.63,
-      "bfWin": 10.00,
-      "bfPlace": 2.80,
-      "winEdge": -25.00,
-      "placeEdge": -6.25,
-      "edge": -15.62,
-      "places": 10
-    },
-    {
-      "player": "Rory McIlroy",
       "bookmaker": "LADBROKES",
       "bmWinOdds": "6/1",
       "bmWin": 7.00,
       "bmPlace": 2.50,
-      "bfWin": 10.00,
+      "bfWin": 8.80,
       "bfPlace": 2.80,
-      "winEdge": -30.00,
+      "winEdge": -20.45,
       "placeEdge": -10.71,
-      "edge": -20.36,
+      "edge": -15.58,
       "places": 8
     },
     {
