@@ -1,17 +1,9 @@
 {
-  "timestamp": "2026-02-20 11:54:25 GMT",
+  "timestamp": "2026-02-20 12:06:18 GMT",
   "eventName": "2026 Genesis",
   "mode": "WIN",
   "bookmakers": ["BOYLESPORTS", "PADDY_POWER"],
   "opportunities": [
-    {
-      "player": "Rory McIlroy",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "3/1",
-      "bmWin": 4.00,
-      "bfWin": 4.70,
-      "edge": -14.89
-    },
     {
       "player": "Collin Morikawa",
       "bookmaker": "PADDY_POWER",
@@ -19,6 +11,14 @@
       "bmWin": 13.00,
       "bfWin": 15.50,
       "edge": -16.13
+    },
+    {
+      "player": "Rory McIlroy",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "3/1",
+      "bmWin": 4.00,
+      "bfWin": 4.80,
+      "edge": -16.67
     },
     {
       "player": "Si Woo Kim",
@@ -181,30 +181,6 @@
       "edge": -35.00
     },
     {
-      "player": "Ryo Hisatsune",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "40/1",
-      "bmWin": 41.00,
-      "bfWin": 65.00,
-      "edge": -36.92
-    },
-    {
-      "player": "Ryo Hisatsune",
-      "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "40/1",
-      "bmWin": 41.00,
-      "bfWin": 65.00,
-      "edge": -36.92
-    },
-    {
-      "player": "Maverick McNealy",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "28/1",
-      "bmWin": 29.00,
-      "bfWin": 46.00,
-      "edge": -36.96
-    },
-    {
       "player": "Min Woo Lee",
       "bookmaker": "PADDY_POWER",
       "bmWinOdds": "28/1",
@@ -317,6 +293,38 @@
       "edge": -40.91
     },
     {
+      "player": "Ryo Hisatsune",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "40/1",
+      "bmWin": 41.00,
+      "bfWin": 70.00,
+      "edge": -41.43
+    },
+    {
+      "player": "Ryo Hisatsune",
+      "bookmaker": "BOYLESPORTS",
+      "bmWinOdds": "40/1",
+      "bmWin": 41.00,
+      "bfWin": 70.00,
+      "edge": -41.43
+    },
+    {
+      "player": "Aldrich Potgieter",
+      "bookmaker": "BOYLESPORTS",
+      "bmWinOdds": "75/1",
+      "bmWin": 76.00,
+      "bfWin": 130.00,
+      "edge": -41.54
+    },
+    {
+      "player": "Maverick McNealy",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "28/1",
+      "bmWin": 29.00,
+      "bfWin": 50.00,
+      "edge": -42.00
+    },
+    {
       "player": "Marco Penge",
       "bookmaker": "PADDY_POWER",
       "bmWinOdds": "22/1",
@@ -339,6 +347,14 @@
       "bmWin": 67.00,
       "bfWin": 120.00,
       "edge": -44.17
+    },
+    {
+      "player": "Aldrich Potgieter",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "70/1",
+      "bmWin": 71.00,
+      "bfWin": 130.00,
+      "edge": -45.38
     },
     {
       "player": "Patrick Cantlay",
@@ -437,12 +453,12 @@
       "edge": -48.89
     },
     {
-      "player": "Aldrich Potgieter",
+      "player": "Nick Taylor",
       "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "75/1",
-      "bmWin": 76.00,
-      "bfWin": 150.00,
-      "edge": -49.33
+      "bmWinOdds": "200/1",
+      "bmWin": 201.00,
+      "bfWin": 400.00,
+      "edge": -49.75
     },
     {
       "player": "Sam Burns",
@@ -461,14 +477,6 @@
       "edge": -52.14
     },
     {
-      "player": "Aldrich Potgieter",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "70/1",
-      "bmWin": 71.00,
-      "bfWin": 150.00,
-      "edge": -52.67
-    },
-    {
       "player": "Harris English",
       "bookmaker": "PADDY_POWER",
       "bmWinOdds": "125/1",
@@ -483,6 +491,14 @@
       "bmWin": 126.00,
       "bfWin": 280.00,
       "edge": -55.00
+    },
+    {
+      "player": "Nick Taylor",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "175/1",
+      "bmWin": 176.00,
+      "bfWin": 400.00,
+      "edge": -56.00
     },
     {
       "player": "Adam Scott",
@@ -499,14 +515,6 @@
       "bmWin": 126.00,
       "bfWin": 290.00,
       "edge": -56.55
-    },
-    {
-      "player": "Nick Taylor",
-      "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "200/1",
-      "bmWin": 201.00,
-      "bfWin": 490.00,
-      "edge": -58.98
     },
     {
       "player": "Lucas Glover",
@@ -555,14 +563,6 @@
       "bmWin": 126.00,
       "bfWin": 330.00,
       "edge": -61.82
-    },
-    {
-      "player": "Nick Taylor",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "175/1",
-      "bmWin": 176.00,
-      "bfWin": 490.00,
-      "edge": -64.08
     },
     {
       "player": "Shane Lowry",
