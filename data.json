@@ -1,8 +1,21 @@
 {
-  "timestamp": "2026-02-20 09:34:40 GMT",
+  "timestamp": "2026-02-20 09:44:37 GMT",
   "eventName": "2026 Genesis",
   "bookmakers": ["BOYLESPORTS", "LADBROKES"],
   "opportunities": [
+    {
+      "player": "Patrick Rodgers",
+      "bookmaker": "LADBROKES",
+      "bmWinOdds": "200/1",
+      "bmWin": 201.00,
+      "bmPlace": 51.00,
+      "bfWin": 670.00,
+      "bfPlace": 16.00,
+      "winEdge": -70.00,
+      "placeEdge": 218.75,
+      "edge": 74.38,
+      "places": 8
+    },
     {
       "player": "Patrick Cantlay",
       "bookmaker": "LADBROKES",
@@ -53,6 +66,19 @@
       "winEdge": -68.89,
       "placeEdge": 140.00,
       "edge": 35.56,
+      "places": 10
+    },
+    {
+      "player": "Patrick Rodgers",
+      "bookmaker": "BOYLESPORTS",
+      "bmWinOdds": "175/1",
+      "bmWin": 176.00,
+      "bmPlace": 36.00,
+      "bfWin": 670.00,
+      "bfPlace": 16.00,
+      "winEdge": -73.73,
+      "placeEdge": 125.00,
+      "edge": 25.63,
       "places": 10
     },
     {
