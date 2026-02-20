@@ -23,8 +23,9 @@ data class Page(
 data class Event(
     val name: String,
     val betfairLink: String?,
-    val betfairTop5Link: String,
-    val betfairTop10Link: String,
+    val betfairTop5Link: String? = null,
+    val betfairTop10Link: String? = null,
+    val ew: Boolean = true,
     val pages: List<Page>
 )
 

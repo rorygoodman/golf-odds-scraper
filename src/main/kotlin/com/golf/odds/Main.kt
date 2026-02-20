@@ -49,44 +49,63 @@ fun main(args: Array<String>) {
             }
         }
 
-        var top5MarketOdds: BetfairEventOdds? = null
-        print("Scraping Betfair Top 5... ")
-        try {
-            val scraper = BetfairScraper(event.betfairTop5Link)
-            top5MarketOdds = scraper.scrape()
-            println("${top5MarketOdds.players.size} players")
-        } catch (e: Exception) {
-            println("FAILED: ${e.message}")
-        }
+        val timestamp = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z"))
 
-        var top10MarketOdds: BetfairEventOdds? = null
-        print("Scraping Betfair Top 10... ")
-        try {
-            val scraper = BetfairScraper(event.betfairTop10Link)
-            top10MarketOdds = scraper.scrape()
-            println("${top10MarketOdds.players.size} players")
-        } catch (e: Exception) {
-            println("FAILED: ${e.message}")
-        }
-
-        if (winnerMarketOdds != null && top5MarketOdds != null && top10MarketOdds != null && allEventOdds.isNotEmpty()) {
-            val calculator = LayableEWCalculator(winnerMarketOdds, top10MarketOdds, top5MarketOdds)
-            val opportunities = calculator.findArbitrageOpportunities(allEventOdds, event.pages)
-            printArbitrageOpportunities(opportunities)
-
-            // Write JSON for web frontend
-            val timestamp = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z"))
-            val json = opportunitiesToJson(opportunities, timestamp, event.name)
-            File("data.json").writeText(json)
-            println("\nJSON written to data.json")
+        if (!event.ew) {
+            // Win-only mode: just compare bookmaker win odds vs Betfair lay
+            if (winnerMarketOdds != null && allEventOdds.isNotEmpty()) {
+                val opportunities = findWinOpportunities(allEventOdds, winnerMarketOdds)
+                printWinOpportunities(opportunities)
+                val json = winOpportunitiesToJson(opportunities, timestamp, event.name)
+                File("data.json").writeText(json)
+                println("\nJSON written to data.json")
+            } else {
+                if (winnerMarketOdds == null) println("\nCannot calculate: need Betfair Winner market")
+            }
         } else {
-            val missing = listOfNotNull(
-                if (winnerMarketOdds == null) "Winner" else null,
-                if (top5MarketOdds == null) "Top 5" else null,
-                if (top10MarketOdds == null) "Top 10" else null
-            )
-            if (missing.isNotEmpty()) {
-                println("\nCannot calculate: need Betfair ${missing.joinToString(", ")} market(s)")
+            // E/W mode: scrape Top 5 and Top 10, run LayableEWCalculator
+            var top5MarketOdds: BetfairEventOdds? = null
+            if (!event.betfairTop5Link.isNullOrBlank()) {
+                print("Scraping Betfair Top 5... ")
+                try {
+                    val scraper = BetfairScraper(event.betfairTop5Link)
+                    top5MarketOdds = scraper.scrape()
+                    println("${top5MarketOdds.players.size} players")
+                } catch (e: Exception) {
+                    println("FAILED: ${e.message}")
+                }
+            }
+
+            var top10MarketOdds: BetfairEventOdds? = null
+            if (!event.betfairTop10Link.isNullOrBlank()) {
+                print("Scraping Betfair Top 10... ")
+                try {
+                    val scraper = BetfairScraper(event.betfairTop10Link)
+                    top10MarketOdds = scraper.scrape()
+                    println("${top10MarketOdds.players.size} players")
+                } catch (e: Exception) {
+                    println("FAILED: ${e.message}")
+                }
+            }
+
+            if (winnerMarketOdds != null && top5MarketOdds != null && top10MarketOdds != null && allEventOdds.isNotEmpty()) {
+                val calculator = LayableEWCalculator(winnerMarketOdds, top10MarketOdds, top5MarketOdds)
+                val opportunities = calculator.findArbitrageOpportunities(allEventOdds, event.pages)
+                printArbitrageOpportunities(opportunities)
+
+                // Write JSON for web frontend
+                val json = opportunitiesToJson(opportunities, timestamp, event.name)
+                File("data.json").writeText(json)
+                println("\nJSON written to data.json")
+            } else {
+                val missing = listOfNotNull(
+                    if (winnerMarketOdds == null) "Winner" else null,
+                    if (top5MarketOdds == null) "Top 5" else null,
+                    if (top10MarketOdds == null) "Top 10" else null
+                )
+                if (missing.isNotEmpty()) {
+                    println("\nCannot calculate: need Betfair ${missing.joinToString(", ")} market(s)")
+                }
             }
         }
     }
