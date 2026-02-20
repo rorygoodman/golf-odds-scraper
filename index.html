@@ -121,6 +121,7 @@
   <script>
     let allData = [];
     let bookmakers = [];
+    let dataMode = 'EW';
 
     const brandColors = {
       'ALL': { bg: '#2a2a2a', accent: '#888888' },
@@ -145,6 +146,7 @@
 
         allData = data.opportunities;
         bookmakers = data.bookmakers;
+        dataMode = data.mode || 'EW';
 
         if (data.eventName) {
           document.getElementById('event-name').textContent = data.eventName;
@@ -188,6 +190,47 @@
         return;
       }
 
+      if (dataMode === 'WIN') {
+        renderWinTable(filtered, selectedBookmaker);
+      } else {
+        renderEWTable(filtered, selectedBookmaker);
+      }
+    }
+
+    function renderWinTable(filtered, selectedBookmaker) {
+      let html = `
+        <table>
+          <thead>
+            <tr>
+              <th>Player</th>
+              ${selectedBookmaker === 'ALL' ? '<th>Book</th>' : ''}
+              <th>BM Win</th>
+              <th>BF Win</th>
+              <th>Edge %</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      filtered.forEach(row => {
+        const edgeClass = row.edge > 0 ? 'positive' : 'negative';
+
+        html += `
+          <tr>
+            <td class="player-name">${row.player}</td>
+            ${selectedBookmaker === 'ALL' ? `<td>${row.bookmaker.replace('_', ' ')}</td>` : ''}
+            <td>${row.bmWin.toFixed(2)}</td>
+            <td>${row.bfWin.toFixed(2)}</td>
+            <td class="${edgeClass}">${row.edge > 0 ? '+' : ''}${row.edge.toFixed(2)}%</td>
+          </tr>
+        `;
+      });
+
+      html += '</tbody></table>';
+      document.getElementById('table-container').innerHTML = html;
+    }
+
+    function renderEWTable(filtered, selectedBookmaker) {
       let html = `
         <table>
           <thead>
