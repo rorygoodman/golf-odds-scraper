@@ -1,32 +1,40 @@
 {
-  "timestamp": "2026-02-20 23:31:55 GMT",
+  "timestamp": "2026-02-20 23:47:31 GMT",
   "eventName": "2026 Genesis",
   "mode": "WIN",
   "bookmakers": ["BOYLESPORTS", "PADDY_POWER"],
   "opportunities": [
     {
-      "player": "Rory McIlroy",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "15/8",
-      "bmWin": 2.88,
-      "bfWin": 3.10,
-      "edge": -7.26
-    },
-    {
       "player": "Xander Schauffele",
       "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "6/1",
-      "bmWin": 7.00,
-      "bfWin": 8.80,
-      "edge": -20.45
+      "bmWinOdds": "13/2",
+      "bmWin": 7.50,
+      "bfWin": 9.00,
+      "edge": -16.67
+    },
+    {
+      "player": "Jacob Bridgeman",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "15/2",
+      "bmWin": 8.50,
+      "bfWin": 10.50,
+      "edge": -19.05
     },
     {
       "player": "Xander Schauffele",
       "bookmaker": "BOYLESPORTS",
       "bmWinOdds": "6/1",
       "bmWin": 7.00,
-      "bfWin": 8.80,
-      "edge": -20.45
+      "bfWin": 9.00,
+      "edge": -22.22
+    },
+    {
+      "player": "Rory McIlroy",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "21/10",
+      "bmWin": 3.10,
+      "bfWin": 4.00,
+      "edge": -22.50
     },
     {
       "player": "Marco Penge",
@@ -37,20 +45,44 @@
       "edge": -23.61
     },
     {
-      "player": "Collin Morikawa",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "35/1",
-      "bmWin": 36.00,
-      "bfWin": 55.00,
-      "edge": -34.55
+      "player": "Jacob Bridgeman",
+      "bookmaker": "BOYLESPORTS",
+      "bmWinOdds": "7/1",
+      "bmWin": 8.00,
+      "bfWin": 10.50,
+      "edge": -23.81
     },
     {
-      "player": "Collin Morikawa",
+      "player": "Min Woo Lee",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "18/1",
+      "bmWin": 19.00,
+      "bfWin": 29.00,
+      "edge": -34.48
+    },
+    {
+      "player": "Min Woo Lee",
       "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "35/1",
-      "bmWin": 36.00,
-      "bfWin": 55.00,
-      "edge": -34.55
+      "bmWinOdds": "18/1",
+      "bmWin": 19.00,
+      "bfWin": 29.00,
+      "edge": -34.48
+    },
+    {
+      "player": "Matt Fitzpatrick",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "25/1",
+      "bmWin": 26.00,
+      "bfWin": 40.00,
+      "edge": -35.00
+    },
+    {
+      "player": "Scottie Scheffler",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "100/1",
+      "bmWin": 101.00,
+      "bfWin": 170.00,
+      "edge": -40.59
     },
     {
       "player": "Scottie Scheffler",
@@ -61,68 +93,12 @@
       "edge": -40.59
     },
     {
-      "player": "Min Woo Lee",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "16/1",
-      "bmWin": 17.00,
-      "bfWin": 29.00,
-      "edge": -41.38
-    },
-    {
-      "player": "Min Woo Lee",
-      "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "16/1",
-      "bmWin": 17.00,
-      "bfWin": 29.00,
-      "edge": -41.38
-    },
-    {
-      "player": "Matt Fitzpatrick",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "22/1",
-      "bmWin": 23.00,
-      "bfWin": 40.00,
-      "edge": -42.50
-    },
-    {
       "player": "Matt Fitzpatrick",
       "bookmaker": "BOYLESPORTS",
       "bmWinOdds": "22/1",
       "bmWin": 23.00,
       "bfWin": 40.00,
       "edge": -42.50
-    },
-    {
-      "player": "Jacob Bridgeman",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "12/1",
-      "bmWin": 13.00,
-      "bfWin": 24.00,
-      "edge": -45.83
-    },
-    {
-      "player": "Tommy Fleetwood",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "12/1",
-      "bmWin": 13.00,
-      "bfWin": 24.00,
-      "edge": -45.83
-    },
-    {
-      "player": "Tommy Fleetwood",
-      "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "12/1",
-      "bmWin": 13.00,
-      "bfWin": 24.00,
-      "edge": -45.83
-    },
-    {
-      "player": "Scottie Scheffler",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "90/1",
-      "bmWin": 91.00,
-      "bfWin": 170.00,
-      "edge": -46.47
     },
     {
       "player": "Aldrich Potgieter",
@@ -141,36 +117,44 @@
       "edge": -49.50
     },
     {
-      "player": "Jacob Bridgeman",
-      "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "11/1",
-      "bmWin": 12.00,
-      "bfWin": 24.00,
-      "edge": -50.00
-    },
-    {
-      "player": "Adam Scott",
+      "player": "Tommy Fleetwood",
       "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "10/1",
-      "bmWin": 11.00,
-      "bfWin": 23.00,
-      "edge": -52.17
+      "bmWinOdds": "12/1",
+      "bmWin": 13.00,
+      "bfWin": 28.00,
+      "edge": -53.57
     },
     {
-      "player": "Adam Scott",
+      "player": "Tommy Fleetwood",
       "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "10/1",
-      "bmWin": 11.00,
-      "bfWin": 23.00,
-      "edge": -52.17
+      "bmWinOdds": "12/1",
+      "bmWin": 13.00,
+      "bfWin": 28.00,
+      "edge": -53.57
     },
     {
       "player": "Marco Penge",
       "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "9/5",
-      "bmWin": 2.80,
+      "bmWinOdds": "23/10",
+      "bmWin": 3.30,
       "bfWin": 7.20,
-      "edge": -61.11
+      "edge": -54.17
+    },
+    {
+      "player": "Collin Morikawa",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "28/1",
+      "bmWin": 29.00,
+      "bfWin": 65.00,
+      "edge": -55.38
+    },
+    {
+      "player": "Collin Morikawa",
+      "bookmaker": "BOYLESPORTS",
+      "bmWinOdds": "28/1",
+      "bmWin": 29.00,
+      "bfWin": 65.00,
+      "edge": -55.38
     },
     {
       "player": "Max Greyserman",
@@ -190,19 +174,43 @@
     },
     {
       "player": "Kurt Kitayama",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "35/1",
-      "bmWin": 36.00,
+      "bookmaker": "BOYLESPORTS",
+      "bmWinOdds": "45/1",
+      "bmWin": 46.00,
       "bfWin": 300.00,
-      "edge": -88.00
+      "edge": -84.67
     },
     {
       "player": "Kurt Kitayama",
-      "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "35/1",
-      "bmWin": 36.00,
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "40/1",
+      "bmWin": 41.00,
       "bfWin": 300.00,
-      "edge": -88.00
+      "edge": -86.33
+    },
+    {
+      "player": "Adam Scott",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "9/1",
+      "bmWin": 10.00,
+      "bfWin": 80.00,
+      "edge": -87.50
+    },
+    {
+      "player": "Adam Scott",
+      "bookmaker": "BOYLESPORTS",
+      "bmWinOdds": "15/2",
+      "bmWin": 8.50,
+      "bfWin": 80.00,
+      "edge": -89.38
+    },
+    {
+      "player": "Jordan Spieth",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "100/1",
+      "bmWin": 101.00,
+      "bfWin": 1000.00,
+      "edge": -89.90
     },
     {
       "player": "Jordan Spieth",
@@ -211,14 +219,6 @@
       "bmWin": 101.00,
       "bfWin": 1000.00,
       "edge": -89.90
-    },
-    {
-      "player": "Jordan Spieth",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "90/1",
-      "bmWin": 91.00,
-      "bfWin": 1000.00,
-      "edge": -90.90
     }
   ]
 }
