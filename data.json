@@ -1,8 +1,21 @@
 {
-  "timestamp": "2026-02-20 01:44:38 GMT",
+  "timestamp": "2026-02-20 01:54:43 GMT",
   "eventName": "2026 Genesis",
   "bookmakers": ["BOYLESPORTS", "LADBROKES", "PADDY_POWER"],
   "opportunities": [
+    {
+      "player": "Andrew Novak",
+      "bookmaker": "BOYLESPORTS",
+      "bmWinOdds": "300/1",
+      "bmWin": 301.00,
+      "bmPlace": 61.00,
+      "bfWin": 690.00,
+      "bfPlace": 16.00,
+      "winEdge": -56.38,
+      "placeEdge": 281.25,
+      "edge": 112.44,
+      "places": 10
+    },
     {
       "player": "Andrew Novak",
       "bookmaker": "PADDY_POWER",
@@ -17,29 +30,16 @@
       "places": 10
     },
     {
-      "player": "Andrew Novak",
-      "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "275/1",
-      "bmWin": 276.00,
-      "bmPlace": 56.00,
-      "bfWin": 690.00,
-      "bfPlace": 16.00,
-      "winEdge": -60.00,
-      "placeEdge": 250.00,
-      "edge": 95.00,
-      "places": 10
-    },
-    {
       "player": "Patrick Cantlay",
       "bookmaker": "LADBROKES",
       "bmWinOdds": "66/1",
       "bmWin": 67.00,
       "bmPlace": 17.50,
-      "bfWin": 390.00,
+      "bfWin": 280.00,
       "bfPlace": 5.00,
-      "winEdge": -82.82,
+      "winEdge": -76.07,
       "placeEdge": 250.00,
-      "edge": 83.59,
+      "edge": 86.96,
       "places": 8
     },
     {
@@ -100,11 +100,24 @@
       "bmWinOdds": "45/1",
       "bmWin": 46.00,
       "bmPlace": 12.25,
-      "bfWin": 390.00,
+      "bfWin": 280.00,
       "bfPlace": 5.00,
-      "winEdge": -88.21,
+      "winEdge": -83.57,
       "placeEdge": 145.00,
-      "edge": 28.40,
+      "edge": 30.71,
+      "places": 10
+    },
+    {
+      "player": "Patrick Rodgers",
+      "bookmaker": "BOYLESPORTS",
+      "bmWinOdds": "175/1",
+      "bmWin": 176.00,
+      "bmPlace": 36.00,
+      "bfWin": 690.00,
+      "bfPlace": 16.00,
+      "winEdge": -74.49,
+      "placeEdge": 125.00,
+      "edge": 25.25,
       "places": 10
     },
     {
@@ -126,11 +139,11 @@
       "bmWinOdds": "50/1",
       "bmWin": 51.00,
       "bmPlace": 11.00,
-      "bfWin": 390.00,
+      "bfWin": 280.00,
       "bfPlace": 5.00,
-      "winEdge": -86.92,
+      "winEdge": -81.79,
       "placeEdge": 120.00,
-      "edge": 16.54,
+      "edge": 19.11,
       "places": 10
     },
     {
@@ -147,16 +160,16 @@
       "places": 10
     },
     {
-      "player": "Patrick Rodgers",
-      "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "150/1",
-      "bmWin": 151.00,
-      "bmPlace": 31.00,
-      "bfWin": 690.00,
-      "bfPlace": 16.00,
-      "winEdge": -78.12,
-      "placeEdge": 93.75,
-      "edge": 7.82,
+      "player": "Viktor Hovland",
+      "bookmaker": "PADDY_POWER",
+      "bmWinOdds": "28/1",
+      "bmWin": 29.00,
+      "bmPlace": 8.00,
+      "bfWin": 50.00,
+      "bfPlace": 5.40,
+      "winEdge": -42.00,
+      "placeEdge": 48.15,
+      "edge": 3.07,
       "places": 10
     },
     {
@@ -171,19 +184,6 @@
       "placeEdge": 79.17,
       "edge": -2.44,
       "places": 8
-    },
-    {
-      "player": "Viktor Hovland",
-      "bookmaker": "PADDY_POWER",
-      "bmWinOdds": "25/1",
-      "bmWin": 26.00,
-      "bmPlace": 7.25,
-      "bfWin": 50.00,
-      "bfPlace": 5.40,
-      "winEdge": -48.00,
-      "placeEdge": 34.26,
-      "edge": -6.87,
-      "places": 10
     },
     {
       "player": "Viktor Hovland",
@@ -331,14 +331,14 @@
     {
       "player": "Taylor Pendrith",
       "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "40/1",
-      "bmWin": 41.00,
-      "bmPlace": 9.00,
+      "bmWinOdds": "45/1",
+      "bmWin": 46.00,
+      "bmPlace": 10.00,
       "bfWin": 790.00,
       "bfPlace": 8.60,
-      "winEdge": -94.81,
-      "placeEdge": 4.65,
-      "edge": -45.08,
+      "winEdge": -94.18,
+      "placeEdge": 16.28,
+      "edge": -38.95,
       "places": 10
     }
   ]
