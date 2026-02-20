@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-20 11:01:31 GMT",
+  "timestamp": "2026-02-20 11:16:38 GMT",
   "eventName": "2026 Genesis",
   "bookmakers": ["BOYLESPORTS", "LADBROKES", "PADDY_POWER"],
   "opportunities": [
@@ -56,6 +56,19 @@
       "places": 8
     },
     {
+      "player": "Chris Gotterup",
+      "bookmaker": "BOYLESPORTS",
+      "bmWinOdds": "55/1",
+      "bmWin": 56.00,
+      "bmPlace": 12.00,
+      "bfWin": 85.00,
+      "bfPlace": 5.00,
+      "winEdge": -34.12,
+      "placeEdge": 140.00,
+      "edge": 52.94,
+      "places": 10
+    },
+    {
       "player": "Patrick Cantlay",
       "bookmaker": "PADDY_POWER",
       "bmWinOdds": "45/1",
@@ -66,19 +79,6 @@
       "winEdge": -45.88,
       "placeEdge": 145.00,
       "edge": 49.56,
-      "places": 10
-    },
-    {
-      "player": "Chris Gotterup",
-      "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "50/1",
-      "bmWin": 51.00,
-      "bmPlace": 11.00,
-      "bfWin": 85.00,
-      "bfPlace": 5.00,
-      "winEdge": -40.00,
-      "placeEdge": 120.00,
-      "edge": 40.00,
       "places": 10
     },
     {
@@ -173,19 +173,6 @@
       "places": 8
     },
     {
-      "player": "Viktor Hovland",
-      "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "28/1",
-      "bmWin": 29.00,
-      "bmPlace": 6.60,
-      "bfWin": 36.00,
-      "bfPlace": 5.40,
-      "winEdge": -19.44,
-      "placeEdge": 22.22,
-      "edge": 1.39,
-      "places": 10
-    },
-    {
       "player": "Taylor Pendrith",
       "bookmaker": "LADBROKES",
       "bmWinOdds": "50/1",
@@ -197,6 +184,19 @@
       "placeEdge": 56.98,
       "edge": -0.26,
       "places": 8
+    },
+    {
+      "player": "Viktor Hovland",
+      "bookmaker": "BOYLESPORTS",
+      "bmWinOdds": "25/1",
+      "bmWin": 26.00,
+      "bmPlace": 6.00,
+      "bfWin": 36.00,
+      "bfPlace": 5.40,
+      "winEdge": -27.78,
+      "placeEdge": 11.11,
+      "edge": -8.33,
+      "places": 10
     },
     {
       "player": "Tony Finau",
@@ -251,19 +251,6 @@
       "places": 8
     },
     {
-      "player": "Taylor Pendrith",
-      "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "45/1",
-      "bmWin": 46.00,
-      "bmPlace": 10.00,
-      "bfWin": 120.00,
-      "bfPlace": 8.60,
-      "winEdge": -61.67,
-      "placeEdge": 16.28,
-      "edge": -22.69,
-      "places": 10
-    },
-    {
       "player": "Rory McIlroy",
       "bookmaker": "PADDY_POWER",
       "bmWinOdds": "3/1",
@@ -300,6 +287,19 @@
       "winEdge": -32.00,
       "placeEdge": -23.64,
       "edge": -27.82,
+      "places": 10
+    },
+    {
+      "player": "Taylor Pendrith",
+      "bookmaker": "BOYLESPORTS",
+      "bmWinOdds": "40/1",
+      "bmWin": 41.00,
+      "bmPlace": 9.00,
+      "bfWin": 120.00,
+      "bfPlace": 8.60,
+      "winEdge": -65.83,
+      "placeEdge": 4.65,
+      "edge": -30.59,
       "places": 10
     }
   ]
