@@ -1,9 +1,17 @@
 {
-  "timestamp": "2026-02-22 17:32:03 GMT",
+  "timestamp": "2026-02-22 17:47:18 GMT",
   "eventName": "2026 Genesis",
   "mode": "WIN",
   "bookmakers": ["BOYLESPORTS"],
   "opportunities": [
+    {
+      "player": "Scottie Scheffler",
+      "bookmaker": "BOYLESPORTS",
+      "bmWinOdds": "125/1",
+      "bmWin": 126.00,
+      "bfWin": 1000.00,
+      "edge": -87.40
+    },
     {
       "player": "Xander Schauffele",
       "bookmaker": "BOYLESPORTS",
@@ -13,20 +21,12 @@
       "edge": -88.13
     },
     {
-      "player": "Scottie Scheffler",
-      "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "80/1",
-      "bmWin": 81.00,
-      "bfWin": 750.00,
-      "edge": -89.20
-    },
-    {
       "player": "Aaron Rai",
       "bookmaker": "BOYLESPORTS",
       "bmWinOdds": "10/1",
       "bmWin": 11.00,
-      "bfWin": 110.00,
-      "edge": -90.00
+      "bfWin": 130.00,
+      "edge": -91.54
     },
     {
       "player": "Kurt Kitayama",
@@ -49,8 +49,8 @@
       "bookmaker": "BOYLESPORTS",
       "bmWinOdds": "4/5",
       "bmWin": 1.80,
-      "bfWin": 36.00,
-      "edge": -95.00
+      "bfWin": 38.00,
+      "edge": -95.26
     },
     {
       "player": "Marco Penge",
