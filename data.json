@@ -1,24 +1,32 @@
 {
-  "timestamp": "2026-02-22 20:17:28 GMT",
+  "timestamp": "2026-02-22 20:32:05 GMT",
   "eventName": "2026 Genesis",
   "mode": "WIN",
   "bookmakers": ["BOYLESPORTS"],
   "opportunities": [
     {
+      "player": "Jake Knapp",
+      "bookmaker": "BOYLESPORTS",
+      "bmWinOdds": "28/1",
+      "bmWin": 29.00,
+      "bfWin": 1000.00,
+      "edge": -97.10
+    },
+    {
       "player": "Aldrich Potgieter",
       "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "11/2",
-      "bmWin": 6.50,
-      "bfWin": 44.00,
-      "edge": -85.23
+      "bmWinOdds": "9/2",
+      "bmWin": 5.50,
+      "bfWin": 1000.00,
+      "edge": -99.45
     },
     {
       "player": "Kurt Kitayama",
       "bookmaker": "BOYLESPORTS",
-      "bmWinOdds": "21/20",
-      "bmWin": 2.05,
-      "bfWin": 850.00,
-      "edge": -99.76
+      "bmWinOdds": "5/6",
+      "bmWin": 1.83,
+      "bfWin": 1000.00,
+      "edge": -99.82
     }
   ]
 }
