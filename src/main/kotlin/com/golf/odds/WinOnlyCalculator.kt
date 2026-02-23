@@ -102,31 +102,29 @@ fun printWinOpportunities(opportunities: List<WinArbitrageOpportunity>) {
     println("=".repeat(width))
 }
 
-fun winOpportunitiesToJson(
+fun winOpportunitiesToEventJson(
     opportunities: List<WinArbitrageOpportunity>,
-    timestamp: String,
     eventName: String
 ): String {
     val bookmakers = opportunities.map { it.bookmaker.name }.distinct().sorted()
 
     val rows = opportunities.map { opp ->
-        """    {
-      "player": "${opp.playerName.replace("\"", "\\\"")}",
-      "bookmaker": "${opp.bookmaker.name}",
-      "bmWinOdds": "${opp.bookmakerWinOdds}",
-      "bmWin": ${String.format("%.2f", opp.bookmakerWinDecimal)},
-      "bfWin": ${String.format("%.2f", opp.betfairWinLay)},
-      "edge": ${String.format("%.2f", opp.winEdge)}
-    }"""
+        """      {
+        "player": "${opp.playerName.replace("\"", "\\\"")}",
+        "bookmaker": "${opp.bookmaker.name}",
+        "bmWinOdds": "${opp.bookmakerWinOdds}",
+        "bmWin": ${String.format("%.2f", opp.bookmakerWinDecimal)},
+        "bfWin": ${String.format("%.2f", opp.betfairWinLay)},
+        "edge": ${String.format("%.2f", opp.winEdge)}
+      }"""
     }
 
-    return """{
-  "timestamp": "$timestamp",
-  "eventName": "${eventName.replace("\"", "\\\"")}",
-  "mode": "WIN",
-  "bookmakers": [${bookmakers.joinToString(", ") { "\"$it\"" }}],
-  "opportunities": [
+    return """  {
+    "eventName": "${eventName.replace("\"", "\\\"")}",
+    "mode": "WIN",
+    "bookmakers": [${bookmakers.joinToString(", ") { "\"$it\"" }}],
+    "opportunities": [
 ${rows.joinToString(",\n")}
-  ]
-}"""
+    ]
+  }"""
 }

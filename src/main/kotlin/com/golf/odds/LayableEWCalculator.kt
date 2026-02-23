@@ -246,31 +246,31 @@ fun printArbitrageOpportunities(opportunities: List<EWArbitrageOpportunity>) {
  * @param timestamp When the data was scraped
  * @return JSON string
  */
-fun opportunitiesToJson(opportunities: List<EWArbitrageOpportunity>, timestamp: String, eventName: String): String {
+fun opportunitiesToEventJson(opportunities: List<EWArbitrageOpportunity>, eventName: String): String {
     val bookmakers = opportunities.map { it.bookmaker.name }.distinct().sorted()
 
     val rows = opportunities.map { opp ->
-        """    {
-      "player": "${opp.playerName.replace("\"", "\\\"")}",
-      "bookmaker": "${opp.bookmaker.name}",
-      "bmWinOdds": "${opp.bookmakerWinOdds}",
-      "bmWin": ${String.format("%.2f", opp.bookmakerWinDecimal)},
-      "bmPlace": ${String.format("%.2f", opp.bookmakerPlaceDecimal)},
-      "bfWin": ${String.format("%.2f", opp.betfairWinLay)},
-      "bfPlace": ${String.format("%.2f", opp.betfairPlaceLay)},
-      "winEdge": ${String.format("%.2f", opp.winEdge)},
-      "placeEdge": ${String.format("%.2f", opp.placeEdge)},
-      "edge": ${String.format("%.2f", opp.edgePercent)},
-      "places": ${opp.places}
-    }"""
+        """      {
+        "player": "${opp.playerName.replace("\"", "\\\"")}",
+        "bookmaker": "${opp.bookmaker.name}",
+        "bmWinOdds": "${opp.bookmakerWinOdds}",
+        "bmWin": ${String.format("%.2f", opp.bookmakerWinDecimal)},
+        "bmPlace": ${String.format("%.2f", opp.bookmakerPlaceDecimal)},
+        "bfWin": ${String.format("%.2f", opp.betfairWinLay)},
+        "bfPlace": ${String.format("%.2f", opp.betfairPlaceLay)},
+        "winEdge": ${String.format("%.2f", opp.winEdge)},
+        "placeEdge": ${String.format("%.2f", opp.placeEdge)},
+        "edge": ${String.format("%.2f", opp.edgePercent)},
+        "places": ${opp.places}
+      }"""
     }
 
-    return """{
-  "timestamp": "$timestamp",
-  "eventName": "${eventName.replace("\"", "\\\"")}",
-  "bookmakers": [${bookmakers.joinToString(", ") { "\"$it\"" }}],
-  "opportunities": [
+    return """  {
+    "eventName": "${eventName.replace("\"", "\\\"")}",
+    "mode": "EW",
+    "bookmakers": [${bookmakers.joinToString(", ") { "\"$it\"" }}],
+    "opportunities": [
 ${rows.joinToString(",\n")}
-  ]
-}"""
+    ]
+  }"""
 }

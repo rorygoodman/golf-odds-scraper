@@ -20,11 +20,14 @@ fun main(args: Array<String>) {
     println("=".repeat(80))
 
     val config = loadConfig(configPath)
-    val allEventOdds = mutableListOf<EventOdds>()
+    val timestamp = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z"))
+    val eventJsons = mutableListOf<String>()
 
     config.events.forEach { event ->
         println("\nEvent: ${event.name}")
         println("-".repeat(40))
+
+        val allEventOdds = mutableListOf<EventOdds>()
 
         event.pages.forEach { page ->
             print("Scraping ${page.bookmaker}... ")
@@ -49,16 +52,12 @@ fun main(args: Array<String>) {
             }
         }
 
-        val timestamp = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z"))
-
         if (!event.ew) {
             // Win-only mode: just compare bookmaker win odds vs Betfair lay
             if (winnerMarketOdds != null && allEventOdds.isNotEmpty()) {
                 val opportunities = findWinOpportunities(allEventOdds, winnerMarketOdds)
                 printWinOpportunities(opportunities)
-                val json = winOpportunitiesToJson(opportunities, timestamp, event.name)
-                File("data.json").writeText(json)
-                println("\nJSON written to data.json")
+                eventJsons.add(winOpportunitiesToEventJson(opportunities, event.name))
             } else {
                 if (winnerMarketOdds == null) println("\nCannot calculate: need Betfair Winner market")
             }
@@ -92,11 +91,7 @@ fun main(args: Array<String>) {
                 val calculator = LayableEWCalculator(winnerMarketOdds, top10MarketOdds, top5MarketOdds)
                 val opportunities = calculator.findArbitrageOpportunities(allEventOdds, event.pages)
                 printArbitrageOpportunities(opportunities)
-
-                // Write JSON for web frontend
-                val json = opportunitiesToJson(opportunities, timestamp, event.name)
-                File("data.json").writeText(json)
-                println("\nJSON written to data.json")
+                eventJsons.add(opportunitiesToEventJson(opportunities, event.name))
             } else {
                 val missing = listOfNotNull(
                     if (winnerMarketOdds == null) "Winner" else null,
@@ -108,6 +103,17 @@ fun main(args: Array<String>) {
                 }
             }
         }
+    }
+
+    if (eventJsons.isNotEmpty()) {
+        val json = """{
+  "timestamp": "$timestamp",
+  "events": [
+${eventJsons.joinToString(",\n")}
+  ]
+}"""
+        File("data.json").writeText(json)
+        println("\nJSON written to data.json")
     }
 }
 
