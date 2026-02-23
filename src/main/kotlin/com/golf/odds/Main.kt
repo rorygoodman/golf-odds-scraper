@@ -145,7 +145,7 @@ fun scrapeEvent(page: Page): EventOdds? {
             Bookmaker.LADBROKES -> LadbrokesScraper(page.url).scrape()
             Bookmaker.TEN_BET -> TenBetScraper(page.url).scrape()
             Bookmaker.BETFAIR -> null  // Betfair handled separately via betfairLink
-            Bookmaker.PADDY_POWER -> PaddyPowerScraper(page.url).scrape()
+            Bookmaker.PADDY_POWER -> PaddyPowerScraper(page.url, header = page.header).scrape()
             Bookmaker.BOYLESPORTS -> BoylesportsScraper(page.url).scrape()
             Bookmaker.SKYBET -> SkybetScraper(page.url).scrape()
         }

@@ -9,7 +9,8 @@ package com.golf.odds
 data class Page(
     val url: String,
     val bookmaker: Bookmaker,
-    val places: Int? = null
+    val places: Int? = null,
+    val header: String? = null
 )
 
 /**

@@ -16,7 +16,8 @@ import java.time.Duration
  */
 class PaddyPowerScraper(
     private val url: String,
-    private val targetPlaces: Int = 10
+    private val targetPlaces: Int = 10,
+    private val header: String? = null
 ) {
     private var driver: WebDriver? = null
 
@@ -98,9 +99,12 @@ class PaddyPowerScraper(
     }
 
     /**
-     * Finds the section matching the target number of places.
+     * Finds the target section using either a config-provided header string or
+     * the default numeric place-count pattern matching.
      *
-     * Looks for patterns like "10 Places EW 1/5" or "Outright Winner - 10 Places".
+     * When [header] is set on the scraper, searches for a section whose header
+     * text contains that string (case-insensitive), and derives E/W terms from
+     * it. Otherwise falls back to matching patterns like "10 Places EW 1/5".
      *
      * @return Pair of (section element, each-way terms), both null if not found
      */
@@ -108,92 +112,147 @@ class PaddyPowerScraper(
         try {
             val js = driver as JavascriptExecutor
 
-            @Suppress("UNCHECKED_CAST")
-            val result = js.executeScript("""
-                var targetPlaces = arguments[0];
-                var headerSelectors = [
-                    'h1', 'h2', 'h3', 'h4', 'h5',
-                    '[class*="title"]', '[class*="header"]', '[class*="label"]',
-                    'button[class*="accordion"]', 'div[class*="accordion"]'
-                ];
+            if (header != null) {
+                @Suppress("UNCHECKED_CAST")
+                val result = js.executeScript("""
+                    var headerText = arguments[0].toLowerCase();
+                    var headerSelectors = [
+                        'h1', 'h2', 'h3', 'h4', 'h5',
+                        '[class*="title"]', '[class*="header"]', '[class*="label"]',
+                        'button[class*="accordion"]', 'div[class*="accordion"]'
+                    ];
 
-                var pattern1 = /(\d+)\s*Places?\s*EW\s*(\d+\/\d+)/i;
-                var pattern2 = /(?:Outright\s+)?Winner\s*-\s*(\d+)\s*Places?/i;
-                var pattern3 = /(\d+)\s*Places?\s*Each\s*Way/i;
-                var matches = [];
+                    for (var i = 0; i < headerSelectors.length; i++) {
+                        var elements = document.querySelectorAll(headerSelectors[i]);
+                        for (var j = 0; j < elements.length; j++) {
+                            var text = elements[j].textContent || '';
+                            if (text.length > 200) continue;
+                            if (text.toLowerCase().indexOf(headerText) === -1) continue;
 
-                for (var i = 0; i < headerSelectors.length; i++) {
-                    var elements = document.querySelectorAll(headerSelectors[i]);
-                    for (var j = 0; j < elements.length; j++) {
-                        var text = elements[j].textContent || '';
-                        if (text.length > 200) continue;
+                            var placesMatch = text.match(/(\d+)\s*Places?/i);
+                            var fractionMatch = text.match(/(\d+\/\d+)/);
+                            var places = placesMatch ? parseInt(placesMatch[1]) : null;
+                            var fraction = fractionMatch ? fractionMatch[1] : '1/5';
 
-                        var match = text.match(pattern1);
-                        if (match) {
-                            matches.push({
-                                element: elements[j],
-                                places: parseInt(match[1]),
-                                fraction: match[2]
-                            });
-                            continue;
-                        }
-
-                        match = text.match(pattern2);
-                        if (match) {
-                            var ewMatch = text.match(/(\d+\/\d+)\s*(?:Odds|EW)/i);
-                            var fraction = ewMatch ? ewMatch[1] : '1/5';
-                            matches.push({
-                                element: elements[j],
-                                places: parseInt(match[1]),
-                                fraction: fraction
-                            });
-                            continue;
-                        }
-
-                        match = text.match(pattern3);
-                        if (match) {
-                            var ewMatch2 = text.match(/(\d+\/\d+)/);
-                            var fraction2 = ewMatch2 ? ewMatch2[1] : '1/5';
-                            matches.push({
-                                element: elements[j],
-                                places: parseInt(match[1]),
-                                fraction: fraction2
-                            });
-                        }
-                    }
-                }
-
-                for (var k = 0; k < matches.length; k++) {
-                    if (matches[k].places === targetPlaces) {
-                        var el = matches[k].element;
-                        var container = null;
-                        while (el && el !== document.body) {
-                            var items = el.querySelectorAll('div.outright-item, [class*="outright"]');
-                            if (items.length > 5) {
-                                container = el;
-                                break;
+                            var el = elements[j];
+                            var container = null;
+                            while (el && el !== document.body) {
+                                var items = el.querySelectorAll('div.outright-item, [class*="outright"]');
+                                if (items.length > 5) {
+                                    container = el;
+                                    break;
+                                }
+                                el = el.parentElement;
                             }
-                            el = el.parentElement;
-                        }
-                        if (container) {
-                            return {
-                                container: container,
-                                places: matches[k].places.toString(),
-                                fraction: matches[k].fraction
-                            };
+                            if (container) {
+                                return {
+                                    container: container,
+                                    places: places ? places.toString() : null,
+                                    fraction: fraction
+                                };
+                            }
                         }
                     }
+                    return null;
+                """, header)
+
+                if (result != null && result is Map<*, *>) {
+                    val container = result["container"] as? WebElement
+                    val places = (result["places"] as? String)?.toIntOrNull()
+                    val fraction = result["fraction"] as? String ?: "1/5"
+
+                    if (container != null) {
+                        return Pair(container, EachWayTerms(fraction, places ?: targetPlaces))
+                    }
                 }
-                return null;
-            """, targetPlaces)
+            } else {
+                @Suppress("UNCHECKED_CAST")
+                val result = js.executeScript("""
+                    var targetPlaces = arguments[0];
+                    var headerSelectors = [
+                        'h1', 'h2', 'h3', 'h4', 'h5',
+                        '[class*="title"]', '[class*="header"]', '[class*="label"]',
+                        'button[class*="accordion"]', 'div[class*="accordion"]'
+                    ];
 
-            if (result != null && result is Map<*, *>) {
-                val container = result["container"] as? WebElement
-                val places = (result["places"] as? String)?.toIntOrNull()
-                val fraction = result["fraction"] as? String
+                    var pattern1 = /(\d+)\s*Places?\s*EW\s*(\d+\/\d+)/i;
+                    var pattern2 = /(?:Outright\s+)?Winner\s*-\s*(\d+)\s*Places?/i;
+                    var pattern3 = /(\d+)\s*Places?\s*Each\s*Way/i;
+                    var matches = [];
 
-                if (container != null && places != null && fraction != null) {
-                    return Pair(container, EachWayTerms(fraction, places))
+                    for (var i = 0; i < headerSelectors.length; i++) {
+                        var elements = document.querySelectorAll(headerSelectors[i]);
+                        for (var j = 0; j < elements.length; j++) {
+                            var text = elements[j].textContent || '';
+                            if (text.length > 200) continue;
+
+                            var match = text.match(pattern1);
+                            if (match) {
+                                matches.push({
+                                    element: elements[j],
+                                    places: parseInt(match[1]),
+                                    fraction: match[2]
+                                });
+                                continue;
+                            }
+
+                            match = text.match(pattern2);
+                            if (match) {
+                                var ewMatch = text.match(/(\d+\/\d+)\s*(?:Odds|EW)/i);
+                                var fraction = ewMatch ? ewMatch[1] : '1/5';
+                                matches.push({
+                                    element: elements[j],
+                                    places: parseInt(match[1]),
+                                    fraction: fraction
+                                });
+                                continue;
+                            }
+
+                            match = text.match(pattern3);
+                            if (match) {
+                                var ewMatch2 = text.match(/(\d+\/\d+)/);
+                                var fraction2 = ewMatch2 ? ewMatch2[1] : '1/5';
+                                matches.push({
+                                    element: elements[j],
+                                    places: parseInt(match[1]),
+                                    fraction: fraction2
+                                });
+                            }
+                        }
+                    }
+
+                    for (var k = 0; k < matches.length; k++) {
+                        if (matches[k].places === targetPlaces) {
+                            var el = matches[k].element;
+                            var container = null;
+                            while (el && el !== document.body) {
+                                var items = el.querySelectorAll('div.outright-item, [class*="outright"]');
+                                if (items.length > 5) {
+                                    container = el;
+                                    break;
+                                }
+                                el = el.parentElement;
+                            }
+                            if (container) {
+                                return {
+                                    container: container,
+                                    places: matches[k].places.toString(),
+                                    fraction: matches[k].fraction
+                                };
+                            }
+                        }
+                    }
+                    return null;
+                """, targetPlaces)
+
+                if (result != null && result is Map<*, *>) {
+                    val container = result["container"] as? WebElement
+                    val places = (result["places"] as? String)?.toIntOrNull()
+                    val fraction = result["fraction"] as? String
+
+                    if (container != null && places != null && fraction != null) {
+                        return Pair(container, EachWayTerms(fraction, places))
+                    }
                 }
             }
         } catch (e: Exception) {

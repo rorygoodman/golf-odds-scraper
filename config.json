@@ -1,17 +1,23 @@
 {
   "events": [
     {
-      "name": "2026 Genesis",
-      "betfairLink": "https://www.betfair.com/exchange/plus/golf/market/1.254137752",
-      "ew": false,
+      "name": "PGA Cognizant Classic 2026",
+      "betfairLink": "https://www.betfair.com/exchange/plus/golf/market/1.254423600",
+      "betfairTop5Link": "https://www.betfair.com/exchange/plus/golf/market/1.254444902",
+      "betfairTop10Link": "https://www.betfair.com/exchange/plus/golf/market/1.254423602",
+      "ew": true,
       "pages": [
         {
-          "url": "https://www.paddypower.com/golf/pga-the-genesis-invitational-2026",
-          "bookmaker": "PADDY_POWER"
+          "url": "https://www.paddypower.com/golf/pga-cognizant-classic-2026",
+          "bookmaker": "PADDY_POWER",
+          "header": "Winner - 8 Places Each Way",
+          "places": 8
         },
         {
-          "url": "https://www.boylesports.com/sports/golf/the-genesis-invitational",
-          "bookmaker": "BOYLESPORTS"
+          "url": "https://www.paddypower.com/golf/pga-cognizant-classic-2026",
+          "bookmaker": "PADDY_POWER",
+          "header": "Winner - 12 Places Each Way",
+          "places": 12
         }
       ]
     }
