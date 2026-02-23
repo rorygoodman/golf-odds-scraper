@@ -107,6 +107,9 @@
       <select id="bookmaker-select">
         <option value="ALL">All Bookmakers</option>
       </select>
+      <select id="places-select">
+        <option value="ALL">All Places</option>
+      </select>
       <div class="stats">
         Showing <span id="showing-count">0</span> players |
         <span class="profitable-count" id="profitable-count">0</span> profitable
@@ -162,7 +165,22 @@
           select.appendChild(option);
         });
 
-        renderTable('ALL');
+        // Populate places dropdown
+        const placesSelect = document.getElementById('places-select');
+        const distinctPlaces = [...new Set(allData.map(r => r.places).filter(p => p != null))].sort((a, b) => a - b);
+        if (distinctPlaces.length > 1) {
+          distinctPlaces.forEach(p => {
+            const option = document.createElement('option');
+            option.value = p;
+            option.textContent = p + ' Places';
+            placesSelect.appendChild(option);
+          });
+          placesSelect.style.display = '';
+        } else {
+          placesSelect.style.display = 'none';
+        }
+
+        renderTable('ALL', 'ALL');
       } catch (error) {
         document.getElementById('table-container').innerHTML =
           '<div class="no-data">Failed to load data. Please try again later.</div>';
@@ -170,11 +188,15 @@
       }
     }
 
-    function renderTable(selectedBookmaker) {
+    function renderTable(selectedBookmaker, selectedPlaces) {
       let filtered = allData;
 
       if (selectedBookmaker !== 'ALL') {
-        filtered = allData.filter(row => row.bookmaker === selectedBookmaker);
+        filtered = filtered.filter(row => row.bookmaker === selectedBookmaker);
+      }
+
+      if (selectedPlaces !== 'ALL') {
+        filtered = filtered.filter(row => row.places == selectedPlaces);
       }
 
       // Sort by edge descending
@@ -195,6 +217,13 @@
       } else {
         renderEWTable(filtered, selectedBookmaker);
       }
+    }
+
+    function getSelections() {
+      return {
+        bookmaker: document.getElementById('bookmaker-select').value,
+        places: document.getElementById('places-select').value
+      };
     }
 
     function renderWinTable(filtered, selectedBookmaker) {
@@ -276,8 +305,14 @@
     }
 
     document.getElementById('bookmaker-select').addEventListener('change', (e) => {
-      renderTable(e.target.value);
+      const { places } = getSelections();
+      renderTable(e.target.value, places);
       updateTheme(e.target.value);
+    });
+
+    document.getElementById('places-select').addEventListener('change', () => {
+      const { bookmaker, places } = getSelections();
+      renderTable(bookmaker, places);
     });
 
     loadData();

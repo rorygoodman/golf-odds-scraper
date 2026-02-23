@@ -120,9 +120,9 @@ class LayableEWCalculator(
                 else -> return@eventLoop
             }
 
-            // Determine places: config > scraped E/W terms > default 10
-            val places = placesByUrl[event.url]
-                ?: event.eachWayTerms?.numberOfPlaces
+            // Determine places: scraped E/W terms > config > default 10
+            val places = event.eachWayTerms?.numberOfPlaces
+                ?: placesByUrl[event.url]
                 ?: 10
 
             event.players.forEach playerLoop@{ player ->
