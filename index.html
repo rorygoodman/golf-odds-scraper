@@ -66,7 +66,13 @@
       position: sticky;
       top: 0;
       transition: color 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
     }
+    th:hover { opacity: 0.8; }
+    th .sort-indicator { margin-left: 4px; opacity: 0.4; font-size: 0.8em; }
+    th.sorted .sort-indicator { opacity: 1; }
     th:first-child, td:first-child { text-align: left; }
     tr:hover { background: #1f1f3a; }
     tr:last-child td { border-bottom: none; }
@@ -125,6 +131,32 @@
     let allData = [];
     let bookmakers = [];
     let dataMode = 'EW';
+    let sortCol = 'edge';
+    let sortDir = -1; // -1 = descending, 1 = ascending
+
+    function sortData(data) {
+      return [...data].sort((a, b) => {
+        const av = a[sortCol], bv = b[sortCol];
+        if (typeof av === 'string') return sortDir * av.localeCompare(bv);
+        return sortDir * (av - bv);
+      });
+    }
+
+    function attachSortHandlers() {
+      document.querySelectorAll('th[data-col]').forEach(th => {
+        th.addEventListener('click', () => {
+          const col = th.dataset.col;
+          if (sortCol === col) {
+            sortDir *= -1;
+          } else {
+            sortCol = col;
+            sortDir = typeof allData[0]?.[col] === 'string' ? 1 : -1;
+          }
+          const { bookmaker, places } = getSelections();
+          renderTable(bookmaker, places);
+        });
+      });
+    }
 
     const brandColors = {
       'ALL': { bg: '#2a2a2a', accent: '#888888' },
@@ -199,8 +231,7 @@
         filtered = filtered.filter(row => row.places == selectedPlaces);
       }
 
-      // Sort by edge descending
-      filtered.sort((a, b) => b.edge - a.edge);
+      filtered = sortData(filtered);
 
       const profitable = filtered.filter(row => row.edge > 0).length;
       document.getElementById('showing-count').textContent = filtered.length;
@@ -226,16 +257,22 @@
       };
     }
 
+    function thHtml(label, col) {
+      const active = sortCol === col;
+      const indicator = active ? (sortDir === 1 ? '↑' : '↓') : '↕';
+      return `<th data-col="${col}" class="${active ? 'sorted' : ''}">${label}<span class="sort-indicator">${indicator}</span></th>`;
+    }
+
     function renderWinTable(filtered, selectedBookmaker) {
       let html = `
         <table>
           <thead>
             <tr>
-              <th>Player</th>
-              ${selectedBookmaker === 'ALL' ? '<th>Book</th>' : ''}
-              <th>BM Win</th>
-              <th>BF Win</th>
-              <th>Edge %</th>
+              ${thHtml('Player', 'player')}
+              ${selectedBookmaker === 'ALL' ? thHtml('Book', 'bookmaker') : ''}
+              ${thHtml('BM Win', 'bmWin')}
+              ${thHtml('BF Win', 'bfWin')}
+              ${thHtml('Edge %', 'edge')}
             </tr>
           </thead>
           <tbody>
@@ -257,6 +294,7 @@
 
       html += '</tbody></table>';
       document.getElementById('table-container').innerHTML = html;
+      attachSortHandlers();
     }
 
     function renderEWTable(filtered, selectedBookmaker) {
@@ -264,16 +302,16 @@
         <table>
           <thead>
             <tr>
-              <th>Player</th>
-              ${selectedBookmaker === 'ALL' ? '<th>Book</th>' : ''}
-              <th>BM Win</th>
-              <th>BF Win</th>
-              <th>Win %</th>
-              <th>BM Plc</th>
-              <th>BF Plc</th>
-              <th>Plc</th>
-              <th>Plc %</th>
-              <th>Edge %</th>
+              ${thHtml('Player', 'player')}
+              ${selectedBookmaker === 'ALL' ? thHtml('Book', 'bookmaker') : ''}
+              ${thHtml('BM Win', 'bmWin')}
+              ${thHtml('BF Win', 'bfWin')}
+              ${thHtml('Win %', 'winEdge')}
+              ${thHtml('BM Plc', 'bmPlace')}
+              ${thHtml('BF Plc', 'bfPlace')}
+              ${thHtml('Plc', 'places')}
+              ${thHtml('Plc %', 'placeEdge')}
+              ${thHtml('Edge %', 'edge')}
             </tr>
           </thead>
           <tbody>
@@ -302,6 +340,7 @@
 
       html += '</tbody></table>';
       document.getElementById('table-container').innerHTML = html;
+      attachSortHandlers();
     }
 
     document.getElementById('bookmaker-select').addEventListener('change', (e) => {
