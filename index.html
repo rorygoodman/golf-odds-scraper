@@ -97,6 +97,24 @@
       background: #16213e;
       border-radius: 8px;
     }
+    .tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .tab {
+      background: #16213e;
+      color: #888;
+      border: 2px solid #333;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .tab:hover { color: #eee; }
+    .tab.active { color: #fff; border-color: #888888; }
     @media (max-width: 768px) {
       th, td { padding: 8px 6px; font-size: 0.85em; }
       .player-name { max-width: 120px; }
@@ -106,8 +124,9 @@
 <body>
   <div class="container">
     <h1>Gambletron 2000</h1>
-    <div class="timestamp" id="event-name"></div>
     <div class="timestamp" id="timestamp">Loading...</div>
+
+    <div class="tabs" id="event-tabs" style="display:none"></div>
 
     <div class="controls">
       <select id="bookmaker-select">
@@ -128,6 +147,8 @@
   </div>
 
   <script>
+    let eventsData = [];
+    let selectedEventIdx = 0;
     let allData = [];
     let bookmakers = [];
     let dataMode = 'EW';
@@ -171,7 +192,49 @@
       document.body.style.background = colors.bg;
       document.querySelector('h1').style.color = colors.accent;
       document.querySelectorAll('th').forEach(th => th.style.color = colors.accent);
-      document.querySelector('select').style.borderColor = colors.accent;
+      document.querySelectorAll('select').forEach(s => s.style.borderColor = colors.accent);
+      document.querySelectorAll('.tab.active').forEach(t => t.style.borderColor = colors.accent);
+    }
+
+    function initEvent(idx) {
+      selectedEventIdx = idx;
+      const event = eventsData[idx];
+      allData = event.opportunities || [];
+      bookmakers = event.bookmakers || [];
+      dataMode = event.mode || 'EW';
+
+      // Update active tab
+      document.querySelectorAll('.tab').forEach((t, i) => {
+        t.classList.toggle('active', i === idx);
+      });
+
+      // Repopulate bookmaker dropdown
+      const bmSelect = document.getElementById('bookmaker-select');
+      bmSelect.innerHTML = '<option value="ALL">All Bookmakers</option>';
+      bookmakers.forEach(bm => {
+        const option = document.createElement('option');
+        option.value = bm;
+        option.textContent = bm.replace('_', ' ');
+        bmSelect.appendChild(option);
+      });
+
+      // Repopulate places dropdown
+      const placesSelect = document.getElementById('places-select');
+      placesSelect.innerHTML = '<option value="ALL">All Places</option>';
+      const distinctPlaces = [...new Set(allData.map(r => r.places).filter(p => p != null))].sort((a, b) => a - b);
+      if (distinctPlaces.length > 1) {
+        distinctPlaces.forEach(p => {
+          const option = document.createElement('option');
+          option.value = p;
+          option.textContent = p + ' Places';
+          placesSelect.appendChild(option);
+        });
+        placesSelect.style.display = '';
+      } else {
+        placesSelect.style.display = 'none';
+      }
+
+      renderTable('ALL', 'ALL');
     }
 
     async function loadData() {
@@ -179,40 +242,27 @@
         const response = await fetch('data.json');
         const data = await response.json();
 
-        allData = data.opportunities;
-        bookmakers = data.bookmakers;
-        dataMode = data.mode || 'EW';
-
-        if (data.eventName) {
-          document.getElementById('event-name').textContent = data.eventName;
-        }
         document.getElementById('timestamp').textContent = 'Last updated: ' + data.timestamp;
 
-        // Populate bookmaker dropdown
-        const select = document.getElementById('bookmaker-select');
-        bookmakers.forEach(bm => {
-          const option = document.createElement('option');
-          option.value = bm;
-          option.textContent = bm.replace('_', ' ');
-          select.appendChild(option);
-        });
+        eventsData = data.events || [];
 
-        // Populate places dropdown
-        const placesSelect = document.getElementById('places-select');
-        const distinctPlaces = [...new Set(allData.map(r => r.places).filter(p => p != null))].sort((a, b) => a - b);
-        if (distinctPlaces.length > 1) {
-          distinctPlaces.forEach(p => {
-            const option = document.createElement('option');
-            option.value = p;
-            option.textContent = p + ' Places';
-            placesSelect.appendChild(option);
+        // Build event tabs
+        const tabsEl = document.getElementById('event-tabs');
+        if (eventsData.length > 1) {
+          tabsEl.style.display = '';
+          tabsEl.innerHTML = '';
+          eventsData.forEach((ev, i) => {
+            const tab = document.createElement('button');
+            tab.className = 'tab' + (i === 0 ? ' active' : '');
+            tab.textContent = ev.eventName;
+            tab.addEventListener('click', () => initEvent(i));
+            tabsEl.appendChild(tab);
           });
-          placesSelect.style.display = '';
         } else {
-          placesSelect.style.display = 'none';
+          tabsEl.style.display = 'none';
         }
 
-        renderTable('ALL', 'ALL');
+        initEvent(0);
       } catch (error) {
         document.getElementById('table-container').innerHTML =
           '<div class="no-data">Failed to load data. Please try again later.</div>';
