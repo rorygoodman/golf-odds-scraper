@@ -16,7 +16,7 @@ import java.time.Duration
  */
 class PaddyPowerScraper(
     private val url: String,
-    private val targetPlaces: Int = 10,
+    private val places: Int? = null,
     private val header: String? = null
 ) {
     private var driver: WebDriver? = null
@@ -36,26 +36,25 @@ class PaddyPowerScraper(
             waitForPageLoad()
 
             val eventName = extractEventName()
-            val (sectionElement, eachWayTerms) = findTargetSection()
+            val sectionElement = findTargetSection()
 
             if (sectionElement != null) {
                 clickShowMoreInSection(sectionElement)
-                val players = extractPlayerOddsFromSection(sectionElement, eachWayTerms)
+                val players = extractPlayerOddsFromSection(sectionElement)
                 return EventOdds(
                     eventName = eventName,
                     url = url,
                     players = players,
-                    eachWayTerms = eachWayTerms
+                    places = places
                 )
             } else {
                 clickShowMore()
-                val fallbackEwTerms = extractEachWayTerms()
-                val players = extractPlayerOdds(fallbackEwTerms)
+                val players = extractPlayerOdds()
                 return EventOdds(
                     eventName = eventName,
                     url = url,
                     players = players,
-                    eachWayTerms = fallbackEwTerms
+                    places = places
                 )
             }
         } finally {
@@ -108,12 +107,11 @@ class PaddyPowerScraper(
      *
      * @return Pair of (section element, each-way terms), both null if not found
      */
-    private fun findTargetSection(): Pair<WebElement?, EachWayTerms?> {
+    private fun findTargetSection(): WebElement? {
         try {
             val js = driver as JavascriptExecutor
 
             if (header != null) {
-                @Suppress("UNCHECKED_CAST")
                 val result = js.executeScript("""
                     var headerText = arguments[0].toLowerCase();
                     var headerSelectors = [
@@ -129,44 +127,22 @@ class PaddyPowerScraper(
                             if (text.length > 200) continue;
                             if (text.toLowerCase().indexOf(headerText) === -1) continue;
 
-                            var placesMatch = text.match(/(\d+)\s*Places?/i);
-                            var fractionMatch = text.match(/(\d+\/\d+)/);
-                            var places = placesMatch ? parseInt(placesMatch[1]) : null;
-                            var fraction = fractionMatch ? fractionMatch[1] : '1/5';
-
                             var el = elements[j];
-                            var container = null;
                             while (el && el !== document.body) {
                                 var items = el.querySelectorAll('div.outright-item, [class*="outright"]');
                                 if (items.length > 5) {
-                                    container = el;
-                                    break;
+                                    return el;
                                 }
                                 el = el.parentElement;
-                            }
-                            if (container) {
-                                return {
-                                    container: container,
-                                    places: places ? places.toString() : null,
-                                    fraction: fraction
-                                };
                             }
                         }
                     }
                     return null;
                 """, header)
 
-                if (result != null && result is Map<*, *>) {
-                    val container = result["container"] as? WebElement
-                    val places = (result["places"] as? String)?.toIntOrNull()
-                    val fraction = result["fraction"] as? String ?: "1/5"
-
-                    if (container != null) {
-                        return Pair(container, EachWayTerms(fraction, places ?: targetPlaces))
-                    }
-                }
+                return result as? WebElement
             } else {
-                @Suppress("UNCHECKED_CAST")
+                val targetPlaces = places ?: 10
                 val result = js.executeScript("""
                     var targetPlaces = arguments[0];
                     var headerSelectors = [
@@ -175,10 +151,11 @@ class PaddyPowerScraper(
                         'button[class*="accordion"]', 'div[class*="accordion"]'
                     ];
 
-                    var pattern1 = /(\d+)\s*Places?\s*EW\s*(\d+\/\d+)/i;
-                    var pattern2 = /(?:Outright\s+)?Winner\s*-\s*(\d+)\s*Places?/i;
-                    var pattern3 = /(\d+)\s*Places?\s*Each\s*Way/i;
-                    var matches = [];
+                    var patterns = [
+                        /(?:Outright\s+)?Winner\s*-\s*(\d+)\s*Places?/i,
+                        /(\d+)\s*Places?\s*Each\s*Way/i,
+                        /(\d+)\s*Places?\s*EW/i
+                    ];
 
                     for (var i = 0; i < headerSelectors.length; i++) {
                         var elements = document.querySelectorAll(headerSelectors[i]);
@@ -186,79 +163,30 @@ class PaddyPowerScraper(
                             var text = elements[j].textContent || '';
                             if (text.length > 200) continue;
 
-                            var match = text.match(pattern1);
-                            if (match) {
-                                matches.push({
-                                    element: elements[j],
-                                    places: parseInt(match[1]),
-                                    fraction: match[2]
-                                });
-                                continue;
-                            }
-
-                            match = text.match(pattern2);
-                            if (match) {
-                                var ewMatch = text.match(/(\d+\/\d+)\s*(?:Odds|EW)/i);
-                                var fraction = ewMatch ? ewMatch[1] : '1/5';
-                                matches.push({
-                                    element: elements[j],
-                                    places: parseInt(match[1]),
-                                    fraction: fraction
-                                });
-                                continue;
-                            }
-
-                            match = text.match(pattern3);
-                            if (match) {
-                                var ewMatch2 = text.match(/(\d+\/\d+)/);
-                                var fraction2 = ewMatch2 ? ewMatch2[1] : '1/5';
-                                matches.push({
-                                    element: elements[j],
-                                    places: parseInt(match[1]),
-                                    fraction: fraction2
-                                });
-                            }
-                        }
-                    }
-
-                    for (var k = 0; k < matches.length; k++) {
-                        if (matches[k].places === targetPlaces) {
-                            var el = matches[k].element;
-                            var container = null;
-                            while (el && el !== document.body) {
-                                var items = el.querySelectorAll('div.outright-item, [class*="outright"]');
-                                if (items.length > 5) {
-                                    container = el;
-                                    break;
+                            for (var p = 0; p < patterns.length; p++) {
+                                var match = text.match(patterns[p]);
+                                if (match && parseInt(match[1]) === targetPlaces) {
+                                    var el = elements[j];
+                                    while (el && el !== document.body) {
+                                        var items = el.querySelectorAll('div.outright-item, [class*="outright"]');
+                                        if (items.length > 5) {
+                                            return el;
+                                        }
+                                        el = el.parentElement;
+                                    }
                                 }
-                                el = el.parentElement;
-                            }
-                            if (container) {
-                                return {
-                                    container: container,
-                                    places: matches[k].places.toString(),
-                                    fraction: matches[k].fraction
-                                };
                             }
                         }
                     }
                     return null;
                 """, targetPlaces)
 
-                if (result != null && result is Map<*, *>) {
-                    val container = result["container"] as? WebElement
-                    val places = (result["places"] as? String)?.toIntOrNull()
-                    val fraction = result["fraction"] as? String
-
-                    if (container != null && places != null && fraction != null) {
-                        return Pair(container, EachWayTerms(fraction, places))
-                    }
-                }
+                return result as? WebElement
             }
         } catch (e: Exception) {
             // Error finding target section
         }
-        return Pair(null, null)
+        return null
     }
 
     /**
@@ -295,10 +223,9 @@ class PaddyPowerScraper(
      * Extracts player odds from a specific section.
      *
      * @param section The section element containing player odds
-     * @param eachWayTerms Each-way terms for calculating place odds
      * @return List of PlayerOdds, deduplicated by player name
      */
-    private fun extractPlayerOddsFromSection(section: WebElement, eachWayTerms: EachWayTerms?): List<PlayerOdds> {
+    private fun extractPlayerOddsFromSection(section: WebElement): List<PlayerOdds> {
         val players = mutableListOf<PlayerOdds>()
         val excludePatterns = listOf(
             "any 2 of", "any 3 of", "both to", "all to",
@@ -350,7 +277,7 @@ class PaddyPowerScraper(
                     if (playerName.contains(" & ") || playerName.contains(" and ")) continue
 
                     val decimalOdds = parseOdds(odds) ?: continue
-                    val (placeOdds, placeDecimal) = calculatePlaceOdds(odds, eachWayTerms)
+                    val (placeOdds, placeDecimal) = calculatePlaceOdds(odds, EachWayTerms("1/5", 10))
 
                     if (placeOdds != null && placeDecimal != null) {
                         players.add(PlayerOdds(playerName, odds, decimalOdds, placeOdds, placeDecimal))
@@ -379,34 +306,11 @@ class PaddyPowerScraper(
     }
 
     /**
-     * Extracts each-way terms from the page.
-     *
-     * @return EachWayTerms if found, null otherwise
-     */
-    private fun extractEachWayTerms(): EachWayTerms? {
-        return try {
-            val ewElement = driver!!.findElement(By.cssSelector("span.label-value__value"))
-            val text = ewElement.text.trim()
-
-            val fractionRegex = Regex("""(\d+/\d+)\s*Odds""", RegexOption.IGNORE_CASE)
-            val placesRegex = Regex("""(\d+)\s*Places?""", RegexOption.IGNORE_CASE)
-
-            val fraction = fractionRegex.find(text)?.groupValues?.get(1) ?: return null
-            val places = placesRegex.find(text)?.groupValues?.get(1)?.toIntOrNull() ?: return null
-
-            EachWayTerms(fraction, places)
-        } catch (e: Exception) {
-            null
-        }
-    }
-
-    /**
      * Extracts all player odds from the page (fallback method).
      *
-     * @param eachWayTerms Each-way terms for calculating place odds
      * @return List of PlayerOdds, deduplicated by player name
      */
-    private fun extractPlayerOdds(eachWayTerms: EachWayTerms?): List<PlayerOdds> {
+    private fun extractPlayerOdds(): List<PlayerOdds> {
         val players = mutableListOf<PlayerOdds>()
 
         try {
@@ -446,7 +350,7 @@ class PaddyPowerScraper(
                     val odds = parts[1]
 
                     val decimalOdds = parseOdds(odds) ?: continue
-                    val (placeOdds, placeDecimal) = calculatePlaceOdds(odds, eachWayTerms)
+                    val (placeOdds, placeDecimal) = calculatePlaceOdds(odds, EachWayTerms("1/5", 10))
 
                     if (placeOdds != null && placeDecimal != null) {
                         players.add(PlayerOdds(playerName, odds, decimalOdds, placeOdds, placeDecimal))

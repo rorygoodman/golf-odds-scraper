@@ -12,11 +12,11 @@ import java.time.Duration
  * Scraper for extracting golf betting odds from Boylesports website.
  *
  * @property url The Boylesports event page URL to scrape
- * @property targetPlaces Number of places to target for E/W section (default 10)
+ * @property places Number of places from config (default 10 if not specified)
  */
 class BoylesportsScraper(
     private val url: String,
-    private val targetPlaces: Int = 10
+    private val places: Int? = null
 ) {
     private var driver: WebDriver? = null
 
@@ -35,29 +35,28 @@ class BoylesportsScraper(
             waitForPageLoad()
 
             val eventName = extractEventName()
-            val (sectionElement, eachWayTerms) = findTargetSection()
+            val sectionElement = findTargetSection()
 
             if (sectionElement != null) {
                 clickShowMoreInSection(sectionElement)
-                val players = extractPlayerOddsFromSection(sectionElement, eachWayTerms)
+                val players = extractPlayerOddsFromSection(sectionElement)
                 return EventOdds(
                     eventName = eventName,
                     url = url,
                     players = players,
-                    eachWayTerms = eachWayTerms
+                    places = places
                 )
             } else {
                 expandAllSections()
                 clickShowMore()
                 Thread.sleep(2000)
 
-                val fallbackEwTerms = extractEachWayTerms() ?: EachWayTerms("1/5", 10)
-                val players = extractAllPlayerOdds(fallbackEwTerms)
+                val players = extractAllPlayerOdds()
                 return EventOdds(
                     eventName = eventName,
                     url = url,
                     players = players,
-                    eachWayTerms = fallbackEwTerms
+                    places = places
                 )
             }
         } finally {
@@ -160,104 +159,45 @@ class BoylesportsScraper(
     }
 
     /**
-     * Extracts each-way terms from the page.
-     *
-     * @return EachWayTerms if found, null otherwise
-     */
-    private fun extractEachWayTerms(): EachWayTerms? {
-        return try {
-            val js = driver as JavascriptExecutor
-            val text = js.executeScript("""
-                var elements = document.querySelectorAll('*');
-                for (var i = 0; i < elements.length; i++) {
-                    var t = elements[i].textContent || '';
-                    if (t.match(/\d+\s*places?\s*ew\s*\d+\/\d+/i) || t.match(/ew.*\d+\/\d+.*\d+\s*places/i)) {
-                        return t;
-                    }
-                }
-                return null;
-            """) as? String ?: return null
-
-            val fractionRegex = Regex("""(\d+/\d+)""")
-            val placesRegex = Regex("""(\d+)\s*Places?""", RegexOption.IGNORE_CASE)
-
-            val fraction = fractionRegex.find(text)?.value ?: return null
-            val places = placesRegex.find(text)?.groupValues?.get(1)?.toIntOrNull() ?: return null
-
-            EachWayTerms(fraction, places)
-        } catch (e: Exception) {
-            null
-        }
-    }
-
-    /**
      * Finds the section matching the target number of places.
      *
-     * @return Pair of (section element, each-way terms), both null if not found
+     * @return Section WebElement if found, null otherwise
      */
-    private fun findTargetSection(): Pair<WebElement?, EachWayTerms?> {
+    private fun findTargetSection(): WebElement? {
         try {
+            val targetPlaces = places ?: 10
             val js = driver as JavascriptExecutor
 
-            @Suppress("UNCHECKED_CAST")
             val result = js.executeScript("""
                 var targetPlaces = arguments[0];
-                var pattern = /(\d+)\s*Places?\s*EW\s*(\d+\/\d+)/i;
+                var pattern = /(\d+)\s*Places?\s*EW/i;
                 var allElements = document.querySelectorAll('*');
-                var matches = [];
 
                 for (var i = 0; i < allElements.length; i++) {
                     var el = allElements[i];
                     var text = el.textContent || '';
                     if (text.length < 100) {
                         var match = text.match(pattern);
-                        if (match) {
-                            matches.push({
-                                element: el,
-                                places: parseInt(match[1]),
-                                fraction: match[2]
-                            });
-                        }
-                    }
-                }
-
-                for (var k = 0; k < matches.length; k++) {
-                    if (matches[k].places === targetPlaces) {
-                        var el = matches[k].element;
-                        var container = null;
-                        while (el && el !== document.body) {
-                            var hasOdds = el.querySelectorAll('button[class*="odds"], [class*="price"], [class*="outcome"]').length;
-                            if (hasOdds > 5) {
-                                container = el;
-                                break;
+                        if (match && parseInt(match[1]) === targetPlaces) {
+                            var container = el;
+                            while (container && container !== document.body) {
+                                var hasOdds = container.querySelectorAll('button[class*="odds"], [class*="price"], [class*="outcome"]').length;
+                                if (hasOdds > 5) {
+                                    return container;
+                                }
+                                container = container.parentElement;
                             }
-                            el = el.parentElement;
-                        }
-                        if (container) {
-                            return {
-                                container: container,
-                                places: matches[k].places.toString(),
-                                fraction: matches[k].fraction
-                            };
                         }
                     }
                 }
                 return null;
             """, targetPlaces)
 
-            if (result != null && result is Map<*, *>) {
-                val container = result["container"] as? WebElement
-                val places = (result["places"] as? String)?.toIntOrNull()
-                val fraction = result["fraction"] as? String
-
-                if (container != null && places != null && fraction != null) {
-                    return Pair(container, EachWayTerms(fraction, places))
-                }
-            }
+            return result as? WebElement
         } catch (e: Exception) {
             // Error finding target section
         }
-        return Pair(null, null)
+        return null
     }
 
     /**
@@ -298,10 +238,9 @@ class BoylesportsScraper(
      * Extracts player odds from a specific section.
      *
      * @param section The section element containing player odds
-     * @param eachWayTerms Each-way terms for calculating place odds
      * @return List of PlayerOdds, deduplicated by player name
      */
-    private fun extractPlayerOddsFromSection(section: WebElement, eachWayTerms: EachWayTerms?): List<PlayerOdds> {
+    private fun extractPlayerOddsFromSection(section: WebElement): List<PlayerOdds> {
         val players = mutableListOf<PlayerOdds>()
         val excludePatterns = listOf(
             "any 2 of", "any 3 of", "both to", "all to",
@@ -348,7 +287,7 @@ class BoylesportsScraper(
                     if (playerName.contains(" & ") || playerName.contains(" and ")) continue
 
                     val decimalOdds = parseOdds(odds) ?: continue
-                    val (placeOdds, placeDecimal) = calculatePlaceOdds(odds, eachWayTerms)
+                    val (placeOdds, placeDecimal) = calculatePlaceOdds(odds, EachWayTerms("1/5", 10))
 
                     if (placeOdds != null && placeDecimal != null) {
                         players.add(PlayerOdds(playerName, odds, decimalOdds, placeOdds, placeDecimal))
@@ -365,10 +304,9 @@ class BoylesportsScraper(
     /**
      * Extracts all player odds from the entire page (fallback method).
      *
-     * @param eachWayTerms Each-way terms for calculating place odds
      * @return List of PlayerOdds, deduplicated by player name
      */
-    private fun extractAllPlayerOdds(eachWayTerms: EachWayTerms?): List<PlayerOdds> {
+    private fun extractAllPlayerOdds(): List<PlayerOdds> {
         val players = mutableListOf<PlayerOdds>()
         val excludePatterns = listOf(
             "any 2 of", "any 3 of", "both to", "all to",
@@ -440,7 +378,7 @@ class BoylesportsScraper(
                     if (playerName.contains(" & ") || playerName.contains(" and ")) continue
 
                     val decimalOdds = parseOdds(odds) ?: continue
-                    val (placeOdds, placeDecimal) = calculatePlaceOdds(odds, eachWayTerms)
+                    val (placeOdds, placeDecimal) = calculatePlaceOdds(odds, EachWayTerms("1/5", 10))
 
                     if (placeOdds != null && placeDecimal != null) {
                         players.add(PlayerOdds(playerName, odds, decimalOdds, placeOdds, placeDecimal))

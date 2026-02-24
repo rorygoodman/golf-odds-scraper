@@ -99,14 +99,10 @@ class LayableEWCalculator(
      * @return List of EWArbitrageOpportunity sorted by edge (descending)
      */
     fun findArbitrageOpportunities(
-        bookmakerOdds: List<EventOdds>,
-        pageConfigs: List<Page> = emptyList()
+        bookmakerOdds: List<EventOdds>
     ): List<EWArbitrageOpportunity> {
         val layableEWPrices = calculateLayableEWPrices()
         val layablePriceMap = layableEWPrices.associateBy { normalizePlayerName(it.playerName) }
-
-        // Build a map from bookmaker URL to configured places
-        val placesByUrl = pageConfigs.associate { it.url to it.places }
 
         val opportunities = mutableListOf<EWArbitrageOpportunity>()
 
@@ -120,10 +116,7 @@ class LayableEWCalculator(
                 else -> return@eventLoop
             }
 
-            // Determine places: scraped E/W terms > config > default 10
-            val places = event.eachWayTerms?.numberOfPlaces
-                ?: placesByUrl[event.url]
-                ?: 10
+            val places = event.places ?: 10
 
             event.players.forEach playerLoop@{ player ->
                 val normalizedName = normalizePlayerName(player.playerName)

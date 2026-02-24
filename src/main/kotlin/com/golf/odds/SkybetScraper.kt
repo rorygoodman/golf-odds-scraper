@@ -13,7 +13,7 @@ import java.time.Duration
  *
  * @property url The Sky Bet market page URL to scrape
  */
-class SkybetScraper(private val url: String) {
+class SkybetScraper(private val url: String, private val places: Int? = null) {
     private var driver: WebDriver? = null
 
     fun scrape(): EventOdds {
@@ -24,14 +24,13 @@ class SkybetScraper(private val url: String) {
 
             val js = driver as JavascriptExecutor
             val eventName = extractEventName(js)
-            val eachWayTerms = extractEachWayTerms(js)
-            val players = extractPlayerOdds(js, eachWayTerms)
+            val players = extractPlayerOdds(js)
 
             return EventOdds(
                 eventName = eventName,
                 url = url,
                 players = players,
-                eachWayTerms = eachWayTerms
+                places = places
             )
         } finally {
             driver?.quit()
@@ -80,32 +79,7 @@ class SkybetScraper(private val url: String) {
         }
     }
 
-    private fun extractEachWayTerms(js: JavascriptExecutor): EachWayTerms? {
-        return try {
-            val text = js.executeScript("""
-                var els = document.querySelectorAll('*');
-                for (var i = 0; i < els.length; i++) {
-                    var t = els[i].textContent || '';
-                    if ((t.match(/each\s*way.*\d+\/\d+.*\d+\s*place/i) ||
-                         t.match(/\d+\/\d+.*\d+\s*place/i) ||
-                         t.match(/\d+\s*places?\s*at\s*\d+\/\d+/i)) && t.length < 100) {
-                        return t;
-                    }
-                }
-                return null;
-            """) as? String ?: return null
-
-            val fraction = Regex("""(\d+/\d+)""").find(text)?.value ?: return null
-            val places = Regex("""(\d+)\s*places?""", RegexOption.IGNORE_CASE)
-                .find(text)?.groupValues?.get(1)?.toIntOrNull() ?: return null
-
-            EachWayTerms(fraction, places)
-        } catch (e: Exception) {
-            null
-        }
-    }
-
-    private fun extractPlayerOdds(js: JavascriptExecutor, eachWayTerms: EachWayTerms?): List<PlayerOdds> {
+    private fun extractPlayerOdds(js: JavascriptExecutor): List<PlayerOdds> {
         val players = mutableListOf<PlayerOdds>()
 
         try {
@@ -168,7 +142,7 @@ class SkybetScraper(private val url: String) {
                     val odds = parts[1]
 
                     val decimalOdds = parseOdds(odds) ?: continue
-                    val (placeOdds, placeDecimal) = calculatePlaceOdds(odds, eachWayTerms ?: EachWayTerms("1/5", 10))
+                    val (placeOdds, placeDecimal) = calculatePlaceOdds(odds, EachWayTerms("1/5", 10))
 
                     if (placeOdds != null && placeDecimal != null) {
                         players.add(PlayerOdds(playerName, odds, decimalOdds, placeOdds, placeDecimal))

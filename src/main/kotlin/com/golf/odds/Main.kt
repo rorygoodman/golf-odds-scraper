@@ -89,7 +89,7 @@ fun main(args: Array<String>) {
 
             if (winnerMarketOdds != null && top5MarketOdds != null && top10MarketOdds != null && allEventOdds.isNotEmpty()) {
                 val calculator = LayableEWCalculator(winnerMarketOdds, top10MarketOdds, top5MarketOdds)
-                val opportunities = calculator.findArbitrageOpportunities(allEventOdds, event.pages)
+                val opportunities = calculator.findArbitrageOpportunities(allEventOdds)
                 printArbitrageOpportunities(opportunities)
                 eventJsons.add(opportunitiesToEventJson(opportunities, event.name))
             } else {
@@ -148,12 +148,12 @@ fun loadConfig(configPath: String): ScraperConfig {
 fun scrapeEvent(page: Page): EventOdds? {
     return try {
         when (page.bookmaker) {
-            Bookmaker.LADBROKES -> LadbrokesScraper(page.url).scrape()
-            Bookmaker.TEN_BET -> TenBetScraper(page.url).scrape()
+            Bookmaker.LADBROKES -> LadbrokesScraper(page.url, page.places).scrape()
+            Bookmaker.TEN_BET -> TenBetScraper(page.url, page.places).scrape()
             Bookmaker.BETFAIR -> null  // Betfair handled separately via betfairLink
-            Bookmaker.PADDY_POWER -> PaddyPowerScraper(page.url, header = page.header).scrape()
-            Bookmaker.BOYLESPORTS -> BoylesportsScraper(page.url).scrape()
-            Bookmaker.SKYBET -> SkybetScraper(page.url).scrape()
+            Bookmaker.PADDY_POWER -> PaddyPowerScraper(page.url, places = page.places, header = page.header).scrape()
+            Bookmaker.BOYLESPORTS -> BoylesportsScraper(page.url, page.places).scrape()
+            Bookmaker.SKYBET -> SkybetScraper(page.url, page.places).scrape()
         }
     } catch (e: Exception) {
         System.err.println("Error: ${e.message}")

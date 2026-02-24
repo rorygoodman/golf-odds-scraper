@@ -48,7 +48,7 @@ data class EventOdds(
     val eventName: String,
     val url: String,
     val players: List<PlayerOdds>,
-    val eachWayTerms: EachWayTerms?,
+    val places: Int? = null,
     val scrapedAt: String = java.time.LocalDateTime.now().toString()
 )
 
@@ -57,7 +57,7 @@ data class EventOdds(
  *
  * @property url The Ladbrokes event page URL to scrape
  */
-class LadbrokesScraper(private val url: String) {
+class LadbrokesScraper(private val url: String, private val places: Int? = null) {
     private var driver: WebDriver? = null
 
     /**
@@ -73,14 +73,13 @@ class LadbrokesScraper(private val url: String) {
             clickShowAll()
 
             val eventName = extractEventName()
-            val eachWayTerms = extractEachWayTerms()
-            val players = extractPlayerOdds(eachWayTerms)
+            val players = extractPlayerOdds()
 
             return EventOdds(
                 eventName = eventName,
                 url = url,
                 players = players,
-                eachWayTerms = eachWayTerms
+                places = places
             )
         } finally {
             driver?.quit()
@@ -170,42 +169,11 @@ class LadbrokesScraper(private val url: String) {
     }
 
     /**
-     * Extracts each-way terms from the page.
-     *
-     * @return EachWayTerms if found, null otherwise
-     */
-    private fun extractEachWayTerms(): EachWayTerms? {
-        return try {
-            val eachWayContainer = driver!!.findElement(By.cssSelector("[data-crlat='eachWayContainer']"))
-            val text = eachWayContainer.text.trim()
-
-            val fractionRegex = Regex("""(\d+/\d+)""")
-            val fractionMatch = fractionRegex.find(text)
-            val placeOdds = fractionMatch?.value ?: return null
-
-            val placesRegex = Regex("""Places?\s+([\d-]+)""", RegexOption.IGNORE_CASE)
-            val placesMatch = placesRegex.find(text)
-            val numberOfPlaces = if (placesMatch != null) {
-                placesMatch.groupValues[1].split("-").size
-            } else {
-                val altPlacesRegex = Regex("""(\d+)\s+places?""", RegexOption.IGNORE_CASE)
-                val altMatch = altPlacesRegex.find(text)
-                altMatch?.groupValues?.get(1)?.toIntOrNull() ?: return null
-            }
-
-            EachWayTerms(placeOdds, numberOfPlaces)
-        } catch (e: Exception) {
-            null
-        }
-    }
-
-    /**
      * Extracts all player odds from the page.
      *
-     * @param eachWayTerms Each-way terms for calculating place odds
      * @return List of PlayerOdds, deduplicated by player name
      */
-    private fun extractPlayerOdds(eachWayTerms: EachWayTerms?): List<PlayerOdds> {
+    private fun extractPlayerOdds(): List<PlayerOdds> {
         val players = mutableListOf<PlayerOdds>()
 
         try {
@@ -221,7 +189,7 @@ class LadbrokesScraper(private val url: String) {
 
                     if (playerName.isNotBlank() && odds.isNotBlank()) {
                         val decimalOdds = parseOdds(odds) ?: return@forEach
-                        val (placeOdds, placeDecimal) = calculatePlaceOdds(odds, eachWayTerms)
+                        val (placeOdds, placeDecimal) = calculatePlaceOdds(odds, EachWayTerms("1/5", 10))
 
                         if (placeOdds != null && placeDecimal != null) {
                             players.add(

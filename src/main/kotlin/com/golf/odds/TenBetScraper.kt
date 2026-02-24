@@ -12,7 +12,7 @@ import java.time.Duration
  *
  * @property url The 10Bet event page URL to scrape
  */
-class TenBetScraper(private val url: String) {
+class TenBetScraper(private val url: String, private val places: Int? = null) {
     private var driver: WebDriver? = null
 
     /**
@@ -28,14 +28,13 @@ class TenBetScraper(private val url: String) {
             clickShowAll()
 
             val eventName = extractEventName()
-            val eachWayTerms = extractEachWayTerms()
-            val players = extractPlayerOdds(eachWayTerms)
+            val players = extractPlayerOdds()
 
             return EventOdds(
                 eventName = eventName,
                 url = url,
                 players = players,
-                eachWayTerms = eachWayTerms
+                places = places
             )
         } finally {
             driver?.quit()
@@ -117,66 +116,11 @@ class TenBetScraper(private val url: String) {
     }
 
     /**
-     * Extracts each-way terms from the page.
-     *
-     * @return EachWayTerms if found, defaults to 1/4 odds and 5 places
-     */
-    private fun extractEachWayTerms(): EachWayTerms? {
-        return try {
-            val selectors = listOf(
-                ".ta-EachWayTerms",
-                "[class*='EachWay']",
-                "[class*='eachway']"
-            )
-
-            var eachWayElement: org.openqa.selenium.WebElement? = null
-            for (selector in selectors) {
-                try {
-                    eachWayElement = driver!!.findElement(By.cssSelector(selector))
-                    break
-                } catch (e: Exception) {
-                    continue
-                }
-            }
-
-            if (eachWayElement == null) {
-                val allElements = driver!!.findElements(By.xpath("//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'each way') or contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'e/w')]"))
-                if (allElements.isNotEmpty()) {
-                    eachWayElement = allElements.first()
-                } else {
-                    return EachWayTerms("1/4", 5)
-                }
-            }
-
-            val text = eachWayElement?.text?.trim() ?: ""
-
-            val fractionRegex = Regex("""(\d+/\d+)""")
-            val fractionMatch = fractionRegex.find(text)
-            val placeOdds = fractionMatch?.value ?: "1/4"
-
-            val placesRegex = Regex("""Places?\s+([\d-]+)""", RegexOption.IGNORE_CASE)
-            val placesMatch = placesRegex.find(text)
-            val numberOfPlaces = if (placesMatch != null) {
-                placesMatch.groupValues[1].split("-").size
-            } else {
-                val altPlacesRegex = Regex("""(\d+)\s+places?""", RegexOption.IGNORE_CASE)
-                val altMatch = altPlacesRegex.find(text)
-                altMatch?.groupValues?.get(1)?.toIntOrNull() ?: 5
-            }
-
-            EachWayTerms(placeOdds, numberOfPlaces)
-        } catch (e: Exception) {
-            EachWayTerms("1/4", 5)
-        }
-    }
-
-    /**
      * Extracts all player odds from the page.
      *
-     * @param eachWayTerms Each-way terms for calculating place odds
      * @return List of PlayerOdds
      */
-    private fun extractPlayerOdds(eachWayTerms: EachWayTerms?): List<PlayerOdds> {
+    private fun extractPlayerOdds(): List<PlayerOdds> {
         val players = mutableListOf<PlayerOdds>()
 
         try {
@@ -192,7 +136,7 @@ class TenBetScraper(private val url: String) {
 
                     if (playerName.isNotBlank() && odds.isNotBlank()) {
                         val decimalOdds = parseOdds(odds) ?: continue
-                        val (placeOdds, placeDecimal) = calculatePlaceOdds(odds, eachWayTerms)
+                        val (placeOdds, placeDecimal) = calculatePlaceOdds(odds, EachWayTerms("1/5", 10))
 
                         if (placeOdds != null && placeDecimal != null) {
                             players.add(PlayerOdds(playerName, odds, decimalOdds, placeOdds, placeDecimal))
