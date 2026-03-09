@@ -113,6 +113,7 @@ class LayableEWCalculator(
                 event.url.contains("paddypower.com") -> Bookmaker.PADDY_POWER
                 event.url.contains("boylesports.com") -> Bookmaker.BOYLESPORTS
                 event.url.contains("skybet.com") -> Bookmaker.SKYBET
+                event.url.contains("bet365.com") -> Bookmaker.BET365
                 else -> return@eventLoop
             }
 
@@ -239,8 +240,8 @@ fun printArbitrageOpportunities(opportunities: List<EWArbitrageOpportunity>) {
  * @param timestamp When the data was scraped
  * @return JSON string
  */
-fun opportunitiesToEventJson(opportunities: List<EWArbitrageOpportunity>, eventName: String): String {
-    val bookmakers = opportunities.map { it.bookmaker.name }.distinct().sorted()
+fun opportunitiesToEventJson(opportunities: List<EWArbitrageOpportunity>, eventName: String, allBookmakers: List<String> = emptyList()): String {
+    val bookmakers = (opportunities.map { it.bookmaker.name } + allBookmakers).distinct().sorted()
 
     val rows = opportunities.map { opp ->
         """      {

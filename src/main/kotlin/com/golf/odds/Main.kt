@@ -91,7 +91,8 @@ fun main(args: Array<String>) {
                 val calculator = LayableEWCalculator(winnerMarketOdds, top10MarketOdds, top5MarketOdds)
                 val opportunities = calculator.findArbitrageOpportunities(allEventOdds)
                 printArbitrageOpportunities(opportunities)
-                eventJsons.add(opportunitiesToEventJson(opportunities, event.name))
+                val scrapedBookmakers = event.pages.map { it.bookmaker.name }.distinct().sorted()
+                eventJsons.add(opportunitiesToEventJson(opportunities, event.name, scrapedBookmakers))
             } else {
                 val missing = listOfNotNull(
                     if (winnerMarketOdds == null) "Winner" else null,

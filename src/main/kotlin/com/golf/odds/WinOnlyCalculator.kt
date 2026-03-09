@@ -23,6 +23,7 @@ fun findWinOpportunities(
             event.url.contains("paddypower.com") -> Bookmaker.PADDY_POWER
             event.url.contains("boylesports.com") -> Bookmaker.BOYLESPORTS
             event.url.contains("skybet.com") -> Bookmaker.SKYBET
+            event.url.contains("bet365.com") -> Bookmaker.BET365
             else -> return@eventLoop
         }
 
