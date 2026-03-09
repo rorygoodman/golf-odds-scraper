@@ -154,6 +154,7 @@ fun scrapeEvent(page: Page): EventOdds? {
             Bookmaker.PADDY_POWER -> PaddyPowerScraper(page.url, places = page.places, header = page.header).scrape()
             Bookmaker.BOYLESPORTS -> BoylesportsScraper(page.url, page.places).scrape()
             Bookmaker.SKYBET -> SkybetScraper(page.url, page.places).scrape()
+            Bookmaker.BET365 -> Bet365Scraper(page.url, places = page.places, header = page.header).scrape()
         }
     } catch (e: Exception) {
         System.err.println("Error: ${e.message}")
