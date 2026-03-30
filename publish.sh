@@ -8,6 +8,7 @@ cd "$SCRIPT_DIR"
 
 # Ensure SSH agent is available for cron
 eval "$(ssh-agent -s)" > /dev/null 2>&1
+trap "kill $SSH_AGENT_PID 2>/dev/null" EXIT
 ssh-add ~/.ssh/id_ed25519 2>/dev/null
 
 # Pull latest changes from master
