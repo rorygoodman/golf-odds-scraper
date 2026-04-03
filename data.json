@@ -1,11 +1,50 @@
 {
-  "timestamp": "2026-04-03 07:46:23 IST",
+  "timestamp": "2026-04-03 08:01:23 IST",
   "events": [
   {
     "eventName": "Valero Texas Open",
     "mode": "EW",
     "bookmakers": ["BET365", "LADBROKES", "PADDY_POWER"],
     "opportunities": [
+      {
+        "player": "Russell Henley",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "80/1",
+        "bmWin": 81.00,
+        "bmPlace": 17.00,
+        "bfWin": 190.00,
+        "bfPlace": 3.90,
+        "winEdge": -57.37,
+        "placeEdge": 335.90,
+        "edge": 139.26,
+        "places": 10
+      },
+      {
+        "player": "Russell Henley",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "40/1",
+        "bmWin": 41.00,
+        "bmPlace": 9.00,
+        "bfWin": 190.00,
+        "bfPlace": 3.90,
+        "winEdge": -78.42,
+        "placeEdge": 130.77,
+        "edge": 26.17,
+        "places": 8
+      },
+      {
+        "player": "Russell Henley",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "40/1",
+        "bmWin": 41.00,
+        "bmPlace": 9.00,
+        "bfWin": 190.00,
+        "bfPlace": 3.90,
+        "winEdge": -78.42,
+        "placeEdge": 130.77,
+        "edge": 26.17,
+        "places": 12
+      },
       {
         "player": "Thorbjorn Olesen",
         "bookmaker": "LADBROKES",
@@ -30,6 +69,19 @@
         "winEdge": -14.89,
         "placeEdge": -26.15,
         "edge": -20.52,
+        "places": 10
+      },
+      {
+        "player": "Robert MacIntyre",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "6/1",
+        "bmWin": 7.00,
+        "bmPlace": 2.20,
+        "bfWin": 7.80,
+        "bfPlace": 4.00,
+        "winEdge": -10.26,
+        "placeEdge": -45.00,
+        "edge": -27.63,
         "places": 10
       },
       {
@@ -70,6 +122,32 @@
         "placeEdge": -42.86,
         "edge": -56.13,
         "places": 12
+      },
+      {
+        "player": "Robert MacIntyre",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "2/1",
+        "bmWin": 3.00,
+        "bmPlace": 1.40,
+        "bfWin": 7.80,
+        "bfPlace": 3.27,
+        "winEdge": -61.54,
+        "placeEdge": -57.22,
+        "edge": -59.38,
+        "places": 12
+      },
+      {
+        "player": "Robert MacIntyre",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "2/1",
+        "bmWin": 3.00,
+        "bmPlace": 1.40,
+        "bfWin": 7.80,
+        "bfPlace": 5.14,
+        "winEdge": -61.54,
+        "placeEdge": -72.78,
+        "edge": -67.16,
+        "places": 8
       }
     ]
   }
