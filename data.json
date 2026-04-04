@@ -1,37 +1,11 @@
 {
-  "timestamp": "2026-04-04 02:01:38 IST",
+  "timestamp": "2026-04-04 02:16:23 IST",
   "events": [
   {
     "eventName": "Valero Texas Open",
     "mode": "EW",
     "bookmakers": ["BET365", "LADBROKES", "PADDY_POWER"],
     "opportunities": [
-      {
-        "player": "Andrew Novak",
-        "bookmaker": "PADDY_POWER",
-        "bmWinOdds": "100/1",
-        "bmWin": 101.00,
-        "bmPlace": 21.00,
-        "bfWin": 290.00,
-        "bfPlace": 10.50,
-        "winEdge": -65.17,
-        "placeEdge": 100.00,
-        "edge": 17.41,
-        "places": 8
-      },
-      {
-        "player": "Andrew Novak",
-        "bookmaker": "PADDY_POWER",
-        "bmWinOdds": "100/1",
-        "bmWin": 101.00,
-        "bmPlace": 21.00,
-        "bfWin": 290.00,
-        "bfPlace": 10.50,
-        "winEdge": -65.17,
-        "placeEdge": 100.00,
-        "edge": 17.41,
-        "places": 12
-      },
       {
         "player": "Andrew Novak",
         "bookmaker": "LADBROKES",
@@ -64,11 +38,11 @@
         "bmWinOdds": "9/2",
         "bmWin": 5.50,
         "bmPlace": 1.90,
-        "bfWin": 6.60,
+        "bfWin": 6.80,
         "bfPlace": 3.25,
-        "winEdge": -16.67,
+        "winEdge": -19.12,
         "placeEdge": -41.54,
-        "edge": -29.10,
+        "edge": -30.33,
         "places": 10
       },
       {
@@ -109,6 +83,32 @@
         "placeEdge": -77.96,
         "edge": -45.35,
         "places": 8
+      },
+      {
+        "player": "Andrew Novak",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "20/1",
+        "bmWin": 21.00,
+        "bmPlace": 5.00,
+        "bfWin": 290.00,
+        "bfPlace": 10.50,
+        "winEdge": -92.76,
+        "placeEdge": -52.38,
+        "edge": -72.57,
+        "places": 8
+      },
+      {
+        "player": "Andrew Novak",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "20/1",
+        "bmWin": 21.00,
+        "bmPlace": 5.00,
+        "bfWin": 290.00,
+        "bfPlace": 10.50,
+        "winEdge": -92.76,
+        "placeEdge": -52.38,
+        "edge": -72.57,
+        "places": 12
       }
     ]
   }
