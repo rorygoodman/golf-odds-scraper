@@ -1,11 +1,37 @@
 {
-  "timestamp": "2026-04-04 02:16:23 IST",
+  "timestamp": "2026-04-04 02:31:23 IST",
   "events": [
   {
     "eventName": "Valero Texas Open",
     "mode": "EW",
     "bookmakers": ["BET365", "LADBROKES", "PADDY_POWER"],
     "opportunities": [
+      {
+        "player": "Andrew Novak",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "100/1",
+        "bmWin": 101.00,
+        "bmPlace": 21.00,
+        "bfWin": 290.00,
+        "bfPlace": 10.50,
+        "winEdge": -65.17,
+        "placeEdge": 100.00,
+        "edge": 17.41,
+        "places": 8
+      },
+      {
+        "player": "Andrew Novak",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "100/1",
+        "bmWin": 101.00,
+        "bmPlace": 21.00,
+        "bfWin": 290.00,
+        "bfPlace": 10.50,
+        "winEdge": -65.17,
+        "placeEdge": 100.00,
+        "edge": 17.41,
+        "places": 12
+      },
       {
         "player": "Andrew Novak",
         "bookmaker": "LADBROKES",
@@ -20,29 +46,16 @@
         "places": 10
       },
       {
-        "player": "Thorbjorn Olesen",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "25/1",
-        "bmWin": 26.00,
-        "bmPlace": 6.00,
-        "bfWin": 36.00,
-        "bfPlace": 8.00,
-        "winEdge": -27.78,
-        "placeEdge": -25.00,
-        "edge": -26.39,
-        "places": 10
-      },
-      {
         "player": "Ludvig Aberg",
         "bookmaker": "LADBROKES",
         "bmWinOdds": "9/2",
         "bmWin": 5.50,
         "bmPlace": 1.90,
-        "bfWin": 6.80,
+        "bfWin": 7.20,
         "bfPlace": 3.25,
-        "winEdge": -19.12,
+        "winEdge": -23.61,
         "placeEdge": -41.54,
-        "edge": -30.33,
+        "edge": -32.57,
         "places": 10
       },
       {
@@ -59,16 +72,29 @@
         "places": 12
       },
       {
+        "player": "Thorbjorn Olesen",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "20/1",
+        "bmWin": 21.00,
+        "bmPlace": 5.00,
+        "bfWin": 36.00,
+        "bfPlace": 8.00,
+        "winEdge": -41.67,
+        "placeEdge": -37.50,
+        "edge": -39.58,
+        "places": 10
+      },
+      {
         "player": "Robert MacIntyre",
         "bookmaker": "LADBROKES",
-        "bmWinOdds": "8/11",
-        "bmWin": 1.73,
-        "bmPlace": 1.15,
+        "bmWinOdds": "4/6",
+        "bmWin": 1.67,
+        "bmPlace": 1.13,
         "bfWin": 1.91,
         "bfPlace": 4.00,
-        "winEdge": -9.57,
-        "placeEdge": -71.36,
-        "edge": -40.47,
+        "winEdge": -12.74,
+        "placeEdge": -71.67,
+        "edge": -42.20,
         "places": 10
       },
       {
@@ -83,32 +109,6 @@
         "placeEdge": -77.96,
         "edge": -45.35,
         "places": 8
-      },
-      {
-        "player": "Andrew Novak",
-        "bookmaker": "PADDY_POWER",
-        "bmWinOdds": "20/1",
-        "bmWin": 21.00,
-        "bmPlace": 5.00,
-        "bfWin": 290.00,
-        "bfPlace": 10.50,
-        "winEdge": -92.76,
-        "placeEdge": -52.38,
-        "edge": -72.57,
-        "places": 8
-      },
-      {
-        "player": "Andrew Novak",
-        "bookmaker": "PADDY_POWER",
-        "bmWinOdds": "20/1",
-        "bmWin": 21.00,
-        "bmPlace": 5.00,
-        "bfWin": 290.00,
-        "bfPlace": 10.50,
-        "winEdge": -92.76,
-        "placeEdge": -52.38,
-        "edge": -72.57,
-        "places": 12
       }
     ]
   }
