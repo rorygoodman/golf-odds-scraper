@@ -1,43 +1,54 @@
 {
   "events": [
     {
-      "name": "Valero Texas Open",
-      "betfairLink": "https://www.betfair.com/exchange/plus/en/golf/pga-valero-texas-open-2026-betting-12793048",
-      "betfairTop5Link": "http://betfair.com/exchange/plus/golf/market/1.256051801",
-      "betfairTop10Link": "https://www.betfair.com/exchange/plus/golf/market/1.256051802",
+      "name": "Masters",
+      "betfairLink": "https://www.betfair.com/exchange/plus/en/golf/the-masters-2026-betting-12728576",
+      "betfairTop5Link": "https://www.betfair.com/exchange/plus/golf/market/1.242398608",
+      "betfairTop10Link": "https://www.betfair.com/exchange/plus/golf/market/1.242398609",
       "ew": true,
       "pages": [
         {
-          "url": "https://www.paddypower.com/golf/pga-valero-texas-open-2026",
+          "url": "https://www.paddypower.com/golf/the-masters-2026",
           "bookmaker": "PADDY_POWER",
           "header": "Winner - 8 Places Each Way",
           "places": 8
         },
         {
-          "url": "https://www.paddypower.com/golf/pga-valero-texas-open-2026",
+          "url": "https://www.paddypower.com/golf/the-masters-2026",
+          "bookmaker": "PADDY_POWER",
+          "header": "Winner - 10 Places Each Way",
+          "places": 10
+        }
+        ,{
+          "url": "https://www.paddypower.com/golf/the-masters-2026",
           "bookmaker": "PADDY_POWER",
           "header": "Winner - 12 Places Each Way",
           "places": 12
         },
         {
-          "url": "https://www.ladbrokes.com/en/sports/event/golf/golf/valero-texas-open/2026-valero-texas-open/255214246/main-markets",
+          "url": "https://www.ladbrokes.com/en/sports/event/golf/golf/us-masters/2026-us-masters/255317981/main-markets",
           "bookmaker": "LADBROKES",
           "places": 10
         },
         {
-          "url": "https://www.bet365.com/#/AC/B7/C21132924/D720/E67/F720/",
+          "url": "https://www.bet365.com/#/AC/B7/C21134607/D720/E67/F720/I0/",
           "bookmaker": "BET365",
           "header": "E/W 1/5 1-10",
           "places": 10
         },
         {
-          "url": "https://www.bet365.com/#/AC/B7/C21132924/D720/E67/F720/",
+          "url": "https://www.bet365.com/#/AC/B7/C21134607/D720/E67/F720/I0/",
           "bookmaker": "BET365",
           "header": "E/W 1/5 1-8",
           "places": 8
         },
         {
-          "url": "https://www.bet365.com/#/AC/B7/C21132924/D720/E67/F720/",
+          "url": "https://www.boylesports.com/sports/golf/masters-tournament",
+          "bookmaker": "BOYLESPORTS",
+          "places": 10
+        },
+        {
+          "url": "https://www.bet365.com/#/AC/B7/C21134607/D720/E67/F720/I0/",
           "bookmaker": "BET365",
           "header": "E/W 1/5 1-12",
           "places": 12
