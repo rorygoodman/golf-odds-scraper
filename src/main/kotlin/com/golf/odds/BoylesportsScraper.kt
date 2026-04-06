@@ -160,6 +160,7 @@ class BoylesportsScraper(
 
     /**
      * Finds the section matching the target number of places.
+     * Handles both "X Places EW" and Boylesports' "EW 1/5 1,2,...,X" formats.
      *
      * @return Section WebElement if found, null otherwise
      */
@@ -170,18 +171,33 @@ class BoylesportsScraper(
 
             val result = js.executeScript("""
                 var targetPlaces = arguments[0];
-                var pattern = /(\d+)\s*Places?\s*EW/i;
+
+                // Pattern 1: "X Places EW" or "X Place EW"
+                var pattern1 = /(\d+)\s*Places?\s*EW/i;
+
+                // Pattern 2: Boylesports "EW 1/X 1,2,3,...,N" — count comma-separated numbers
+                var pattern2 = /EW\s+\d+\/\d+\s+([\d,]+)/i;
+
                 var allElements = document.querySelectorAll('*');
 
                 for (var i = 0; i < allElements.length; i++) {
                     var el = allElements[i];
-                    var text = el.textContent || '';
-                    if (text.length < 100) {
-                        var match = text.match(pattern);
-                        if (match && parseInt(match[1]) === targetPlaces) {
+                    var text = (el.textContent || '').trim();
+                    if (text.length < 150) {
+                        var placesFound = null;
+
+                        var m1 = text.match(pattern1);
+                        if (m1) placesFound = parseInt(m1[1]);
+
+                        if (!placesFound) {
+                            var m2 = text.match(pattern2);
+                            if (m2) placesFound = m2[1].split(',').length;
+                        }
+
+                        if (placesFound === targetPlaces) {
                             var container = el;
                             while (container && container !== document.body) {
-                                var hasOdds = container.querySelectorAll('button[class*="odds"], [class*="price"], [class*="outcome"]').length;
+                                var hasOdds = container.querySelectorAll('a.odds, a[class*="addSelection"], button[class*="odds"], [class*="price"], [class*="outcome"]').length;
                                 if (hasOdds > 5) {
                                     return container;
                                 }
@@ -257,21 +273,34 @@ class BoylesportsScraper(
             val results = js.executeScript("""
                 var section = arguments[0];
                 var results = [];
-                var rows = section.querySelectorAll('[class*="outcome"], [class*="runner"], [class*="selection"], tr, li');
+                var oddsEls = section.querySelectorAll('a.odds, a[class*="addSelection"], [class*="outcome"], [class*="runner"], [class*="selection"]');
 
-                for (var i = 0; i < rows.length; i++) {
-                    var row = rows[i];
-                    var nameEl = row.querySelector('[class*="name"], [class*="runner"], [class*="participant"], span:first-child, td:first-child');
-                    var oddsEl = row.querySelector('button[class*="odds"], [class*="price"], [class*="odds"]');
+                for (var i = 0; i < oddsEls.length; i++) {
+                    var el = oddsEls[i];
+                    var odds = (el.getAttribute('data-price') || el.textContent || '').trim();
+                    if (!odds.match(/^\d+\/\d+$/)) continue;
 
-                    if (!nameEl || !oddsEl) continue;
+                    var name = el.getAttribute('data-name') || '';
 
-                    var name = nameEl.textContent.trim();
-                    var odds = oddsEl.textContent.trim();
-
-                    if (name && odds && odds.match(/^\d+\/\d+$/)) {
-                        results.push(name + '|||' + odds);
+                    if (!name) {
+                        // Walk up to find name element
+                        var parent = el.parentElement;
+                        for (var p = 0; p < 5 && parent && !name; p++) {
+                            var nameEl = parent.querySelector('[class*="player-name"], [class*="runner-name"], [class*="participant"], [class*="name"]');
+                            if (nameEl) name = nameEl.textContent.trim();
+                            parent = parent.parentElement;
+                        }
                     }
+
+                    if (!name) continue;
+
+                    // Convert "LastName, FirstName" → "FirstName LastName"
+                    if (name.indexOf(',') !== -1) {
+                        var parts = name.split(',');
+                        name = parts[1].trim() + ' ' + parts[0].trim();
+                    }
+
+                    results.push(name + '|||' + odds);
                 }
                 return results;
             """, section) as? List<String> ?: emptyList()
@@ -303,6 +332,7 @@ class BoylesportsScraper(
 
     /**
      * Extracts all player odds from the entire page (fallback method).
+     * Uses data-name attribute from odds links and handles "LastName, FirstName" format.
      *
      * @return List of PlayerOdds, deduplicated by player name
      */
@@ -326,34 +356,33 @@ class BoylesportsScraper(
 
                 for (var i = 0; i < oddsElements.length; i++) {
                     var oddsEl = oddsElements[i];
-                    var oddsText = oddsEl.innerText.trim();
 
+                    // Prefer data-price attribute, fall back to inner text
+                    var oddsText = (oddsEl.getAttribute('data-price') || oddsEl.innerText || '').trim();
                     if (!oddsText.match(/^\d+\/\d+$/)) continue;
 
-                    var parent = oddsEl.parentElement;
-                    var attempts = 0;
-                    var found = false;
+                    // Get player name from data-name attribute first
+                    var playerName = oddsEl.getAttribute('data-name') || '';
 
-                    while (parent && attempts < 10 && !found) {
-                        var children = parent.querySelectorAll('*');
-                        for (var j = 0; j < children.length; j++) {
-                            var child = children[j];
-                            if (child.contains(oddsEl) || oddsEl.contains(child)) continue;
-
-                            var childText = (child.innerText || '').trim();
-
-                            if (childText.match(/^[A-Z][a-z]+\s+[A-Z][a-z\-']+(\s+[A-Z][a-z\-']+)?$/) &&
-                                childText.length > 5 && childText.length < 35 &&
-                                !childText.match(/\d/) &&
-                                !childText.match(/show|more|view|all|odds|market/i)) {
-                                results.push(childText + '|||' + oddsText);
-                                found = true;
-                                break;
-                            }
+                    if (!playerName) {
+                        // Walk up to find a name element
+                        var parent = oddsEl.parentElement;
+                        for (var p = 0; p < 5 && parent && !playerName; p++) {
+                            var nameEl = parent.querySelector('[class*="player-name"], [class*="runner-name"], [class*="participant"]');
+                            if (nameEl) playerName = nameEl.textContent.trim();
+                            parent = parent.parentElement;
                         }
-                        parent = parent.parentElement;
-                        attempts++;
                     }
+
+                    if (!playerName) continue;
+
+                    // Convert "LastName, FirstName" → "FirstName LastName"
+                    if (playerName.indexOf(',') !== -1) {
+                        var parts = playerName.split(',');
+                        playerName = parts[1].trim() + ' ' + parts[0].trim();
+                    }
+
+                    results.push(playerName + '|||' + oddsText);
                 }
 
                 var seen = {};
