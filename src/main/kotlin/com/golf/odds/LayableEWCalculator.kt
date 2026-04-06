@@ -55,7 +55,7 @@ data class EWArbitrageOpportunity(
 class LayableEWCalculator(
     private val winnerMarket: BetfairEventOdds,
     private val top10Market: BetfairEventOdds,
-    private val top5Market: BetfairEventOdds
+    top5Market: BetfairEventOdds
 ) {
     private val placeProjector: PlaceProjector = PlaceProjector(top5Market, top10Market)
 
@@ -128,12 +128,14 @@ class LayableEWCalculator(
 
                 val bfWinLay = layablePrice.winLayPrice
 
-                // Use projected lay price for the bookmaker's number of places
-                val bfPlaceLay = if (places in 5..15) {
-                    placeProjector.projectLayPrice(player.playerName, places)
-                        ?: layablePrice.placeLayPrice
-                } else {
-                    layablePrice.placeLayPrice
+                // Use projected lay price for the bookmaker's number of places.
+                // For exact Top10/Top5, only that anchor market is needed.
+                // For interpolated counts, both anchors must be present — skip if either is missing.
+                val bfPlaceLay = when {
+                    places == 10 -> layablePrice.placeLayPrice
+                    places in 5..15 -> placeProjector.projectLayPrice(player.playerName, places)
+                        ?: return@playerLoop
+                    else -> layablePrice.placeLayPrice
                 }
 
                 val winEdge = (bmWin / bfWinLay) - 1
@@ -237,7 +239,6 @@ fun printArbitrageOpportunities(opportunities: List<EWArbitrageOpportunity>) {
  * Converts arbitrage opportunities to JSON format for the web frontend.
  *
  * @param opportunities List of arbitrage opportunities
- * @param timestamp When the data was scraped
  * @return JSON string
  */
 fun opportunitiesToEventJson(opportunities: List<EWArbitrageOpportunity>, eventName: String, allBookmakers: List<String> = emptyList()): String {

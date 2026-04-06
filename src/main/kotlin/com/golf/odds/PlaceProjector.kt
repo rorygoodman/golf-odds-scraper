@@ -9,8 +9,8 @@ package com.golf.odds
  * probabilities for any N in [5, 15].
  */
 class PlaceProjector(
-    private val top5Market: BetfairEventOdds,
-    private val top10Market: BetfairEventOdds
+    top5Market: BetfairEventOdds,
+    top10Market: BetfairEventOdds
 ) {
     private val top5Prices: Map<String, PlayerLayPrice> =
         top5Market.players.associateBy { normalizePlayerName(it.playerName) }
@@ -29,6 +29,12 @@ class PlaceProjector(
         require(places in 5..15) { "Places must be between 5 and 15, got $places" }
 
         val normalized = normalizePlayerName(playerName)
+
+        // Exact anchors — only need the single relevant market
+        if (places == 5) return top5Prices[normalized]?.price
+        if (places == 10) return top10Prices[normalized]?.price
+
+        // Interpolation/extrapolation — both anchors required
         val t5 = top5Prices[normalized]?.price ?: return null
         val t10 = top10Prices[normalized]?.price ?: return null
 
@@ -36,11 +42,10 @@ class PlaceProjector(
         val pTop10 = 1.0 / t10
         val marginalPerPlace = (pTop10 - pTop5) / 5.0
 
-        val pTopN = when {
-            places == 5 -> pTop5
-            places == 10 -> pTop10
-            places < 10 -> pTop5 + (places - 5) * marginalPerPlace
-            else -> pTop10 + (places - 10) * marginalPerPlace
+        val pTopN = if (places < 10) {
+            pTop5 + (places - 5) * marginalPerPlace
+        } else {
+            pTop10 + (places - 10) * marginalPerPlace
         }
 
         if (pTopN <= 0) return null
