@@ -115,6 +115,27 @@
     }
     .tab:hover { color: #eee; }
     .tab.active { color: #fff; border-color: #888888; }
+    .btn {
+      background: #16213e;
+      color: #888;
+      border: 2px solid #333;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: border-color 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .btn:hover { color: #eee; }
+    .btn.active { color: #fff; border-color: #888888; }
+    .new-count { color: #ffcc00 !important; }
+    td.seen-cell { text-align: center; width: 32px; padding: 12px 6px; }
+    th.seen-cell { text-align: center; width: 32px; padding: 12px 6px; cursor: default; }
+    th.seen-cell:hover { opacity: 1; }
+    input[type="checkbox"].seen-check {
+      width: 16px; height: 16px; cursor: pointer; accent-color: #888888;
+    }
+    tr.seen-row { opacity: 0.35; }
     @media (max-width: 768px) {
       th, td { padding: 8px 6px; font-size: 0.85em; }
       .player-name { max-width: 120px; }
@@ -135,9 +156,11 @@
       <select id="places-select">
         <option value="ALL">All Places</option>
       </select>
+      <button class="btn" id="hide-seen-btn">Hide Seen</button>
       <div class="stats">
-        Showing <span id="showing-count">0</span> players |
-        <span class="profitable-count" id="profitable-count">0</span> profitable
+        <span id="showing-count">0</span> players |
+        <span class="profitable-count" id="profitable-count">0</span> profitable |
+        <span class="new-count" id="new-count">0</span> new
       </div>
     </div>
 
@@ -154,6 +177,33 @@
     let dataMode = 'EW';
     let sortCol = 'edge';
     let sortDir = -1; // -1 = descending, 1 = ascending
+    let hideSeen = false;
+
+    const SEEN_KEY = 'gambletron_seen_bets';
+
+    function loadSeenBets() {
+      try { return new Set(JSON.parse(localStorage.getItem(SEEN_KEY) || '[]')); }
+      catch { return new Set(); }
+    }
+
+    function saveSeenBets(set) {
+      localStorage.setItem(SEEN_KEY, JSON.stringify([...set]));
+    }
+
+    function betKey(row) {
+      const eventName = eventsData[selectedEventIdx]?.eventName || '';
+      return `${eventName}::${row.player}::${row.bookmaker}::${row.bmWin}::${row.places}`;
+    }
+
+    function toggleSeen(key, checked) {
+      const seen = loadSeenBets();
+      if (checked) seen.add(key); else seen.delete(key);
+      saveSeenBets(seen);
+      if (hideSeen) {
+        const { bookmaker, places } = getSelections();
+        renderTable(bookmaker, places);
+      }
+    }
 
     function sortData(data) {
       return [...data].sort((a, b) => {
@@ -284,9 +334,17 @@
 
       filtered = sortData(filtered);
 
+      const seen = loadSeenBets();
       const profitable = filtered.filter(row => row.edge > 0).length;
+      const newCount = filtered.filter(row => row.edge > 0 && !seen.has(betKey(row))).length;
+
       document.getElementById('showing-count').textContent = filtered.length;
       document.getElementById('profitable-count').textContent = profitable;
+      document.getElementById('new-count').textContent = newCount;
+
+      if (hideSeen) {
+        filtered = filtered.filter(row => !seen.has(betKey(row)));
+      }
 
       if (filtered.length === 0) {
         document.getElementById('table-container').innerHTML =
@@ -295,9 +353,9 @@
       }
 
       if (dataMode === 'WIN') {
-        renderWinTable(filtered, selectedBookmaker);
+        renderWinTable(filtered, selectedBookmaker, seen);
       } else {
-        renderEWTable(filtered, selectedBookmaker);
+        renderEWTable(filtered, selectedBookmaker, seen);
       }
     }
 
@@ -314,11 +372,12 @@
       return `<th data-col="${col}" class="${active ? 'sorted' : ''}">${label}<span class="sort-indicator">${indicator}</span></th>`;
     }
 
-    function renderWinTable(filtered, selectedBookmaker) {
+    function renderWinTable(filtered, selectedBookmaker, seen) {
       let html = `
         <table>
           <thead>
             <tr>
+              <th class="seen-cell"></th>
               ${thHtml('Player', 'player')}
               ${selectedBookmaker === 'ALL' ? thHtml('Book', 'bookmaker') : ''}
               ${thHtml('BM Win', 'bmWin')}
@@ -331,9 +390,12 @@
 
       filtered.forEach(row => {
         const edgeClass = row.edge > 0 ? 'positive' : 'negative';
+        const key = betKey(row);
+        const isSeen = seen.has(key);
 
         html += `
-          <tr>
+          <tr class="${isSeen ? 'seen-row' : ''}">
+            <td class="seen-cell"><input type="checkbox" class="seen-check" data-key="${key}" ${isSeen ? 'checked' : ''}></td>
             <td class="player-name">${row.player}</td>
             ${selectedBookmaker === 'ALL' ? `<td>${row.bookmaker.replace('_', ' ')}</td>` : ''}
             <td>${row.bmWin.toFixed(2)}</td>
@@ -346,13 +408,15 @@
       html += '</tbody></table>';
       document.getElementById('table-container').innerHTML = html;
       attachSortHandlers();
+      attachSeenHandlers();
     }
 
-    function renderEWTable(filtered, selectedBookmaker) {
+    function renderEWTable(filtered, selectedBookmaker, seen) {
       let html = `
         <table>
           <thead>
             <tr>
+              <th class="seen-cell"></th>
               ${thHtml('Player', 'player')}
               ${selectedBookmaker === 'ALL' ? thHtml('Book', 'bookmaker') : ''}
               ${thHtml('BM Win', 'bmWin')}
@@ -372,9 +436,12 @@
         const edgeClass = row.edge > 0 ? 'positive' : 'negative';
         const winClass = row.winEdge > 0 ? 'positive' : 'negative';
         const placeClass = row.placeEdge > 0 ? 'positive' : 'negative';
+        const key = betKey(row);
+        const isSeen = seen.has(key);
 
         html += `
-          <tr>
+          <tr class="${isSeen ? 'seen-row' : ''}">
+            <td class="seen-cell"><input type="checkbox" class="seen-check" data-key="${key}" ${isSeen ? 'checked' : ''}></td>
             <td class="player-name">${row.player}</td>
             ${selectedBookmaker === 'ALL' ? `<td>${row.bookmaker.replace('_', ' ')}</td>` : ''}
             <td>${row.bmWin.toFixed(2)}</td>
@@ -392,7 +459,34 @@
       html += '</tbody></table>';
       document.getElementById('table-container').innerHTML = html;
       attachSortHandlers();
+      attachSeenHandlers();
     }
+
+    function attachSeenHandlers() {
+      document.querySelectorAll('.seen-check').forEach(cb => {
+        cb.addEventListener('change', (e) => {
+          e.stopPropagation();
+          toggleSeen(cb.dataset.key, cb.checked);
+          const tr = cb.closest('tr');
+          if (tr) tr.classList.toggle('seen-row', cb.checked);
+          // Update new count
+          const { bookmaker, places } = getSelections();
+          const filtered = allData
+            .filter(row => bookmaker === 'ALL' || row.bookmaker === bookmaker)
+            .filter(row => places === 'ALL' || row.places == places);
+          const seen = loadSeenBets();
+          const newCount = filtered.filter(row => row.edge > 0 && !seen.has(betKey(row))).length;
+          document.getElementById('new-count').textContent = newCount;
+        });
+      });
+    }
+
+    document.getElementById('hide-seen-btn').addEventListener('click', () => {
+      hideSeen = !hideSeen;
+      document.getElementById('hide-seen-btn').classList.toggle('active', hideSeen);
+      const { bookmaker, places } = getSelections();
+      renderTable(bookmaker, places);
+    });
 
     document.getElementById('bookmaker-select').addEventListener('change', (e) => {
       const { places } = getSelections();
