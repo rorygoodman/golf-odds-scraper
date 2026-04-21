@@ -3,12 +3,10 @@ package com.golf.odds
 /**
  * Normalizes a player name for matching across different sources.
  *
- * Removes extra whitespace and converts to lowercase to handle
- * variations in name formatting between bookmakers.
- *
- * @param name The player name to normalize
- * @return Normalized player name
+ * Strips all non-alphanumeric characters (whitespace, punctuation, dots,
+ * apostrophes, hyphens) and lowercases the result so bookmakers' stylistic
+ * differences don't prevent a match. Never use for display — only as a key.
  */
 fun normalizePlayerName(name: String): String {
-    return name.trim().replace(Regex("\\s+"), " ").lowercase()
+    return name.replace(Regex("[^\\p{L}\\p{N}]"), "").lowercase()
 }
