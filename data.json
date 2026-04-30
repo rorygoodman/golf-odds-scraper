@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-30 13:45:03 IST",
+  "timestamp": "2026-04-30 14:00:04 IST",
   "events": [
   {
     "eventName": "DPW Turkish Open",
@@ -15,6 +15,19 @@
     "bookmakers": ["BET365", "BOYLESPORTS"],
     "opportunities": [
       {
+        "player": "Maverick McNealy",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "33/1",
+        "bmWin": 34.00,
+        "bmPlace": 7.60,
+        "bfWin": 55.00,
+        "bfPlace": 5.00,
+        "winEdge": -38.18,
+        "placeEdge": 52.00,
+        "edge": 6.91,
+        "places": 10
+      },
+      {
         "player": "Min Woo Lee",
         "bookmaker": "BOYLESPORTS",
         "bmWinOdds": "22/1",
@@ -25,6 +38,32 @@
         "winEdge": -36.11,
         "placeEdge": 28.57,
         "edge": -3.77,
+        "places": 10
+      },
+      {
+        "player": "Jake Knapp",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "28/1",
+        "bmWin": 29.00,
+        "bmPlace": 6.60,
+        "bfWin": 90.00,
+        "bfPlace": 4.60,
+        "winEdge": -67.78,
+        "placeEdge": 43.48,
+        "edge": -12.15,
+        "places": 10
+      },
+      {
+        "player": "Adam Scott",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "35/1",
+        "bmWin": 36.00,
+        "bmPlace": 8.00,
+        "bfWin": 120.00,
+        "bfPlace": 5.60,
+        "winEdge": -70.00,
+        "placeEdge": 42.86,
+        "edge": -13.57,
         "places": 10
       },
       {
@@ -41,6 +80,19 @@
         "places": 10
       },
       {
+        "player": "Gary Woodland",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "50/1",
+        "bmWin": 51.00,
+        "bmPlace": 11.00,
+        "bfWin": 150.00,
+        "bfPlace": 8.20,
+        "winEdge": -66.00,
+        "placeEdge": 34.15,
+        "edge": -15.93,
+        "places": 10
+      },
+      {
         "player": "Russell Henley",
         "bookmaker": "BOYLESPORTS",
         "bmWinOdds": "28/1",
@@ -51,58 +103,6 @@
         "winEdge": -96.38,
         "placeEdge": 53.49,
         "edge": -21.44,
-        "places": 10
-      },
-      {
-        "player": "Maverick McNealy",
-        "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "33/1",
-        "bmWin": 34.00,
-        "bmPlace": 7.60,
-        "bfWin": 800.00,
-        "bfPlace": 5.00,
-        "winEdge": -95.75,
-        "placeEdge": 52.00,
-        "edge": -21.88,
-        "places": 10
-      },
-      {
-        "player": "Adam Scott",
-        "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "35/1",
-        "bmWin": 36.00,
-        "bmPlace": 8.00,
-        "bfWin": 700.00,
-        "bfPlace": 5.60,
-        "winEdge": -94.86,
-        "placeEdge": 42.86,
-        "edge": -26.00,
-        "places": 10
-      },
-      {
-        "player": "Gary Woodland",
-        "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "50/1",
-        "bmWin": 51.00,
-        "bmPlace": 11.00,
-        "bfWin": 700.00,
-        "bfPlace": 8.20,
-        "winEdge": -92.71,
-        "placeEdge": 34.15,
-        "edge": -29.28,
-        "places": 10
-      },
-      {
-        "player": "Jake Knapp",
-        "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "25/1",
-        "bmWin": 26.00,
-        "bmPlace": 6.00,
-        "bfWin": 800.00,
-        "bfPlace": 4.60,
-        "winEdge": -96.75,
-        "placeEdge": 30.43,
-        "edge": -33.16,
         "places": 10
       }
     ]
