@@ -1,55 +1,29 @@
 {
   "events": [
     {
-      "name": "PGA Byron Nelson",
-      "betfairLink": "https://www.betfair.com/exchange/plus/golf/market/1.258336304",
-      "betfairTop5Link": "https://www.betfair.com/exchange/plus/golf/market/1.258336306",
-      "betfairTop10Link": "https://www.betfair.com/exchange/plus/golf/market/1.258336305",
+      "name": "US Open",
+      "betfairLink": "https://www.betfair.com/exchange/plus/golf/market/1.245017686",
+      "betfairTop5Link": "https://www.betfair.com/exchange/plus/golf/market/1.245017687",
+      "betfairTop10Link": "https://www.betfair.com/exchange/plus/golf/market/1.245017688",
       "ew": true,
       "pages": [
         {
-          "url": "https://www.paddypower.com/golf/pga-the-cj-cup-byron-nelson-2026",
+          "url": "https://www.paddypower.com/golf/us-open-2026",
           "bookmaker": "PADDY_POWER",
           "header": "Winner - 10 Places Each Way",
           "places": 10
         },
         {
-          "url": "https://www.boylesports.com/sports/golf/the-cj-cup-byron-nelson",
-          "bookmaker": "BOYLESPORTS",
-          "places": 10
-        },
-        {
-          "url": "https://www.ladbrokes.com/en/sports/event/golf/golf/the-cj-cup-byron-nelson/2026-the-cj-cup-byron-nelson/255981204/main-markets",
-          "bookmaker": "LADBROKES",
-          "places": 10
-        }
-
-      ]
-    },
-    {
-      "name": "DPW Soudal",
-      "betfairLink": "https://www.betfair.com/exchange/plus/en/golf/dpw-tour-soudal-open-2026-betting-12803546",
-      "betfairTop5Link": "https://www.betfair.com/exchange/plus/golf/market/1.258340806",
-      "betfairTop10Link": "https://www.betfair.com/exchange/plus/golf/market/1.258340807",
-      "ew": true,
-      "pages": [
-        {
-          "url": "https://www.paddypower.com/golf/dpw-tour-soudal-open-2026",
+          "url": "https://www.paddypower.com/golf/us-open-2026",
           "bookmaker": "PADDY_POWER",
-          "header": "Winner - 10 Places Each Way",
-          "places": 10
+          "header": "Winner - 12 Places Each Way",
+          "places": 12
         },
         {
-          "url": "https://www.boylesports.com/sports/golf/soudal-open",
+          "url": "https://www.boylesports.com/sports/golf/us-open",
           "bookmaker": "BOYLESPORTS",
-          "places": 6
-        },
-        {
-          "url": "https://www.ladbrokes.com/en/sports/event/golf/golf/soudal-open/2026-soudal-open/255983050/main-markets",
-          "bookmaker": "LADBROKES",
-          "places": 7
+          "places": 12
         }
-
       ]
     }
     ]
