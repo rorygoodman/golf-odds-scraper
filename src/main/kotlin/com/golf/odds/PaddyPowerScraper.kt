@@ -120,6 +120,12 @@ class PaddyPowerScraper(
                         'button[class*="accordion"]', 'div[class*="accordion"]'
                     ];
 
+                    // Pick the narrowest matching section, not the first one found.
+                    // Generic tags like h2 can match FAQ text (e.g. "What are the odds
+                    // on X - Winner - 10 Places Each Way?") whose nearest qualifying
+                    // ancestor is the whole page, not the actual betting section.
+                    var best = null;
+                    var bestCount = Infinity;
                     for (var i = 0; i < headerSelectors.length; i++) {
                         var elements = document.querySelectorAll(headerSelectors[i]);
                         for (var j = 0; j < elements.length; j++) {
@@ -131,13 +137,17 @@ class PaddyPowerScraper(
                             while (el && el !== document.body) {
                                 var items = el.querySelectorAll('div.outright-item, [class*="outright"]');
                                 if (items.length > 5) {
-                                    return el;
+                                    if (items.length < bestCount) {
+                                        best = el;
+                                        bestCount = items.length;
+                                    }
+                                    break;
                                 }
                                 el = el.parentElement;
                             }
                         }
                     }
-                    return null;
+                    return best;
                 """, header)
 
                 return result as? WebElement
@@ -157,6 +167,12 @@ class PaddyPowerScraper(
                         /(\d+)\s*Places?\s*EW/i
                     ];
 
+                    // Pick the narrowest matching section, not the first one found.
+                    // Generic tags like h2 can match FAQ text (e.g. "What are the odds
+                    // on X - Winner - 10 Places Each Way?") whose nearest qualifying
+                    // ancestor is the whole page, not the actual betting section.
+                    var best = null;
+                    var bestCount = Infinity;
                     for (var i = 0; i < headerSelectors.length; i++) {
                         var elements = document.querySelectorAll(headerSelectors[i]);
                         for (var j = 0; j < elements.length; j++) {
@@ -170,7 +186,11 @@ class PaddyPowerScraper(
                                     while (el && el !== document.body) {
                                         var items = el.querySelectorAll('div.outright-item, [class*="outright"]');
                                         if (items.length > 5) {
-                                            return el;
+                                            if (items.length < bestCount) {
+                                                best = el;
+                                                bestCount = items.length;
+                                            }
+                                            break;
                                         }
                                         el = el.parentElement;
                                     }
@@ -178,7 +198,7 @@ class PaddyPowerScraper(
                             }
                         }
                     }
-                    return null;
+                    return best;
                 """, targetPlaces)
 
                 return result as? WebElement

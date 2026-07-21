@@ -91,7 +91,7 @@ class LadbrokesScraper(private val url: String, private val places: Int? = null)
      */
     private fun waitForPageLoad() {
         val wait = WebDriverWait(driver!!, Duration.ofSeconds(15))
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")))
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[data-crlat='oddsContent']")))
         Thread.sleep(3000)
     }
 
