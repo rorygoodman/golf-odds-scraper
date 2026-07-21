@@ -3,6 +3,7 @@ package com.golf.odds
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
+import java.io.File
 
 /**
  * Shared utility functions for odds calculation and web scraping.
@@ -29,7 +30,22 @@ fun createChromeDriver(): WebDriver {
         addArguments("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
         setExperimentalOption("excludeSwitches", listOf("enable-automation"))
         setExperimentalOption("useAutomationExtension", false)
+
+        // Selenium Manager's bundled binary can't auto-resolve a browser on Linux
+        // ARM64 (e.g. Raspberry Pi) as of Selenium 4.16.1 - it fails with a shell
+        // syntax error. Where an apt-installed Chromium is present, point straight
+        // at it and its matching chromedriver instead of relying on Selenium Manager.
+        val chromiumBinary = File("/usr/bin/chromium")
+        if (chromiumBinary.exists()) {
+            setBinary(chromiumBinary.absolutePath)
+        }
     }
+
+    val chromedriverPath = "/usr/bin/chromedriver"
+    if (File(chromedriverPath).exists()) {
+        System.setProperty("webdriver.chrome.driver", chromedriverPath)
+    }
+
     return ChromeDriver(options)
 }
 
