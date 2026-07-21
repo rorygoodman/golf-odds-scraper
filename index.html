@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="600">
+  <title>Gambletron 2000</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #2a2a2a;
+      color: #eee;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 20px;
+      min-height: 100vh;
+      transition: background 0.3s ease;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    h1 { color: #888888; margin-bottom: 8px; font-size: 1.8em; transition: color 0.3s ease; }
+    .timestamp { color: #888; margin-bottom: 20px; font-size: 0.9em; }
+    .controls {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    select {
+      background: #16213e;
+      color: #fff;
+      border: 2px solid #888888;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      min-width: 180px;
+      transition: border-color 0.3s ease;
+    }
+    select:focus { outline: none; }
+    .stats {
+      background: #16213e;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-size: 0.9em;
+      color: #888;
+    }
+    .stats span { color: #00d4ff; font-weight: bold; }
+    .profitable-count { color: #00ff88 !important; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #16213e;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 12px 10px;
+      text-align: right;
+      border-bottom: 1px solid #2a2a4a;
+    }
+    th {
+      background: #0f0f23;
+      color: #888888;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+      transition: color 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+    }
+    th:hover { opacity: 0.8; }
+    th .sort-indicator { margin-left: 4px; opacity: 0.4; font-size: 0.8em; }
+    th.sorted .sort-indicator { opacity: 1; }
+    th:first-child, td:first-child { text-align: left; }
+    tr:hover { background: #1f1f3a; }
+    tr:last-child td { border-bottom: none; }
+    .positive { color: #00ff88; font-weight: bold; }
+    .negative { color: #ff6b6b; }
+    .player-name {
+      font-weight: 500;
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #888;
+    }
+    .no-data {
+      text-align: center;
+      padding: 40px;
+      color: #888;
+      background: #16213e;
+      border-radius: 8px;
+    }
+    .tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .tab {
+      background: #16213e;
+      color: #888;
+      border: 2px solid #333;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .tab:hover { color: #eee; }
+    .tab.active { color: #fff; border-color: #888888; }
+    .btn {
+      background: #16213e;
+      color: #888;
+      border: 2px solid #333;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: border-color 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .btn:hover { color: #eee; }
+    .btn.active { color: #fff; border-color: #888888; }
+    .new-count { color: #ffcc00 !important; }
+    td.seen-cell { text-align: center; width: 32px; padding: 12px 6px; }
+    th.seen-cell { text-align: center; width: 32px; padding: 12px 6px; cursor: default; }
+    th.seen-cell:hover { opacity: 1; }
+    input[type="checkbox"].seen-check {
+      width: 16px; height: 16px; cursor: pointer; accent-color: #888888;
+    }
+    tr.seen-row { opacity: 0.35; }
+    @media (max-width: 768px) {
+      th, td { padding: 8px 6px; font-size: 0.85em; }
+      .player-name { max-width: 120px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Gambletron 2000</h1>
+    <div class="timestamp" id="timestamp">Loading...</div>
+
+    <div class="tabs" id="event-tabs" style="display:none"></div>
+
+    <div class="controls">
+      <select id="bookmaker-select">
+        <option value="ALL">All Bookmakers</option>
+      </select>
+      <select id="places-select">
+        <option value="ALL">All Places</option>
+      </select>
+      <button class="btn" id="hide-seen-btn">Hide Seen</button>
+      <div class="stats">
+        <span id="showing-count">0</span> players |
+        <span class="profitable-count" id="profitable-count">0</span> profitable |
+        <span class="new-count" id="new-count">0</span> new
+      </div>
+    </div>
+
+    <div id="table-container">
+      <div class="loading">Loading data...</div>
+    </div>
+  </div>
+
+  <script>
+    let eventsData = [];
+    let selectedEventIdx = 0;
+    let allData = [];
+    let bookmakers = [];
+    let dataMode = 'EW';
+    let sortCol = 'edge';
+    let sortDir = -1; // -1 = descending, 1 = ascending
+    let hideSeen = false;
+
+    const SEEN_KEY = 'gambletron_seen_bets';
+
+    function loadSeenBets() {
+      try { return new Set(JSON.parse(localStorage.getItem(SEEN_KEY) || '[]')); }
+      catch { return new Set(); }
+    }
+
+    function saveSeenBets(set) {
+      localStorage.setItem(SEEN_KEY, JSON.stringify([...set]));
+    }
+
+    function betKey(row) {
+      const eventName = eventsData[selectedEventIdx]?.eventName || '';
+      return `${eventName}::${row.player}::${row.bookmaker}::${row.bmWin}::${row.places}`;
+    }
+
+    function toggleSeen(key, checked) {
+      const seen = loadSeenBets();
+      if (checked) seen.add(key); else seen.delete(key);
+      saveSeenBets(seen);
+      if (hideSeen) {
+        const { bookmaker, places } = getSelections();
+        renderTable(bookmaker, places);
+      }
+    }
+
+    function sortData(data) {
+      return [...data].sort((a, b) => {
+        const av = a[sortCol], bv = b[sortCol];
+        if (typeof av === 'string') return sortDir * av.localeCompare(bv);
+        return sortDir * (av - bv);
+      });
+    }
+
+    function attachSortHandlers() {
+      document.querySelectorAll('th[data-col]').forEach(th => {
+        th.addEventListener('click', () => {
+          const col = th.dataset.col;
+          if (sortCol === col) {
+            sortDir *= -1;
+          } else {
+            sortCol = col;
+            sortDir = typeof allData[0]?.[col] === 'string' ? 1 : -1;
+          }
+          const { bookmaker, places } = getSelections();
+          renderTable(bookmaker, places);
+        });
+      });
+    }
+
+    const brandColors = {
+      'ALL': { bg: '#2a2a2a', accent: '#888888' },
+      'LADBROKES': { bg: '#c8102e', accent: '#ff1744' },
+      'PADDY_POWER': { bg: '#004d33', accent: '#00a651' },
+      'BOYLESPORTS': { bg: '#002266', accent: '#0044cc' },
+      'SKYBET': { bg: '#0c2d6c', accent: '#00b4e6' },
+      'BET365': { bg: '#1a6e2e', accent: '#ffcc00' }
+    };
+
+    function updateTheme(bookmaker) {
+      const colors = brandColors[bookmaker] || brandColors['ALL'];
+      document.body.style.background = colors.bg;
+      document.querySelector('h1').style.color = colors.accent;
+      document.querySelectorAll('th').forEach(th => th.style.color = colors.accent);
+      document.querySelectorAll('select').forEach(s => s.style.borderColor = colors.accent);
+      document.querySelectorAll('.tab.active').forEach(t => t.style.borderColor = colors.accent);
+    }
+
+    function initEvent(idx) {
+      selectedEventIdx = idx;
+      const event = eventsData[idx];
+      allData = event.opportunities || [];
+      bookmakers = event.bookmakers || [];
+      dataMode = event.mode || 'EW';
+
+      // Update active tab
+      document.querySelectorAll('.tab').forEach((t, i) => {
+        t.classList.toggle('active', i === idx);
+      });
+
+      // Repopulate bookmaker dropdown
+      const bmSelect = document.getElementById('bookmaker-select');
+      bmSelect.innerHTML = '<option value="ALL">All Bookmakers</option>';
+      bookmakers.forEach(bm => {
+        const option = document.createElement('option');
+        option.value = bm;
+        option.textContent = bm.replace('_', ' ');
+        bmSelect.appendChild(option);
+      });
+
+      // Repopulate places dropdown
+      const placesSelect = document.getElementById('places-select');
+      placesSelect.innerHTML = '<option value="ALL">All Places</option>';
+      const distinctPlaces = [...new Set(allData.map(r => r.places).filter(p => p != null))].sort((a, b) => a - b);
+      if (distinctPlaces.length > 1) {
+        distinctPlaces.forEach(p => {
+          const option = document.createElement('option');
+          option.value = p;
+          option.textContent = p + ' Places';
+          placesSelect.appendChild(option);
+        });
+        placesSelect.style.display = '';
+      } else {
+        placesSelect.style.display = 'none';
+      }
+
+      renderTable('ALL', 'ALL');
+    }
+
+    async function loadData() {
+      try {
+        const response = await fetch('data.json');
+        const data = await response.json();
+
+        document.getElementById('timestamp').textContent = 'Last updated: ' + data.timestamp;
+
+        eventsData = data.events || [];
+
+        // Build event tabs
+        const tabsEl = document.getElementById('event-tabs');
+        if (eventsData.length > 1) {
+          tabsEl.style.display = '';
+          tabsEl.innerHTML = '';
+          eventsData.forEach((ev, i) => {
+            const tab = document.createElement('button');
+            tab.className = 'tab' + (i === 0 ? ' active' : '');
+            tab.textContent = ev.eventName;
+            tab.addEventListener('click', () => initEvent(i));
+            tabsEl.appendChild(tab);
+          });
+        } else {
+          tabsEl.style.display = 'none';
+        }
+
+        initEvent(0);
+      } catch (error) {
+        document.getElementById('table-container').innerHTML =
+          '<div class="no-data">Failed to load data. Please try again later.</div>';
+        console.error('Error loading data:', error);
+      }
+    }
+
+    function renderTable(selectedBookmaker, selectedPlaces) {
+      let filtered = allData;
+
+      if (selectedBookmaker !== 'ALL') {
+        filtered = filtered.filter(row => row.bookmaker === selectedBookmaker);
+      }
+
+      if (selectedPlaces !== 'ALL') {
+        filtered = filtered.filter(row => row.places == selectedPlaces);
+      }
+
+      filtered = sortData(filtered);
+
+      const seen = loadSeenBets();
+      const profitable = filtered.filter(row => row.edge > 0).length;
+      const newCount = filtered.filter(row => row.edge > 0 && !seen.has(betKey(row))).length;
+
+      document.getElementById('showing-count').textContent = filtered.length;
+      document.getElementById('profitable-count').textContent = profitable;
+      document.getElementById('new-count').textContent = newCount;
+
+      if (hideSeen) {
+        filtered = filtered.filter(row => !seen.has(betKey(row)));
+      }
+
+      if (filtered.length === 0) {
+        document.getElementById('table-container').innerHTML =
+          '<div class="no-data">No data available for this selection.</div>';
+        return;
+      }
+
+      if (dataMode === 'WIN') {
+        renderWinTable(filtered, selectedBookmaker, seen);
+      } else {
+        renderEWTable(filtered, selectedBookmaker, seen);
+      }
+    }
+
+    function getSelections() {
+      return {
+        bookmaker: document.getElementById('bookmaker-select').value,
+        places: document.getElementById('places-select').value
+      };
+    }
+
+    function thHtml(label, col) {
+      const active = sortCol === col;
+      const indicator = active ? (sortDir === 1 ? '↑' : '↓') : '↕';
+      return `<th data-col="${col}" class="${active ? 'sorted' : ''}">${label}<span class="sort-indicator">${indicator}</span></th>`;
+    }
+
+    function renderWinTable(filtered, selectedBookmaker, seen) {
+      let html = `
+        <table>
+          <thead>
+            <tr>
+              <th class="seen-cell"></th>
+              ${thHtml('Player', 'player')}
+              ${selectedBookmaker === 'ALL' ? thHtml('Book', 'bookmaker') : ''}
+              ${thHtml('BM Win', 'bmWin')}
+              ${thHtml('BF Win', 'bfWin')}
+              ${thHtml('Edge %', 'edge')}
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      filtered.forEach(row => {
+        const edgeClass = row.edge > 0 ? 'positive' : 'negative';
+        const key = betKey(row);
+        const isSeen = seen.has(key);
+
+        html += `
+          <tr class="${isSeen ? 'seen-row' : ''}">
+            <td class="seen-cell"><input type="checkbox" class="seen-check" data-key="${key}" ${isSeen ? 'checked' : ''}></td>
+            <td class="player-name">${row.player}</td>
+            ${selectedBookmaker === 'ALL' ? `<td>${row.bookmaker.replace('_', ' ')}</td>` : ''}
+            <td>${row.bmWin.toFixed(2)}</td>
+            <td>${row.bfWin.toFixed(2)}</td>
+            <td class="${edgeClass}">${row.edge > 0 ? '+' : ''}${row.edge.toFixed(2)}%</td>
+          </tr>
+        `;
+      });
+
+      html += '</tbody></table>';
+      document.getElementById('table-container').innerHTML = html;
+      attachSortHandlers();
+      attachSeenHandlers();
+    }
+
+    function renderEWTable(filtered, selectedBookmaker, seen) {
+      let html = `
+        <table>
+          <thead>
+            <tr>
+              <th class="seen-cell"></th>
+              ${thHtml('Player', 'player')}
+              ${selectedBookmaker === 'ALL' ? thHtml('Book', 'bookmaker') : ''}
+              ${thHtml('BM Win', 'bmWin')}
+              ${thHtml('BF Win', 'bfWin')}
+              ${thHtml('Win %', 'winEdge')}
+              ${thHtml('BM Plc', 'bmPlace')}
+              ${thHtml('BF Plc', 'bfPlace')}
+              ${thHtml('Plc', 'places')}
+              ${thHtml('Plc %', 'placeEdge')}
+              ${thHtml('Edge %', 'edge')}
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      filtered.forEach(row => {
+        const edgeClass = row.edge > 0 ? 'positive' : 'negative';
+        const winClass = row.winEdge > 0 ? 'positive' : 'negative';
+        const placeClass = row.placeEdge > 0 ? 'positive' : 'negative';
+        const key = betKey(row);
+        const isSeen = seen.has(key);
+
+        html += `
+          <tr class="${isSeen ? 'seen-row' : ''}">
+            <td class="seen-cell"><input type="checkbox" class="seen-check" data-key="${key}" ${isSeen ? 'checked' : ''}></td>
+            <td class="player-name">${row.player}</td>
+            ${selectedBookmaker === 'ALL' ? `<td>${row.bookmaker.replace('_', ' ')}</td>` : ''}
+            <td>${row.bmWin.toFixed(2)}</td>
+            <td>${row.bfWin.toFixed(2)}</td>
+            <td class="${winClass}">${row.winEdge > 0 ? '+' : ''}${row.winEdge.toFixed(1)}%</td>
+            <td>${row.bmPlace.toFixed(2)}</td>
+            <td>${row.bfPlace.toFixed(2)}</td>
+            <td>${row.places || ''}</td>
+            <td class="${placeClass}">${row.placeEdge > 0 ? '+' : ''}${row.placeEdge.toFixed(1)}%</td>
+            <td class="${edgeClass}">${row.edge > 0 ? '+' : ''}${row.edge.toFixed(2)}%</td>
+          </tr>
+        `;
+      });
+
+      html += '</tbody></table>';
+      document.getElementById('table-container').innerHTML = html;
+      attachSortHandlers();
+      attachSeenHandlers();
+    }
+
+    function attachSeenHandlers() {
+      document.querySelectorAll('.seen-check').forEach(cb => {
+        cb.addEventListener('change', (e) => {
+          e.stopPropagation();
+          toggleSeen(cb.dataset.key, cb.checked);
+          const tr = cb.closest('tr');
+          if (tr) tr.classList.toggle('seen-row', cb.checked);
+          // Update new count
+          const { bookmaker, places } = getSelections();
+          const filtered = allData
+            .filter(row => bookmaker === 'ALL' || row.bookmaker === bookmaker)
+            .filter(row => places === 'ALL' || row.places == places);
+          const seen = loadSeenBets();
+          const newCount = filtered.filter(row => row.edge > 0 && !seen.has(betKey(row))).length;
+          document.getElementById('new-count').textContent = newCount;
+        });
+      });
+    }
+
+    document.getElementById('hide-seen-btn').addEventListener('click', () => {
+      hideSeen = !hideSeen;
+      document.getElementById('hide-seen-btn').classList.toggle('active', hideSeen);
+      const { bookmaker, places } = getSelections();
+      renderTable(bookmaker, places);
+    });
+
+    document.getElementById('bookmaker-select').addEventListener('change', (e) => {
+      const { places } = getSelections();
+      renderTable(e.target.value, places);
+      updateTheme(e.target.value);
+    });
+
+    document.getElementById('places-select').addEventListener('change', () => {
+      const { bookmaker, places } = getSelections();
+      renderTable(bookmaker, places);
+    });
+
+    loadData();
+    updateTheme('ALL');
+  </script>
+</body>
+</html>
