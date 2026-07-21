@@ -1,30 +1,29 @@
 {
   "events": [
     {
-      "name": "Open",
-      "betfairLink": "https://www.betfair.com/exchange/plus/golf/market/1.246097480",
-      "betfairTop5Link": "https://www.betfair.com/exchange/plus/golf/market/1.246097482",
-      "betfairTop10Link": "https://www.betfair.com/exchange/plus/golf/market/1.246097481",
+      "name": "3M Open",
+      "betfairLink": "https://www.betfair.com/exchange/plus/golf/market/1.260239900",
+      "betfairTop5Link": "https://www.betfair.com/exchange/plus/golf/market/1.260239901",
+      "betfairTop10Link": "https://www.betfair.com/exchange/plus/golf/market/1.260239902",
       "ew": true,
       "pages": [
         {
-          "url": "https://www.paddypower.com/golf/the-open-championship-2026",
+          "url": "https://www.paddypower.com/golf/pga-3m-open-2026",
           "bookmaker": "PADDY_POWER",
           "header": "Winner - 10 Places Each Way",
           "places": 10
         },
         {
-          "url": "https://www.paddypower.com/golf/the-open-championship-2026",
-          "bookmaker": "PADDY_POWER",
-          "header": "Winner - 12 Places Each Way",
-          "places": 12
+          "url": "https://www.ladbrokes.com/en/sports/event/golf/golf/3m-open/2026-3m-open/257294273/main-markets",
+          "bookmaker": "LADBROKES",
+          "places": 8
         },
         {
-          "url": "https://www.ladbrokes.com/en/sports/event/golf/golf/open-championship/2026-open-championship/257019353/main-markets",
-          "bookmaker": "LADBROKES",
+          "url": "https://www.boylesports.com/sports/golf/3m-open",
+          "bookmaker": "BOYLESPORTS",
           "places": 10
         }
       ]
     }
-    ]
+  ]
 }
