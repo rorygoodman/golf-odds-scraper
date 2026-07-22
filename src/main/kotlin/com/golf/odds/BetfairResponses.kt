@@ -160,7 +160,7 @@ fun parseBookMarkets(json: String): Map<String, MarketBookSnapshot> {
 }
 
 private fun layPricesFromBook(root: JsonObject): MarketBookSnapshot {
-    val status = if (root.get("status")?.asString == "OPEN") MarketBookStatus.OPEN
+    val status = if (root.get("status")?.takeIf { it.isJsonPrimitive }?.asString == "OPEN") MarketBookStatus.OPEN
                  else MarketBookStatus.OTHER
     if (status != MarketBookStatus.OPEN) {
         return MarketBookSnapshot(status, emptyMap())
