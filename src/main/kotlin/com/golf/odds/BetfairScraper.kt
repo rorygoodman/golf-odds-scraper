@@ -9,32 +9,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions
 import java.time.Duration
 
 /**
- * Represents a player's lay price from Betfair exchange.
- *
- * @property playerName The golfer's name
- * @property price The lay price (decimal odds)
- */
-data class PlayerLayPrice(
-    val playerName: String,
-    val price: Double
-)
-
-/**
- * Represents scraped lay prices for a golf event from Betfair exchange.
- *
- * @property eventName Name of the golf event
- * @property url Source URL that was scraped
- * @property players List of player lay prices
- * @property scrapedAt Timestamp when data was scraped
- */
-data class BetfairEventOdds(
-    val eventName: String,
-    val url: String,
-    val players: List<PlayerLayPrice>,
-    val scrapedAt: String = java.time.LocalDateTime.now().toString()
-)
-
-/**
  * Scraper for extracting golf betting lay prices from Betfair exchange.
  *
  * Handles Betfair's virtual scrolling by incrementally scrolling through
