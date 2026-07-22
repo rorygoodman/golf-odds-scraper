@@ -5,7 +5,7 @@ A Kotlin-based scraper for finding each-way arbitrage opportunities in golf bett
 ## What it does
 
 - Scrapes outright winner odds from multiple bookmakers (Ladbrokes, Paddy Power, Boylesports)
-- Scrapes Betfair exchange lay prices from Winner and Top 10 markets
+- Fetches Betfair exchange lay prices from Winner, Top 5, and Top 10 markets via the Betfair API
 - Calculates E/W arbitrage opportunities by comparing bookmaker back prices against Betfair lay prices
 - Shows edge percentages for each player/bookmaker combination
 - Identifies players profitable at multiple bookmakers
@@ -66,6 +66,17 @@ Edit `config.json` to set up events, bookmaker pages, and Betfair links:
 
 Both `betfairLink` (Winner market) and `betfairTop10Link` (Top 10 Finish market) are required for E/W arbitrage calculations.
 
+### Betfair API credentials
+
+Create `~/.golf-scraper/credentials.json` (mode 600) with your Betfair API
+credentials:
+
+```json
+{ "username": "...", "password": "...", "appKey": "..." }
+```
+
+Same account/app key as horsey-scraper — copy its `~/.horsey-scraper/credentials.json`.
+
 ### Supported bookmakers
 
 | Bookmaker | Enum value | Notes |
@@ -74,7 +85,7 @@ Both `betfairLink` (Winner market) and `betfairTop10Link` (Top 10 Finish market)
 | Paddy Power | `PADDY_POWER` | Fractional odds, each-way terms |
 | Boylesports | `BOYLESPORTS` | Fractional odds, each-way terms |
 | 10Bet | `TEN_BET` | Fractional odds, each-way terms |
-| Betfair Exchange | via `betfairLink` | Lay prices, virtual scroll |
+| Betfair Exchange | via `betfairLink` | Lay prices, via API |
 
 ## Adding a new bookmaker
 
@@ -94,7 +105,7 @@ src/main/kotlin/com/golf/odds/
   PaddyPowerScraper.kt    # Paddy Power scraper
   BoylesportsScraper.kt   # Boylesports scraper
   TenBetScraper.kt        # 10Bet scraper
-  BetfairScraper.kt       # Betfair exchange scraper (scroll + extract)
+  BetfairApiFetcher.kt    # Betfair exchange lay prices (REST API)
   LayableEWCalculator.kt  # E/W arbitrage calculation and output
   OddsComparison.kt       # Cross-bookmaker comparison utilities
 ```

@@ -20,6 +20,9 @@ fun main(args: Array<String>) {
     println("=".repeat(80))
 
     val config = loadConfig(configPath)
+    print("Logging in to Betfair API... ")
+    val fetcher = createBetfairFetcher()
+    println(if (fetcher != null) "OK" else "FAILED")
     val timestamp = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z"))
     val eventJsons = mutableListOf<String>()
 
@@ -40,17 +43,29 @@ fun main(args: Array<String>) {
             }
         }
 
-        var winnerMarketOdds: BetfairEventOdds? = null
-        if (!event.betfairLink.isNullOrBlank()) {
-            print("Scraping Betfair Winner... ")
-            try {
-                val scraper = BetfairScraper(event.betfairLink)
-                winnerMarketOdds = scraper.scrape()
-                println("${winnerMarketOdds.players.size} players")
+        val betfairUrls = listOfNotNull(
+            event.betfairLink.takeUnless { it.isNullOrBlank() },
+            event.betfairTop5Link.takeUnless { it.isNullOrBlank() },
+            event.betfairTop10Link.takeUnless { it.isNullOrBlank() },
+        )
+        var betfairOdds: Map<String, BetfairEventOdds> = emptyMap()
+        if (fetcher != null && betfairUrls.isNotEmpty()) {
+            betfairOdds = try {
+                fetcher.fetchMarkets(betfairUrls)
             } catch (e: Exception) {
-                println("FAILED: ${e.message}")
+                System.err.println("Betfair fetch failed: ${e.message}")
+                emptyMap()
             }
         }
+
+        fun betfairMarket(label: String, link: String?): BetfairEventOdds? {
+            if (link.isNullOrBlank()) return null
+            val odds = betfairOdds[link]
+            println("Betfair $label... " + (odds?.let { "${it.players.size} players" } ?: "FAILED"))
+            return odds
+        }
+
+        val winnerMarketOdds = betfairMarket("Winner", event.betfairLink)
 
         if (!event.ew) {
             // Win-only mode: just compare bookmaker win odds vs Betfair lay
@@ -62,30 +77,9 @@ fun main(args: Array<String>) {
                 if (winnerMarketOdds == null) println("\nCannot calculate: need Betfair Winner market")
             }
         } else {
-            // E/W mode: scrape Top 5 and Top 10, run LayableEWCalculator
-            var top5MarketOdds: BetfairEventOdds? = null
-            if (!event.betfairTop5Link.isNullOrBlank()) {
-                print("Scraping Betfair Top 5... ")
-                try {
-                    val scraper = BetfairScraper(event.betfairTop5Link)
-                    top5MarketOdds = scraper.scrape()
-                    println("${top5MarketOdds.players.size} players")
-                } catch (e: Exception) {
-                    println("FAILED: ${e.message}")
-                }
-            }
-
-            var top10MarketOdds: BetfairEventOdds? = null
-            if (!event.betfairTop10Link.isNullOrBlank()) {
-                print("Scraping Betfair Top 10... ")
-                try {
-                    val scraper = BetfairScraper(event.betfairTop10Link)
-                    top10MarketOdds = scraper.scrape()
-                    println("${top10MarketOdds.players.size} players")
-                } catch (e: Exception) {
-                    println("FAILED: ${e.message}")
-                }
-            }
+            // E/W mode: Top 5 and Top 10 markets, run LayableEWCalculator
+            val top5MarketOdds = betfairMarket("Top 5", event.betfairTop5Link)
+            val top10MarketOdds = betfairMarket("Top 10", event.betfairTop10Link)
 
             if (winnerMarketOdds != null && top5MarketOdds != null && top10MarketOdds != null && allEventOdds.isNotEmpty()) {
                 val calculator = LayableEWCalculator(winnerMarketOdds, top10MarketOdds, top5MarketOdds)
@@ -159,6 +153,24 @@ fun scrapeEvent(page: Page): EventOdds? {
         }
     } catch (e: Exception) {
         System.err.println("Error: ${e.message}")
+        null
+    }
+}
+
+/**
+ * Loads credentials from ~/.golf-scraper/credentials.json and logs in to
+ * the Betfair API. Returns null (with a stderr message) if credentials are
+ * missing or login fails — bookmaker scraping still runs; Betfair-dependent
+ * calculations are skipped per market as before.
+ */
+fun createBetfairFetcher(): BetfairApiFetcher? {
+    return try {
+        val credentials = loadCredentials(defaultCredentialsPath())
+        val client = BetfairClient(credentials.appKey)
+        client.login(credentials.username, credentials.password)
+        BetfairApiFetcher(client)
+    } catch (e: Exception) {
+        System.err.println("Betfair API unavailable: ${e.message}")
         null
     }
 }
