@@ -177,6 +177,14 @@ class BetfairResponsesTest {
     }
 
     @Test
+    fun `parseBookMarkets treats non-primitive status as OTHER`() {
+        val json = """[ { "marketId": "1.1", "status": {}, "runners": [ { "selectionId": 1 } ] } ]"""
+        val snap = parseBookMarkets(json).getValue("1.1")
+        assertEquals(MarketBookStatus.OTHER, snap.status)
+        assertTrue(snap.layBySelectionId.isEmpty())
+    }
+
+    @Test
     fun `parseBookMarkets throws on non-array response`() {
         assertFailsWith<IllegalStateException> { parseBookMarkets("""{"error":"x"}""") }
     }

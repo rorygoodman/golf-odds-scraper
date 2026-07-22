@@ -2,7 +2,7 @@ package com.golf.odds
 
 /**
  * Fetches golf market lay prices from the Betfair Exchange API.
- * Replaces the Selenium-based BetfairScraper.
+ * Replaces the former Selenium-based BetfairScraper (deleted).
  */
 class BetfairApiFetcher(private val client: BetfairClient) {
 

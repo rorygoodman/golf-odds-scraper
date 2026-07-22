@@ -12,7 +12,9 @@ data class Credentials(
     val username: String,
     val password: String,
     val appKey: String,
-)
+) {
+    override fun toString() = "Credentials(username=$username, password=***, appKey=***)"
+}
 
 /**
  * Pure parser. Accepts a JSON object with string fields `username`,
