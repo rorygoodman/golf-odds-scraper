@@ -1,24 +1,11 @@
 {
-  "timestamp": "2026-07-25 14:00:05 IST",
+  "timestamp": "2026-07-25 14:20:04 IST",
   "events": [
   {
     "eventName": "3M Open",
     "mode": "EW",
     "bookmakers": ["BOYLESPORTS", "LADBROKES", "PADDY_POWER"],
     "opportunities": [
-      {
-        "player": "Austin Smotherman",
-        "bookmaker": "PADDY_POWER",
-        "bmWinOdds": "110/1",
-        "bmWin": 111.00,
-        "bmPlace": 23.00,
-        "bfWin": 170.00,
-        "bfPlace": 7.00,
-        "winEdge": -34.71,
-        "placeEdge": 228.57,
-        "edge": 96.93,
-        "places": 10
-      },
       {
         "player": "Kevin Yu",
         "bookmaker": "BOYLESPORTS",
@@ -47,15 +34,28 @@
       },
       {
         "player": "Austin Smotherman",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "100/1",
+        "bmWin": 101.00,
+        "bmPlace": 21.00,
+        "bfWin": 160.00,
+        "bfPlace": 7.00,
+        "winEdge": -36.88,
+        "placeEdge": 200.00,
+        "edge": 81.56,
+        "places": 10
+      },
+      {
+        "player": "Austin Smotherman",
         "bookmaker": "BOYLESPORTS",
         "bmWinOdds": "100/1",
         "bmWin": 101.00,
         "bmPlace": 21.00,
-        "bfWin": 170.00,
+        "bfWin": 160.00,
         "bfPlace": 7.00,
-        "winEdge": -40.59,
+        "winEdge": -36.88,
         "placeEdge": 200.00,
-        "edge": 79.71,
+        "edge": 81.56,
         "places": 10
       },
       {
