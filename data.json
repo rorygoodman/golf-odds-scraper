@@ -1,11 +1,24 @@
 {
-  "timestamp": "2026-07-25 15:00:05 IST",
+  "timestamp": "2026-07-25 15:20:08 IST",
   "events": [
   {
     "eventName": "3M Open",
     "mode": "EW",
     "bookmakers": ["BOYLESPORTS", "LADBROKES", "PADDY_POWER"],
     "opportunities": [
+      {
+        "player": "Chandler Blanchet",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "175/1",
+        "bmWin": 176.00,
+        "bmPlace": 36.00,
+        "bfWin": 400.00,
+        "bfPlace": 8.60,
+        "winEdge": -56.00,
+        "placeEdge": 318.60,
+        "edge": 131.30,
+        "places": 10
+      },
       {
         "player": "Kevin Yu",
         "bookmaker": "BOYLESPORTS",
@@ -77,11 +90,37 @@
         "bmWinOdds": "33/1",
         "bmWin": 34.00,
         "bmPlace": 7.60,
-        "bfWin": 46.00,
+        "bfWin": 44.00,
         "bfPlace": 3.30,
-        "winEdge": -26.09,
+        "winEdge": -22.73,
         "placeEdge": 130.30,
-        "edge": 52.11,
+        "edge": 53.79,
+        "places": 10
+      },
+      {
+        "player": "Davis Thompson",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "150/1",
+        "bmWin": 151.00,
+        "bmPlace": 31.00,
+        "bfWin": 300.00,
+        "bfPlace": 14.00,
+        "winEdge": -49.67,
+        "placeEdge": 121.43,
+        "edge": 35.88,
+        "places": 10
+      },
+      {
+        "player": "Chandler Blanchet",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "100/1",
+        "bmWin": 101.00,
+        "bmPlace": 21.00,
+        "bfWin": 400.00,
+        "bfPlace": 8.60,
+        "winEdge": -74.75,
+        "placeEdge": 144.19,
+        "edge": 34.72,
         "places": 10
       },
       {
@@ -90,37 +129,11 @@
         "bmWinOdds": "25/1",
         "bmWin": 26.00,
         "bmPlace": 6.00,
-        "bfWin": 46.00,
+        "bfWin": 44.00,
         "bfPlace": 3.30,
-        "winEdge": -43.48,
+        "winEdge": -40.91,
         "placeEdge": 81.82,
-        "edge": 19.17,
-        "places": 10
-      },
-      {
-        "player": "Davis Thompson",
-        "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "125/1",
-        "bmWin": 126.00,
-        "bmPlace": 26.00,
-        "bfWin": 300.00,
-        "bfPlace": 14.00,
-        "winEdge": -58.00,
-        "placeEdge": 85.71,
-        "edge": 13.86,
-        "places": 10
-      },
-      {
-        "player": "Ben Kohles",
-        "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "7/1",
-        "bmWin": 8.00,
-        "bmPlace": 2.40,
-        "bfWin": 10.50,
-        "bfPlace": 1.63,
-        "winEdge": -23.81,
-        "placeEdge": 47.24,
-        "edge": 11.71,
+        "edge": 20.45,
         "places": 10
       },
       {
@@ -143,10 +156,23 @@
         "bmWin": 7.50,
         "bmPlace": 2.30,
         "bfWin": 8.40,
-        "bfPlace": 1.82,
+        "bfPlace": 1.78,
         "winEdge": -10.71,
-        "placeEdge": 26.37,
-        "edge": 7.83,
+        "placeEdge": 29.21,
+        "edge": 9.25,
+        "places": 10
+      },
+      {
+        "player": "Ben Kohles",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "13/2",
+        "bmWin": 7.50,
+        "bmPlace": 2.30,
+        "bfWin": 10.50,
+        "bfPlace": 1.63,
+        "winEdge": -28.57,
+        "placeEdge": 41.10,
+        "edge": 6.27,
         "places": 10
       },
       {
@@ -182,10 +208,10 @@
         "bmWin": 6.50,
         "bmPlace": 2.10,
         "bfWin": 8.40,
-        "bfPlace": 1.82,
+        "bfPlace": 1.78,
         "winEdge": -22.62,
-        "placeEdge": 15.38,
-        "edge": -3.62,
+        "placeEdge": 17.98,
+        "edge": -2.32,
         "places": 10
       },
       {
@@ -282,14 +308,14 @@
       {
         "player": "Emiliano Grillo",
         "bookmaker": "PADDY_POWER",
-        "bmWinOdds": "1/20",
-        "bmWin": 1.05,
-        "bmPlace": 1.01,
+        "bmWinOdds": "1/12",
+        "bmWin": 1.08,
+        "bmPlace": 1.02,
         "bfWin": 11.00,
         "bfPlace": 11.00,
-        "winEdge": -90.45,
-        "placeEdge": -90.82,
-        "edge": -90.64,
+        "winEdge": -90.15,
+        "placeEdge": -90.76,
+        "edge": -90.45,
         "places": 10
       }
     ]
