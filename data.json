@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-25 01:20:06 IST",
+  "timestamp": "2026-07-25 01:40:06 IST",
   "events": [
   {
     "eventName": "3M Open",
@@ -12,11 +12,11 @@
         "bmWinOdds": "150/1",
         "bmWin": 151.00,
         "bmPlace": 31.00,
-        "bfWin": 310.00,
+        "bfWin": 300.00,
         "bfPlace": 14.00,
-        "winEdge": -51.29,
+        "winEdge": -49.67,
         "placeEdge": 121.43,
-        "edge": 35.07,
+        "edge": 35.88,
         "places": 10
       },
       {
@@ -25,11 +25,37 @@
         "bmWinOdds": "125/1",
         "bmWin": 126.00,
         "bmPlace": 26.00,
-        "bfWin": 310.00,
+        "bfWin": 300.00,
         "bfPlace": 14.00,
-        "winEdge": -59.35,
+        "winEdge": -58.00,
         "placeEdge": 85.71,
-        "edge": 13.18,
+        "edge": 13.86,
+        "places": 10
+      },
+      {
+        "player": "Tom Kim",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "125/1",
+        "bmWin": 126.00,
+        "bmPlace": 26.00,
+        "bfWin": 200.00,
+        "bfPlace": 21.00,
+        "winEdge": -37.00,
+        "placeEdge": 23.81,
+        "edge": -6.60,
+        "places": 10
+      },
+      {
+        "player": "Tom Kim",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "110/1",
+        "bmWin": 111.00,
+        "bmPlace": 23.00,
+        "bfWin": 200.00,
+        "bfPlace": 21.00,
+        "winEdge": -44.50,
+        "placeEdge": 9.52,
+        "edge": -17.49,
         "places": 10
       },
       {
@@ -59,32 +85,6 @@
         "places": 10
       },
       {
-        "player": "Tom Kim",
-        "bookmaker": "PADDY_POWER",
-        "bmWinOdds": "100/1",
-        "bmWin": 101.00,
-        "bmPlace": 21.00,
-        "bfWin": 600.00,
-        "bfPlace": 21.00,
-        "winEdge": -83.17,
-        "placeEdge": 0.00,
-        "edge": -41.58,
-        "places": 10
-      },
-      {
-        "player": "Tom Kim",
-        "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "100/1",
-        "bmWin": 101.00,
-        "bmPlace": 21.00,
-        "bfWin": 600.00,
-        "bfPlace": 21.00,
-        "winEdge": -83.17,
-        "placeEdge": 0.00,
-        "edge": -41.58,
-        "places": 10
-      },
-      {
         "player": "Emiliano Grillo",
         "bookmaker": "PADDY_POWER",
         "bmWinOdds": "9/1",
@@ -113,27 +113,27 @@
       {
         "player": "Kevin Yu",
         "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "90/1",
-        "bmWin": 91.00,
-        "bmPlace": 19.00,
-        "bfWin": 1000.00,
-        "bfPlace": 40.00,
-        "winEdge": -90.90,
-        "placeEdge": -52.50,
-        "edge": -71.70,
-        "places": 10
-      },
-      {
-        "player": "Kevin Yu",
-        "bookmaker": "PADDY_POWER",
         "bmWinOdds": "80/1",
         "bmWin": 81.00,
         "bmPlace": 17.00,
-        "bfWin": 1000.00,
+        "bfWin": 300.00,
         "bfPlace": 40.00,
-        "winEdge": -91.90,
+        "winEdge": -73.00,
         "placeEdge": -57.50,
-        "edge": -74.70,
+        "edge": -65.25,
+        "places": 10
+      },
+      {
+        "player": "Kevin Yu",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "70/1",
+        "bmWin": 71.00,
+        "bmPlace": 15.00,
+        "bfWin": 300.00,
+        "bfPlace": 40.00,
+        "winEdge": -76.33,
+        "placeEdge": -62.50,
+        "edge": -69.42,
         "places": 10
       }
     ]
