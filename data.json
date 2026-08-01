@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-01 23:40:04 IST",
+  "timestamp": "2026-08-02 00:00:04 IST",
   "events": [
   {
     "eventName": "Rocket Classic",
@@ -7,16 +7,42 @@
     "bookmakers": ["BOYLESPORTS", "LADBROKES", "PADDY_POWER"],
     "opportunities": [
       {
+        "player": "Doug Ghim",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "350/1",
+        "bmWin": 351.00,
+        "bmPlace": 71.00,
+        "bfWin": 1000.00,
+        "bfPlace": 14.00,
+        "winEdge": -64.90,
+        "placeEdge": 407.14,
+        "edge": 171.12,
+        "places": 10
+      },
+      {
+        "player": "Doug Ghim",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "300/1",
+        "bmWin": 301.00,
+        "bmPlace": 61.00,
+        "bfWin": 1000.00,
+        "bfPlace": 14.00,
+        "winEdge": -69.90,
+        "placeEdge": 335.71,
+        "edge": 132.91,
+        "places": 10
+      },
+      {
         "player": "Keegan Bradley",
         "bookmaker": "LADBROKES",
         "bmWinOdds": "300/1",
         "bmWin": 301.00,
         "bmPlace": 61.00,
-        "bfWin": 980.00,
+        "bfWin": 500.00,
         "bfPlace": 16.50,
-        "winEdge": -69.29,
+        "winEdge": -39.80,
         "placeEdge": 269.70,
-        "edge": 100.21,
+        "edge": 114.95,
         "places": 10
       },
       {
@@ -25,11 +51,24 @@
         "bmWinOdds": "275/1",
         "bmWin": 276.00,
         "bmPlace": 56.00,
-        "bfWin": 980.00,
+        "bfWin": 500.00,
         "bfPlace": 16.50,
-        "winEdge": -71.84,
+        "winEdge": -44.80,
         "placeEdge": 239.39,
-        "edge": 83.78,
+        "edge": 97.30,
+        "places": 10
+      },
+      {
+        "player": "Doug Ghim",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "250/1",
+        "bmWin": 251.00,
+        "bmPlace": 51.00,
+        "bfWin": 1000.00,
+        "bfPlace": 14.00,
+        "winEdge": -74.90,
+        "placeEdge": 264.29,
+        "edge": 94.69,
         "places": 10
       },
       {
@@ -38,11 +77,50 @@
         "bmWinOdds": "200/1",
         "bmWin": 201.00,
         "bmPlace": 41.00,
-        "bfWin": 980.00,
+        "bfWin": 500.00,
         "bfPlace": 16.50,
-        "winEdge": -79.49,
+        "winEdge": -59.80,
         "placeEdge": 148.48,
-        "edge": 34.50,
+        "edge": 44.34,
+        "places": 10
+      },
+      {
+        "player": "Mac Meissner",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "350/1",
+        "bmWin": 351.00,
+        "bmPlace": 71.00,
+        "bfWin": 1000.00,
+        "bfPlace": 34.00,
+        "winEdge": -64.90,
+        "placeEdge": 108.82,
+        "edge": 21.96,
+        "places": 10
+      },
+      {
+        "player": "Mac Meissner",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "300/1",
+        "bmWin": 301.00,
+        "bmPlace": 61.00,
+        "bfWin": 1000.00,
+        "bfPlace": 34.00,
+        "winEdge": -69.90,
+        "placeEdge": 79.41,
+        "edge": 4.76,
+        "places": 10
+      },
+      {
+        "player": "Mac Meissner",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "250/1",
+        "bmWin": 251.00,
+        "bmPlace": 51.00,
+        "bfWin": 1000.00,
+        "bfPlace": 34.00,
+        "winEdge": -74.90,
+        "placeEdge": 50.00,
+        "edge": -12.45,
         "places": 10
       }
     ]
