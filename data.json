@@ -1,24 +1,11 @@
 {
-  "timestamp": "2026-08-01 15:00:05 IST",
+  "timestamp": "2026-08-01 15:20:04 IST",
   "events": [
   {
     "eventName": "Rocket Classic",
     "mode": "EW",
     "bookmakers": ["BOYLESPORTS", "LADBROKES", "PADDY_POWER"],
     "opportunities": [
-      {
-        "player": "Davis Thompson",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "125/1",
-        "bmWin": 126.00,
-        "bmPlace": 26.00,
-        "bfWin": 180.00,
-        "bfPlace": 8.80,
-        "winEdge": -30.00,
-        "placeEdge": 195.45,
-        "edge": 82.73,
-        "places": 10
-      },
       {
         "player": "Mark Hubbard",
         "bookmaker": "BOYLESPORTS",
@@ -124,8 +111,21 @@
         "places": 10
       },
       {
+        "player": "Keegan Bradley",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "40/1",
+        "bmWin": 41.00,
+        "bmPlace": 9.00,
+        "bfWin": 55.00,
+        "bfPlace": 4.80,
+        "winEdge": -25.45,
+        "placeEdge": 87.50,
+        "edge": 31.02,
+        "places": 10
+      },
+      {
         "player": "Davis Thompson",
-        "bookmaker": "PADDY_POWER",
+        "bookmaker": "LADBROKES",
         "bmWinOdds": "80/1",
         "bmWin": 81.00,
         "bmPlace": 17.00,
@@ -150,19 +150,6 @@
         "places": 10
       },
       {
-        "player": "Keegan Bradley",
-        "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "35/1",
-        "bmWin": 36.00,
-        "bmPlace": 8.00,
-        "bfWin": 55.00,
-        "bfPlace": 4.80,
-        "winEdge": -34.55,
-        "placeEdge": 66.67,
-        "edge": 16.06,
-        "places": 10
-      },
-      {
         "player": "Davis Thompson",
         "bookmaker": "BOYLESPORTS",
         "bmWinOdds": "75/1",
@@ -173,6 +160,19 @@
         "winEdge": -57.78,
         "placeEdge": 81.82,
         "edge": 12.02,
+        "places": 10
+      },
+      {
+        "player": "Davis Thompson",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "66/1",
+        "bmWin": 67.00,
+        "bmPlace": 14.20,
+        "bfWin": 180.00,
+        "bfPlace": 8.80,
+        "winEdge": -62.78,
+        "placeEdge": 61.36,
+        "edge": -0.71,
         "places": 10
       },
       {
