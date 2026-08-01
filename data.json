@@ -1,12 +1,50 @@
 {
-  "timestamp": "2026-08-01 21:20:04 IST",
+  "timestamp": "2026-08-01 21:40:05 IST",
   "events": [
   {
     "eventName": "Rocket Classic",
     "mode": "EW",
     "bookmakers": ["BOYLESPORTS", "LADBROKES", "PADDY_POWER"],
     "opportunities": [
-
+      {
+        "player": "Keegan Bradley",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "300/1",
+        "bmWin": 301.00,
+        "bmPlace": 61.00,
+        "bfWin": 1000.00,
+        "bfPlace": 13.00,
+        "winEdge": -69.90,
+        "placeEdge": 369.23,
+        "edge": 149.67,
+        "places": 10
+      },
+      {
+        "player": "Keegan Bradley",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "200/1",
+        "bmWin": 201.00,
+        "bmPlace": 41.00,
+        "bfWin": 1000.00,
+        "bfPlace": 13.00,
+        "winEdge": -79.90,
+        "placeEdge": 215.38,
+        "edge": 67.74,
+        "places": 10
+      },
+      {
+        "player": "Keegan Bradley",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "125/1",
+        "bmWin": 126.00,
+        "bmPlace": 26.00,
+        "bfWin": 1000.00,
+        "bfPlace": 13.00,
+        "winEdge": -87.40,
+        "placeEdge": 100.00,
+        "edge": 6.30,
+        "places": 10
+      }
     ]
   }
   ]
