@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-09 22:00:05 IST",
+  "timestamp": "2026-08-09 22:20:05 IST",
   "events": [
   {
     "eventName": "Wyndham Classic",
@@ -7,16 +7,29 @@
     "bookmakers": ["BOYLESPORTS", "LADBROKES", "PADDY_POWER"],
     "opportunities": [
       {
+        "player": "Beau Hossler",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "110/1",
+        "bmWin": 111.00,
+        "bmPlace": 23.00,
+        "bfWin": 170.00,
+        "bfPlace": 14.50,
+        "winEdge": -34.71,
+        "placeEdge": 58.62,
+        "edge": 11.96,
+        "places": 10
+      },
+      {
         "player": "Michael Brennan",
         "bookmaker": "LADBROKES",
         "bmWinOdds": "1/100",
         "bmWin": 1.01,
         "bmPlace": 1.00,
-        "bfWin": 1.04,
+        "bfWin": 1.03,
         "bfPlace": 1.08,
-        "winEdge": -2.88,
+        "winEdge": -1.94,
         "placeEdge": -7.22,
-        "edge": -5.05,
+        "edge": -4.58,
         "places": 10
       },
       {
@@ -25,50 +38,37 @@
         "bmWinOdds": "1/200",
         "bmWin": 1.01,
         "bmPlace": 1.00,
-        "bfWin": 1.04,
+        "bfWin": 1.03,
         "bfPlace": 1.08,
-        "winEdge": -3.37,
+        "winEdge": -2.43,
         "placeEdge": -7.31,
-        "edge": -5.34,
-        "places": 10
-      },
-      {
-        "player": "Beau Hossler",
-        "bookmaker": "PADDY_POWER",
-        "bmWinOdds": "45/1",
-        "bmWin": 46.00,
-        "bmPlace": 10.00,
-        "bfWin": 40.00,
-        "bfPlace": 14.50,
-        "winEdge": 15.00,
-        "placeEdge": -31.03,
-        "edge": -8.02,
+        "edge": -4.87,
         "places": 10
       },
       {
         "player": "Beau Hossler",
         "bookmaker": "LADBROKES",
-        "bmWinOdds": "33/1",
-        "bmWin": 34.00,
-        "bmPlace": 7.60,
-        "bfWin": 40.00,
+        "bmWinOdds": "50/1",
+        "bmWin": 51.00,
+        "bmPlace": 11.00,
+        "bfWin": 170.00,
         "bfPlace": 14.50,
-        "winEdge": -15.00,
-        "placeEdge": -47.59,
-        "edge": -31.29,
+        "winEdge": -70.00,
+        "placeEdge": -24.14,
+        "edge": -47.07,
         "places": 10
       },
       {
         "player": "Beau Hossler",
         "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "7/5",
-        "bmWin": 2.40,
-        "bmPlace": 1.28,
-        "bfWin": 40.00,
+        "bmWinOdds": "5/2",
+        "bmWin": 3.50,
+        "bmPlace": 1.50,
+        "bfWin": 170.00,
         "bfPlace": 14.50,
-        "winEdge": -94.00,
-        "placeEdge": -91.17,
-        "edge": -92.59,
+        "winEdge": -97.94,
+        "placeEdge": -89.66,
+        "edge": -93.80,
         "places": 10
       }
     ]
