@@ -1,11 +1,24 @@
 {
-  "timestamp": "2026-08-09 04:20:05 IST",
+  "timestamp": "2026-08-09 04:40:04 IST",
   "events": [
   {
     "eventName": "Wyndham Classic",
     "mode": "EW",
     "bookmakers": ["BOYLESPORTS", "LADBROKES", "PADDY_POWER"],
     "opportunities": [
+      {
+        "player": "Erik Van Rooyen",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "400/1",
+        "bmWin": 401.00,
+        "bmPlace": 81.00,
+        "bfWin": 1000.00,
+        "bfPlace": 7.40,
+        "winEdge": -59.90,
+        "placeEdge": 994.59,
+        "edge": 467.35,
+        "places": 10
+      },
       {
         "player": "Sahith Theegala",
         "bookmaker": "BOYLESPORTS",
@@ -30,6 +43,19 @@
         "winEdge": -74.23,
         "placeEdge": 876.19,
         "edge": 400.98,
+        "places": 10
+      },
+      {
+        "player": "Erik van Rooyen",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "350/1",
+        "bmWin": 351.00,
+        "bmPlace": 71.00,
+        "bfWin": 1000.00,
+        "bfPlace": 7.40,
+        "winEdge": -64.90,
+        "placeEdge": 859.46,
+        "edge": 397.28,
         "places": 10
       },
       {
@@ -69,6 +95,19 @@
         "winEdge": -66.79,
         "placeEdge": 665.96,
         "edge": 299.58,
+        "places": 10
+      },
+      {
+        "player": "Erik Van Rooyen",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "275/1",
+        "bmWin": 276.00,
+        "bmPlace": 56.00,
+        "bfWin": 1000.00,
+        "bfPlace": 7.40,
+        "winEdge": -72.40,
+        "placeEdge": 656.76,
+        "edge": 292.18,
         "places": 10
       },
       {
