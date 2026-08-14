@@ -1,24 +1,11 @@
 {
-  "timestamp": "2026-08-14 22:40:04 IST",
+  "timestamp": "2026-08-14 23:00:04 IST",
   "events": [
   {
     "eventName": "Fed Ex St.Jude",
     "mode": "EW",
     "bookmakers": ["BOYLESPORTS", "LADBROKES", "PADDY_POWER"],
     "opportunities": [
-      {
-        "player": "Scottie Scheffler",
-        "bookmaker": "PADDY_POWER",
-        "bmWinOdds": "8/15",
-        "bmWin": 1.53,
-        "bmPlace": 1.11,
-        "bfWin": 1.61,
-        "bfPlace": 1.40,
-        "winEdge": -4.76,
-        "placeEdge": -20.95,
-        "edge": -12.86,
-        "places": 10
-      },
       {
         "player": "Scottie Scheffler",
         "bookmaker": "BOYLESPORTS",
@@ -46,29 +33,42 @@
         "places": 8
       },
       {
+        "player": "Scottie Scheffler",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "1/2",
+        "bmWin": 1.50,
+        "bmPlace": 1.10,
+        "bfWin": 1.61,
+        "bfPlace": 1.40,
+        "winEdge": -6.83,
+        "placeEdge": -21.43,
+        "edge": -14.13,
+        "places": 10
+      },
+      {
         "player": "Viktor Hovland",
         "bookmaker": "PADDY_POWER",
         "bmWinOdds": "10/1",
         "bmWin": 11.00,
         "bmPlace": 3.00,
-        "bfWin": 12.00,
+        "bfWin": 14.50,
         "bfPlace": 4.20,
-        "winEdge": -8.33,
+        "winEdge": -24.14,
         "placeEdge": -28.57,
-        "edge": -18.45,
+        "edge": -26.35,
         "places": 10
       },
       {
         "player": "Viktor Hovland",
         "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "9/1",
-        "bmWin": 10.00,
-        "bmPlace": 2.80,
-        "bfWin": 12.00,
+        "bmWinOdds": "10/1",
+        "bmWin": 11.00,
+        "bmPlace": 3.00,
+        "bfWin": 14.50,
         "bfPlace": 4.20,
-        "winEdge": -16.67,
-        "placeEdge": -33.33,
-        "edge": -25.00,
+        "winEdge": -24.14,
+        "placeEdge": -28.57,
+        "edge": -26.35,
         "places": 10
       }
     ]
