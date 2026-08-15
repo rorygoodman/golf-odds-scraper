@@ -1,12 +1,37 @@
 {
-  "timestamp": "2026-08-15 18:40:05 IST",
+  "timestamp": "2026-08-15 19:00:04 IST",
   "events": [
   {
     "eventName": "Fed Ex St.Jude",
     "mode": "EW",
     "bookmakers": ["BOYLESPORTS", "LADBROKES", "PADDY_POWER"],
     "opportunities": [
-
+      {
+        "player": "Patrick Cantlay",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "55/1",
+        "bmWin": 56.00,
+        "bmPlace": 12.00,
+        "bfWin": 95.00,
+        "bfPlace": 5.20,
+        "winEdge": -41.05,
+        "placeEdge": 130.77,
+        "edge": 44.86,
+        "places": 10
+      },
+      {
+        "player": "Patrick Cantlay",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "50/1",
+        "bmWin": 51.00,
+        "bmPlace": 11.00,
+        "bfWin": 95.00,
+        "bfPlace": 5.20,
+        "winEdge": -46.32,
+        "placeEdge": 111.54,
+        "edge": 32.61,
+        "places": 10
+      }
     ]
   }
   ]
