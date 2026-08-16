@@ -1,11 +1,24 @@
 {
-  "timestamp": "2026-08-16 01:00:04 IST",
+  "timestamp": "2026-08-16 01:20:05 IST",
   "events": [
   {
     "eventName": "Fed Ex St.Jude",
     "mode": "EW",
     "bookmakers": ["BOYLESPORTS", "LADBROKES", "PADDY_POWER"],
     "opportunities": [
+      {
+        "player": "Viktor Hovland",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "200/1",
+        "bmWin": 201.00,
+        "bmPlace": 41.00,
+        "bfWin": 740.00,
+        "bfPlace": 2.72,
+        "winEdge": -72.84,
+        "placeEdge": 1407.35,
+        "edge": 667.26,
+        "places": 10
+      },
       {
         "player": "Brian Harman",
         "bookmaker": "BOYLESPORTS",
@@ -25,11 +38,11 @@
         "bmWinOdds": "150/1",
         "bmWin": 151.00,
         "bmPlace": 31.00,
-        "bfWin": 340.00,
+        "bfWin": 320.00,
         "bfPlace": 2.30,
-        "winEdge": -55.59,
+        "winEdge": -52.81,
         "placeEdge": 1247.83,
-        "edge": 596.12,
+        "edge": 597.51,
         "places": 10
       },
       {
@@ -51,12 +64,38 @@
         "bmWinOdds": "125/1",
         "bmWin": 126.00,
         "bmPlace": 26.00,
-        "bfWin": 340.00,
+        "bfWin": 320.00,
         "bfPlace": 2.30,
-        "winEdge": -62.94,
+        "winEdge": -60.62,
         "placeEdge": 1030.43,
-        "edge": 483.75,
+        "edge": 484.90,
         "places": 10
+      },
+      {
+        "player": "Viktor Hovland",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "150/1",
+        "bmWin": 151.00,
+        "bmPlace": 31.00,
+        "bfWin": 740.00,
+        "bfPlace": 2.72,
+        "winEdge": -79.59,
+        "placeEdge": 1039.71,
+        "edge": 480.06,
+        "places": 10
+      },
+      {
+        "player": "Viktor Hovland",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "200/1",
+        "bmWin": 201.00,
+        "bmPlace": 41.00,
+        "bfWin": 740.00,
+        "bfPlace": 3.81,
+        "winEdge": -72.84,
+        "placeEdge": 975.25,
+        "edge": 451.20,
+        "places": 8
       },
       {
         "player": "Brian Harman",
@@ -77,11 +116,11 @@
         "bmWinOdds": "90/1",
         "bmWin": 91.00,
         "bmPlace": 19.00,
-        "bfWin": 160.00,
+        "bfWin": 150.00,
         "bfPlace": 1.90,
-        "winEdge": -43.13,
+        "winEdge": -39.33,
         "placeEdge": 900.00,
-        "edge": 428.44,
+        "edge": 430.33,
         "places": 10
       },
       {
@@ -90,11 +129,11 @@
         "bmWinOdds": "150/1",
         "bmWin": 151.00,
         "bmPlace": 31.00,
-        "bfWin": 340.00,
+        "bfWin": 320.00,
         "bfPlace": 3.14,
-        "winEdge": -55.59,
+        "winEdge": -52.81,
         "placeEdge": 885.84,
-        "edge": 415.13,
+        "edge": 416.51,
         "places": 8
       },
       {
@@ -103,11 +142,11 @@
         "bmWinOdds": "80/1",
         "bmWin": 81.00,
         "bmPlace": 17.00,
-        "bfWin": 120.00,
+        "bfWin": 130.00,
         "bfPlace": 1.78,
-        "winEdge": -32.50,
+        "winEdge": -37.69,
         "placeEdge": 855.06,
-        "edge": 411.28,
+        "edge": 408.68,
         "places": 10
       },
       {
@@ -116,24 +155,11 @@
         "bmWinOdds": "80/1",
         "bmWin": 81.00,
         "bmPlace": 17.00,
-        "bfWin": 160.00,
+        "bfWin": 150.00,
         "bfPlace": 1.90,
-        "winEdge": -49.38,
+        "winEdge": -46.00,
         "placeEdge": 794.74,
-        "edge": 372.68,
-        "places": 10
-      },
-      {
-        "player": "Hideki Matsuyama",
-        "bookmaker": "PADDY_POWER",
-        "bmWinOdds": "70/1",
-        "bmWin": 71.00,
-        "bmPlace": 15.00,
-        "bfWin": 120.00,
-        "bfPlace": 1.78,
-        "winEdge": -40.83,
-        "placeEdge": 742.70,
-        "edge": 350.93,
+        "edge": 374.37,
         "places": 10
       },
       {
@@ -142,12 +168,25 @@
         "bmWinOdds": "100/1",
         "bmWin": 101.00,
         "bmPlace": 21.00,
-        "bfWin": 160.00,
+        "bfWin": 150.00,
         "bfPlace": 2.51,
-        "winEdge": -36.88,
+        "winEdge": -32.67,
         "placeEdge": 738.16,
-        "edge": 350.64,
+        "edge": 352.75,
         "places": 8
+      },
+      {
+        "player": "Hideki Matsuyama",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "70/1",
+        "bmWin": 71.00,
+        "bmPlace": 15.00,
+        "bfWin": 130.00,
+        "bfPlace": 1.78,
+        "winEdge": -45.38,
+        "placeEdge": 742.70,
+        "edge": 348.66,
+        "places": 10
       },
       {
         "player": "Jake Knapp",
@@ -168,11 +207,11 @@
         "bmWinOdds": "80/1",
         "bmWin": 81.00,
         "bmPlace": 17.00,
-        "bfWin": 120.00,
+        "bfWin": 130.00,
         "bfPlace": 2.31,
-        "winEdge": -32.50,
+        "winEdge": -37.69,
         "placeEdge": 634.94,
-        "edge": 301.22,
+        "edge": 298.62,
         "places": 8
       },
       {
