@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-16 04:00:04 IST",
+  "timestamp": "2026-08-16 04:20:04 IST",
   "events": [
   {
     "eventName": "Fed Ex St.Jude",
@@ -7,16 +7,68 @@
     "bookmakers": ["BOYLESPORTS", "LADBROKES", "PADDY_POWER"],
     "opportunities": [
       {
+        "player": "Chris Gotterup",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "500/1",
+        "bmWin": 501.00,
+        "bmPlace": 101.00,
+        "bfWin": 1000.00,
+        "bfPlace": 4.70,
+        "winEdge": -49.90,
+        "placeEdge": 2048.94,
+        "edge": 999.52,
+        "places": 10
+      },
+      {
+        "player": "Kurt Kitayama",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "350/1",
+        "bmWin": 351.00,
+        "bmPlace": 71.00,
+        "bfWin": 1000.00,
+        "bfPlace": 3.35,
+        "winEdge": -64.90,
+        "placeEdge": 2019.40,
+        "edge": 977.25,
+        "places": 10
+      },
+      {
+        "player": "Chris Gotterup",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "475/1",
+        "bmWin": 476.00,
+        "bmPlace": 96.00,
+        "bfWin": 1000.00,
+        "bfPlace": 4.70,
+        "winEdge": -52.40,
+        "placeEdge": 1942.55,
+        "edge": 945.08,
+        "places": 10
+      },
+      {
         "player": "Tom Kim",
         "bookmaker": "BOYLESPORTS",
         "bmWinOdds": "250/1",
         "bmWin": 251.00,
         "bmPlace": 51.00,
-        "bfWin": 700.00,
+        "bfWin": 400.00,
         "bfPlace": 3.00,
-        "winEdge": -64.14,
+        "winEdge": -37.25,
         "placeEdge": 1600.00,
-        "edge": 767.93,
+        "edge": 781.38,
+        "places": 10
+      },
+      {
+        "player": "Kurt Kitayama",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "275/1",
+        "bmWin": 276.00,
+        "bmPlace": 56.00,
+        "bfWin": 1000.00,
+        "bfPlace": 3.35,
+        "winEdge": -72.40,
+        "placeEdge": 1571.64,
+        "edge": 749.62,
         "places": 10
       },
       {
@@ -38,12 +90,25 @@
         "bmWinOdds": "150/1",
         "bmWin": 151.00,
         "bmPlace": 31.00,
-        "bfWin": 500.00,
+        "bfWin": 400.00,
         "bfPlace": 2.10,
-        "winEdge": -69.80,
+        "winEdge": -62.25,
         "placeEdge": 1376.19,
-        "edge": 653.20,
+        "edge": 656.97,
         "places": 10
+      },
+      {
+        "player": "Chris Gotterup",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "500/1",
+        "bmWin": 501.00,
+        "bmPlace": 101.00,
+        "bfWin": 1000.00,
+        "bfPlace": 6.93,
+        "winEdge": -49.90,
+        "placeEdge": 1357.70,
+        "edge": 653.90,
+        "places": 8
       },
       {
         "player": "Brian Harman",
@@ -64,12 +129,25 @@
         "bmWinOdds": "200/1",
         "bmWin": 201.00,
         "bmPlace": 41.00,
-        "bfWin": 700.00,
+        "bfWin": 400.00,
         "bfPlace": 3.00,
-        "winEdge": -71.29,
+        "winEdge": -49.75,
         "placeEdge": 1266.67,
-        "edge": 597.69,
+        "edge": 608.46,
         "places": 10
+      },
+      {
+        "player": "Kurt Kitayama",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "300/1",
+        "bmWin": 301.00,
+        "bmPlace": 61.00,
+        "bfWin": 1000.00,
+        "bfPlace": 4.76,
+        "winEdge": -69.90,
+        "placeEdge": 1180.23,
+        "edge": 555.16,
+        "places": 8
       },
       {
         "player": "Alex Noren",
@@ -77,12 +155,25 @@
         "bmWinOdds": "125/1",
         "bmWin": 126.00,
         "bmPlace": 26.00,
-        "bfWin": 500.00,
+        "bfWin": 400.00,
         "bfPlace": 2.10,
-        "winEdge": -74.80,
+        "winEdge": -68.50,
         "placeEdge": 1138.10,
-        "edge": 531.65,
+        "edge": 534.80,
         "places": 10
+      },
+      {
+        "player": "Tom Kim",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "250/1",
+        "bmWin": 251.00,
+        "bmPlace": 51.00,
+        "bfWin": 400.00,
+        "bfPlace": 4.26,
+        "winEdge": -37.25,
+        "placeEdge": 1097.39,
+        "edge": 530.07,
+        "places": 8
       },
       {
         "player": "Brian Harman",
@@ -95,19 +186,6 @@
         "winEdge": -28.21,
         "placeEdge": 1073.50,
         "edge": 522.64,
-        "places": 8
-      },
-      {
-        "player": "Tom Kim",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "250/1",
-        "bmWin": 251.00,
-        "bmPlace": 51.00,
-        "bfWin": 700.00,
-        "bfPlace": 4.26,
-        "winEdge": -64.14,
-        "placeEdge": 1097.39,
-        "edge": 516.62,
         "places": 8
       },
       {
@@ -142,11 +220,11 @@
         "bmWinOdds": "150/1",
         "bmWin": 151.00,
         "bmPlace": 31.00,
-        "bfWin": 500.00,
+        "bfWin": 400.00,
         "bfPlace": 2.86,
-        "winEdge": -69.80,
+        "winEdge": -62.25,
         "placeEdge": 985.71,
-        "edge": 457.96,
+        "edge": 461.73,
         "places": 8
       },
       {
@@ -176,19 +254,6 @@
         "places": 10
       },
       {
-        "player": "Hideki Matsuyama",
-        "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "80/1",
-        "bmWin": 81.00,
-        "bmPlace": 17.00,
-        "bfWin": 120.00,
-        "bfPlace": 1.79,
-        "winEdge": -32.50,
-        "placeEdge": 849.72,
-        "edge": 408.61,
-        "places": 10
-      },
-      {
         "player": "Si Woo Kim",
         "bookmaker": "PADDY_POWER",
         "bmWinOdds": "80/1",
@@ -199,6 +264,19 @@
         "winEdge": -46.00,
         "placeEdge": 804.26,
         "edge": 379.13,
+        "places": 10
+      },
+      {
+        "player": "Hideki Matsuyama",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "80/1",
+        "bmWin": 81.00,
+        "bmPlace": 17.00,
+        "bfWin": 120.00,
+        "bfPlace": 1.93,
+        "winEdge": -32.50,
+        "placeEdge": 780.83,
+        "edge": 374.16,
         "places": 10
       },
       {
@@ -221,10 +299,10 @@
         "bmWin": 71.00,
         "bmPlace": 15.00,
         "bfWin": 120.00,
-        "bfPlace": 1.79,
+        "bfPlace": 1.93,
         "winEdge": -40.83,
-        "placeEdge": 737.99,
-        "edge": 348.58,
+        "placeEdge": 677.20,
+        "edge": 318.18,
         "places": 10
       },
       {
@@ -247,10 +325,10 @@
         "bmWin": 81.00,
         "bmPlace": 17.00,
         "bfWin": 120.00,
-        "bfPlace": 2.32,
+        "bfPlace": 2.46,
         "winEdge": -32.50,
-        "placeEdge": 631.74,
-        "edge": 299.62,
+        "placeEdge": 590.40,
+        "edge": 278.95,
         "places": 8
       },
       {
@@ -324,11 +402,11 @@
         "bmWinOdds": "15/2",
         "bmWin": 8.50,
         "bmPlace": 2.50,
-        "bfWin": 9.60,
+        "bfWin": 9.80,
         "bfPlace": 1.10,
-        "winEdge": -11.46,
+        "winEdge": -13.27,
         "placeEdge": 127.27,
-        "edge": 57.91,
+        "edge": 57.00,
         "places": 10
       },
       {
@@ -337,11 +415,11 @@
         "bmWinOdds": "7/1",
         "bmWin": 8.00,
         "bmPlace": 2.40,
-        "bfWin": 9.60,
+        "bfWin": 9.80,
         "bfPlace": 1.10,
-        "winEdge": -16.67,
+        "winEdge": -18.37,
         "placeEdge": 118.18,
-        "edge": 50.76,
+        "edge": 49.91,
         "places": 10
       },
       {
@@ -350,11 +428,11 @@
         "bmWinOdds": "7/1",
         "bmWin": 8.00,
         "bmPlace": 2.40,
-        "bfWin": 9.60,
+        "bfWin": 9.80,
         "bfPlace": 1.18,
-        "winEdge": -16.67,
+        "winEdge": -18.37,
         "placeEdge": 102.55,
-        "edge": 42.94,
+        "edge": 42.09,
         "places": 8
       },
       {
@@ -402,11 +480,11 @@
         "bmWinOdds": "2/5",
         "bmWin": 1.40,
         "bmPlace": 1.08,
-        "bfWin": 1.53,
+        "bfWin": 1.52,
         "bfPlace": 1.08,
-        "winEdge": -8.50,
+        "winEdge": -7.89,
         "placeEdge": 0.00,
-        "edge": -4.25,
+        "edge": -3.95,
         "places": 10
       },
       {
@@ -415,11 +493,11 @@
         "bmWinOdds": "2/5",
         "bmWin": 1.40,
         "bmPlace": 1.08,
-        "bfWin": 1.53,
+        "bfWin": 1.52,
         "bfPlace": 1.08,
-        "winEdge": -8.50,
+        "winEdge": -7.89,
         "placeEdge": 0.00,
-        "edge": -4.25,
+        "edge": -3.95,
         "places": 10
       },
       {
@@ -428,11 +506,11 @@
         "bmWinOdds": "2/5",
         "bmWin": 1.40,
         "bmPlace": 1.08,
-        "bfWin": 1.53,
+        "bfWin": 1.52,
         "bfPlace": 1.08,
-        "winEdge": -8.50,
+        "winEdge": -7.89,
         "placeEdge": -0.37,
-        "edge": -4.43,
+        "edge": -4.13,
         "places": 8
       }
     ]
