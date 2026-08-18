@@ -11,9 +11,13 @@ eval "$(ssh-agent -s)" > /dev/null 2>&1
 trap "kill $SSH_AGENT_PID 2>/dev/null" EXIT
 ssh-add ~/.ssh/id_ed25519 2>/dev/null
 
-# Pull latest changes from master
+# Pull latest changes from master. data.json is scraper output and gets
+# rewritten every run, so the working tree is never clean going into this -
+# discard local drift and hard-sync to origin rather than risk a silently
+# failing ff-only pull that freezes the checkout on a stale config.
 echo "Pulling latest changes..."
-git pull --ff-only origin master || true
+git fetch origin master
+git reset --hard origin/master
 
 # Create output directory
 mkdir -p public
