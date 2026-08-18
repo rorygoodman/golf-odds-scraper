@@ -1,11 +1,24 @@
 {
-  "timestamp": "2026-08-19 00:20:05 IST",
+  "timestamp": "2026-08-19 00:40:05 IST",
   "events": [
   {
     "eventName": "Fed Ex BMW",
     "mode": "EW",
     "bookmakers": ["BOYLESPORTS", "PADDY_POWER"],
     "opportunities": [
+      {
+        "player": "Scottie Scheffler",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "11/4",
+        "bmWin": 3.75,
+        "bmPlace": 1.55,
+        "bfWin": 4.30,
+        "bfPlace": 1.40,
+        "winEdge": -12.79,
+        "placeEdge": 10.71,
+        "edge": -1.04,
+        "places": 10
+      },
       {
         "player": "Xander Schauffele",
         "bookmaker": "PADDY_POWER",
@@ -60,7 +73,7 @@
       },
       {
         "player": "Scottie Scheffler",
-        "bookmaker": "PADDY_POWER",
+        "bookmaker": "BOYLESPORTS",
         "bmWinOdds": "5/2",
         "bmWin": 3.50,
         "bmPlace": 1.50,
@@ -82,19 +95,6 @@
         "winEdge": -46.88,
         "placeEdge": 33.33,
         "edge": -6.77,
-        "places": 10
-      },
-      {
-        "player": "Scottie Scheffler",
-        "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "12/5",
-        "bmWin": 3.40,
-        "bmPlace": 1.48,
-        "bfWin": 4.30,
-        "bfPlace": 1.40,
-        "winEdge": -20.93,
-        "placeEdge": 5.71,
-        "edge": -7.61,
         "places": 10
       },
       {
@@ -264,19 +264,6 @@
         "winEdge": -58.67,
         "placeEdge": 32.08,
         "edge": -13.30,
-        "places": 10
-      },
-      {
-        "player": "Cameron Young",
-        "bookmaker": "PADDY_POWER",
-        "bmWinOdds": "14/1",
-        "bmWin": 15.00,
-        "bmPlace": 3.80,
-        "bfWin": 27.00,
-        "bfPlace": 3.25,
-        "winEdge": -44.44,
-        "placeEdge": 16.92,
-        "edge": -13.76,
         "places": 10
       },
       {
@@ -563,19 +550,6 @@
         "winEdge": -70.00,
         "placeEdge": 34.15,
         "edge": -17.93,
-        "places": 10
-      },
-      {
-        "player": "J.T. Poston",
-        "bookmaker": "PADDY_POWER",
-        "bmWinOdds": "80/1",
-        "bmWin": 81.00,
-        "bmPlace": 17.00,
-        "bfWin": 290.00,
-        "bfPlace": 12.50,
-        "winEdge": -72.07,
-        "placeEdge": 36.00,
-        "edge": -18.03,
         "places": 10
       },
       {
@@ -866,6 +840,19 @@
       },
       {
         "player": "Cameron Young",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "12/1",
+        "bmWin": 13.00,
+        "bmPlace": 3.40,
+        "bfWin": 27.00,
+        "bfPlace": 3.25,
+        "winEdge": -51.85,
+        "placeEdge": 4.62,
+        "edge": -23.62,
+        "places": 10
+      },
+      {
+        "player": "Cameron Young",
         "bookmaker": "BOYLESPORTS",
         "bmWinOdds": "12/1",
         "bmWin": 13.00,
@@ -966,32 +953,6 @@
         "winEdge": -62.86,
         "placeEdge": 13.21,
         "edge": -24.82,
-        "places": 10
-      },
-      {
-        "player": "Sungjae Im",
-        "bookmaker": "PADDY_POWER",
-        "bmWinOdds": "35/1",
-        "bmWin": 36.00,
-        "bmPlace": 8.00,
-        "bfWin": 100.00,
-        "bfPlace": 7.00,
-        "winEdge": -64.00,
-        "placeEdge": 14.29,
-        "edge": -24.86,
-        "places": 10
-      },
-      {
-        "player": "Sungjae Im",
-        "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "35/1",
-        "bmWin": 36.00,
-        "bmPlace": 8.00,
-        "bfWin": 100.00,
-        "bfPlace": 7.00,
-        "winEdge": -64.00,
-        "placeEdge": 14.29,
-        "edge": -24.86,
         "places": 10
       },
       {
@@ -1099,6 +1060,19 @@
         "places": 10
       },
       {
+        "player": "J.T. Poston",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "70/1",
+        "bmWin": 71.00,
+        "bmPlace": 15.00,
+        "bfWin": 290.00,
+        "bfPlace": 12.50,
+        "winEdge": -75.52,
+        "placeEdge": 20.00,
+        "edge": -27.76,
+        "places": 10
+      },
+      {
         "player": "Gary Woodland",
         "bookmaker": "PADDY_POWER",
         "bmWinOdds": "50/1",
@@ -1109,6 +1083,32 @@
         "winEdge": -70.00,
         "placeEdge": 12.24,
         "edge": -28.88,
+        "places": 10
+      },
+      {
+        "player": "Sungjae Im",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "35/1",
+        "bmWin": 36.00,
+        "bmPlace": 8.00,
+        "bfWin": 100.00,
+        "bfPlace": 7.60,
+        "winEdge": -64.00,
+        "placeEdge": 5.26,
+        "edge": -29.37,
+        "places": 10
+      },
+      {
+        "player": "Sungjae Im",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "35/1",
+        "bmWin": 36.00,
+        "bmPlace": 8.00,
+        "bfWin": 100.00,
+        "bfPlace": 7.60,
+        "winEdge": -64.00,
+        "placeEdge": 5.26,
+        "edge": -29.37,
         "places": 10
       },
       {
