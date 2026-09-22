@@ -10,5 +10,6 @@ enum class Bookmaker {
     PADDY_POWER,
     BOYLESPORTS,
     SKYBET,
-    BET365
+    BET365,
+    WILLIAM_HILL
 }

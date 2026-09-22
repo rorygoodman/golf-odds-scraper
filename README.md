@@ -4,7 +4,7 @@ A Kotlin-based scraper for finding each-way arbitrage opportunities in golf bett
 
 ## What it does
 
-- Scrapes outright winner odds from multiple bookmakers (Ladbrokes, Paddy Power, Boylesports)
+- Scrapes outright winner odds from multiple bookmakers (Ladbrokes, Paddy Power, Boylesports, William Hill)
 - Fetches Betfair exchange lay prices from Winner, Top 5, and Top 10 markets via the Betfair API
 - Calculates E/W arbitrage opportunities by comparing bookmaker back prices against Betfair lay prices
 - Shows edge percentages for each player/bookmaker combination
@@ -85,6 +85,7 @@ Same account/app key as horsey-scraper — copy its `~/.horsey-scraper/credentia
 | Paddy Power | `PADDY_POWER` | Fractional odds, each-way terms |
 | Boylesports | `BOYLESPORTS` | Fractional odds, each-way terms |
 | 10Bet | `TEN_BET` | Fractional odds, each-way terms |
+| William Hill | `WILLIAM_HILL` | Fractional odds, each-way terms read from the market |
 | Betfair Exchange | via `betfairLink` | Lay prices, via API |
 
 ## Adding a new bookmaker
@@ -105,6 +106,7 @@ src/main/kotlin/com/golf/odds/
   PaddyPowerScraper.kt    # Paddy Power scraper
   BoylesportsScraper.kt   # Boylesports scraper
   TenBetScraper.kt        # 10Bet scraper
+  WilliamHillScraper.kt   # William Hill scraper
   BetfairApiFetcher.kt    # Betfair exchange lay prices (REST API)
   LayableEWCalculator.kt  # E/W arbitrage calculation and output
   OddsComparison.kt       # Cross-bookmaker comparison utilities

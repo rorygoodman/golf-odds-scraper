@@ -114,6 +114,7 @@ class LayableEWCalculator(
                 event.url.contains("boylesports.com") -> Bookmaker.BOYLESPORTS
                 event.url.contains("skybet.com") -> Bookmaker.SKYBET
                 event.url.contains("bet365.com") -> Bookmaker.BET365
+                event.url.contains("williamhill.com") -> Bookmaker.WILLIAM_HILL
                 else -> return@eventLoop
             }
 
