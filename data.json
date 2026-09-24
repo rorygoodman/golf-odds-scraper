@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-24 08:40:05 IST",
+  "timestamp": "2026-09-24 09:00:04 IST",
   "events": [
   {
     "eventName": "DPW French",
@@ -7,16 +7,29 @@
     "bookmakers": ["WILLIAM_HILL"],
     "opportunities": [
       {
+        "player": "Sean Crocker",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "200/1",
+        "bmWin": 201.00,
+        "bmPlace": 51.00,
+        "bfWin": 320.00,
+        "bfPlace": 19.00,
+        "winEdge": -37.19,
+        "placeEdge": 168.42,
+        "edge": 65.62,
+        "places": 10
+      },
+      {
         "player": "Gregorio De Leo",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "60/1",
         "bmWin": 61.00,
         "bmPlace": 16.00,
-        "bfWin": 95.00,
+        "bfWin": 85.00,
         "bfPlace": 8.00,
-        "winEdge": -35.79,
+        "winEdge": -28.24,
         "placeEdge": 100.00,
-        "edge": 32.11,
+        "edge": 35.88,
         "places": 10
       },
       {
@@ -30,19 +43,6 @@
         "winEdge": -18.00,
         "placeEdge": 71.88,
         "edge": 26.94,
-        "places": 10
-      },
-      {
-        "player": "Sean Crocker",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "150/1",
-        "bmWin": 151.00,
-        "bmPlace": 38.50,
-        "bfWin": 660.00,
-        "bfPlace": 19.00,
-        "winEdge": -77.12,
-        "placeEdge": 102.63,
-        "edge": 12.76,
         "places": 10
       }
     ]
