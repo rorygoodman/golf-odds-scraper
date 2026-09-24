@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-24 09:20:05 IST",
+  "timestamp": "2026-09-24 09:40:05 IST",
   "events": [
   {
     "eventName": "DPW French",
@@ -7,42 +7,55 @@
     "bookmakers": ["WILLIAM_HILL"],
     "opportunities": [
       {
+        "player": "Gregorio De Leo",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "80/1",
+        "bmWin": 81.00,
+        "bmPlace": 21.00,
+        "bfWin": 95.00,
+        "bfPlace": 8.00,
+        "winEdge": -14.74,
+        "placeEdge": 162.50,
+        "edge": 73.88,
+        "places": 10
+      },
+      {
         "player": "Sean Crocker",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "200/1",
         "bmWin": 201.00,
         "bmPlace": 51.00,
-        "bfWin": 820.00,
+        "bfWin": 720.00,
         "bfPlace": 19.00,
-        "winEdge": -75.49,
+        "winEdge": -72.08,
         "placeEdge": 168.42,
-        "edge": 46.47,
-        "places": 10
-      },
-      {
-        "player": "Gregorio De Leo",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "60/1",
-        "bmWin": 61.00,
-        "bmPlace": 16.00,
-        "bfWin": 95.00,
-        "bfPlace": 8.00,
-        "winEdge": -35.79,
-        "placeEdge": 100.00,
-        "edge": 32.11,
+        "edge": 48.17,
         "places": 10
       },
       {
         "player": "Jeff Winther",
         "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "40/1",
-        "bmWin": 41.00,
-        "bmPlace": 11.00,
+        "bmWinOdds": "45/1",
+        "bmWin": 46.00,
+        "bmPlace": 12.25,
         "bfWin": 50.00,
         "bfPlace": 6.40,
-        "winEdge": -18.00,
-        "placeEdge": 71.88,
-        "edge": 26.94,
+        "winEdge": -8.00,
+        "placeEdge": 91.41,
+        "edge": 41.70,
+        "places": 10
+      },
+      {
+        "player": "Calum Hill",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "35/1",
+        "bmWin": 36.00,
+        "bmPlace": 9.75,
+        "bfWin": 70.00,
+        "bfPlace": 8.80,
+        "winEdge": -48.57,
+        "placeEdge": 10.80,
+        "edge": -18.89,
         "places": 10
       }
     ]
