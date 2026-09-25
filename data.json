@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-25 23:00:04 IST",
+  "timestamp": "2026-09-25 23:20:05 IST",
   "events": [
   {
     "eventName": "DPW French",
@@ -25,11 +25,11 @@
         "bmWinOdds": "300/1",
         "bmWin": 301.00,
         "bmPlace": 76.00,
-        "bfWin": 1000.00,
+        "bfWin": 500.00,
         "bfPlace": 9.00,
-        "winEdge": -69.90,
+        "winEdge": -39.80,
         "placeEdge": 744.44,
-        "edge": 337.27,
+        "edge": 352.32,
         "places": 10
       },
       {
@@ -77,11 +77,11 @@
         "bmWinOdds": "125/1",
         "bmWin": 126.00,
         "bmPlace": 32.25,
-        "bfWin": 280.00,
+        "bfWin": 300.00,
         "bfPlace": 5.50,
-        "winEdge": -55.00,
+        "winEdge": -58.00,
         "placeEdge": 486.36,
-        "edge": 215.68,
+        "edge": 214.18,
         "places": 10
       },
       {
@@ -91,10 +91,10 @@
         "bmWin": 201.00,
         "bmPlace": 51.00,
         "bfWin": 1000.00,
-        "bfPlace": 9.20,
+        "bfPlace": 9.00,
         "winEdge": -79.90,
-        "placeEdge": 454.35,
-        "edge": 187.22,
+        "placeEdge": 466.67,
+        "edge": 193.38,
         "places": 10
       },
       {
@@ -124,16 +124,16 @@
         "places": 10
       },
       {
-        "player": "Matteo Manassero",
+        "player": "Filippo Celli",
         "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "125/1",
-        "bmWin": 126.00,
-        "bmPlace": 32.25,
-        "bfWin": 350.00,
-        "bfPlace": 6.60,
-        "winEdge": -64.00,
-        "placeEdge": 388.64,
-        "edge": 162.32,
+        "bmWinOdds": "200/1",
+        "bmWin": 201.00,
+        "bmPlace": 51.00,
+        "bfWin": 500.00,
+        "bfPlace": 10.50,
+        "winEdge": -59.80,
+        "placeEdge": 385.71,
+        "edge": 162.96,
         "places": 10
       },
       {
@@ -150,16 +150,16 @@
         "places": 10
       },
       {
-        "player": "Filippo Celli",
+        "player": "Matteo Manassero",
         "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "200/1",
-        "bmWin": 201.00,
-        "bmPlace": 51.00,
-        "bfWin": 900.00,
-        "bfPlace": 10.50,
-        "winEdge": -77.67,
-        "placeEdge": 385.71,
-        "edge": 154.02,
+        "bmWinOdds": "125/1",
+        "bmWin": 126.00,
+        "bmPlace": 32.25,
+        "bfWin": 350.00,
+        "bfPlace": 6.80,
+        "winEdge": -64.00,
+        "placeEdge": 374.26,
+        "edge": 155.13,
         "places": 10
       },
       {
@@ -169,36 +169,10 @@
         "bmWin": 71.00,
         "bmPlace": 18.50,
         "bfWin": 140.00,
-        "bfPlace": 4.30,
+        "bfPlace": 4.40,
         "winEdge": -49.29,
-        "placeEdge": 330.23,
-        "edge": 140.47,
-        "places": 10
-      },
-      {
-        "player": "Gregorio De Leo",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "35/1",
-        "bmWin": 36.00,
-        "bmPlace": 9.75,
-        "bfWin": 46.00,
-        "bfPlace": 2.80,
-        "winEdge": -21.74,
-        "placeEdge": 248.21,
-        "edge": 113.24,
-        "places": 10
-      },
-      {
-        "player": "Ludvig Aberg",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "50/1",
-        "bmWin": 51.00,
-        "bmPlace": 13.50,
-        "bfWin": 75.00,
-        "bfPlace": 3.80,
-        "winEdge": -32.00,
-        "placeEdge": 255.26,
-        "edge": 111.63,
+        "placeEdge": 320.45,
+        "edge": 135.58,
         "places": 10
       },
       {
@@ -208,10 +182,36 @@
         "bmWin": 36.00,
         "bmPlace": 9.75,
         "bfWin": 55.00,
-        "bfPlace": 2.74,
+        "bfPlace": 2.68,
         "winEdge": -34.55,
-        "placeEdge": 255.84,
-        "edge": 110.65,
+        "placeEdge": 263.81,
+        "edge": 114.63,
+        "places": 10
+      },
+      {
+        "player": "Ludvig Aberg",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "50/1",
+        "bmWin": 51.00,
+        "bmPlace": 13.50,
+        "bfWin": 75.00,
+        "bfPlace": 3.75,
+        "winEdge": -32.00,
+        "placeEdge": 260.00,
+        "edge": 114.00,
+        "places": 10
+      },
+      {
+        "player": "Gregorio De Leo",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "35/1",
+        "bmWin": 36.00,
+        "bmPlace": 9.75,
+        "bfWin": 48.00,
+        "bfPlace": 2.80,
+        "winEdge": -25.00,
+        "placeEdge": 248.21,
+        "edge": 111.61,
         "places": 10
       },
       {
@@ -241,29 +241,29 @@
         "places": 10
       },
       {
+        "player": "Marcel Siem",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "80/1",
+        "bmWin": 81.00,
+        "bmPlace": 21.00,
+        "bfWin": 140.00,
+        "bfPlace": 6.40,
+        "winEdge": -42.14,
+        "placeEdge": 228.13,
+        "edge": 92.99,
+        "places": 10
+      },
+      {
         "player": "Kristoffer Reitan",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "25/1",
         "bmWin": 26.00,
         "bmPlace": 7.25,
         "bfWin": 32.00,
-        "bfPlace": 2.38,
+        "bfPlace": 2.40,
         "winEdge": -18.75,
-        "placeEdge": 204.62,
-        "edge": 92.94,
-        "places": 10
-      },
-      {
-        "player": "Marcel Siem",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "80/1",
-        "bmWin": 81.00,
-        "bmPlace": 21.00,
-        "bfWin": 150.00,
-        "bfPlace": 6.40,
-        "winEdge": -46.00,
-        "placeEdge": 228.13,
-        "edge": 91.06,
+        "placeEdge": 202.08,
+        "edge": 91.67,
         "places": 10
       },
       {
@@ -272,11 +272,11 @@
         "bmWinOdds": "25/1",
         "bmWin": 26.00,
         "bmPlace": 7.25,
-        "bfWin": 36.00,
-        "bfPlace": 2.54,
-        "winEdge": -27.78,
-        "placeEdge": 185.43,
-        "edge": 78.83,
+        "bfWin": 34.00,
+        "bfPlace": 2.56,
+        "winEdge": -23.53,
+        "placeEdge": 183.20,
+        "edge": 79.84,
         "places": 10
       },
       {
@@ -286,10 +286,10 @@
         "bmWin": 21.00,
         "bmPlace": 6.00,
         "bfWin": 28.00,
-        "bfPlace": 2.16,
+        "bfPlace": 2.20,
         "winEdge": -25.00,
-        "placeEdge": 177.78,
-        "edge": 76.39,
+        "placeEdge": 172.73,
+        "edge": 73.86,
         "places": 10
       },
       {
@@ -324,11 +324,11 @@
         "bmWinOdds": "11/8",
         "bmWin": 2.38,
         "bmPlace": 1.34,
-        "bfWin": 2.56,
+        "bfWin": 2.54,
         "bfPlace": 1.10,
-        "winEdge": -7.23,
+        "winEdge": -6.50,
         "placeEdge": 22.16,
-        "edge": 7.47,
+        "edge": 7.83,
         "places": 10
       },
       {
