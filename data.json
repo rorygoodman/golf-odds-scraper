@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-27 13:40:05 IST",
+  "timestamp": "2026-09-27 14:00:04 IST",
   "events": [
   {
     "eventName": "DPW French",
@@ -7,29 +7,42 @@
     "bookmakers": ["WILLIAM_HILL"],
     "opportunities": [
       {
+        "player": "Jeff Winther",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "100/1",
+        "bmWin": 101.00,
+        "bmPlace": 21.00,
+        "bfWin": 750.00,
+        "bfPlace": 6.40,
+        "winEdge": -86.53,
+        "placeEdge": 228.13,
+        "edge": 70.80,
+        "places": 10
+      },
+      {
         "player": "Eugenio Chacarra",
         "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "13/2",
-        "bmWin": 7.50,
-        "bmPlace": 2.30,
-        "bfWin": 9.60,
+        "bmWinOdds": "4/1",
+        "bmWin": 5.00,
+        "bmPlace": 1.80,
+        "bfWin": 10.00,
         "bfPlace": 1.09,
-        "winEdge": -21.88,
-        "placeEdge": 111.01,
-        "edge": 44.57,
+        "winEdge": -50.00,
+        "placeEdge": 65.14,
+        "edge": 7.57,
         "places": 10
       },
       {
         "player": "Matt Fitzpatrick",
         "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "1/5",
-        "bmWin": 1.20,
-        "bmPlace": 1.04,
-        "bfWin": 1.22,
+        "bmWinOdds": "1/3",
+        "bmWin": 1.33,
+        "bmPlace": 1.07,
+        "bfWin": 1.37,
         "bfPlace": 1.03,
-        "winEdge": -1.64,
-        "placeEdge": 0.97,
-        "edge": -0.33,
+        "winEdge": -2.68,
+        "placeEdge": 3.56,
+        "edge": 0.44,
         "places": 10
       }
     ]
