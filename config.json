@@ -1,15 +1,20 @@
 {
   "events": [
     {
-      "name": "DPW French",
-      "betfairLink": "https://www.betfair.com/exchange/plus/golf/market/1.262711939",
-      "betfairTop5Link": "https://www.betfair.com/exchange/plus/golf/market/1.262711941",
-      "betfairTop10Link": "https://www.betfair.com/exchange/plus/golf/market/1.262711940",
+      "name": "PGA Bermuda",
+      "betfairLink": "https://www.betfair.com/exchange/plus/golf/market/1.264145783",
+      "betfairTop5Link": "https://www.betfair.com/exchange/plus/golf/market/1.264145784",
+      "betfairTop10Link": "https://www.betfair.com/exchange/plus/golf/market/1.264145786",
       "ew": true,
       "pages": [
         {
-          "url": "https://sports.williamhill.com/betting/en-gb/golf/competitions/open-de-france-2026/outrights",
+          "url": "https://sports.williamhill.com/betting/en-gb/golf/competitions/bermuda-championship-2026/outrights",
           "bookmaker": "WILLIAM_HILL",
+          "places": 10
+        },
+        {
+          "url": "https://www.boylesports.com/sports/golf/butterfield-bermuda-championship",
+          "bookmaker": "BOYLESPORTS",
           "places": 10
         }
       ]
