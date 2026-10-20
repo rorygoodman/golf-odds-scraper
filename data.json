@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-20 06:00:05 IST",
+  "timestamp": "2026-10-20 06:20:05 IST",
   "events": [
   {
     "eventName": "PGA Bermuda",
@@ -13,10 +13,10 @@
         "bmWin": 251.00,
         "bmPlace": 51.00,
         "bfWin": 450.00,
-        "bfPlace": 30.00,
+        "bfPlace": 29.00,
         "winEdge": -44.22,
-        "placeEdge": 70.00,
-        "edge": 12.89,
+        "placeEdge": 75.86,
+        "edge": 15.82,
         "places": 10
       },
       {
@@ -98,6 +98,19 @@
         "places": 10
       },
       {
+        "player": "Lee Hodges",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "40/1",
+        "bmWin": 41.00,
+        "bmPlace": 9.00,
+        "bfWin": 75.00,
+        "bfPlace": 7.60,
+        "winEdge": -45.33,
+        "placeEdge": 18.42,
+        "edge": -13.46,
+        "places": 10
+      },
+      {
         "player": "Kevin Roy",
         "bookmaker": "BOYLESPORTS",
         "bmWinOdds": "22/1",
@@ -134,19 +147,6 @@
         "winEdge": -39.58,
         "placeEdge": 10.00,
         "edge": -14.79,
-        "places": 10
-      },
-      {
-        "player": "Lee Hodges",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "40/1",
-        "bmWin": 41.00,
-        "bmPlace": 9.00,
-        "bfWin": 75.00,
-        "bfPlace": 7.80,
-        "winEdge": -45.33,
-        "placeEdge": 15.38,
-        "edge": -14.97,
         "places": 10
       },
       {
@@ -475,6 +475,19 @@
         "places": 10
       },
       {
+        "player": "Lee Hodges",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "35/1",
+        "bmWin": 36.00,
+        "bmPlace": 8.00,
+        "bfWin": 75.00,
+        "bfPlace": 7.60,
+        "winEdge": -52.00,
+        "placeEdge": 5.26,
+        "edge": -23.37,
+        "places": 10
+      },
+      {
         "player": "Seamus Power",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "22/1",
@@ -524,19 +537,6 @@
         "winEdge": -47.22,
         "placeEdge": -2.13,
         "edge": -24.67,
-        "places": 10
-      },
-      {
-        "player": "Lee Hodges",
-        "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "35/1",
-        "bmWin": 36.00,
-        "bmPlace": 8.00,
-        "bfWin": 75.00,
-        "bfPlace": 7.80,
-        "winEdge": -52.00,
-        "placeEdge": 2.56,
-        "edge": -24.72,
         "places": 10
       },
       {
@@ -722,6 +722,19 @@
         "places": 10
       },
       {
+        "player": "Jimmy Stanger",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "150/1",
+        "bmWin": 151.00,
+        "bmPlace": 31.00,
+        "bfWin": 450.00,
+        "bfPlace": 29.00,
+        "winEdge": -66.44,
+        "placeEdge": 6.90,
+        "edge": -29.77,
+        "places": 10
+      },
+      {
         "player": "Takumi Kanaya",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "40/1",
@@ -836,19 +849,6 @@
         "winEdge": -52.73,
         "placeEdge": -9.09,
         "edge": -30.91,
-        "places": 10
-      },
-      {
-        "player": "Jimmy Stanger",
-        "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "150/1",
-        "bmWin": 151.00,
-        "bmPlace": 31.00,
-        "bfWin": 450.00,
-        "bfPlace": 30.00,
-        "winEdge": -66.44,
-        "placeEdge": 3.33,
-        "edge": -31.56,
         "places": 10
       },
       {
@@ -1866,6 +1866,32 @@
         "places": 10
       },
       {
+        "player": "Tom Hoge",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "80/1",
+        "bmWin": 81.00,
+        "bmPlace": 17.00,
+        "bfWin": 510.00,
+        "bfPlace": 21.00,
+        "winEdge": -84.12,
+        "placeEdge": -19.05,
+        "edge": -51.58,
+        "places": 10
+      },
+      {
+        "player": "Tom Hoge",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "80/1",
+        "bmWin": 81.00,
+        "bmPlace": 17.00,
+        "bfWin": 510.00,
+        "bfPlace": 21.00,
+        "winEdge": -84.12,
+        "placeEdge": -19.05,
+        "edge": -51.58,
+        "places": 10
+      },
+      {
         "player": "Peter Malnati",
         "bookmaker": "BOYLESPORTS",
         "bmWinOdds": "90/1",
@@ -1876,32 +1902,6 @@
         "winEdge": -63.60,
         "placeEdge": -40.63,
         "edge": -52.11,
-        "places": 10
-      },
-      {
-        "player": "Tom Hoge",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "80/1",
-        "bmWin": 81.00,
-        "bmPlace": 17.00,
-        "bfWin": 550.00,
-        "bfPlace": 21.00,
-        "winEdge": -85.27,
-        "placeEdge": -19.05,
-        "edge": -52.16,
-        "places": 10
-      },
-      {
-        "player": "Tom Hoge",
-        "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "80/1",
-        "bmWin": 81.00,
-        "bmPlace": 17.00,
-        "bfWin": 550.00,
-        "bfPlace": 21.00,
-        "winEdge": -85.27,
-        "placeEdge": -19.05,
-        "edge": -52.16,
         "places": 10
       },
       {
