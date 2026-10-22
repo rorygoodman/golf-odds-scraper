@@ -1,11 +1,24 @@
 {
-  "timestamp": "2026-10-22 16:00:06 IST",
+  "timestamp": "2026-10-22 16:20:04 IST",
   "events": [
   {
     "eventName": "PGA Bermuda",
     "mode": "EW",
     "bookmakers": ["BOYLESPORTS", "WILLIAM_HILL"],
     "opportunities": [
+      {
+        "player": "Max McGreevy",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "50/1",
+        "bmWin": 51.00,
+        "bmPlace": 13.50,
+        "bfWin": 80.00,
+        "bfPlace": 6.80,
+        "winEdge": -36.25,
+        "placeEdge": 98.53,
+        "edge": 31.14,
+        "places": 10
+      },
       {
         "player": "Max McGreevy",
         "bookmaker": "BOYLESPORTS",
@@ -22,27 +35,14 @@
       {
         "player": "Austin Smotherman",
         "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "20/1",
-        "bmWin": 21.00,
-        "bmPlace": 6.00,
-        "bfWin": 19.00,
+        "bmWinOdds": "14/1",
+        "bmWin": 15.00,
+        "bmPlace": 4.50,
+        "bfWin": 75.00,
         "bfPlace": 5.50,
-        "winEdge": 10.53,
-        "placeEdge": 9.09,
-        "edge": 9.81,
-        "places": 10
-      },
-      {
-        "player": "Max McGreevy",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "40/1",
-        "bmWin": 41.00,
-        "bmPlace": 11.00,
-        "bfWin": 80.00,
-        "bfPlace": 6.80,
-        "winEdge": -48.75,
-        "placeEdge": 61.76,
-        "edge": 6.51,
+        "winEdge": -80.00,
+        "placeEdge": -18.18,
+        "edge": -49.09,
         "places": 10
       },
       {
@@ -51,37 +51,11 @@
         "bmWinOdds": "16/1",
         "bmWin": 17.00,
         "bmPlace": 4.20,
-        "bfWin": 19.00,
+        "bfWin": 75.00,
         "bfPlace": 5.50,
-        "winEdge": -10.53,
+        "winEdge": -77.33,
         "placeEdge": -23.64,
-        "edge": -17.08,
-        "places": 10
-      },
-      {
-        "player": "Mackenzie Hughes",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "20/1",
-        "bmWin": 21.00,
-        "bmPlace": 6.00,
-        "bfWin": 27.00,
-        "bfPlace": 7.00,
-        "winEdge": -22.22,
-        "placeEdge": -14.29,
-        "edge": -18.25,
-        "places": 10
-      },
-      {
-        "player": "Mackenzie Hughes",
-        "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "16/1",
-        "bmWin": 17.00,
-        "bmPlace": 4.20,
-        "bfWin": 27.00,
-        "bfPlace": 7.00,
-        "winEdge": -37.04,
-        "placeEdge": -40.00,
-        "edge": -38.52,
+        "edge": -50.48,
         "places": 10
       }
     ]
