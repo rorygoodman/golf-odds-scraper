@@ -1,37 +1,11 @@
 {
-  "timestamp": "2026-10-22 13:40:04 IST",
+  "timestamp": "2026-10-22 14:00:05 IST",
   "events": [
   {
     "eventName": "PGA Bermuda",
     "mode": "EW",
     "bookmakers": ["BOYLESPORTS", "WILLIAM_HILL"],
     "opportunities": [
-      {
-        "player": "John Parry",
-        "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "50/1",
-        "bmWin": 51.00,
-        "bmPlace": 11.00,
-        "bfWin": 65.00,
-        "bfPlace": 6.60,
-        "winEdge": -21.54,
-        "placeEdge": 66.67,
-        "edge": 22.56,
-        "places": 10
-      },
-      {
-        "player": "Takumi Kanaya",
-        "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "60/1",
-        "bmWin": 61.00,
-        "bmPlace": 13.00,
-        "bfWin": 95.00,
-        "bfPlace": 7.60,
-        "winEdge": -35.79,
-        "placeEdge": 71.05,
-        "edge": 17.63,
-        "places": 10
-      },
       {
         "player": "Takumi Kanaya",
         "bookmaker": "WILLIAM_HILL",
@@ -43,6 +17,19 @@
         "winEdge": -46.32,
         "placeEdge": 77.63,
         "edge": 15.66,
+        "places": 10
+      },
+      {
+        "player": "Austin Smotherman",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "28/1",
+        "bmWin": 29.00,
+        "bmPlace": 8.00,
+        "bfWin": 36.00,
+        "bfPlace": 5.50,
+        "winEdge": -19.44,
+        "placeEdge": 45.45,
+        "edge": 13.01,
         "places": 10
       },
       {
@@ -59,55 +46,42 @@
         "places": 10
       },
       {
-        "player": "Austin Smotherman",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "28/1",
-        "bmWin": 29.00,
-        "bmPlace": 8.00,
-        "bfWin": 50.00,
-        "bfPlace": 5.50,
-        "winEdge": -42.00,
-        "placeEdge": 45.45,
-        "edge": 1.73,
-        "places": 10
-      },
-      {
-        "player": "John Parry",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "35/1",
-        "bmWin": 36.00,
-        "bmPlace": 9.75,
-        "bfWin": 65.00,
-        "bfPlace": 6.60,
-        "winEdge": -44.62,
-        "placeEdge": 47.73,
-        "edge": 1.56,
+        "player": "Takumi Kanaya",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "55/1",
+        "bmWin": 56.00,
+        "bmPlace": 12.00,
+        "bfWin": 95.00,
+        "bfPlace": 7.60,
+        "winEdge": -41.05,
+        "placeEdge": 57.89,
+        "edge": 8.42,
         "places": 10
       },
       {
         "player": "Max McGreevy",
         "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "40/1",
-        "bmWin": 41.00,
-        "bmPlace": 9.00,
+        "bmWinOdds": "45/1",
+        "bmWin": 46.00,
+        "bmPlace": 10.00,
         "bfWin": 70.00,
         "bfPlace": 6.80,
-        "winEdge": -41.43,
-        "placeEdge": 32.35,
-        "edge": -4.54,
+        "winEdge": -34.29,
+        "placeEdge": 47.06,
+        "edge": 6.39,
         "places": 10
       },
       {
         "player": "Austin Smotherman",
         "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "30/1",
-        "bmWin": 31.00,
-        "bmPlace": 7.00,
-        "bfWin": 50.00,
+        "bmWinOdds": "28/1",
+        "bmWin": 29.00,
+        "bmPlace": 6.60,
+        "bfWin": 36.00,
         "bfPlace": 5.50,
-        "winEdge": -38.00,
-        "placeEdge": 27.27,
-        "edge": -5.36,
+        "winEdge": -19.44,
+        "placeEdge": 20.00,
+        "edge": 0.28,
         "places": 10
       }
     ]
