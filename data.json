@@ -1,11 +1,37 @@
 {
-  "timestamp": "2026-10-22 22:40:04 IST",
+  "timestamp": "2026-10-22 23:00:04 IST",
   "events": [
   {
     "eventName": "PGA Bermuda",
     "mode": "EW",
     "bookmakers": ["BOYLESPORTS", "WILLIAM_HILL"],
     "opportunities": [
+      {
+        "player": "Miles Russell",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "100/1",
+        "bmWin": 101.00,
+        "bmPlace": 21.00,
+        "bfWin": 160.00,
+        "bfPlace": 10.00,
+        "winEdge": -36.88,
+        "placeEdge": 110.00,
+        "edge": 36.56,
+        "places": 10
+      },
+      {
+        "player": "Miles Russell",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "80/1",
+        "bmWin": 81.00,
+        "bmPlace": 21.00,
+        "bfWin": 160.00,
+        "bfPlace": 10.00,
+        "winEdge": -49.38,
+        "placeEdge": 110.00,
+        "edge": 30.31,
+        "places": 10
+      },
       {
         "player": "Seamus Power",
         "bookmaker": "WILLIAM_HILL",
@@ -20,16 +46,68 @@
         "places": 10
       },
       {
+        "player": "Andrew Novak",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "10/1",
+        "bmWin": 11.00,
+        "bmPlace": 3.50,
+        "bfWin": 14.00,
+        "bfPlace": 2.84,
+        "winEdge": -21.43,
+        "placeEdge": 23.24,
+        "edge": 0.91,
+        "places": 10
+      },
+      {
         "player": "Seamus Power",
         "bookmaker": "BOYLESPORTS",
-        "bmWinOdds": "30/1",
-        "bmWin": 31.00,
-        "bmPlace": 7.00,
+        "bmWinOdds": "28/1",
+        "bmWin": 29.00,
+        "bmPlace": 6.60,
         "bfWin": 34.00,
         "bfPlace": 6.20,
-        "winEdge": -8.82,
-        "placeEdge": 12.90,
-        "edge": 2.04,
+        "winEdge": -14.71,
+        "placeEdge": 6.45,
+        "edge": -4.13,
+        "places": 10
+      },
+      {
+        "player": "Chandler Blanchet",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "14/1",
+        "bmWin": 15.00,
+        "bmPlace": 3.80,
+        "bfWin": 19.00,
+        "bfPlace": 3.50,
+        "winEdge": -21.05,
+        "placeEdge": 8.57,
+        "edge": -6.24,
+        "places": 10
+      },
+      {
+        "player": "Andrew Novak",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "10/1",
+        "bmWin": 11.00,
+        "bmPlace": 3.00,
+        "bfWin": 14.00,
+        "bfPlace": 2.84,
+        "winEdge": -21.43,
+        "placeEdge": 5.63,
+        "edge": -7.90,
+        "places": 10
+      },
+      {
+        "player": "Chandler Blanchet",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "12/1",
+        "bmWin": 13.00,
+        "bmPlace": 4.00,
+        "bfWin": 19.00,
+        "bfPlace": 3.50,
+        "winEdge": -31.58,
+        "placeEdge": 14.29,
+        "edge": -8.65,
         "places": 10
       },
       {
@@ -38,11 +116,11 @@
         "bmWinOdds": "20/1",
         "bmWin": 21.00,
         "bmPlace": 6.00,
-        "bfWin": 36.00,
+        "bfWin": 34.00,
         "bfPlace": 5.50,
-        "winEdge": -41.67,
+        "winEdge": -38.24,
         "placeEdge": 9.09,
-        "edge": -16.29,
+        "edge": -14.57,
         "places": 10
       },
       {
@@ -51,11 +129,11 @@
         "bmWinOdds": "20/1",
         "bmWin": 21.00,
         "bmPlace": 5.00,
-        "bfWin": 36.00,
+        "bfWin": 34.00,
         "bfPlace": 5.50,
-        "winEdge": -41.67,
+        "winEdge": -38.24,
         "placeEdge": -9.09,
-        "edge": -25.38,
+        "edge": -23.66,
         "places": 10
       },
       {
