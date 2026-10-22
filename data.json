@@ -1,11 +1,63 @@
 {
-  "timestamp": "2026-10-22 18:20:05 IST",
+  "timestamp": "2026-10-22 18:40:05 IST",
   "events": [
   {
     "eventName": "PGA Bermuda",
     "mode": "EW",
     "bookmakers": ["BOYLESPORTS", "WILLIAM_HILL"],
     "opportunities": [
+      {
+        "player": "Rafael Campos",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "250/1",
+        "bmWin": 251.00,
+        "bmPlace": 63.50,
+        "bfWin": 360.00,
+        "bfPlace": 21.00,
+        "winEdge": -30.28,
+        "placeEdge": 202.38,
+        "edge": 86.05,
+        "places": 10
+      },
+      {
+        "player": "Adam Svensson",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "125/1",
+        "bmWin": 126.00,
+        "bmPlace": 26.00,
+        "bfWin": 240.00,
+        "bfPlace": 12.50,
+        "winEdge": -47.50,
+        "placeEdge": 108.00,
+        "edge": 30.25,
+        "places": 10
+      },
+      {
+        "player": "Rafael Campos",
+        "bookmaker": "BOYLESPORTS",
+        "bmWinOdds": "200/1",
+        "bmWin": 201.00,
+        "bmPlace": 41.00,
+        "bfWin": 360.00,
+        "bfPlace": 21.00,
+        "winEdge": -44.17,
+        "placeEdge": 95.24,
+        "edge": 25.54,
+        "places": 10
+      },
+      {
+        "player": "Adam Svensson",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "100/1",
+        "bmWin": 101.00,
+        "bmPlace": 26.00,
+        "bfWin": 240.00,
+        "bfPlace": 12.50,
+        "winEdge": -57.92,
+        "placeEdge": 108.00,
+        "edge": 25.04,
+        "places": 10
+      },
       {
         "player": "Austin Smotherman",
         "bookmaker": "WILLIAM_HILL",
@@ -35,14 +87,14 @@
       {
         "player": "Mackenzie Hughes",
         "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "16/1",
-        "bmWin": 17.00,
-        "bmPlace": 5.00,
-        "bfWin": 24.00,
+        "bmWinOdds": "14/1",
+        "bmWin": 15.00,
+        "bmPlace": 4.50,
+        "bfWin": 21.00,
         "bfPlace": 7.00,
-        "winEdge": -29.17,
-        "placeEdge": -28.57,
-        "edge": -28.87,
+        "winEdge": -28.57,
+        "placeEdge": -35.71,
+        "edge": -32.14,
         "places": 10
       },
       {
@@ -51,11 +103,11 @@
         "bmWinOdds": "14/1",
         "bmWin": 15.00,
         "bmPlace": 3.80,
-        "bfWin": 24.00,
+        "bfWin": 21.00,
         "bfPlace": 7.00,
-        "winEdge": -37.50,
+        "winEdge": -28.57,
         "placeEdge": -45.71,
-        "edge": -41.61,
+        "edge": -37.14,
         "places": 10
       }
     ]
