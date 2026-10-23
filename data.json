@@ -1,12 +1,24 @@
 {
-  "timestamp": "2026-10-23 13:20:04 IST",
+  "timestamp": "2026-10-23 13:40:05 IST",
   "events": [
   {
     "eventName": "PGA Bermuda",
     "mode": "EW",
     "bookmakers": ["WILLIAM_HILL"],
     "opportunities": [
-
+      {
+        "player": "Seamus Power",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "28/1",
+        "bmWin": 29.00,
+        "bmPlace": 8.00,
+        "bfWin": 60.00,
+        "bfPlace": 14.00,
+        "winEdge": -51.67,
+        "placeEdge": -42.86,
+        "edge": -47.26,
+        "places": 5
+      }
     ]
   }
   ]
