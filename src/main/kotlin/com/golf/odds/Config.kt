@@ -5,12 +5,14 @@ package com.golf.odds
  *
  * @property url The URL of the bookmaker's event page
  * @property bookmaker The bookmaker identifier
+ * @property placeFraction E/W place fraction (e.g. "1/4"); defaults to [DEFAULT_PLACE_FRACTION]
  */
 data class Page(
     val url: String,
     val bookmaker: Bookmaker,
     val places: Int? = null,
-    val header: String? = null
+    val header: String? = null,
+    val placeFraction: String? = null
 )
 
 /**

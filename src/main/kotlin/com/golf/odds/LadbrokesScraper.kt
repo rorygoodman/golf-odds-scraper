@@ -57,7 +57,11 @@ data class EventOdds(
  *
  * @property url The Ladbrokes event page URL to scrape
  */
-class LadbrokesScraper(private val url: String, private val places: Int? = null) {
+class LadbrokesScraper(
+    private val url: String,
+    private val places: Int? = null,
+    private val placeFraction: String? = null
+) {
     private var driver: WebDriver? = null
 
     /**
@@ -189,7 +193,7 @@ class LadbrokesScraper(private val url: String, private val places: Int? = null)
 
                     if (playerName.isNotBlank() && odds.isNotBlank()) {
                         val decimalOdds = parseOdds(odds) ?: return@forEach
-                        val (placeOdds, placeDecimal) = calculatePlaceOdds(odds, EachWayTerms("1/5", 10))
+                        val (placeOdds, placeDecimal) = calculatePlaceOdds(odds, EachWayTerms(placeFraction ?: DEFAULT_PLACE_FRACTION, 10))
 
                         if (placeOdds != null && placeDecimal != null) {
                             players.add(

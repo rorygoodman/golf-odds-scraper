@@ -13,7 +13,11 @@ import java.time.Duration
  *
  * @property url The Sky Bet market page URL to scrape
  */
-class SkybetScraper(private val url: String, private val places: Int? = null) {
+class SkybetScraper(
+    private val url: String,
+    private val places: Int? = null,
+    private val placeFraction: String? = null
+) {
     private var driver: WebDriver? = null
 
     fun scrape(): EventOdds {
@@ -142,7 +146,7 @@ class SkybetScraper(private val url: String, private val places: Int? = null) {
                     val odds = parts[1]
 
                     val decimalOdds = parseOdds(odds) ?: continue
-                    val (placeOdds, placeDecimal) = calculatePlaceOdds(odds, EachWayTerms("1/5", 10))
+                    val (placeOdds, placeDecimal) = calculatePlaceOdds(odds, EachWayTerms(placeFraction ?: DEFAULT_PLACE_FRACTION, 10))
 
                     if (placeOdds != null && placeDecimal != null) {
                         players.add(PlayerOdds(playerName, odds, decimalOdds, placeOdds, placeDecimal))

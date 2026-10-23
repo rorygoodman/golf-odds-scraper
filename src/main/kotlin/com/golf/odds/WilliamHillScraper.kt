@@ -25,7 +25,8 @@ import java.time.Duration
 class WilliamHillScraper(
     private val url: String,
     private val places: Int? = null,
-    private val header: String? = null
+    private val header: String? = null,
+    private val placeFraction: String? = null
 ) {
     private var driver: WebDriver? = null
 
@@ -228,10 +229,11 @@ class WilliamHillScraper(
      * Reads each-way terms from the market annotation, e.g.
      * "1/4  Odds Place 1, 2, 3, 4, 5, 6" -> 1/4 odds, 6 places.
      *
-     * Falls back to 1/5 on the configured place count when no annotation is shown.
+     * Falls back to the default fraction on the configured place count when no
+     * annotation is shown. A fraction set in config always takes precedence.
      */
     private fun extractEachWayTerms(js: JavascriptExecutor, section: WebElement): EachWayTerms {
-        val fallback = EachWayTerms("1/5", places ?: 10)
+        val fallback = EachWayTerms(placeFraction ?: DEFAULT_PLACE_FRACTION, places ?: 10)
 
         return try {
             val annotation = js.executeScript("""
@@ -242,7 +244,9 @@ class WilliamHillScraper(
 
             if (annotation.isBlank()) return fallback
 
-            val fraction = Regex("""(\d+/\d+)""").find(annotation)?.value ?: fallback.placeOdds
+            val fraction = placeFraction
+                ?: Regex("""(\d+/\d+)""").find(annotation)?.value
+                ?: fallback.placeOdds
             val positions = Regex("""Odds\s+Places?\s+([\d,\s]+)""", RegexOption.IGNORE_CASE)
                 .find(annotation)?.groupValues?.get(1)
                 ?.split(",")?.count { it.isNotBlank() }

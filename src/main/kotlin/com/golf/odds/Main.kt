@@ -143,14 +143,14 @@ fun loadConfig(configPath: String): ScraperConfig {
 fun scrapeEvent(page: Page): EventOdds? {
     return try {
         when (page.bookmaker) {
-            Bookmaker.LADBROKES -> LadbrokesScraper(page.url, page.places).scrape()
-            Bookmaker.TEN_BET -> TenBetScraper(page.url, page.places).scrape()
+            Bookmaker.LADBROKES -> LadbrokesScraper(page.url, page.places, page.placeFraction).scrape()
+            Bookmaker.TEN_BET -> TenBetScraper(page.url, page.places, page.placeFraction).scrape()
             Bookmaker.BETFAIR -> null  // Betfair handled separately via betfairLink
-            Bookmaker.PADDY_POWER -> PaddyPowerScraper(page.url, places = page.places, header = page.header).scrape()
-            Bookmaker.BOYLESPORTS -> BoylesportsScraper(page.url, page.places).scrape()
-            Bookmaker.SKYBET -> SkybetScraper(page.url, page.places).scrape()
-            Bookmaker.BET365 -> Bet365Scraper(page.url, places = page.places, header = page.header).scrape()
-            Bookmaker.WILLIAM_HILL -> WilliamHillScraper(page.url, places = page.places, header = page.header).scrape()
+            Bookmaker.PADDY_POWER -> PaddyPowerScraper(page.url, places = page.places, header = page.header, placeFraction = page.placeFraction).scrape()
+            Bookmaker.BOYLESPORTS -> BoylesportsScraper(page.url, page.places, page.placeFraction).scrape()
+            Bookmaker.SKYBET -> SkybetScraper(page.url, page.places, page.placeFraction).scrape()
+            Bookmaker.BET365 -> Bet365Scraper(page.url, places = page.places, header = page.header, placeFraction = page.placeFraction).scrape()
+            Bookmaker.WILLIAM_HILL -> WilliamHillScraper(page.url, places = page.places, header = page.header, placeFraction = page.placeFraction).scrape()
         }
     } catch (e: Exception) {
         System.err.println("Error: ${e.message}")

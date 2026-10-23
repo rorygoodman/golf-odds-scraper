@@ -82,6 +82,9 @@ fun parseOdds(oddsString: String): Double? {
     }
 }
 
+/** E/W place fraction used when a page doesn't configure one. */
+const val DEFAULT_PLACE_FRACTION = "1/5"
+
 /**
  * Calculates place odds from win odds using each-way terms.
  *

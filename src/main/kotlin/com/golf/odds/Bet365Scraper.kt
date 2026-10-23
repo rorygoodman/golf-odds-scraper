@@ -22,7 +22,8 @@ import java.time.Duration
 class Bet365Scraper(
     private val url: String,
     private val places: Int? = null,
-    private val header: String? = null
+    private val header: String? = null,
+    private val placeFraction: String? = null
 ) {
     private var driver: WebDriver? = null
 
@@ -154,7 +155,7 @@ class Bet365Scraper(
                     val odds = parts[1]
 
                     val decimalOdds = parseOdds(odds) ?: continue
-                    val (placeOdds, placeDecimal) = calculatePlaceOdds(odds, EachWayTerms("1/5", places ?: 10))
+                    val (placeOdds, placeDecimal) = calculatePlaceOdds(odds, EachWayTerms(placeFraction ?: DEFAULT_PLACE_FRACTION, places ?: 10))
 
                     if (placeOdds != null && placeDecimal != null) {
                         players.add(PlayerOdds(playerName, odds, decimalOdds, placeOdds, placeDecimal))
