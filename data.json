@@ -1,11 +1,37 @@
 {
-  "timestamp": "2026-10-29 15:20:04 GMT",
+  "timestamp": "2026-10-29 15:40:05 GMT",
   "events": [
   {
     "eventName": "PGA Mexico",
     "mode": "EW",
     "bookmakers": ["LADBROKES", "WILLIAM_HILL"],
     "opportunities": [
+      {
+        "player": "Jordan Smith",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "50/1",
+        "bmWin": 51.00,
+        "bmPlace": 13.50,
+        "bfWin": 130.00,
+        "bfPlace": 5.80,
+        "winEdge": -60.77,
+        "placeEdge": 132.76,
+        "edge": 35.99,
+        "places": 10
+      },
+      {
+        "player": "Rico Hoey",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "45/1",
+        "bmWin": 46.00,
+        "bmPlace": 12.25,
+        "bfWin": 70.00,
+        "bfPlace": 6.00,
+        "winEdge": -34.29,
+        "placeEdge": 104.17,
+        "edge": 34.94,
+        "places": 10
+      },
       {
         "player": "Pontus Nyholm",
         "bookmaker": "WILLIAM_HILL",
@@ -30,19 +56,6 @@
         "winEdge": -40.00,
         "placeEdge": 95.00,
         "edge": 27.50,
-        "places": 10
-      },
-      {
-        "player": "Rico Hoey",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "45/1",
-        "bmWin": 46.00,
-        "bmPlace": 12.25,
-        "bfWin": 110.00,
-        "bfPlace": 6.00,
-        "winEdge": -58.18,
-        "placeEdge": 104.17,
-        "edge": 22.99,
         "places": 10
       },
       {
@@ -82,19 +95,6 @@
         "winEdge": -66.50,
         "placeEdge": 59.09,
         "edge": -3.70,
-        "places": 10
-      },
-      {
-        "player": "Rasmus Neergaard-Petersen",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "40/1",
-        "bmWin": 41.00,
-        "bmPlace": 11.00,
-        "bfWin": 130.00,
-        "bfPlace": 7.60,
-        "winEdge": -68.46,
-        "placeEdge": 44.74,
-        "edge": -11.86,
         "places": 10
       },
       {
