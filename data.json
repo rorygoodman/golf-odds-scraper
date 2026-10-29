@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-29 21:00:05 GMT",
+  "timestamp": "2026-10-29 21:20:05 GMT",
   "events": [
   {
     "eventName": "PGA Mexico",
@@ -33,6 +33,19 @@
         "places": 10
       },
       {
+        "player": "Tony Finau",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "66/1",
+        "bmWin": 67.00,
+        "bmPlace": 17.50,
+        "bfWin": 180.00,
+        "bfPlace": 14.00,
+        "winEdge": -62.78,
+        "placeEdge": 25.00,
+        "edge": -18.89,
+        "places": 10
+      },
+      {
         "player": "Sudarshan Yellamaraju",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "33/1",
@@ -43,19 +56,6 @@
         "winEdge": -47.69,
         "placeEdge": 2.78,
         "edge": -22.46,
-        "places": 10
-      },
-      {
-        "player": "Tony Finau",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "66/1",
-        "bmWin": 67.00,
-        "bmPlace": 17.50,
-        "bfWin": 200.00,
-        "bfPlace": 15.00,
-        "winEdge": -66.50,
-        "placeEdge": 16.67,
-        "edge": -24.92,
         "places": 10
       },
       {
@@ -78,10 +78,23 @@
         "bmWin": 67.00,
         "bmPlace": 17.50,
         "bfWin": 340.00,
-        "bfPlace": 15.50,
+        "bfPlace": 14.00,
         "winEdge": -80.29,
-        "placeEdge": 12.90,
-        "edge": -33.70,
+        "placeEdge": 25.00,
+        "edge": -27.65,
+        "places": 10
+      },
+      {
+        "player": "John Parry",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "40/1",
+        "bmWin": 41.00,
+        "bmPlace": 11.00,
+        "bfWin": 150.00,
+        "bfPlace": 11.00,
+        "winEdge": -72.67,
+        "placeEdge": 0.00,
+        "edge": -36.33,
         "places": 10
       }
     ]
