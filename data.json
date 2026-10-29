@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-29 17:00:05 GMT",
+  "timestamp": "2026-10-29 17:20:05 GMT",
   "events": [
   {
     "eventName": "PGA Mexico",
@@ -7,29 +7,16 @@
     "bookmakers": ["LADBROKES", "WILLIAM_HILL"],
     "opportunities": [
       {
-        "player": "Rico Hoey",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "45/1",
-        "bmWin": 46.00,
-        "bmPlace": 12.25,
-        "bfWin": 75.00,
-        "bfPlace": 6.00,
-        "winEdge": -38.67,
-        "placeEdge": 104.17,
-        "edge": 32.75,
-        "places": 10
-      },
-      {
         "player": "Neal Shipley",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "35/1",
         "bmWin": 36.00,
         "bmPlace": 9.75,
-        "bfWin": 60.00,
+        "bfWin": 65.00,
         "bfPlace": 5.00,
-        "winEdge": -40.00,
+        "winEdge": -44.62,
         "placeEdge": 95.00,
-        "edge": 27.50,
+        "edge": 25.19,
         "places": 10
       },
       {
@@ -43,6 +30,19 @@
         "winEdge": -34.09,
         "placeEdge": 60.00,
         "edge": 12.95,
+        "places": 10
+      },
+      {
+        "player": "Rasmus Neergaard-Petersen",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "50/1",
+        "bmWin": 51.00,
+        "bmPlace": 13.50,
+        "bfWin": 130.00,
+        "bfPlace": 7.60,
+        "winEdge": -60.77,
+        "placeEdge": 77.63,
+        "edge": 8.43,
         "places": 10
       },
       {
@@ -85,16 +85,42 @@
         "places": 10
       },
       {
+        "player": "Rico Hoey",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "33/1",
+        "bmWin": 34.00,
+        "bmPlace": 9.25,
+        "bfWin": 95.00,
+        "bfPlace": 6.00,
+        "winEdge": -64.21,
+        "placeEdge": 54.17,
+        "edge": -5.02,
+        "places": 10
+      },
+      {
+        "player": "Marco Penge",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "18/1",
+        "bmWin": 19.00,
+        "bmPlace": 5.50,
+        "bfWin": 28.00,
+        "bfPlace": 5.50,
+        "winEdge": -32.14,
+        "placeEdge": 0.00,
+        "edge": -16.07,
+        "places": 10
+      },
+      {
         "player": "Alvaro Ortiz",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "66/1",
         "bmWin": 67.00,
         "bmPlace": 17.50,
-        "bfWin": 170.00,
+        "bfWin": 160.00,
         "bfPlace": 15.00,
-        "winEdge": -60.59,
+        "winEdge": -58.13,
         "placeEdge": 16.67,
-        "edge": -21.96,
+        "edge": -20.73,
         "places": 10
       },
       {
@@ -103,11 +129,11 @@
         "bmWinOdds": "70/1",
         "bmWin": 71.00,
         "bmPlace": 18.50,
-        "bfWin": 200.00,
+        "bfWin": 170.00,
         "bfPlace": 16.50,
-        "winEdge": -64.50,
+        "winEdge": -58.24,
         "placeEdge": 12.12,
-        "edge": -26.19,
+        "edge": -23.06,
         "places": 10
       }
     ]
