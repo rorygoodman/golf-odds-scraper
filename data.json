@@ -1,11 +1,24 @@
 {
-  "timestamp": "2026-10-29 12:20:05 GMT",
+  "timestamp": "2026-10-29 12:40:04 GMT",
   "events": [
   {
     "eventName": "PGA Mexico",
     "mode": "EW",
     "bookmakers": ["LADBROKES", "WILLIAM_HILL"],
     "opportunities": [
+      {
+        "player": "Isaiah Salinda",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "66/1",
+        "bmWin": 67.00,
+        "bmPlace": 14.20,
+        "bfWin": 120.00,
+        "bfPlace": 9.40,
+        "winEdge": -44.17,
+        "placeEdge": 51.06,
+        "edge": 3.45,
+        "places": 10
+      },
       {
         "player": "Patrick Rodgers",
         "bookmaker": "WILLIAM_HILL",
@@ -38,11 +51,11 @@
         "bmWinOdds": "30/1",
         "bmWin": 31.00,
         "bmPlace": 7.00,
-        "bfWin": 38.00,
+        "bfWin": 36.00,
         "bfPlace": 6.09,
-        "winEdge": -18.42,
+        "winEdge": -13.89,
         "placeEdge": 14.88,
-        "edge": -1.77,
+        "edge": 0.50,
         "places": 8
       },
       {
@@ -64,11 +77,11 @@
         "bmWinOdds": "80/1",
         "bmWin": 81.00,
         "bmPlace": 17.00,
-        "bfWin": 200.00,
+        "bfWin": 210.00,
         "bfPlace": 11.00,
-        "winEdge": -59.50,
+        "winEdge": -61.43,
         "placeEdge": 54.55,
-        "edge": -2.48,
+        "edge": -3.44,
         "places": 10
       },
       {
@@ -85,19 +98,6 @@
         "places": 10
       },
       {
-        "player": "Isaiah Salinda",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "66/1",
-        "bmWin": 67.00,
-        "bmPlace": 14.20,
-        "bfWin": 120.00,
-        "bfPlace": 10.50,
-        "winEdge": -44.17,
-        "placeEdge": 35.24,
-        "edge": -4.46,
-        "places": 10
-      },
-      {
         "player": "Danny Walker",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "100/1",
@@ -111,19 +111,6 @@
         "places": 10
       },
       {
-        "player": "Doug Ghim",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "18/1",
-        "bmWin": 19.00,
-        "bmPlace": 4.60,
-        "bfWin": 25.00,
-        "bfPlace": 4.01,
-        "winEdge": -24.00,
-        "placeEdge": 14.67,
-        "edge": -4.67,
-        "places": 8
-      },
-      {
         "player": "Chad Ramey",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "100/1",
@@ -135,19 +122,6 @@
         "placeEdge": 40.00,
         "edge": -4.75,
         "places": 10
-      },
-      {
-        "player": "Neal Shipley",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "35/1",
-        "bmWin": 36.00,
-        "bmPlace": 8.00,
-        "bfWin": 55.00,
-        "bfPlace": 6.42,
-        "winEdge": -34.55,
-        "placeEdge": 24.59,
-        "edge": -4.98,
-        "places": 8
       },
       {
         "player": "Aaron Wise",
@@ -176,16 +150,42 @@
         "places": 8
       },
       {
-        "player": "John VanDerLaan",
+        "player": "Neal Shipley",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "35/1",
+        "bmWin": 36.00,
+        "bmPlace": 8.00,
+        "bfWin": 55.00,
+        "bfPlace": 6.52,
+        "winEdge": -34.55,
+        "placeEdge": 22.78,
+        "edge": -5.88,
+        "places": 8
+      },
+      {
+        "player": "Doug Ghim",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "18/1",
+        "bmWin": 19.00,
+        "bmPlace": 4.60,
+        "bfWin": 25.00,
+        "bfPlace": 4.10,
+        "winEdge": -24.00,
+        "placeEdge": 12.07,
+        "edge": -5.97,
+        "places": 8
+      },
+      {
+        "player": "Steven Fisk",
         "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "125/1",
-        "bmWin": 126.00,
-        "bmPlace": 26.00,
-        "bfWin": 360.00,
-        "bfPlace": 17.00,
-        "winEdge": -65.00,
-        "placeEdge": 52.94,
-        "edge": -6.03,
+        "bmWinOdds": "50/1",
+        "bmWin": 51.00,
+        "bmPlace": 11.00,
+        "bfWin": 90.00,
+        "bfPlace": 8.40,
+        "winEdge": -43.33,
+        "placeEdge": 30.95,
+        "edge": -6.19,
         "places": 10
       },
       {
@@ -215,7 +215,7 @@
         "places": 8
       },
       {
-        "player": "Steven Fisk",
+        "player": "Mac Meissner",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "50/1",
         "bmWin": 51.00,
@@ -228,16 +228,16 @@
         "places": 10
       },
       {
-        "player": "Mac Meissner",
+        "player": "William Mouw",
         "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "50/1",
-        "bmWin": 51.00,
-        "bmPlace": 11.00,
-        "bfWin": 90.00,
-        "bfPlace": 8.60,
-        "winEdge": -43.33,
-        "placeEdge": 27.91,
-        "edge": -7.71,
+        "bmWinOdds": "80/1",
+        "bmWin": 81.00,
+        "bmPlace": 17.00,
+        "bfWin": 190.00,
+        "bfPlace": 12.00,
+        "winEdge": -57.37,
+        "placeEdge": 41.67,
+        "edge": -7.85,
         "places": 10
       },
       {
@@ -254,17 +254,17 @@
         "places": 10
       },
       {
-        "player": "Luke Clanton",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "40/1",
-        "bmWin": 41.00,
-        "bmPlace": 9.00,
-        "bfWin": 70.00,
-        "bfPlace": 7.20,
-        "winEdge": -41.43,
-        "placeEdge": 25.00,
-        "edge": -8.21,
-        "places": 10
+        "player": "Chan Kim",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "75/1",
+        "bmWin": 76.00,
+        "bmPlace": 16.00,
+        "bfWin": 140.00,
+        "bfPlace": 12.42,
+        "winEdge": -45.71,
+        "placeEdge": 28.82,
+        "edge": -8.45,
+        "places": 8
       },
       {
         "player": "Jimmy Stanger",
@@ -278,19 +278,6 @@
         "placeEdge": 35.36,
         "edge": -8.45,
         "places": 8
-      },
-      {
-        "player": "William Mouw",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "80/1",
-        "bmWin": 81.00,
-        "bmPlace": 17.00,
-        "bfWin": 200.00,
-        "bfPlace": 12.00,
-        "winEdge": -59.50,
-        "placeEdge": 41.67,
-        "edge": -8.92,
-        "places": 10
       },
       {
         "player": "Austin Eckroat",
@@ -319,16 +306,29 @@
         "places": 10
       },
       {
-        "player": "Johnny Keefer",
+        "player": "Isaiah Salinda",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "70/1",
+        "bmWin": 71.00,
+        "bmPlace": 15.00,
+        "bfWin": 120.00,
+        "bfPlace": 12.31,
+        "winEdge": -40.83,
+        "placeEdge": 21.83,
+        "edge": -9.50,
+        "places": 8
+      },
+      {
+        "player": "Luke Clanton",
         "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "18/1",
-        "bmWin": 19.00,
-        "bmPlace": 4.60,
-        "bfWin": 32.00,
-        "bfPlace": 3.80,
-        "winEdge": -40.63,
-        "placeEdge": 21.05,
-        "edge": -9.79,
+        "bmWinOdds": "40/1",
+        "bmWin": 41.00,
+        "bmPlace": 9.00,
+        "bfWin": 75.00,
+        "bfPlace": 7.20,
+        "winEdge": -45.33,
+        "placeEdge": 25.00,
+        "edge": -10.17,
         "places": 10
       },
       {
@@ -397,6 +397,19 @@
         "places": 8
       },
       {
+        "player": "John VanDerLaan",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "125/1",
+        "bmWin": 126.00,
+        "bmPlace": 26.00,
+        "bfWin": 500.00,
+        "bfPlace": 17.00,
+        "winEdge": -74.80,
+        "placeEdge": 52.94,
+        "edge": -10.93,
+        "places": 10
+      },
+      {
         "player": "Taylor Moore",
         "bookmaker": "LADBROKES",
         "bmWinOdds": "45/1",
@@ -434,19 +447,6 @@
         "placeEdge": 28.81,
         "edge": -11.31,
         "places": 10
-      },
-      {
-        "player": "Erik Van Rooyen",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "110/1",
-        "bmWin": 111.00,
-        "bmPlace": 23.00,
-        "bfWin": 240.00,
-        "bfPlace": 17.56,
-        "winEdge": -53.75,
-        "placeEdge": 30.97,
-        "edge": -11.39,
-        "places": 8
       },
       {
         "player": "Brice Garnett",
@@ -488,19 +488,6 @@
         "places": 8
       },
       {
-        "player": "Chan Kim",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "75/1",
-        "bmWin": 76.00,
-        "bmPlace": 16.00,
-        "bfWin": 140.00,
-        "bfPlace": 13.16,
-        "winEdge": -45.71,
-        "placeEdge": 21.60,
-        "edge": -12.06,
-        "places": 8
-      },
-      {
         "player": "Pontus Nyholm",
         "bookmaker": "LADBROKES",
         "bmWinOdds": "200/1",
@@ -514,17 +501,43 @@
         "places": 8
       },
       {
-        "player": "Ben Griffin",
+        "player": "Ben James",
         "bookmaker": "LADBROKES",
-        "bmWinOdds": "20/1",
-        "bmWin": 21.00,
-        "bmPlace": 5.00,
-        "bfWin": 32.00,
-        "bfPlace": 4.56,
-        "winEdge": -34.38,
-        "placeEdge": 9.65,
-        "edge": -12.36,
+        "bmWinOdds": "16/1",
+        "bmWin": 17.00,
+        "bmPlace": 4.20,
+        "bfWin": 20.00,
+        "bfPlace": 4.62,
+        "winEdge": -15.00,
+        "placeEdge": -9.13,
+        "edge": -12.07,
         "places": 8
+      },
+      {
+        "player": "Steven Fisk",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "55/1",
+        "bmWin": 56.00,
+        "bmPlace": 12.00,
+        "bfWin": 90.00,
+        "bfPlace": 10.61,
+        "winEdge": -37.78,
+        "placeEdge": 13.14,
+        "edge": -12.32,
+        "places": 8
+      },
+      {
+        "player": "Johnny Keefer",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "18/1",
+        "bmWin": 19.00,
+        "bmPlace": 4.60,
+        "bfWin": 28.00,
+        "bfPlace": 4.30,
+        "winEdge": -32.14,
+        "placeEdge": 6.98,
+        "edge": -12.58,
+        "places": 10
       },
       {
         "player": "Chad Ramey",
@@ -553,16 +566,16 @@
         "places": 10
       },
       {
-        "player": "Ben Martin",
+        "player": "Blades Brown",
         "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "250/1",
-        "bmWin": 251.00,
-        "bmPlace": 51.00,
-        "bfWin": 780.00,
-        "bfPlace": 36.00,
-        "winEdge": -67.82,
-        "placeEdge": 41.67,
-        "edge": -13.08,
+        "bmWinOdds": "22/1",
+        "bmWin": 23.00,
+        "bmPlace": 5.40,
+        "bfWin": 36.00,
+        "bfPlace": 4.90,
+        "winEdge": -36.11,
+        "placeEdge": 10.20,
+        "edge": -12.95,
         "places": 10
       },
       {
@@ -577,19 +590,6 @@
         "placeEdge": 13.43,
         "edge": -13.28,
         "places": 10
-      },
-      {
-        "player": "Steven Fisk",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "55/1",
-        "bmWin": 56.00,
-        "bmPlace": 12.00,
-        "bfWin": 90.00,
-        "bfPlace": 10.80,
-        "winEdge": -37.78,
-        "placeEdge": 11.15,
-        "edge": -13.31,
-        "places": 8
       },
       {
         "player": "Gordon Sargent",
@@ -618,6 +618,32 @@
         "places": 10
       },
       {
+        "player": "David Ford",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "40/1",
+        "bmWin": 41.00,
+        "bmPlace": 9.00,
+        "bfWin": 60.00,
+        "bfPlace": 8.67,
+        "winEdge": -31.67,
+        "placeEdge": 3.81,
+        "edge": -13.93,
+        "places": 8
+      },
+      {
+        "player": "Johnny Keefer",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "20/1",
+        "bmWin": 21.00,
+        "bmPlace": 5.00,
+        "bfWin": 28.00,
+        "bfPlace": 5.17,
+        "winEdge": -25.00,
+        "placeEdge": -3.21,
+        "edge": -14.10,
+        "places": 8
+      },
+      {
         "player": "Mark Hubbard",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "150/1",
@@ -629,19 +655,6 @@
         "placeEdge": 40.91,
         "edge": -14.14,
         "places": 10
-      },
-      {
-        "player": "Johnny Keefer",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "20/1",
-        "bmWin": 21.00,
-        "bmPlace": 5.00,
-        "bfWin": 32.00,
-        "bfPlace": 4.72,
-        "winEdge": -34.38,
-        "placeEdge": 5.97,
-        "edge": -14.20,
-        "places": 8
       },
       {
         "player": "Billy Horschel",
@@ -683,55 +696,16 @@
         "places": 10
       },
       {
-        "player": "Isaiah Salinda",
+        "player": "Ben Griffin",
         "bookmaker": "LADBROKES",
-        "bmWinOdds": "70/1",
-        "bmWin": 71.00,
-        "bmPlace": 15.00,
-        "bfWin": 120.00,
-        "bfPlace": 13.42,
-        "winEdge": -40.83,
-        "placeEdge": 11.80,
-        "edge": -14.52,
-        "places": 8
-      },
-      {
-        "player": "Blades Brown",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "22/1",
-        "bmWin": 23.00,
-        "bmPlace": 5.40,
-        "bfWin": 38.00,
-        "bfPlace": 4.90,
-        "winEdge": -39.47,
-        "placeEdge": 10.20,
-        "edge": -14.63,
-        "places": 10
-      },
-      {
-        "player": "Andrew Novak",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "30/1",
-        "bmWin": 31.00,
-        "bmPlace": 7.00,
-        "bfWin": 50.00,
-        "bfPlace": 6.47,
-        "winEdge": -38.00,
-        "placeEdge": 8.21,
-        "edge": -14.89,
-        "places": 8
-      },
-      {
-        "player": "Ben James",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "16/1",
-        "bmWin": 17.00,
-        "bmPlace": 4.20,
-        "bfWin": 22.00,
-        "bfPlace": 4.53,
-        "winEdge": -22.73,
-        "placeEdge": -7.38,
-        "edge": -15.06,
+        "bmWinOdds": "20/1",
+        "bmWin": 21.00,
+        "bmPlace": 5.00,
+        "bfWin": 32.00,
+        "bfPlace": 4.77,
+        "winEdge": -34.38,
+        "placeEdge": 4.89,
+        "edge": -14.74,
         "places": 8
       },
       {
@@ -774,6 +748,19 @@
         "places": 8
       },
       {
+        "player": "Erik Van Rooyen",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "110/1",
+        "bmWin": 111.00,
+        "bmPlace": 23.00,
+        "bfWin": 240.00,
+        "bfPlace": 18.82,
+        "winEdge": -53.75,
+        "placeEdge": 22.22,
+        "edge": -15.76,
+        "places": 8
+      },
+      {
         "player": "Pontus Nyholm",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "150/1",
@@ -813,6 +800,19 @@
         "places": 8
       },
       {
+        "player": "Patrick Rodgers",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "66/1",
+        "bmWin": 67.00,
+        "bmPlace": 14.20,
+        "bfWin": 120.00,
+        "bfPlace": 12.74,
+        "winEdge": -44.17,
+        "placeEdge": 11.47,
+        "edge": -16.35,
+        "places": 8
+      },
+      {
         "player": "Tom Kim",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "14/1",
@@ -826,81 +826,42 @@
         "places": 10
       },
       {
-        "player": "David Ford",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "40/1",
-        "bmWin": 41.00,
-        "bmPlace": 9.00,
-        "bfWin": 65.00,
-        "bfPlace": 8.67,
-        "winEdge": -36.92,
-        "placeEdge": 3.81,
-        "edge": -16.56,
-        "places": 8
-      },
-      {
-        "player": "Davis Chatfield",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "250/1",
-        "bmWin": 251.00,
-        "bmPlace": 51.00,
-        "bfWin": 590.00,
-        "bfPlace": 41.13,
-        "winEdge": -57.46,
-        "placeEdge": 24.00,
-        "edge": -16.73,
-        "places": 8
-      },
-      {
-        "player": "Patrick Rodgers",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "66/1",
-        "bmWin": 67.00,
-        "bmPlace": 14.20,
-        "bfWin": 120.00,
-        "bfPlace": 12.84,
-        "winEdge": -44.17,
-        "placeEdge": 10.60,
-        "edge": -16.79,
-        "places": 8
-      },
-      {
         "player": "Billy Horschel",
         "bookmaker": "LADBROKES",
         "bmWinOdds": "60/1",
         "bmWin": 61.00,
         "bmPlace": 13.00,
         "bfWin": 110.00,
-        "bfPlace": 11.79,
+        "bfPlace": 11.69,
         "winEdge": -44.55,
-        "placeEdge": 10.30,
-        "edge": -17.12,
+        "placeEdge": 11.25,
+        "edge": -16.65,
         "places": 8
       },
       {
-        "player": "Neal Shipley",
+        "player": "Ben Martin",
         "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "25/1",
-        "bmWin": 26.00,
-        "bmPlace": 6.00,
-        "bfWin": 55.00,
-        "bfPlace": 5.10,
-        "winEdge": -52.73,
-        "placeEdge": 17.65,
-        "edge": -17.54,
+        "bmWinOdds": "250/1",
+        "bmWin": 251.00,
+        "bmPlace": 51.00,
+        "bfWin": 780.00,
+        "bfPlace": 38.00,
+        "winEdge": -67.82,
+        "placeEdge": 34.21,
+        "edge": -16.80,
         "places": 10
       },
       {
-        "player": "Joe Highsmith",
+        "player": "David Ford",
         "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "200/1",
-        "bmWin": 201.00,
-        "bmPlace": 41.00,
-        "bfWin": 550.00,
-        "bfPlace": 32.00,
-        "winEdge": -63.45,
-        "placeEdge": 28.13,
-        "edge": -17.66,
+        "bmWinOdds": "33/1",
+        "bmWin": 34.00,
+        "bmPlace": 7.60,
+        "bfWin": 60.00,
+        "bfPlace": 7.00,
+        "winEdge": -43.33,
+        "placeEdge": 8.57,
+        "edge": -17.38,
         "places": 10
       },
       {
@@ -915,6 +876,19 @@
         "placeEdge": 31.25,
         "edge": -18.08,
         "places": 10
+      },
+      {
+        "player": "Andrew Novak",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "30/1",
+        "bmWin": 31.00,
+        "bmPlace": 7.00,
+        "bfWin": 50.00,
+        "bfPlace": 6.92,
+        "winEdge": -38.00,
+        "placeEdge": 1.11,
+        "edge": -18.44,
+        "places": 8
       },
       {
         "player": "Andrew Novak",
@@ -943,6 +917,19 @@
         "places": 10
       },
       {
+        "player": "Joel Dahmen",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "125/1",
+        "bmWin": 126.00,
+        "bmPlace": 26.00,
+        "bfWin": 310.00,
+        "bfPlace": 21.27,
+        "winEdge": -59.35,
+        "placeEdge": 22.26,
+        "edge": -18.55,
+        "places": 8
+      },
+      {
         "player": "Patrick Fishburn",
         "bookmaker": "LADBROKES",
         "bmWinOdds": "80/1",
@@ -969,6 +956,19 @@
         "places": 10
       },
       {
+        "player": "Neal Shipley",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "25/1",
+        "bmWin": 26.00,
+        "bmPlace": 6.00,
+        "bfWin": 55.00,
+        "bfPlace": 5.20,
+        "winEdge": -52.73,
+        "placeEdge": 15.38,
+        "edge": -18.67,
+        "places": 10
+      },
+      {
         "player": "Brice Garnett",
         "bookmaker": "LADBROKES",
         "bmWinOdds": "175/1",
@@ -982,16 +982,16 @@
         "places": 8
       },
       {
-        "player": "Joel Dahmen",
+        "player": "Christiaan Bezuidenhout",
         "bookmaker": "LADBROKES",
-        "bmWinOdds": "125/1",
-        "bmWin": 126.00,
-        "bmPlace": 26.00,
-        "bfWin": 310.00,
-        "bfPlace": 21.46,
-        "winEdge": -59.35,
-        "placeEdge": 21.14,
-        "edge": -19.11,
+        "bmWinOdds": "66/1",
+        "bmWin": 67.00,
+        "bmPlace": 14.20,
+        "bfWin": 170.00,
+        "bfPlace": 11.57,
+        "winEdge": -60.59,
+        "placeEdge": 22.74,
+        "edge": -18.93,
         "places": 8
       },
       {
@@ -1021,30 +1021,17 @@
         "places": 10
       },
       {
-        "player": "Haotong Li",
+        "player": "Alvaro Ortiz",
         "bookmaker": "LADBROKES",
-        "bmWinOdds": "75/1",
-        "bmWin": 76.00,
-        "bmPlace": 16.00,
-        "bfWin": 140.00,
-        "bfPlace": 15.00,
-        "winEdge": -45.71,
-        "placeEdge": 6.67,
-        "edge": -19.52,
+        "bmWinOdds": "90/1",
+        "bmWin": 91.00,
+        "bmPlace": 19.00,
+        "bfWin": 190.00,
+        "bfPlace": 16.81,
+        "winEdge": -52.11,
+        "placeEdge": 13.03,
+        "edge": -19.54,
         "places": 8
-      },
-      {
-        "player": "David Ford",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "33/1",
-        "bmWin": 34.00,
-        "bmPlace": 7.60,
-        "bfWin": 65.00,
-        "bfPlace": 7.00,
-        "winEdge": -47.69,
-        "placeEdge": 8.57,
-        "edge": -19.56,
-        "places": 10
       },
       {
         "player": "Chandler Blanchet",
@@ -1058,45 +1045,6 @@
         "placeEdge": 7.61,
         "edge": -19.77,
         "places": 8
-      },
-      {
-        "player": "Kevin Yu",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "45/1",
-        "bmWin": 46.00,
-        "bmPlace": 10.00,
-        "bfWin": 85.00,
-        "bfPlace": 9.43,
-        "winEdge": -45.88,
-        "placeEdge": 6.08,
-        "edge": -19.90,
-        "places": 8
-      },
-      {
-        "player": "Christiaan Bezuidenhout",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "66/1",
-        "bmWin": 67.00,
-        "bmPlace": 14.20,
-        "bfWin": 180.00,
-        "bfPlace": 11.57,
-        "winEdge": -62.78,
-        "placeEdge": 22.74,
-        "edge": -20.02,
-        "places": 8
-      },
-      {
-        "player": "Lee Hodges",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "50/1",
-        "bmWin": 51.00,
-        "bmPlace": 11.00,
-        "bfWin": 160.00,
-        "bfPlace": 8.60,
-        "winEdge": -68.13,
-        "placeEdge": 27.91,
-        "edge": -20.11,
-        "places": 10
       },
       {
         "player": "Trace Crowe",
@@ -1190,19 +1138,6 @@
         "places": 10
       },
       {
-        "player": "Alvaro Ortiz",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "90/1",
-        "bmWin": 91.00,
-        "bmPlace": 19.00,
-        "bfWin": 200.00,
-        "bfPlace": 16.81,
-        "winEdge": -54.50,
-        "placeEdge": 13.03,
-        "edge": -20.74,
-        "places": 8
-      },
-      {
         "player": "Jackson Suber",
         "bookmaker": "LADBROKES",
         "bmWinOdds": "35/1",
@@ -1229,16 +1164,29 @@
         "places": 10
       },
       {
-        "player": "Kevin Roy",
+        "player": "Christiaan Bezuidenhout",
         "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "40/1",
-        "bmWin": 41.00,
-        "bmPlace": 9.00,
-        "bfWin": 90.00,
-        "bfPlace": 8.00,
-        "winEdge": -54.44,
-        "placeEdge": 12.50,
-        "edge": -20.97,
+        "bmWinOdds": "50/1",
+        "bmWin": 51.00,
+        "bmPlace": 11.00,
+        "bfWin": 170.00,
+        "bfPlace": 8.60,
+        "winEdge": -70.00,
+        "placeEdge": 27.91,
+        "edge": -21.05,
+        "places": 10
+      },
+      {
+        "player": "Lee Hodges",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "50/1",
+        "bmWin": 51.00,
+        "bmPlace": 11.00,
+        "bfWin": 170.00,
+        "bfPlace": 8.60,
+        "winEdge": -70.00,
+        "placeEdge": 27.91,
+        "edge": -21.05,
         "places": 10
       },
       {
@@ -1247,12 +1195,25 @@
         "bmWinOdds": "175/1",
         "bmWin": 176.00,
         "bmPlace": 36.00,
-        "bfWin": 610.00,
+        "bfWin": 600.00,
         "bfPlace": 28.00,
-        "winEdge": -71.15,
+        "winEdge": -70.67,
         "placeEdge": 28.57,
-        "edge": -21.29,
+        "edge": -21.05,
         "places": 10
+      },
+      {
+        "player": "Haotong Li",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "75/1",
+        "bmWin": 76.00,
+        "bmPlace": 16.00,
+        "bfWin": 140.00,
+        "bfPlace": 15.46,
+        "winEdge": -45.71,
+        "placeEdge": 3.47,
+        "edge": -21.12,
+        "places": 8
       },
       {
         "player": "Jordan Smith",
@@ -1281,6 +1242,19 @@
         "places": 10
       },
       {
+        "player": "Rasmus Neergaard-Petersen",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "50/1",
+        "bmWin": 51.00,
+        "bmPlace": 11.00,
+        "bfWin": 95.00,
+        "bfPlace": 10.64,
+        "winEdge": -46.32,
+        "placeEdge": 3.39,
+        "edge": -21.46,
+        "places": 8
+      },
+      {
         "player": "Mac Meissner",
         "bookmaker": "LADBROKES",
         "bmWinOdds": "50/1",
@@ -1307,30 +1281,43 @@
         "places": 10
       },
       {
-        "player": "Christiaan Bezuidenhout",
+        "player": "Tony Finau",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "50/1",
         "bmWin": 51.00,
         "bmPlace": 11.00,
-        "bfWin": 180.00,
-        "bfPlace": 8.60,
-        "winEdge": -71.67,
-        "placeEdge": 27.91,
-        "edge": -21.88,
+        "bfWin": 130.00,
+        "bfPlace": 9.40,
+        "winEdge": -60.77,
+        "placeEdge": 17.02,
+        "edge": -21.87,
         "places": 10
       },
       {
-        "player": "Rasmus Neergaard-Petersen",
+        "player": "Kevin Yu",
         "bookmaker": "LADBROKES",
-        "bmWinOdds": "50/1",
-        "bmWin": 51.00,
-        "bmPlace": 11.00,
-        "bfWin": 95.00,
-        "bfPlace": 10.73,
-        "winEdge": -46.32,
-        "placeEdge": 2.50,
-        "edge": -21.91,
+        "bmWinOdds": "45/1",
+        "bmWin": 46.00,
+        "bmPlace": 10.00,
+        "bfWin": 85.00,
+        "bfPlace": 9.79,
+        "winEdge": -45.88,
+        "placeEdge": 2.13,
+        "edge": -21.87,
         "places": 8
+      },
+      {
+        "player": "Kevin Roy",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "40/1",
+        "bmWin": 41.00,
+        "bmPlace": 9.00,
+        "bfWin": 95.00,
+        "bfPlace": 8.00,
+        "winEdge": -56.84,
+        "placeEdge": 12.50,
+        "edge": -22.17,
+        "places": 10
       },
       {
         "player": "A.J. Ewart",
@@ -1398,6 +1385,19 @@
         "places": 8
       },
       {
+        "player": "William Mouw",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "80/1",
+        "bmWin": 81.00,
+        "bmPlace": 17.00,
+        "bfWin": 190.00,
+        "bfPlace": 15.15,
+        "winEdge": -57.37,
+        "placeEdge": 12.20,
+        "edge": -22.58,
+        "places": 8
+      },
+      {
         "player": "Dylan Wu",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "125/1",
@@ -1409,19 +1409,6 @@
         "placeEdge": 18.18,
         "edge": -22.91,
         "places": 10
-      },
-      {
-        "player": "Luke Clanton",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "40/1",
-        "bmWin": 41.00,
-        "bmPlace": 9.00,
-        "bfWin": 70.00,
-        "bfPlace": 9.42,
-        "winEdge": -41.43,
-        "placeEdge": -4.43,
-        "edge": -22.93,
-        "places": 8
       },
       {
         "player": "Ryder Cowan",
@@ -1450,19 +1437,6 @@
         "places": 8
       },
       {
-        "player": "John VanDerLaan",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "125/1",
-        "bmWin": 126.00,
-        "bmPlace": 26.00,
-        "bfWin": 360.00,
-        "bfPlace": 22.08,
-        "winEdge": -65.00,
-        "placeEdge": 17.76,
-        "edge": -23.62,
-        "places": 8
-      },
-      {
         "player": "Max McGreevy",
         "bookmaker": "LADBROKES",
         "bmWinOdds": "80/1",
@@ -1476,29 +1450,16 @@
         "places": 8
       },
       {
-        "player": "William Mouw",
+        "player": "Tony Finau",
         "bookmaker": "LADBROKES",
-        "bmWinOdds": "80/1",
-        "bmWin": 81.00,
-        "bmPlace": 17.00,
-        "bfWin": 200.00,
-        "bfPlace": 15.15,
-        "winEdge": -59.50,
-        "placeEdge": 12.20,
-        "edge": -23.65,
-        "places": 8
-      },
-      {
-        "player": "Marco Penge",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "22/1",
-        "bmWin": 23.00,
-        "bmPlace": 5.40,
-        "bfWin": 36.00,
-        "bfPlace": 6.08,
-        "winEdge": -36.11,
-        "placeEdge": -11.20,
-        "edge": -23.66,
+        "bmWinOdds": "60/1",
+        "bmWin": 61.00,
+        "bmPlace": 13.00,
+        "bfWin": 130.00,
+        "bfPlace": 12.31,
+        "winEdge": -53.08,
+        "placeEdge": 5.59,
+        "edge": -23.74,
         "places": 8
       },
       {
@@ -1515,16 +1476,29 @@
         "places": 10
       },
       {
-        "player": "Kevin Roy",
+        "player": "Ben James",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "12/1",
+        "bmWin": 13.00,
+        "bmPlace": 3.40,
+        "bfWin": 20.00,
+        "bfPlace": 3.90,
+        "winEdge": -35.00,
+        "placeEdge": -12.82,
+        "edge": -23.91,
+        "places": 10
+      },
+      {
+        "player": "Luke Clanton",
         "bookmaker": "LADBROKES",
-        "bmWinOdds": "45/1",
-        "bmWin": 46.00,
-        "bmPlace": 10.00,
-        "bfWin": 90.00,
-        "bfPlace": 9.92,
-        "winEdge": -48.89,
-        "placeEdge": 0.81,
-        "edge": -24.04,
+        "bmWinOdds": "40/1",
+        "bmWin": 41.00,
+        "bmPlace": 9.00,
+        "bfWin": 75.00,
+        "bfPlace": 9.36,
+        "winEdge": -45.33,
+        "placeEdge": -3.82,
+        "edge": -24.58,
         "places": 8
       },
       {
@@ -1580,42 +1554,42 @@
         "places": 10
       },
       {
-        "player": "Tony Finau",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "50/1",
-        "bmWin": 51.00,
-        "bmPlace": 11.00,
-        "bfWin": 130.00,
-        "bfPlace": 10.00,
-        "winEdge": -60.77,
-        "placeEdge": 10.00,
-        "edge": -25.38,
-        "places": 10
+        "player": "Kevin Roy",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "45/1",
+        "bmWin": 46.00,
+        "bmPlace": 10.00,
+        "bfWin": 95.00,
+        "bfPlace": 9.92,
+        "winEdge": -51.58,
+        "placeEdge": 0.81,
+        "edge": -25.39,
+        "places": 8
       },
       {
-        "player": "Tony Finau",
+        "player": "Max Greyserman",
         "bookmaker": "LADBROKES",
         "bmWinOdds": "60/1",
         "bmWin": 61.00,
         "bmPlace": 13.00,
         "bfWin": 130.00,
-        "bfPlace": 12.92,
+        "bfPlace": 12.79,
         "winEdge": -53.08,
-        "placeEdge": 0.61,
-        "edge": -26.23,
+        "placeEdge": 1.64,
+        "edge": -25.72,
         "places": 8
       },
       {
-        "player": "Max Homa",
+        "player": "Joe Highsmith",
         "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "25/1",
-        "bmWin": 26.00,
-        "bmPlace": 6.00,
-        "bfWin": 55.00,
-        "bfPlace": 6.00,
-        "winEdge": -52.73,
-        "placeEdge": 0.00,
-        "edge": -26.36,
+        "bmWinOdds": "200/1",
+        "bmWin": 201.00,
+        "bmPlace": 41.00,
+        "bfWin": 1000.00,
+        "bfPlace": 32.00,
+        "winEdge": -79.90,
+        "placeEdge": 28.13,
+        "edge": -25.89,
         "places": 10
       },
       {
@@ -1632,32 +1606,6 @@
         "places": 10
       },
       {
-        "player": "Wyndham Clark",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "10/1",
-        "bmWin": 11.00,
-        "bmPlace": 3.00,
-        "bfWin": 15.00,
-        "bfPlace": 4.11,
-        "winEdge": -26.67,
-        "placeEdge": -26.92,
-        "edge": -26.79,
-        "places": 8
-      },
-      {
-        "player": "Ben James",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "12/1",
-        "bmWin": 13.00,
-        "bmPlace": 3.40,
-        "bfWin": 22.00,
-        "bfPlace": 3.90,
-        "winEdge": -40.91,
-        "placeEdge": -12.82,
-        "edge": -26.86,
-        "places": 10
-      },
-      {
         "player": "Kevin Streelman",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "125/1",
@@ -1671,17 +1619,56 @@
         "places": 10
       },
       {
-        "player": "Max Greyserman",
+        "player": "Wyndham Clark",
         "bookmaker": "LADBROKES",
-        "bmWinOdds": "60/1",
-        "bmWin": 61.00,
-        "bmPlace": 13.00,
-        "bfWin": 130.00,
-        "bfPlace": 13.27,
-        "winEdge": -53.08,
-        "placeEdge": -2.00,
-        "edge": -27.54,
+        "bmWinOdds": "10/1",
+        "bmWin": 11.00,
+        "bmPlace": 3.00,
+        "bfWin": 15.00,
+        "bfPlace": 4.15,
+        "winEdge": -26.67,
+        "placeEdge": -27.78,
+        "edge": -27.22,
         "places": 8
+      },
+      {
+        "player": "Davis Chatfield",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "250/1",
+        "bmWin": 251.00,
+        "bmPlace": 51.00,
+        "bfWin": 590.00,
+        "bfPlace": 49.64,
+        "winEdge": -57.46,
+        "placeEdge": 2.75,
+        "edge": -27.35,
+        "places": 8
+      },
+      {
+        "player": "A.J. Ewart",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "75/1",
+        "bmWin": 76.00,
+        "bmPlace": 16.00,
+        "bfWin": 180.00,
+        "bfPlace": 15.56,
+        "winEdge": -57.78,
+        "placeEdge": 2.86,
+        "edge": -27.46,
+        "places": 8
+      },
+      {
+        "player": "Alvaro Ortiz",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "66/1",
+        "bmWin": 67.00,
+        "bmPlace": 14.20,
+        "bfWin": 190.00,
+        "bfPlace": 13.00,
+        "winEdge": -64.74,
+        "placeEdge": 9.23,
+        "edge": -27.75,
+        "places": 10
       },
       {
         "player": "Zac Blair",
@@ -1710,6 +1697,19 @@
         "places": 10
       },
       {
+        "player": "Marco Penge",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "22/1",
+        "bmWin": 23.00,
+        "bmPlace": 5.40,
+        "bfWin": 38.00,
+        "bfPlace": 6.51,
+        "winEdge": -39.47,
+        "placeEdge": -17.09,
+        "edge": -28.28,
+        "places": 8
+      },
+      {
         "player": "Hayden Springer",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "80/1",
@@ -1723,17 +1723,17 @@
         "places": 10
       },
       {
-        "player": "Joe Highsmith",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "200/1",
-        "bmWin": 201.00,
-        "bmPlace": 41.00,
-        "bfWin": 550.00,
-        "bfPlace": 38.43,
-        "winEdge": -63.45,
-        "placeEdge": 6.69,
-        "edge": -28.38,
-        "places": 8
+        "player": "Max Homa",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "25/1",
+        "bmWin": 26.00,
+        "bmPlace": 6.00,
+        "bfWin": 60.00,
+        "bfPlace": 6.00,
+        "winEdge": -56.67,
+        "placeEdge": 0.00,
+        "edge": -28.33,
+        "places": 10
       },
       {
         "player": "David Lipsky",
@@ -1749,17 +1749,17 @@
         "places": 8
       },
       {
-        "player": "Alvaro Ortiz",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "66/1",
-        "bmWin": 67.00,
-        "bmPlace": 14.20,
-        "bfWin": 200.00,
-        "bfPlace": 13.00,
-        "winEdge": -66.50,
-        "placeEdge": 9.23,
-        "edge": -28.63,
-        "places": 10
+        "player": "John VanDerLaan",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "125/1",
+        "bmWin": 126.00,
+        "bmPlace": 26.00,
+        "bfWin": 500.00,
+        "bfPlace": 22.08,
+        "winEdge": -74.80,
+        "placeEdge": 17.76,
+        "edge": -28.52,
+        "places": 8
       },
       {
         "player": "Kevin Yu",
@@ -1773,19 +1773,6 @@
         "placeEdge": 2.70,
         "edge": -28.65,
         "places": 10
-      },
-      {
-        "player": "A.J. Ewart",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "75/1",
-        "bmWin": 76.00,
-        "bmPlace": 16.00,
-        "bfWin": 180.00,
-        "bfPlace": 16.00,
-        "winEdge": -57.78,
-        "placeEdge": 0.00,
-        "edge": -28.89,
-        "places": 8
       },
       {
         "player": "Jordan Smith",
@@ -1814,42 +1801,16 @@
         "places": 10
       },
       {
-        "player": "Max Homa",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "28/1",
-        "bmWin": 29.00,
-        "bmPlace": 6.60,
-        "bfWin": 55.00,
-        "bfPlace": 7.50,
-        "winEdge": -47.27,
-        "placeEdge": -12.00,
-        "edge": -29.64,
-        "places": 8
-      },
-      {
-        "player": "Lee Hodges",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "55/1",
-        "bmWin": 56.00,
-        "bmPlace": 12.00,
-        "bfWin": 160.00,
-        "bfPlace": 11.47,
-        "winEdge": -65.00,
-        "placeEdge": 4.59,
-        "edge": -30.20,
-        "places": 8
-      },
-      {
-        "player": "John Parry",
+        "player": "Emiliano Grillo",
         "bookmaker": "LADBROKES",
         "bmWinOdds": "70/1",
         "bmWin": 71.00,
         "bmPlace": 15.00,
-        "bfWin": 200.00,
-        "bfPlace": 14.42,
-        "winEdge": -64.50,
-        "placeEdge": 4.04,
-        "edge": -30.23,
+        "bfWin": 150.00,
+        "bfPlace": 16.18,
+        "winEdge": -52.67,
+        "placeEdge": -7.31,
+        "edge": -29.99,
         "places": 8
       },
       {
@@ -1866,16 +1827,42 @@
         "places": 8
       },
       {
-        "player": "Emiliano Grillo",
+        "player": "Mackenzie Hughes",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "50/1",
+        "bmWin": 51.00,
+        "bmPlace": 11.00,
+        "bfWin": 150.00,
+        "bfPlace": 10.50,
+        "winEdge": -66.00,
+        "placeEdge": 4.76,
+        "edge": -30.62,
+        "places": 10
+      },
+      {
+        "player": "John Parry",
         "bookmaker": "LADBROKES",
         "bmWinOdds": "70/1",
         "bmWin": 71.00,
         "bmPlace": 15.00,
-        "bfWin": 150.00,
-        "bfPlace": 16.30,
-        "winEdge": -52.67,
-        "placeEdge": -8.00,
-        "edge": -30.33,
+        "bfWin": 210.00,
+        "bfPlace": 14.42,
+        "winEdge": -66.19,
+        "placeEdge": 4.04,
+        "edge": -31.08,
+        "places": 8
+      },
+      {
+        "player": "Lee Hodges",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "55/1",
+        "bmWin": 56.00,
+        "bmPlace": 12.00,
+        "bfWin": 170.00,
+        "bfPlace": 11.47,
+        "winEdge": -67.06,
+        "placeEdge": 4.59,
+        "edge": -31.23,
         "places": 8
       },
       {
@@ -1905,6 +1892,19 @@
         "places": 10
       },
       {
+        "player": "Max Homa",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "28/1",
+        "bmWin": 29.00,
+        "bmPlace": 6.60,
+        "bfWin": 60.00,
+        "bfPlace": 7.50,
+        "winEdge": -51.67,
+        "placeEdge": -12.00,
+        "edge": -31.83,
+        "places": 8
+      },
+      {
         "player": "Mark Hubbard",
         "bookmaker": "LADBROKES",
         "bmWinOdds": "150/1",
@@ -1931,19 +1931,6 @@
         "places": 10
       },
       {
-        "player": "Ben Martin",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "250/1",
-        "bmWin": 251.00,
-        "bmPlace": 51.00,
-        "bfWin": 780.00,
-        "bfPlace": 49.25,
-        "winEdge": -67.82,
-        "placeEdge": 3.55,
-        "edge": -32.14,
-        "places": 8
-      },
-      {
         "player": "Chandler Blanchet",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "80/1",
@@ -1954,19 +1941,6 @@
         "winEdge": -61.43,
         "placeEdge": -2.86,
         "edge": -32.14,
-        "places": 10
-      },
-      {
-        "player": "Trent Phillips",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "150/1",
-        "bmWin": 151.00,
-        "bmPlace": 31.00,
-        "bfWin": 530.00,
-        "bfPlace": 29.00,
-        "winEdge": -71.51,
-        "placeEdge": 6.90,
-        "edge": -32.31,
         "places": 10
       },
       {
@@ -1996,6 +1970,19 @@
         "places": 8
       },
       {
+        "player": "Trent Phillips",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "150/1",
+        "bmWin": 151.00,
+        "bmPlace": 31.00,
+        "bfWin": 630.00,
+        "bfPlace": 28.00,
+        "winEdge": -76.03,
+        "placeEdge": 10.71,
+        "edge": -32.66,
+        "places": 10
+      },
+      {
         "player": "Zecheng Dou",
         "bookmaker": "LADBROKES",
         "bmWinOdds": "60/1",
@@ -2006,6 +1993,19 @@
         "winEdge": -53.08,
         "placeEdge": -12.39,
         "edge": -32.73,
+        "places": 8
+      },
+      {
+        "player": "Beau Hossler",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "60/1",
+        "bmWin": 61.00,
+        "bmPlace": 13.00,
+        "bfWin": 160.00,
+        "bfPlace": 13.75,
+        "winEdge": -61.88,
+        "placeEdge": -5.45,
+        "edge": -33.66,
         "places": 8
       },
       {
@@ -2022,55 +2022,42 @@
         "places": 10
       },
       {
-        "player": "Marco Penge",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "16/1",
-        "bmWin": 17.00,
-        "bmPlace": 4.20,
-        "bfWin": 36.00,
-        "bfPlace": 5.00,
-        "winEdge": -52.78,
-        "placeEdge": -16.00,
-        "edge": -34.39,
-        "places": 10
-      },
-      {
-        "player": "Beau Hossler",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "60/1",
-        "bmWin": 61.00,
-        "bmPlace": 13.00,
-        "bfWin": 170.00,
-        "bfPlace": 13.75,
-        "winEdge": -64.12,
-        "placeEdge": -5.45,
-        "edge": -34.79,
-        "places": 8
-      },
-      {
         "player": "Beau Hossler",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "50/1",
         "bmWin": 51.00,
         "bmPlace": 11.00,
-        "bfWin": 170.00,
+        "bfWin": 160.00,
         "bfPlace": 11.00,
-        "winEdge": -70.00,
+        "winEdge": -68.13,
         "placeEdge": 0.00,
-        "edge": -35.00,
+        "edge": -34.06,
         "places": 10
       },
       {
-        "player": "Trent Phillips",
+        "player": "Ben Martin",
         "bookmaker": "LADBROKES",
-        "bmWinOdds": "175/1",
-        "bmWin": 176.00,
-        "bmPlace": 36.00,
-        "bfWin": 530.00,
-        "bfPlace": 37.25,
-        "winEdge": -66.79,
-        "placeEdge": -3.36,
-        "edge": -35.08,
+        "bmWinOdds": "250/1",
+        "bmWin": 251.00,
+        "bmPlace": 51.00,
+        "bfWin": 780.00,
+        "bfPlace": 51.48,
+        "winEdge": -67.82,
+        "placeEdge": -0.93,
+        "edge": -34.37,
+        "places": 8
+      },
+      {
+        "player": "Mackenzie Hughes",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "55/1",
+        "bmWin": 56.00,
+        "bmPlace": 12.00,
+        "bfWin": 150.00,
+        "bfPlace": 12.96,
+        "winEdge": -62.67,
+        "placeEdge": -7.43,
+        "edge": -35.05,
         "places": 8
       },
       {
@@ -2113,30 +2100,17 @@
         "places": 10
       },
       {
-        "player": "Haotong Li",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "50/1",
-        "bmWin": 51.00,
-        "bmPlace": 11.00,
-        "bfWin": 140.00,
-        "bfPlace": 12.00,
-        "winEdge": -63.57,
-        "placeEdge": -8.33,
-        "edge": -35.95,
-        "places": 10
-      },
-      {
-        "player": "Mackenzie Hughes",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "50/1",
-        "bmWin": 51.00,
-        "bmPlace": 11.00,
-        "bfWin": 220.00,
-        "bfPlace": 10.50,
-        "winEdge": -76.82,
-        "placeEdge": 4.76,
-        "edge": -36.03,
-        "places": 10
+        "player": "Trent Phillips",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "175/1",
+        "bmWin": 176.00,
+        "bmPlace": 36.00,
+        "bfWin": 630.00,
+        "bfPlace": 36.25,
+        "winEdge": -72.06,
+        "placeEdge": -0.70,
+        "edge": -36.38,
+        "places": 8
       },
       {
         "player": "Will Gordon",
@@ -2165,6 +2139,32 @@
         "places": 8
       },
       {
+        "player": "Joe Highsmith",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "200/1",
+        "bmWin": 201.00,
+        "bmPlace": 41.00,
+        "bfWin": 1000.00,
+        "bfPlace": 38.43,
+        "winEdge": -79.90,
+        "placeEdge": 6.69,
+        "edge": -36.60,
+        "places": 8
+      },
+      {
+        "player": "Haotong Li",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "50/1",
+        "bmWin": 51.00,
+        "bmPlace": 11.00,
+        "bfWin": 140.00,
+        "bfPlace": 12.50,
+        "winEdge": -63.57,
+        "placeEdge": -12.00,
+        "edge": -37.79,
+        "places": 10
+      },
+      {
         "player": "Cam Davis",
         "bookmaker": "LADBROKES",
         "bmWinOdds": "110/1",
@@ -2191,17 +2191,17 @@
         "places": 10
       },
       {
-        "player": "Mackenzie Hughes",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "55/1",
-        "bmWin": 56.00,
-        "bmPlace": 12.00,
-        "bfWin": 220.00,
-        "bfPlace": 12.96,
-        "winEdge": -74.55,
-        "placeEdge": -7.43,
-        "edge": -40.99,
-        "places": 8
+        "player": "Marco Penge",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "16/1",
+        "bmWin": 17.00,
+        "bmPlace": 4.20,
+        "bfWin": 38.00,
+        "bfPlace": 5.50,
+        "winEdge": -55.26,
+        "placeEdge": -23.64,
+        "edge": -39.45,
+        "places": 10
       },
       {
         "player": "Denny McCarthy",
@@ -2249,10 +2249,10 @@
         "bmWin": 81.00,
         "bmPlace": 17.00,
         "bfWin": 200.00,
-        "bfPlace": 22.50,
+        "bfPlace": 22.80,
         "winEdge": -59.50,
-        "placeEdge": -24.44,
-        "edge": -41.97,
+        "placeEdge": -25.44,
+        "edge": -42.47,
         "places": 8
       },
       {
@@ -2326,24 +2326,11 @@
         "bmWinOdds": "175/1",
         "bmWin": 176.00,
         "bmPlace": 36.00,
-        "bfWin": 820.00,
+        "bfWin": 830.00,
         "bfPlace": 40.00,
-        "winEdge": -78.54,
+        "winEdge": -78.80,
         "placeEdge": -10.00,
-        "edge": -44.27,
-        "places": 10
-      },
-      {
-        "player": "Andrew Putnam",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "125/1",
-        "bmWin": 126.00,
-        "bmPlace": 26.00,
-        "bfWin": 620.00,
-        "bfPlace": 29.00,
-        "winEdge": -79.68,
-        "placeEdge": -10.34,
-        "edge": -45.01,
+        "edge": -44.40,
         "places": 10
       },
       {
@@ -2391,25 +2378,25 @@
         "bmWinOdds": "150/1",
         "bmWin": 151.00,
         "bmPlace": 31.00,
-        "bfWin": 610.00,
+        "bfWin": 600.00,
         "bfPlace": 37.84,
-        "winEdge": -75.25,
+        "winEdge": -74.83,
         "placeEdge": -18.07,
-        "edge": -46.66,
+        "edge": -46.45,
         "places": 8
       },
       {
         "player": "Andrew Putnam",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "150/1",
-        "bmWin": 151.00,
-        "bmPlace": 31.00,
-        "bfWin": 620.00,
-        "bfPlace": 38.43,
-        "winEdge": -75.65,
-        "placeEdge": -19.33,
-        "edge": -47.49,
-        "places": 8
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "125/1",
+        "bmWin": 126.00,
+        "bmPlace": 26.00,
+        "bfWin": 780.00,
+        "bfPlace": 29.00,
+        "winEdge": -83.85,
+        "placeEdge": -10.34,
+        "edge": -47.10,
+        "places": 10
       },
       {
         "player": "Kevin Streelman",
@@ -2418,10 +2405,10 @@
         "bmWin": 111.00,
         "bmPlace": 23.00,
         "bfWin": 460.00,
-        "bfPlace": 29.46,
+        "bfPlace": 28.95,
         "winEdge": -75.87,
-        "placeEdge": -21.94,
-        "edge": -48.90,
+        "placeEdge": -20.55,
+        "edge": -48.21,
         "places": 8
       },
       {
@@ -2430,11 +2417,24 @@
         "bmWinOdds": "200/1",
         "bmWin": 201.00,
         "bmPlace": 41.00,
-        "bfWin": 820.00,
+        "bfWin": 830.00,
         "bfPlace": 53.66,
-        "winEdge": -75.49,
+        "winEdge": -75.78,
         "placeEdge": -23.59,
-        "edge": -49.54,
+        "edge": -49.69,
+        "places": 8
+      },
+      {
+        "player": "Andrew Putnam",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "150/1",
+        "bmWin": 151.00,
+        "bmPlace": 31.00,
+        "bfWin": 780.00,
+        "bfPlace": 38.43,
+        "winEdge": -80.64,
+        "placeEdge": -19.33,
+        "edge": -49.98,
         "places": 8
       },
       {
@@ -2457,10 +2457,10 @@
         "bmWin": 67.00,
         "bmPlace": 14.20,
         "bfWin": 260.00,
-        "bfPlace": 19.57,
+        "bfPlace": 20.00,
         "winEdge": -74.23,
-        "placeEdge": -27.42,
-        "edge": -50.83,
+        "placeEdge": -29.00,
+        "edge": -51.62,
         "places": 8
       },
       {
@@ -2474,6 +2474,19 @@
         "winEdge": -77.22,
         "placeEdge": -28.00,
         "edge": -52.61,
+        "places": 10
+      },
+      {
+        "player": "Brian Campbell",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "150/1",
+        "bmWin": 151.00,
+        "bmPlace": 31.00,
+        "bfWin": 770.00,
+        "bfPlace": 42.00,
+        "winEdge": -80.39,
+        "placeEdge": -26.19,
+        "edge": -53.29,
         "places": 10
       },
       {
@@ -2503,16 +2516,16 @@
         "places": 8
       },
       {
-        "player": "Adam Hadwin",
+        "player": "Brian Campbell",
         "bookmaker": "LADBROKES",
-        "bmWinOdds": "110/1",
-        "bmWin": 111.00,
-        "bmPlace": 23.00,
-        "bfWin": 850.00,
-        "bfPlace": 34.73,
-        "winEdge": -86.94,
-        "placeEdge": -33.78,
-        "edge": -60.36,
+        "bmWinOdds": "150/1",
+        "bmWin": 151.00,
+        "bmPlace": 31.00,
+        "bfWin": 770.00,
+        "bfPlace": 54.69,
+        "winEdge": -80.39,
+        "placeEdge": -43.31,
+        "edge": -61.85,
         "places": 8
       },
       {
@@ -2527,6 +2540,19 @@
         "placeEdge": -48.00,
         "edge": -61.88,
         "places": 10
+      },
+      {
+        "player": "Adam Hadwin",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "110/1",
+        "bmWin": 111.00,
+        "bmPlace": 23.00,
+        "bfWin": 850.00,
+        "bfPlace": 36.93,
+        "winEdge": -86.94,
+        "placeEdge": -37.72,
+        "edge": -62.33,
+        "places": 8
       }
     ]
   }
