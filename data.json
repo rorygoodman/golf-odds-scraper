@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-30 15:00:05 GMT",
+  "timestamp": "2026-10-30 15:20:05 GMT",
   "events": [
   {
     "eventName": "PGA Mexico",
@@ -7,43 +7,17 @@
     "bookmakers": ["LADBROKES", "WILLIAM_HILL"],
     "opportunities": [
       {
-        "player": "Neal Shipley",
+        "player": "Brian Campbell",
         "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "60/1",
-        "bmWin": 61.00,
-        "bmPlace": 13.00,
-        "bfWin": 120.00,
-        "bfPlace": 6.80,
-        "winEdge": -49.17,
-        "placeEdge": 91.18,
-        "edge": 21.00,
+        "bmWinOdds": "100/1",
+        "bmWin": 101.00,
+        "bmPlace": 21.00,
+        "bfWin": 170.00,
+        "bfPlace": 14.50,
+        "winEdge": -40.59,
+        "placeEdge": 44.83,
+        "edge": 2.12,
         "places": 10
-      },
-      {
-        "player": "Ben Griffin",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "13/2",
-        "bmWin": 7.50,
-        "bmPlace": 2.30,
-        "bfWin": 8.80,
-        "bfPlace": 1.95,
-        "winEdge": -14.77,
-        "placeEdge": 17.95,
-        "edge": 1.59,
-        "places": 10
-      },
-      {
-        "player": "Ben Griffin",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "7/1",
-        "bmWin": 8.00,
-        "bmPlace": 2.40,
-        "bfWin": 8.80,
-        "bfPlace": 2.34,
-        "winEdge": -9.09,
-        "placeEdge": 2.50,
-        "edge": -3.29,
-        "places": 8
       },
       {
         "player": "Gordon Sargent",
@@ -59,16 +33,42 @@
         "places": 10
       },
       {
+        "player": "Ben Griffin",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "7/1",
+        "bmWin": 8.00,
+        "bmPlace": 2.40,
+        "bfWin": 9.20,
+        "bfPlace": 2.34,
+        "winEdge": -13.04,
+        "placeEdge": 2.50,
+        "edge": -5.27,
+        "places": 8
+      },
+      {
+        "player": "Ben Griffin",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "6/1",
+        "bmWin": 7.00,
+        "bmPlace": 2.20,
+        "bfWin": 9.20,
+        "bfPlace": 1.95,
+        "winEdge": -23.91,
+        "placeEdge": 12.82,
+        "edge": -5.55,
+        "places": 10
+      },
+      {
         "player": "Isaiah Salinda",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "100/1",
         "bmWin": 101.00,
         "bmPlace": 21.00,
-        "bfWin": 200.00,
+        "bfWin": 220.00,
         "bfPlace": 15.00,
-        "winEdge": -49.50,
+        "winEdge": -54.09,
         "placeEdge": 40.00,
-        "edge": -4.75,
+        "edge": -7.05,
         "places": 10
       },
       {
@@ -77,11 +77,11 @@
         "bmWinOdds": "80/1",
         "bmWin": 81.00,
         "bmPlace": 17.00,
-        "bfWin": 190.00,
+        "bfWin": 170.00,
         "bfPlace": 14.50,
-        "winEdge": -57.37,
+        "winEdge": -52.35,
         "placeEdge": 17.24,
-        "edge": -20.06,
+        "edge": -17.56,
         "places": 10
       },
       {
@@ -91,36 +91,23 @@
         "bmWin": 151.00,
         "bmPlace": 31.00,
         "bfWin": 990.00,
-        "bfPlace": 25.00,
+        "bfPlace": 24.00,
         "winEdge": -84.75,
-        "placeEdge": 24.00,
-        "edge": -30.37,
+        "placeEdge": 29.17,
+        "edge": -27.79,
         "places": 10
       },
       {
         "player": "Marco Penge",
         "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "9/1",
-        "bmWin": 10.00,
-        "bmPlace": 2.80,
-        "bfWin": 12.50,
+        "bmWinOdds": "8/1",
+        "bmWin": 9.00,
+        "bmPlace": 2.60,
+        "bfWin": 12.00,
         "bfPlace": 5.50,
-        "winEdge": -20.00,
-        "placeEdge": -49.09,
-        "edge": -34.55,
-        "places": 10
-      },
-      {
-        "player": "Wyndham Clark",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "40/1",
-        "bmWin": 41.00,
-        "bmPlace": 9.00,
-        "bfWin": 120.00,
-        "bfPlace": 10.00,
-        "winEdge": -65.83,
-        "placeEdge": -10.00,
-        "edge": -37.92,
+        "winEdge": -25.00,
+        "placeEdge": -52.73,
+        "edge": -38.86,
         "places": 10
       }
     ]
