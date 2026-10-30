@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-30 15:40:05 GMT",
+  "timestamp": "2026-10-30 16:00:04 GMT",
   "events": [
   {
     "eventName": "PGA Mexico",
@@ -7,43 +7,17 @@
     "bookmakers": ["LADBROKES", "WILLIAM_HILL"],
     "opportunities": [
       {
-        "player": "Brian Campbell",
-        "bookmaker": "WILLIAM_HILL",
-        "bmWinOdds": "100/1",
-        "bmWin": 101.00,
-        "bmPlace": 21.00,
-        "bfWin": 160.00,
-        "bfPlace": 13.00,
-        "winEdge": -36.88,
-        "placeEdge": 61.54,
-        "edge": 12.33,
-        "places": 10
-      },
-      {
         "player": "Gordon Sargent",
         "bookmaker": "WILLIAM_HILL",
         "bmWinOdds": "55/1",
         "bmWin": 56.00,
         "bmPlace": 12.00,
-        "bfWin": 110.00,
+        "bfWin": 85.00,
         "bfPlace": 7.60,
-        "winEdge": -49.09,
+        "winEdge": -34.12,
         "placeEdge": 57.89,
-        "edge": 4.40,
+        "edge": 11.89,
         "places": 10
-      },
-      {
-        "player": "Ben Griffin",
-        "bookmaker": "LADBROKES",
-        "bmWinOdds": "7/1",
-        "bmWin": 8.00,
-        "bmPlace": 2.40,
-        "bfWin": 8.00,
-        "bfPlace": 2.34,
-        "winEdge": 0.00,
-        "placeEdge": 2.50,
-        "edge": 1.25,
-        "places": 8
       },
       {
         "player": "Ben Griffin",
@@ -51,12 +25,25 @@
         "bmWinOdds": "6/1",
         "bmWin": 7.00,
         "bmPlace": 2.20,
-        "bfWin": 8.00,
+        "bfWin": 7.80,
         "bfPlace": 1.95,
-        "winEdge": -12.50,
+        "winEdge": -10.26,
         "placeEdge": 12.82,
-        "edge": 0.16,
+        "edge": 1.28,
         "places": 10
+      },
+      {
+        "player": "Ben Griffin",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "13/2",
+        "bmWin": 7.50,
+        "bmPlace": 2.30,
+        "bfWin": 7.80,
+        "bfPlace": 2.34,
+        "winEdge": -3.85,
+        "placeEdge": -1.77,
+        "edge": -2.81,
+        "places": 8
       },
       {
         "player": "Isaiah Salinda",
@@ -69,6 +56,19 @@
         "winEdge": -54.09,
         "placeEdge": 40.00,
         "edge": -7.05,
+        "places": 10
+      },
+      {
+        "player": "Brian Campbell",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "80/1",
+        "bmWin": 81.00,
+        "bmPlace": 17.00,
+        "bfWin": 160.00,
+        "bfPlace": 13.00,
+        "winEdge": -49.38,
+        "placeEdge": 30.77,
+        "edge": -9.30,
         "places": 10
       },
       {
@@ -103,11 +103,11 @@
         "bmWinOdds": "8/1",
         "bmWin": 9.00,
         "bmPlace": 2.60,
-        "bfWin": 12.00,
+        "bfWin": 11.50,
         "bfPlace": 5.50,
-        "winEdge": -25.00,
+        "winEdge": -21.74,
         "placeEdge": -52.73,
-        "edge": -38.86,
+        "edge": -37.23,
         "places": 10
       }
     ]
