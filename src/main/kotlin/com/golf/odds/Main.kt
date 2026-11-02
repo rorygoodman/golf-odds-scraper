@@ -11,9 +11,15 @@ import java.time.format.DateTimeFormatter
  * Loads configuration, scrapes odds from bookmakers and Betfair,
  * and calculates E/W arbitrage opportunities.
  *
- * @param args Optional path to config file (defaults to "config.json")
+ * @param args Optional path to config file (defaults to "config.json"), or
+ *   "discover" to build the config for this week's PGA event (see [runDiscovery])
  */
 fun main(args: Array<String>) {
+    if (args.firstOrNull() == "discover") {
+        runDiscovery(args.drop(1))
+        return
+    }
+
     val configPath = args.getOrNull(0) ?: "config.json"
 
     println("Golf Odds Scraper")

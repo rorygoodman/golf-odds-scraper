@@ -34,6 +34,13 @@ Or with a custom config:
 ./run.sh --args="path/to/config.json"
 ```
 
+To generate `config.json` for this week's PGA Tour event (Betfair markets plus
+the best extra-places market at William Hill, Paddy Power and Ladbrokes):
+
+```bash
+./run.sh --args="discover"                    # or: --args="discover --event Mexico"
+```
+
 ## Configuration
 
 Edit `config.json` to set up events, bookmaker pages, and Betfair links:

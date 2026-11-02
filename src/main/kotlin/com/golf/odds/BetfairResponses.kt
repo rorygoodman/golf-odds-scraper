@@ -40,7 +40,9 @@ fun parseSsoid(json: String): String {
         val hint = if (status == "LOGIN_RESTRICTED")
             " — this likely means 2FA is enabled on the account. 2FA must be disabled for interactive login, or switch to cert-based login."
             else ""
-        throw IllegalStateException("login failed with status=$status$hint")
+        val error = root.get("error")?.takeIf { it.isJsonPrimitive }?.asString.orEmpty()
+        val detail = if (error.isNotEmpty()) " error=$error" else ""
+        throw IllegalStateException("login failed with status=$status$detail$hint")
     }
     val tokenEl = root.get("token")
     return if (tokenEl != null && tokenEl.isJsonPrimitive) tokenEl.asString
