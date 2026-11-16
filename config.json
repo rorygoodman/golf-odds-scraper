@@ -1,27 +1,23 @@
 {
   "events": [
     {
-      "name": "PGA WW Technology",
-      "betfairLink": "https://www.betfair.com/exchange/plus/golf/market/1.264943715",
-      "betfairTop5Link": "https://www.betfair.com/exchange/plus/golf/market/1.264943716",
-      "betfairTop10Link": "https://www.betfair.com/exchange/plus/golf/market/1.264943717",
+      "name": "PGA The RSM",
+      "betfairLink": "https://www.betfair.com/exchange/plus/golf/market/1.265637472",
+      "betfairTop5Link": "https://www.betfair.com/exchange/plus/golf/market/1.265637473",
+      "betfairTop10Link": "https://www.betfair.com/exchange/plus/golf/market/1.265637474",
       "ew": true,
       "pages": [
         {
-          "url": "https://sports.williamhill.com/betting/en-gb/golf/competitions/world-wide-technology-championship-2026/outrights",
+          "url": "https://sports.williamhill.com/betting/en-gb/golf/competitions/the-rsm-classic-2026/outrights",
           "bookmaker": "WILLIAM_HILL",
-          "places": 10
+          "places": 5,
+          "placeFraction": "1/4"
         },
         {
-          "url": "https://www.paddypower.com/golf/pga-ww-technology-championship-2026",
+          "url": "https://www.paddypower.com/golf/pga-the-rsm-classic-2026",
           "bookmaker": "PADDY_POWER",
           "places": 10,
           "header": "Winner - 10 Places Each Way"
-        },
-        {
-          "url": "https://www.ladbrokes.com/en/sports/event/golf/golf/world-wide-technology-championship/2026-world-wide-technology-championship/259606849/main-markets",
-          "bookmaker": "LADBROKES",
-          "places": 8
         }
       ]
     }
