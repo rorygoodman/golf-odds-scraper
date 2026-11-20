@@ -1,12 +1,50 @@
 {
-  "timestamp": "2026-11-20 21:20:05 GMT",
+  "timestamp": "2026-11-20 21:40:04 GMT",
   "events": [
   {
     "eventName": "PGA The RSM",
     "mode": "EW",
     "bookmakers": ["LADBROKES", "PADDY_POWER", "WILLIAM_HILL"],
     "opportunities": [
-
+      {
+        "player": "Michael Thorbjornsen",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "9/2",
+        "bmWin": 5.50,
+        "bmPlace": 2.13,
+        "bfWin": 6.00,
+        "bfPlace": 1.79,
+        "winEdge": -8.33,
+        "placeEdge": 18.72,
+        "edge": 5.19,
+        "places": 10
+      },
+      {
+        "player": "Michael Thorbjornsen",
+        "bookmaker": "LADBROKES",
+        "bmWinOdds": "9/2",
+        "bmWin": 5.50,
+        "bmPlace": 1.90,
+        "bfWin": 6.00,
+        "bfPlace": 1.92,
+        "winEdge": -8.33,
+        "placeEdge": -1.13,
+        "edge": -4.73,
+        "places": 8
+      },
+      {
+        "player": "Michael Thorbjornsen",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "4/1",
+        "bmWin": 5.00,
+        "bmPlace": 1.80,
+        "bfWin": 6.00,
+        "bfPlace": 1.79,
+        "winEdge": -16.67,
+        "placeEdge": 0.56,
+        "edge": -8.05,
+        "places": 10
+      }
     ]
   }
   ]
