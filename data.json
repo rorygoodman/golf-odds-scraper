@@ -1,12 +1,37 @@
 {
-  "timestamp": "2026-11-20 18:40:05 GMT",
+  "timestamp": "2026-11-20 19:00:04 GMT",
   "events": [
   {
     "eventName": "PGA The RSM",
     "mode": "EW",
     "bookmakers": ["LADBROKES", "PADDY_POWER", "WILLIAM_HILL"],
     "opportunities": [
-
+      {
+        "player": "Jackson Koivun",
+        "bookmaker": "PADDY_POWER",
+        "bmWinOdds": "33/1",
+        "bmWin": 34.00,
+        "bmPlace": 7.60,
+        "bfWin": 65.00,
+        "bfPlace": 2.72,
+        "winEdge": -47.69,
+        "placeEdge": 179.41,
+        "edge": 65.86,
+        "places": 10
+      },
+      {
+        "player": "Jackson Koivun",
+        "bookmaker": "WILLIAM_HILL",
+        "bmWinOdds": "28/1",
+        "bmWin": 29.00,
+        "bmPlace": 6.60,
+        "bfWin": 65.00,
+        "bfPlace": 2.72,
+        "winEdge": -55.38,
+        "placeEdge": 142.65,
+        "edge": 43.63,
+        "places": 10
+      }
     ]
   }
   ]
